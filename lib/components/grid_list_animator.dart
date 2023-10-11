@@ -14,7 +14,7 @@ class GridListAnimatorWidget extends StatelessWidget {
       crossAxisCount: 2,
       physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
-      addAutomaticKeepAstepOuts: true,
+      addAutomaticKeepAlives: true,
       mainAxisSpacing: 8.h,
       childAspectRatio: aspectRatio ?? 0.748,
       crossAxisSpacing: 8.w,

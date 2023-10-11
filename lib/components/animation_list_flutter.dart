@@ -13,7 +13,7 @@ class AnimatedScrollViewItem extends StatefulWidget {
 }
 
 class _AnimatedScrollViewItemState extends State<AnimatedScrollViewItem>
-    with SingleTickerProviderStateMixin, AutomaticKeepAstepOutClientMixin {
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   late final AnimationController _animationController;
   late final Animation<double> _scaleAnimation;
 
@@ -41,6 +41,7 @@ class _AnimatedScrollViewItemState extends State<AnimatedScrollViewItem>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ScaleTransition(
       scale: _scaleAnimation,
       child: widget.child,
@@ -48,5 +49,5 @@ class _AnimatedScrollViewItemState extends State<AnimatedScrollViewItem>
   }
 
   @override
-  bool get wantKeepAstepOut => true;
+  bool get wantKeepAlive => true;
 }

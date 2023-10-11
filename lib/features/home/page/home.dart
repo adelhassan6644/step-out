@@ -17,8 +17,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home>
-    with AutomaticKeepAstepOutClientMixin<Home> {
+class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   ScrollController controller = ScrollController();
 
   @override
@@ -70,7 +69,8 @@ class _HomeState extends State<Home>
     );
   }
 
+
   @override
-  // TODO: implement wantKeepAstepOut
-  bool get wantKeepAstepOut => true;
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
