@@ -19,8 +19,6 @@ import '../../features/place_details/provider/place_details_provider.dart';
 import '../../features/place_details/repo/place_details_repo.dart';
 import '../../features/profile/provider/profile_provider.dart';
 import '../../features/profile/repo/profile_repo.dart';
-import '../../features/setting/provider/setting_provider.dart';
-import '../../features/setting/repo/setting_repo.dart';
 import '../../main_page/provider/main_page_provider.dart';
 import '../../main_providers/map_provider.dart';
 import '../api/end_points.dart';
@@ -59,8 +57,8 @@ Future<void> init() async {
       () => CategoryDetailsRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
       () => PlaceDetailsRepo(sharedPreferences: sl(), dioClient: sl()));
-  sl.registerLazySingleton(
-      () => SettingRepo(sharedPreferences: sl(), dioClient: sl()));
+  // sl.registerLazySingleton(
+  //     () => SettingRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
       () => ContactRepo(sharedPreferences: sl(), dioClient: sl()));
 
@@ -78,7 +76,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => ProfileProvider(profileRepo: sl()));
   sl.registerLazySingleton(() => MapProvider());
   sl.registerLazySingleton(() => LocationProvider(locationRepo: sl()));
-  sl.registerLazySingleton(() => SettingProvider(repo: sl()));
+  // sl.registerLazySingleton(() => SettingProvider(repo: sl()));
   sl.registerLazySingleton(() => ContactProvider(contactRepo: sl()));
 
   // External

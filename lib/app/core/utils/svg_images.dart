@@ -1,4 +1,6 @@
 class SvgImages {
+  static const String checkHand = 'assets/svgs/check_hand.svg';
+  static const String vectoryHand = 'assets/svgs/vectory_hand.svg';
   static const String stepOutLocationIcon = 'assets/svgs/stepOut_location.svg';
   static const String whiteBlackLogo = 'assets/svgs/white_black_logo.svg';
   static const String fillCloseCircle = 'assets/svgs/fill-close-circle.svg';

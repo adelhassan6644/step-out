@@ -1,22 +1,23 @@
-import 'package:stepOut/app/core/utils/color_resources.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
-import 'package:stepOut/app/core/utils/images.dart';
-import 'package:stepOut/app/core/utils/svg_images.dart';
-import 'package:stepOut/app/core/utils/validation.dart';
-import 'package:flutter/material.dart';
-import 'package:stepOut/components/custom_app_bar.dart';
-import 'package:provider/provider.dart';
-import 'dart:ui' as ui;
+import 'package:stepOut/navigation/custom_navigation.dart';
+import 'package:stepOut/navigation/routes.dart';
+
+import '../../../app/core/utils/color_resources.dart';
+import '../../../app/core/utils/images.dart';
 import '../../../app/core/utils/text_styles.dart';
+import '../../../app/core/utils/validation.dart';
 import '../../../app/localization/localization/language_constant.dart';
+import '../../../components/animated_widget.dart';
 import '../../../components/custom_button.dart';
-import '../../../components/custom_images.dart';
 import '../../../components/custom_text_form_field.dart';
 import '../provider/auth_provider.dart';
 
 class ForgetPassword extends StatefulWidget {
-  const ForgetPassword({Key? key}) : super(key: key);
+  const ForgetPassword({super.key});
 
   @override
   State<ForgetPassword> createState() => _ForgetPasswordState();
@@ -24,135 +25,152 @@ class ForgetPassword extends StatefulWidget {
 
 class _ForgetPasswordState extends State<ForgetPassword> {
   final _formKey = GlobalKey<FormState>();
+  final FocusNode emailNode = FocusNode();
+
+  bool focusOnEmail = false;
+
+  @override
+  void initState() {
+    emailNode.addListener(() {
+      focusOnEmail = emailNode.hasFocus;
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: context.width,
-        height: context.height,
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage(
-            Images.loginImage,
-          ),
-          fit: BoxFit.fitWidth,
-        )),
-        child: Column(
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+        body: Stack(
+          alignment: Alignment.topCenter,
           children: [
-            Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                const CustomAppBar(),
-                customImageIcon(
-                    imageName: Images.logo, height: 140, width: 160),
-              ],
-            ),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: Dimensions.PADDING_SIZE_EXTRA_LARGE.w),
-                    child: Column(
-                      children: [
-                        Stack(
-                          alignment: Alignment.topCenter,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(top: 0.h),
-                              child: ClipRRect(
-                                clipBehavior: Clip.antiAlias,
-                                borderRadius: BorderRadius.circular(25),
-                                child: BackdropFilter(
-                                  filter: ui.ImageFilter.blur(
-                                      sigmaX: 0.0, sigmaY: 0.0),
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            Dimensions.PADDING_SIZE_DEFAULT.w,
-                                        vertical: 30.h),
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(25)),
-                                    child: Consumer<AuthProvider>(
-                                        builder: (_, provider, child) {
-                                      return Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Text(
-                                            getTranslated(
-                                                "forget_password_header",
-                                                context),
-                                            textAlign: TextAlign.center,
-                                            style: AppTextStyles.semiBold
-                                                .copyWith(
-                                                    fontSize: 22,
-                                                    color:
-                                                        ColorResources.HEADER),
-                                          ),
-                                          Form(
-                                              key: _formKey,
-                                              child: Column(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                      vertical: 24.h,
-                                                    ),
-                                                    child: CustomTextFormField(
-                                                      controller:
-                                                          provider.mailTEC,
-                                                      hint: getTranslated(
-                                                          "mail", context),
-                                                      inputType: TextInputType
-                                                          .emailAddress,
-                                                      valid: Validations.mail,
-                                                      pSvgIcon:
-                                                          SvgImages.mailIcon,
-                                                    ),
-                                                  ),
-                                                  CustomButton(
-                                                      text: getTranslated(
-                                                          "submit", context),
-                                                      onTap: () {
-                                                        if (_formKey
-                                                            .currentState!
-                                                            .validate()) {
-                                                          provider
-                                                              .forgetPassword();
-                                                        }
-                                                      },
-                                                      isLoading:
-                                                          provider.isForget),
-                                                ],
-                                              )),
-                                        ],
-                                      );
-                                    }),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            // customImageIcon(
-                            //     imageName: Images.logo,
-                            //     height: 140,
-                            //     width: 160),
-                          ],
-                        ),
-                        SizedBox(
-                          height: Dimensions.PADDING_SIZE_DEFAULT.h,
-                        ),
-                      ],
-                    ),
-                  ),
+            Container(
+              height: context.toPadding + 180.h,
+              width: context.width,
+              padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                  vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: ExactAssetImage(Images.authBG),
+                  fit: BoxFit.cover,
                 ),
               ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    height:
+                        context.toPadding + Dimensions.PADDING_SIZE_DEFAULT.h,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        getTranslated("forget_password_header", context),
+                        textAlign: TextAlign.start,
+                        style: AppTextStyles.semiBold
+                            .copyWith(fontSize: 24, color: Styles.WHITE_COLOR),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    getTranslated("forget_password_description", context),
+                    textAlign: TextAlign.start,
+                    style: AppTextStyles.medium
+                        .copyWith(fontSize: 14, color: Styles.WHITE_COLOR),
+                  ),
+                  SizedBox(
+                    height: Dimensions.PADDING_SIZE_EXTRA_SMALL.h,
+                  ),
+                ],
+              ),
+            ),
+            Column(
+              children: [
+                Expanded(
+                  child: Consumer<AuthProvider>(builder: (_, provider, child) {
+                    return Container(
+                      margin: EdgeInsets.only(
+                        top: context.toPadding + 160.h,
+                      ),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                          vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                      decoration: const BoxDecoration(
+                          color: Styles.WHITE_COLOR,
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(20),
+                              topLeft: Radius.circular(20))),
+                      child: ListAnimator(
+                        data: [
+                          SizedBox(
+                            height: Dimensions.PADDING_SIZE_DEFAULT.h,
+                          ),
+                          Form(
+                              key: _formKey,
+                              child: Column(
+                                children: [
+                                  StreamBuilder<String?>(
+                                      stream: provider.mailStream,
+                                      builder: (context, snapshot) {
+                                        return CustomTextField(
+                                          onChanged: provider.updateMail,
+                                          label: getTranslated("mail", context),
+                                          hint: getTranslated(
+                                              "enter_your_mail", context),
+                                          withLabel: true,
+                                          onTap: () {
+                                            setState(() =>
+                                                focusOnEmail = !focusOnEmail);
+                                            if (!focusOnEmail) {
+                                              FocusScope.of(context)
+                                                  .requestFocus(FocusNode());
+                                            }
+                                          },
+                                          focusNode: emailNode,
+                                          alignLabel: focusOnEmail,
+                                          inputType: TextInputType.emailAddress,
+                                          customError: snapshot.hasError,
+                                          errorText: snapshot.error,
+                                          validate: (v) {
+                                            if (Validations.mail(v) != null) {
+                                              provider.mail.addError(
+                                                  Validations.mail(v)!);
+                                            }
+                                            return null;
+                                          },
+                                        );
+                                      }),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 24.h,
+                                    ),
+                                    child: CustomButton(
+                                        text: getTranslated("submit", context),
+                                        onTap: () {
+                                          _formKey.currentState!.validate();
+                                          if (Validations.mail(provider
+                                                  .mail.value
+                                                  ?.trim()) ==
+                                              null) {
+                                            CustomNavigator.push(
+                                                Routes.VERIFICATION,
+                                                arguments: false);
+                                            // provider.forgetPassword();
+                                          }
+                                        },
+                                        isLoading: provider.isForget),
+                                  ),
+                                ],
+                              )),
+                        ],
+                      ),
+                    );
+                  }),
+                ),
+              ],
             ),
           ],
         ),

@@ -13,7 +13,6 @@ import '../../features/home/provider/home_provider.dart';
 import '../../features/place_details/provider/place_details_provider.dart';
 import '../../features/profile/provider/profile_provider.dart';
 import '../../features/splash/provider/splash_provider.dart';
-import '../../features/setting/provider/setting_provider.dart';
 import '../../main_page/provider/main_page_provider.dart';
 import '../../main_providers/calender_provider.dart';
 import '../../main_providers/map_provider.dart';
@@ -34,6 +33,6 @@ abstract class ProviderList {
     ChangeNotifierProvider(create: (_) => di.sl<CalenderProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<LocationProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<ContactProvider>()),
-    ChangeNotifierProvider(create: (_) => di.sl<SettingProvider>()),
+    // ChangeNotifierProvider(create: (_) => di.sl<SettingProvider>()),
   ];
 }

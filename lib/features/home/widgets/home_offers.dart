@@ -31,7 +31,7 @@ class HomeOffers extends StatelessWidget {
               Text(
                 "العروض ",
                 style: AppTextStyles.semiBold
-                    .copyWith(fontSize: 24, color: ColorResources.HEADER),
+                    .copyWith(fontSize: 24, color: Styles.HEADER),
               ),
               Image.asset(
                 Images.megaPhone,
@@ -96,12 +96,12 @@ class HomeOffers extends StatelessWidget {
                                 margin: EdgeInsets.symmetric(horizontal: 2.w),
                                 decoration: BoxDecoration(
                                     color: index == provider.offersIndex
-                                        ? ColorResources.SECOUND_PRIMARY_COLOR
-                                        : ColorResources.WHITE_COLOR,
+                                        ? Styles.ACCENT_COLOR
+                                        : Styles.WHITE_COLOR,
                                     borderRadius: BorderRadius.circular(100.w),
                                     border: Border.all(
-                                        color: ColorResources
-                                            .SECOUND_PRIMARY_COLOR,
+                                        color: Styles
+                                            .ACCENT_COLOR,
                                         width: 1)),
                               );
                             }).toList(),
@@ -136,7 +136,7 @@ class _OfferShimmer extends StatelessWidget {
             height: 205.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: ColorResources.WHITE_COLOR,
+              color: Styles.WHITE_COLOR,
             )),
       ),
     );

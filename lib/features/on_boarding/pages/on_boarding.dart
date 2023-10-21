@@ -75,7 +75,7 @@ class OnBoarding extends StatelessWidget {
                                           style: AppTextStyles.semiBold
                                               .copyWith(
                                                   fontSize: 28,
-                                                  color: ColorResources
+                                                  color: Styles
                                                       .WHITE_COLOR),
                                         ),
                                       ),
@@ -87,7 +87,7 @@ class OnBoarding extends StatelessWidget {
                                         textAlign: TextAlign.center,
                                         style: AppTextStyles.medium.copyWith(
                                             fontSize: 16,
-                                            color: ColorResources.WHITE_COLOR),
+                                            color: Styles.WHITE_COLOR),
                                       ),
 
                                       ///to login
@@ -114,8 +114,8 @@ class OnBoarding extends StatelessWidget {
                                                 "do_not_have_acc", context),
                                             style: AppTextStyles.medium
                                                 .copyWith(
-                                                    color: ColorResources
-                                                        .SECOUND_PRIMARY_COLOR,
+                                                    color: Styles
+                                                        .ACCENT_COLOR,
                                                     fontSize: 16,
                                                     overflow:
                                                         TextOverflow.ellipsis),
@@ -132,10 +132,10 @@ class OnBoarding extends StatelessWidget {
                                               style:
                                                   AppTextStyles.medium.copyWith(
                                                 color:
-                                                    ColorResources.WHITE_COLOR,
+                                                    Styles.WHITE_COLOR,
                                                 fontSize: 16,
                                                 decorationColor:
-                                                    ColorResources.WHITE_COLOR,
+                                                    Styles.WHITE_COLOR,
                                               ),
                                             ),
                                           ),

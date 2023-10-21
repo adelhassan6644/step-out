@@ -53,7 +53,7 @@ class _DashBoardState extends State<DashBoard> {
   Widget build(BuildContext context) {
     return Consumer<MainPageProvider>(builder: (_, provider, child) {
       return Scaffold(
-        backgroundColor: ColorResources.BACKGROUND_COLOR,
+        backgroundColor: Styles.BACKGROUND_COLOR,
         bottomNavigationBar: NavBar(
           controller: widget.controller,
         ),

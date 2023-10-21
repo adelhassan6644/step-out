@@ -11,7 +11,7 @@ class CustomButton extends StatelessWidget {
   final double? textSize;
   final Color? textColor;
   final Color? borderColor;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final String? svgIcon;
   final String? assetIcon;
   final Color? iconColor;
@@ -41,7 +41,7 @@ class CustomButton extends StatelessWidget {
       this.withBorderColor = false,
       this.withShadow = false,
       required this.text,
-      this.backgroundColor = ColorResources.PRIMARY_COLOR,
+      this.backgroundColor,
       this.isError = false})
       : super(key: key);
 
@@ -71,9 +71,14 @@ class CustomButton extends StatelessWidget {
                 : null,
             border: Border.all(
                 color: withBorderColor
-                    ? borderColor ?? ColorResources.PRIMARY_COLOR
+                    ? borderColor ?? Styles.PRIMARY_COLOR
                     : Colors.transparent),
-            borderRadius: BorderRadius.circular(radius ?? 30),
+            borderRadius: BorderRadius.circular(radius ?? 15),
+            gradient: backgroundColor != null
+                ? null
+                : const LinearGradient(
+                    colors: Styles.kBackgroundGradient,
+                  ),
           ),
           duration: const Duration(
             milliseconds: 600,
@@ -84,7 +89,7 @@ class CustomButton extends StatelessWidget {
                 ? Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CircularProgressIndicator(
-                      color: textColor ?? ColorResources.WHITE_COLOR,
+                      color: textColor ?? Styles.WHITE_COLOR,
                     ),
                   )
                 : Row(
@@ -96,7 +101,7 @@ class CustomButton extends StatelessWidget {
                         style: AppTextStyles.medium.copyWith(
                           fontSize: textSize ?? 16,
                           overflow: TextOverflow.ellipsis,
-                          color: textColor ?? ColorResources.WHITE_COLOR,
+                          color: textColor ?? Styles.WHITE_COLOR,
                         ),
                       ),
                       if (assetIcon != null || svgIcon != null)

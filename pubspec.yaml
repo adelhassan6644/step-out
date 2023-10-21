@@ -24,7 +24,6 @@ dependencies:
   get_it:
   http:
   firebase_messaging: ^14.4.1
-  firebase_core:
   provider:
   flutter_staggered_animations:
   connectivity:
@@ -42,12 +41,10 @@ dependencies:
   pin_code_fields:
   cupertino_icons: ^1.0.2
   modal_bottom_sheet: ^3.0.0-pre
-  rxdart:
   shimmer:
   carousel_slider:
   firebase_auth: ^4.4.0
   whatsapp_unilink: ^2.1.0
-  flutter_html:
   firebase_dynamic_links: ^5.1.0
   firebase_analytics: ^10.2.1
   flutter_native_splash: ^2.2.0+1
@@ -61,18 +58,20 @@ dependencies:
   country_picker: ^2.0.20
   flag:
   flutter_spinkit:
-  app_settings: ^4.2.0
+  app_settings: ^5.1.1
   substring_highlight: ^1.0.33
   motion_toast: ^2.6.8
   flutter_inappwebview:
-    git:
-      url: https://github.com/Estrelio/flutter_inappwebview.git
-      ref: fix-xcode-17
+      git:
+         url: https://github.com/Estrelio/flutter_inappwebview.git
+         ref: fix-xcode-17
   flutter_zoom_drawer: ^3.1.1
-  flutter_widget_from_html: ^0.8.0
-  file_picker:
+  flutter_widget_from_html: ^0.14.3
+  file_picker: ^6.0.0
   permission_handler: ^10.4.3
   path_provider: ^2.0.15
+  firebase_core: ^2.18.0
+  rxdart: ^0.26.0
 
 
 

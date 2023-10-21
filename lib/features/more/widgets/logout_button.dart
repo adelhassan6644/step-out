@@ -29,7 +29,7 @@ class LogoutButton extends StatelessWidget {
                   blurRadius: 10)
             ],
             borderRadius: BorderRadius.circular(100),
-            color: ColorResources.WHITE_COLOR),
+            color: Styles.WHITE_COLOR),
         child: InkWell(
           onTap: () {
             onTap();
@@ -47,8 +47,8 @@ class LogoutButton extends StatelessWidget {
                   height: 20,
                   width: 20,
                   color: provider.isLogin
-                      ? ColorResources.ERORR_COLOR
-                      : ColorResources.ACTIVE),
+                      ? Styles.ERORR_COLOR
+                      : Styles.ACTIVE),
               const SizedBox(
                 width: 16,
               ),
@@ -64,8 +64,8 @@ class LogoutButton extends StatelessWidget {
                               fontSize: 18,
                               overflow: TextOverflow.ellipsis,
                               color: provider.isLogin
-                                  ? ColorResources.ERORR_COLOR
-                                  : ColorResources.ACTIVE)),
+                                  ? Styles.ERORR_COLOR
+                                  : Styles.ACTIVE)),
                     ),
                   ],
                 ),

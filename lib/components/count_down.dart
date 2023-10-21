@@ -42,8 +42,16 @@ class _CountDownState extends State<CountDown> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Text(
+          getTranslated("didnt_receive_the_code", context),
+          textAlign: TextAlign.start,
+          style: AppTextStyles.medium.copyWith(
+              color: Styles.TITLE,
+              fontSize: 14,
+              overflow: TextOverflow.ellipsis),
+        ),
         InkWell(
           onTap: () {
             if (_count == 0) {
@@ -54,20 +62,20 @@ class _CountDownState extends State<CountDown> {
             }
           },
           child: Text(
-            getTranslated("resend_code", context),
+            " ${getTranslated("resend_code", context)}",
+            textAlign: TextAlign.start,
             style: AppTextStyles.medium.copyWith(
-              color: _count == 0
-                  ? ColorResources.HEADER
-                  : ColorResources.DISABLED,
+              color: _count == 0 ? Styles.PRIMARY_COLOR : Styles.DISABLED,
               fontSize: 14,
             ),
           ),
         ),
-        if (_count != 0)
-          Text(
-              " (${Duration(seconds: _count).inMinutes.remainder(60).toString().padLeft(2, '0')}:${Duration(seconds: _count).inSeconds.remainder(60).toString().padLeft(2, '0')})",
-              style: AppTextStyles.medium
-                  .copyWith(color: Colors.black, fontSize: 14)),
+        Text(
+            " (${Duration(seconds: _count).inMinutes.remainder(60).toString().padLeft(2, '0')}:${Duration(seconds: _count).inSeconds.remainder(60).toString().padLeft(2, '0')})",
+            textAlign: TextAlign.start,
+            style: AppTextStyles.medium.copyWith(
+                color: _count == 0 ? Styles.PRIMARY_COLOR : Styles.DISABLED,
+                fontSize: 14)),
       ],
     );
   }

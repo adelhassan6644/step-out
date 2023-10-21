@@ -4,7 +4,6 @@ class CategoryDetailsModel {
   String? message;
   Data? data;
 
-
   CategoryDetailsModel({this.message, this.data});
 
   CategoryDetailsModel.fromJson(Map<String, dynamic> json) {

@@ -1,9 +1,8 @@
 import 'dart:developer';
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../app/core/utils/app_storage_keys.dart';
 import '../../../data/api/end_points.dart';
@@ -28,9 +27,9 @@ class AuthRepo {
     sharedPreferences.setString(AppStorageKey.userId, id.toString());
   }
 
-  saveUserToken(apiToken) {
-    sharedPreferences.setString(AppStorageKey.apiToken, apiToken.toString());
-  }
+  // saveUserToken(apiToken) {
+  //   sharedPreferences.setString(AppStorageKey.apiToken, apiToken.toString());
+  // }
 
   getMail() {
     if (sharedPreferences.containsKey(
@@ -51,51 +50,28 @@ class AuthRepo {
   }
 
   Future<String?> saveDeviceToken() async {
-    String? _deviceToken;
-    if (Platform.isIOS) {
-      _deviceToken = await FirebaseMessaging.instance.getAPNSToken();
-    } else {
-      _deviceToken = await FirebaseMessaging.instance.getToken();
-    }
+    String? deviceToken;
+    // if (Platform.isIOS) {
+    //   deviceToken = await FirebaseMessaging.instance.getAPNSToken();
+    // } else {
+    deviceToken = await FirebaseMessaging.instance.getToken();
+    // }
 
-    if (_deviceToken != null) {
-      log('--------Device Token---------- $_deviceToken');
+    if (deviceToken != null) {
+      log('--------Device Token---------- $deviceToken');
     }
-    return _deviceToken;
-    // return "RVmsmxd5dg8v3cS0d48q3nvoFFuaSXuCwZbMU3LCjEren7VWhq";
+    return deviceToken;
   }
-
-  // Future<Either<ServerFailure, Response>> subscribeToTopic() async {
-  //   try {
-  //     FirebaseMessaging.instance.subscribeToTopic(EndPoints.topic);
-  //     Response response = await dioClient.post(
-  //       data: {"_method": "put", "cm_firebase_token": await saveDeviceToken()},
-  //       uri: EndPoints.,
-  //     );
-  //   else {
-  //   return left(ServerFailure(response.data['message']));
-  //   }
-  //   } catch (error) {
-  //   return left(ServerFailure(ApiErrorHandler.getMessage(error)));
-  //   }
-  // }
-
-  // Future<void> saveUserToken({required String token}) async {
-  //   try {
-  //     dioClient.updateHeader(token: token);
-  //     await sharedPreferences.setString(AppStorageKey.token, token);
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
 
   Future<Either<ServerFailure, Response>> logIn(
       {required String mail, required String password}) async {
     try {
       Response response = await dioClient.post(uri: EndPoints.logIn, data: {
+        // "phone": "1234567891",
         "email": mail,
         "password": password,
-        // "fcm_token": await saveDeviceToken()
+        if(!kDebugMode)
+          "fcm_token": await saveDeviceToken()
       });
 
       if (response.statusCode == 200) {
@@ -113,10 +89,9 @@ class AuthRepo {
       {required String password, required String email}) async {
     try {
       Response response =
-          await dioClient.post(uri: EndPoints.resetPassword, data: {
+      await dioClient.post(uri: EndPoints.resetPassword, data: {
         "email": email,
         "newPassword": password,
-        // "fcm_token": await saveDeviceToken()
       });
 
       if (response.statusCode == 200) {
@@ -130,14 +105,14 @@ class AuthRepo {
   }
 
   Future<Either<ServerFailure, Response>> change(
-      {required String password}) async {
+      {required String oldPassword, required String password}) async {
     try {
-      Response response = await dioClient.patch(
+      Response response = await dioClient.post(
           uri: EndPoints.changePassword(
               sharedPreferences.getString(AppStorageKey.userId)),
           data: {
-            "password": password,
-            // "fcm_token": await saveDeviceToken()
+            "oldPassword": oldPassword,
+            "newPassword": password,
           });
 
       if (response.statusCode == 200) {
@@ -154,9 +129,8 @@ class AuthRepo {
       {required String mail}) async {
     try {
       Response response =
-          await dioClient.post(uri: EndPoints.forgetPassword, data: {
+      await dioClient.post(uri: EndPoints.forgetPassword, data: {
         "email": mail,
-        // "fcm_token": await saveDeviceToken()
       });
 
       if (response.statusCode == 200) {
@@ -169,18 +143,21 @@ class AuthRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> register(
-      {required String phone,
-      required String name,
-      required String mail,
-      required String password}) async {
+  Future<Either<ServerFailure, Response>> register({
+    required String phone,
+    required String name,
+    required String mail,
+    required String password,
+    String? code,
+  }) async {
     try {
       Response response = await dioClient.post(uri: EndPoints.register, data: {
         "name": name,
         "phone": phone,
         "email": mail,
+        if (code != null) "invitation_code": code,
         "password": password,
-        // "fcm_token": await saveDeviceToken()
+        "fcm_token": await saveDeviceToken()
       });
 
       if (response.statusCode == 200) {
@@ -214,9 +191,9 @@ class AuthRepo {
 
   Future<Either<ServerFailure, Response>> verifyMail(
       {required String mail,
-      required String code,
-      required bool fromRegister,
-      bool updateHeader = false}) async {
+        required String code,
+        required bool fromRegister,
+        bool updateHeader = false}) async {
     try {
       Response response = await dioClient.post(
           uri: fromRegister

@@ -12,7 +12,10 @@ class Validations {
   }
 
   static String? mail(String? email) {
-    if (email!.length < 8 || !email.contains("@") || !email.contains(".com")) {
+    if (email == null ||
+        email!.length < 8 ||
+        !email.contains("@") ||
+        !email.contains(".com")) {
       return getTranslated("please_enter_valid_email",
           CustomNavigator.navigatorState.currentContext!);
     } else {
@@ -99,7 +102,7 @@ class Validations {
   }
 
   static String? code(String? value) {
-    if (value!.isEmpty || value.length < 4) {
+    if (value == null || value.length < 4) {
       return getTranslated("please_enter_valid_code",
           CustomNavigator.navigatorState.currentContext!);
     } else {

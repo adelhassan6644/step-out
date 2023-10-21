@@ -1,22 +1,20 @@
-import 'package:stepOut/app/core/utils/color_resources.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
-import 'package:stepOut/app/core/utils/images.dart';
-import 'package:stepOut/app/core/utils/svg_images.dart';
-import 'package:stepOut/app/core/utils/validation.dart';
-import 'package:flutter/material.dart';
-import 'package:stepOut/components/custom_app_bar.dart';
-import 'package:provider/provider.dart';
-import 'dart:ui' as ui;
+import '../../../app/core/utils/color_resources.dart';
+import '../../../app/core/utils/images.dart';
 import '../../../app/core/utils/text_styles.dart';
+import '../../../app/core/utils/validation.dart';
 import '../../../app/localization/localization/language_constant.dart';
+import '../../../components/animated_widget.dart';
 import '../../../components/custom_button.dart';
-import '../../../components/custom_images.dart';
 import '../../../components/custom_text_form_field.dart';
 import '../provider/auth_provider.dart';
 
 class ResetPassword extends StatefulWidget {
-  const ResetPassword({Key? key}) : super(key: key);
+  const ResetPassword({super.key});
 
   @override
   State<ResetPassword> createState() => _ResetPasswordState();
@@ -24,164 +22,218 @@ class ResetPassword extends StatefulWidget {
 
 class _ResetPasswordState extends State<ResetPassword> {
   final _formKey = GlobalKey<FormState>();
+  final FocusNode passwordNode = FocusNode();
+  final FocusNode confirmPasswordNode = FocusNode();
+
+  bool focusOnPassword = false;
+  bool focusOnConfirmPassword = false;
+
+  @override
+  void initState() {
+    passwordNode.addListener(() {
+      focusOnPassword = passwordNode.hasFocus;
+    });
+    confirmPasswordNode.addListener(() {
+      focusOnConfirmPassword = confirmPasswordNode.hasFocus;
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: context.width,
-        height: context.height,
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage(
-            Images.loginImage,
-          ),
-          fit: BoxFit.fitWidth,
-        )),
-        child: Column(
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+        body: Stack(
+          alignment: Alignment.topCenter,
           children: [
-            Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                const CustomAppBar(),
-                customImageIcon(
-                    imageName: Images.logo, height: 140, width: 160),
-              ],
-            ),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: Dimensions.PADDING_SIZE_EXTRA_LARGE.w),
-                    child: Column(
-                      children: [
-                        Center(
-                          child: Stack(
-                            alignment: Alignment.topCenter,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 0.h),
-                                child: ClipRRect(
-                                  clipBehavior: Clip.antiAlias,
-                                  borderRadius: BorderRadius.circular(25),
-                                  child: BackdropFilter(
-                                    filter: ui.ImageFilter.blur(
-                                        sigmaX: 0.0, sigmaY: 0.0),
-                                    child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal:
-                                              Dimensions.PADDING_SIZE_DEFAULT.w,
-                                          vertical: 30.h),
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(25)),
-                                      child: Consumer<AuthProvider>(
-                                          builder: (_, provider, child) {
-                                        return Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  EdgeInsets.only(bottom: 24.h),
-                                              child: Text(
-                                                getTranslated(
-                                                    "reset_password_header",
-                                                    context),
-                                                textAlign: TextAlign.center,
-                                                style: AppTextStyles.semiBold
-                                                    .copyWith(
-                                                        fontSize: 22,
-                                                        color: ColorResources
-                                                            .HEADER),
-                                              ),
-                                            ),
-                                            Form(
-                                                key: _formKey,
-                                                child: Column(
-                                                  children: [
-                                                    CustomTextFormField(
-                                                      keyboardAction:
-                                                          TextInputAction.next,
-                                                      controller:
-                                                          provider.passwordTEC,
-                                                      hint: getTranslated(
-                                                          "password", context),
-                                                      inputType: TextInputType
-                                                          .visiblePassword,
-                                                      valid: Validations
-                                                          .firstPassword,
-                                                      pSvgIcon:
-                                                          SvgImages.lockIcon,
-                                                      isPassword: true,
-                                                    ),
-                                                    CustomTextFormField(
-                                                      keyboardAction:
-                                                          TextInputAction.done,
-                                                      controller: provider
-                                                          .confirmPasswordTEC,
-                                                      hint: getTranslated(
-                                                          "confirm_password",
-                                                          context),
-                                                      inputType: TextInputType
-                                                          .visiblePassword,
-                                                      valid: (v) => Validations
-                                                          .confirmPassword(
-                                                              provider
-                                                                  .passwordTEC
-                                                                  .text
-                                                                  .trim(),
-                                                              v?.trim()),
-                                                      pSvgIcon:
-                                                          SvgImages.lockIcon,
-                                                      isPassword: true,
-                                                    ),
-                                                    Padding(
-                                                      padding: EdgeInsets.only(
-                                                        top: 24.h,
-                                                      ),
-                                                      child: CustomButton(
-                                                          text: getTranslated(
-                                                              "confirm",
-                                                              context),
-                                                          onTap: () {
-                                                            if (_formKey
-                                                                .currentState!
-                                                                .validate()) {
-                                                              provider
-                                                                  .resetPassword();
-                                                            }
-                                                          },
-                                                          isLoading:
-                                                              provider.isReset),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ],
-                                        );
-                                      }),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              // customImageIcon(
-                              //     imageName: Images.logo, height: 140, width: 160),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: Dimensions.PADDING_SIZE_DEFAULT.h,
-                        ),
-                      ],
-                    ),
-                  ),
+            Container(
+              height: context.toPadding + 180.h,
+              width: context.width,
+              padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                  vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: ExactAssetImage(Images.authBG),
+                  fit: BoxFit.cover,
                 ),
               ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    height:
+                        context.toPadding + Dimensions.PADDING_SIZE_DEFAULT.h,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        getTranslated("reset_password_header", context),
+                        textAlign: TextAlign.start,
+                        style: AppTextStyles.semiBold
+                            .copyWith(fontSize: 24, color: Styles.WHITE_COLOR),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    getTranslated("reset_password_description", context),
+                    textAlign: TextAlign.start,
+                    style: AppTextStyles.medium
+                        .copyWith(fontSize: 14, color: Styles.WHITE_COLOR),
+                  ),
+                  SizedBox(
+                    height: Dimensions.PADDING_SIZE_EXTRA_SMALL.h,
+                  ),
+                ],
+              ),
+            ),
+            Column(
+              children: [
+                Expanded(
+                  child: Consumer<AuthProvider>(builder: (_, provider, child) {
+                    return Container(
+                      margin: EdgeInsets.only(
+                        top: context.toPadding + 160.h,
+                      ),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                          vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                      decoration: const BoxDecoration(
+                          color: Styles.WHITE_COLOR,
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(20),
+                              topLeft: Radius.circular(20))),
+                      child: ListAnimator(
+                        data: [
+                          SizedBox(
+                            height: Dimensions.PADDING_SIZE_DEFAULT.h,
+                          ),
+                          Form(
+                              key: _formKey,
+                              child: Column(
+                                children: [
+                                  ///New Password
+                                  StreamBuilder<String?>(
+                                      stream: provider.newPasswordStream,
+                                      builder: (context, snapshot) {
+                                        return CustomTextField(
+                                          onChanged: provider.updateNewPassword,
+                                          label: getTranslated(
+                                              "new_password", context),
+                                          hint: getTranslated(
+                                              "enter_new_password", context),
+                                          withLabel: true,
+                                          onTap: () {
+                                            setState(() => focusOnPassword =
+                                                !focusOnPassword);
+                                            if (!focusOnPassword) {
+                                              FocusScope.of(context)
+                                                  .requestFocus(FocusNode());
+                                            }
+                                          },
+                                          focusNode: passwordNode,
+                                          alignLabel: focusOnPassword,
+                                          inputType:
+                                              TextInputType.visiblePassword,
+                                          customError: snapshot.hasError,
+                                          errorText: snapshot.error,
+                                          validate: (v) {
+                                            if (Validations.firstPassword(v) !=
+                                                null) {
+                                              provider.newPassword.addError(
+                                                  Validations.firstPassword(
+                                                      v)!);
+                                            }
+                                            return null;
+                                          },
+                                          // valid: Validations.password,
+                                          isPassword: true,
+                                        );
+                                      }),
+
+                                  ///Confirm New Password
+                                  StreamBuilder<String?>(
+                                      stream: provider.confirmPasswordStream,
+                                      builder: (context, snapshot) {
+                                        return CustomTextField(
+                                          onChanged:
+                                              provider.updateConfirmPassword,
+                                          keyboardAction: TextInputAction.done,
+                                          label: getTranslated(
+                                              "confirm_new_password", context),
+                                          hint: getTranslated(
+                                              "enter_confirm_new_password",
+                                              context),
+                                          withLabel: true,
+                                          onTap: () {
+                                            setState(() =>
+                                                focusOnConfirmPassword =
+                                                    !focusOnConfirmPassword);
+                                            if (!focusOnConfirmPassword) {
+                                              FocusScope.of(context)
+                                                  .requestFocus(FocusNode());
+                                            }
+                                          },
+                                          focusNode: confirmPasswordNode,
+                                          alignLabel: focusOnConfirmPassword,
+                                          inputType:
+                                              TextInputType.visiblePassword,
+                                          customError: snapshot.hasError,
+                                          errorText: snapshot.error,
+                                          validate: (v) {
+                                            if (Validations.confirmNewPassword(
+                                                    provider.newPassword.value
+                                                        ?.trim(),
+                                                    v) !=
+                                                null) {
+                                              provider.confirmPassword.addError(
+                                                  Validations
+                                                      .confirmNewPassword(
+                                                          provider
+                                                              .newPassword.value
+                                                              ?.trim(),
+                                                          v)!);
+                                            }
+                                            return null;
+                                          },
+                                          isPassword: true,
+                                        );
+                                      }),
+
+                                  ///Confirm
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 16.h,
+                                    ),
+                                    child: StreamBuilder<bool?>(
+                                        stream: provider.resetPasswordStream,
+                                        builder: (context, snapshot) {
+                                          return CustomButton(
+                                              text: getTranslated(
+                                                  "submit", context),
+                                              onTap: () {
+                                                _formKey.currentState!
+                                                    .validate();
+
+                                                if (snapshot.hasData) {
+                                                  if (snapshot.data!) {
+                                                    provider.resetPassword();
+                                                  }
+                                                }
+                                              },
+                                              isLoading: provider.isReset);
+                                        }),
+                                  ),
+                                ],
+                              )),
+                        ],
+                      ),
+                    );
+                  }),
+                ),
+              ],
             ),
           ],
         ),

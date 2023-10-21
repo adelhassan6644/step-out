@@ -34,9 +34,7 @@ class LocationProvider extends ChangeNotifier {
       altitude: 1,
       heading: 1,
       speed: 1,
-      speedAccuracy: 1,
-      altitudeAccuracy: 1,
-      headingAccuracy: 1);
+      speedAccuracy: 1,altitudeAccuracy: 1, headingAccuracy: 1);
   Position pickPosition = Position(
       longitude: 0,
       latitude: 0,
@@ -45,9 +43,7 @@ class LocationProvider extends ChangeNotifier {
       altitude: 1,
       heading: 1,
       speed: 1,
-      altitudeAccuracy: 1,
-      headingAccuracy: 1,
-      speedAccuracy: 1);
+      speedAccuracy: 1, altitudeAccuracy: 1, headingAccuracy: 1);
   Future<List<PredictionModel>> searchLocation(
       BuildContext context, String text) async {
     if (text.isNotEmpty) {
@@ -59,7 +55,7 @@ class LocationProvider extends ChangeNotifier {
                 message: getTranslated(error.error,
                     CustomNavigator.navigatorState.currentContext!),
                 isFloating: true,
-                backgroundColor: ColorResources.ACTIVE,
+                backgroundColor: Styles.ACTIVE,
                 borderColor: Colors.transparent));
       }, (response) {
         _predictionList = [];
@@ -90,15 +86,14 @@ class LocationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  getLocation(bool fromAddress,
-      {required GoogleMapController mapController}) async {
+  getLocation(
+    bool fromAddress, {required GoogleMapController mapController}) async {
     isLoading = true;
     notifyListeners();
-    await Geolocator.requestPermission();
-    Position newLocalData = await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
-    );
-    _myPosition = newLocalData;
+      await Geolocator.requestPermission();
+      Position newLocalData = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high,);
+      _myPosition = newLocalData;
     if (fromAddress) {
       position = _myPosition!;
     } else {
@@ -147,16 +142,16 @@ class LocationProvider extends ChangeNotifier {
       notifyListeners();
 
       pickPosition = Position(
-          latitude: position.target.latitude,
-          longitude: position.target.longitude,
-          timestamp: DateTime.now(),
-          heading: 1,
-          accuracy: 1,
-          altitude: 1,
-          speedAccuracy: 1,
-          speed: 1,
-          altitudeAccuracy: 1,
-          headingAccuracy: 1);
+        latitude: position.target.latitude,
+        longitude: position.target.longitude,
+        timestamp: DateTime.now(),
+        heading: 1,
+        accuracy: 1,
+        altitude: 1,
+        speedAccuracy: 1,
+        speed: 1,
+          altitudeAccuracy: 1, headingAccuracy: 1
+      );
       decodeLatLong(
           latitude: position.target.latitude,
           longitude: position.target.longitude);
@@ -169,12 +164,14 @@ class LocationProvider extends ChangeNotifier {
           notification: AppNotification(
               message: ApiErrorHandler.getMessage(e),
               isFloating: true,
-              backgroundColor: ColorResources.IN_ACTIVE,
+              backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
       isLoading = false;
       notifyListeners();
     }
+
   }
+
 
   PlacesModel? placesModel;
   bool isGetPlaces = false;
@@ -182,15 +179,14 @@ class LocationProvider extends ChangeNotifier {
     try {
       isGetPlaces = true;
       notifyListeners();
-      Either<ServerFailure, Response> response =
-          await locationRepo.getLocationPlaces(position: position);
+      Either<ServerFailure, Response> response = await locationRepo.getLocationPlaces(position: position);
       response.fold((fail) {
         isGetPlaces = false;
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
                 message: ApiErrorHandler.getMessage(fail),
                 isFloating: true,
-                backgroundColor: ColorResources.IN_ACTIVE,
+                backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
         notifyListeners();
       }, (success) {
@@ -204,9 +200,10 @@ class LocationProvider extends ChangeNotifier {
           notification: AppNotification(
               message: e.toString(),
               isFloating: true,
-              backgroundColor: ColorResources.IN_ACTIVE,
+              backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
       notifyListeners();
     }
   }
+
 }

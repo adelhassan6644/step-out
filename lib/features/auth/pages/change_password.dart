@@ -1,13 +1,9 @@
-import 'package:stepOut/app/core/utils/color_resources.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
-import 'package:stepOut/app/core/utils/extensions.dart';
-import 'package:stepOut/app/core/utils/images.dart';
-import 'package:stepOut/app/core/utils/svg_images.dart';
 import 'package:stepOut/app/core/utils/validation.dart';
 import 'package:flutter/material.dart';
-import 'package:stepOut/components/custom_app_bar.dart';
 import 'package:provider/provider.dart';
-import '../../../app/core/utils/text_styles.dart';
+import 'package:stepOut/components/custom_app_bar.dart';
 import '../../../app/localization/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_button.dart';
@@ -23,121 +19,191 @@ class ChangePassword extends StatefulWidget {
 
 class _ChangePasswordState extends State<ChangePassword> {
   final _formKey = GlobalKey<FormState>();
+  final FocusNode passwordNode = FocusNode();
+  final FocusNode newPasswordNode = FocusNode();
+  final FocusNode confirmPasswordNode = FocusNode();
+
+  bool focusOnPassword = false;
+  bool focusOnNewPassword = false;
+  bool focusOnConfirmPassword = false;
+
+  @override
+  void initState() {
+    passwordNode.addListener(() {
+      focusOnPassword = passwordNode.hasFocus;
+    });
+    newPasswordNode.addListener(() {
+      focusOnNewPassword = newPasswordNode.hasFocus;
+    });
+    confirmPasswordNode.addListener(() {
+      focusOnConfirmPassword = confirmPasswordNode.hasFocus;
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+        title: getTranslated("change_password", context),
+      ),
       body: SafeArea(
-        bottom: true,
-        top: false,
         child: Column(
           children: [
-            Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                Container(
-                  height: 160 + context.toPadding,
-                  width: context.width,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(Images.profileBGImage),
-                          fit: BoxFit.fitHeight)),
-                  child: const SizedBox(),
-                ),
-                const CustomAppBar()
-              ],
-            ),
-            Expanded(
+            Consumer<AuthProvider>(builder: (_, provider, child) {
+              return Expanded(
                 child: ListAnimator(
-              data: [
-                SizedBox(
-                  height: 70.h,
+                  data: [
+                    Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            StreamBuilder<String?>(
+                                stream: provider.passwordStream,
+                                builder: (context, snapshot) {
+                                  return CustomTextField(
+                                    onChanged: provider.updatePassword,
+                                    keyboardAction: TextInputAction.done,
+                                    label: getTranslated(
+                                        "current_password", context),
+                                    hint: getTranslated(
+                                        "enter_current_password", context),
+                                    withLabel: true,
+                                    onTap: () {
+                                      setState(() =>
+                                          focusOnPassword = !focusOnPassword);
+                                      if (!focusOnPassword) {
+                                        FocusScope.of(context)
+                                            .requestFocus(FocusNode());
+                                      }
+                                    },
+                                    focusNode: passwordNode,
+                                    alignLabel: focusOnPassword,
+                                    inputType: TextInputType.visiblePassword,
+                                    customError: snapshot.hasError,
+                                    errorText: snapshot.error,
+                                    validate: (v) {
+                                      if (Validations.password(v) != null) {
+                                        provider.password
+                                            .addError(Validations.password(v)!);
+                                      }
+                                      return null;
+                                    },
+                                    // valid: Validations.password,
+                                    isPassword: true,
+                                  );
+                                }),
+
+                            ///New Password
+                            StreamBuilder<String?>(
+                                stream: provider.newPasswordStream,
+                                builder: (context, snapshot) {
+                                  return CustomTextField(
+                                    onChanged: provider.updateNewPassword,
+                                    keyboardAction: TextInputAction.done,
+                                    label:
+                                        getTranslated("new_password", context),
+                                    hint: getTranslated(
+                                        "enter_new_password", context),
+                                    withLabel: true,
+                                    onTap: () {
+                                      setState(() =>
+                                          focusOnPassword = !focusOnPassword);
+                                      if (!focusOnPassword) {
+                                        FocusScope.of(context)
+                                            .requestFocus(FocusNode());
+                                      }
+                                    },
+                                    focusNode: passwordNode,
+                                    alignLabel: focusOnPassword,
+                                    inputType: TextInputType.visiblePassword,
+                                    customError: snapshot.hasError,
+                                    errorText: snapshot.error,
+                                    validate: (v) {
+                                      if (Validations.newPassword(
+                                              provider.password.value?.trim(),
+                                              v) !=
+                                          null) {
+                                        provider.newPassword.addError(
+                                            Validations.newPassword(
+                                                provider.password.value?.trim(),
+                                                v)!);
+                                      }
+                                      return null;
+                                    },
+                                    // valid: Validations.password,
+                                    isPassword: true,
+                                  );
+                                }),
+
+                            ///Confirm New Password
+                            StreamBuilder<String?>(
+                                stream: provider.confirmPasswordStream,
+                                builder: (context, snapshot) {
+                                  return CustomTextField(
+                                    onChanged: provider.updateConfirmPassword,
+
+                                    keyboardAction: TextInputAction.done,
+                                    label: getTranslated(
+                                        "confirm_new_password", context),
+                                    hint: getTranslated(
+                                        "enter_confirm_new_password", context),
+                                    withLabel: true,
+                                    onTap: () {
+                                      setState(() => focusOnConfirmPassword =
+                                          !focusOnConfirmPassword);
+                                      if (!focusOnConfirmPassword) {
+                                        FocusScope.of(context)
+                                            .requestFocus(FocusNode());
+                                      }
+                                    },
+                                    focusNode: confirmPasswordNode,
+                                    alignLabel: focusOnConfirmPassword,
+                                    inputType: TextInputType.visiblePassword,
+                                    customError: snapshot.hasError,
+                                    errorText: snapshot.error,
+                                    validate: (v) {
+                                      if (Validations.newPassword(
+                                              provider.newPassword.value
+                                                  ?.trim(),
+                                              v) !=
+                                          null) {
+                                        provider.confirmPassword.addError(
+                                            Validations.newPassword(
+                                                provider.newPassword.value
+                                                    ?.trim(),
+                                                v)!);
+                                      }
+                                      return null;
+                                    },
+                                    // valid: Validations.password,
+                                    isPassword: true,
+                                  );
+                                }),
+
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 24.h,
+                              ),
+                              child: StreamBuilder<bool?>(
+                                  stream: provider.changePasswordStream,
+                                  builder: (context, snapshot) {
+                                    return CustomButton(
+                                        text: getTranslated("confirm", context),
+                                        onTap: () {
+                                          if (snapshot.data == true) {
+                                            provider.changePassword();
+                                          }
+                                        },
+                                        isLoading: provider.isChange);
+                                  }),
+                            ),
+                          ],
+                        )),
+                  ],
                 ),
-                Consumer<AuthProvider>(builder: (_, provider, child) {
-                  return Container(
-                    margin: EdgeInsets.symmetric(
-                        horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                    ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(18),
-                        color: ColorResources.WHITE_COLOR,
-                        border: Border.all(
-                            color: ColorResources.LIGHT_BORDER_COLOR)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                          child: Text(
-                            getTranslated("change_password_header", context),
-                            textAlign: TextAlign.center,
-                            style: AppTextStyles.semiBold.copyWith(
-                                fontSize: 22,
-                                color: ColorResources.PRIMARY_COLOR),
-                          ),
-                        ),
-                        Form(
-                            key: _formKey,
-                            child: Column(
-                              children: [
-                                CustomTextFormField(
-                                  keyboardAction: TextInputAction.next,
-                                  controller: provider.currentPasswordTEC,
-                                  hint: getTranslated(
-                                      "current_password", context),
-                                  inputType: TextInputType.visiblePassword,
-                                  valid: Validations.password,
-                                  pSvgIcon: SvgImages.lockIcon,
-                                  isPassword: true,
-                                ),
-                                CustomTextFormField(
-                                  keyboardAction: TextInputAction.next,
-                                  controller: provider.passwordTEC,
-                                  hint: getTranslated("new_password", context),
-                                  inputType: TextInputType.visiblePassword,
-                                  valid: (v) => Validations.newPassword(
-                                      provider.currentPasswordTEC.text.trim(),
-                                      v?.trim()),
-                                  pSvgIcon: SvgImages.lockIcon,
-                                  isPassword: true,
-                                ),
-                                CustomTextFormField(
-                                  keyboardAction: TextInputAction.done,
-                                  controller: provider.confirmPasswordTEC,
-                                  hint: getTranslated(
-                                      "confirm_new_password", context),
-                                  inputType: TextInputType.visiblePassword,
-                                  valid: (v) => Validations.confirmNewPassword(
-                                      provider.passwordTEC.text.trim(),
-                                      v?.trim()),
-                                  pSvgIcon: SvgImages.lockIcon,
-                                  isPassword: true,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 24.h,
-                                  ),
-                                  child: CustomButton(
-                                      text: getTranslated("confirm", context),
-                                      onTap: () {
-                                        if (_formKey.currentState!.validate()) {
-                                          provider.changePassword();
-                                        }
-                                      },
-                                      isLoading: provider.isChange),
-                                ),
-                              ],
-                            )),
-                      ],
-                    ),
-                  );
-                }),
-              ],
-            ))
+              );
+            }),
           ],
         ),
       ),

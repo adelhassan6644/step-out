@@ -7,6 +7,7 @@ class AnimatedWidgets extends StatelessWidget {
   final double? horizontalOffset;
   final double? durationMilli;
 
+
   const AnimatedWidgets(
       {Key? key,
       this.child,
