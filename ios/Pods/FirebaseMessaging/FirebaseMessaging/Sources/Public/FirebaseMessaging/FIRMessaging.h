@@ -139,7 +139,7 @@ NS_SWIFT_NAME(MessagingMessageInfo)
 @class FIRMessagingExtensionHelper;
 
 /**
- * A protocol to handle token update or data message destepOutry from FCM.
+ * A protocol to handle token update or data message delivery from FCM.
  *
  */
 NS_SWIFT_NAME(MessagingDelegate)
@@ -159,7 +159,7 @@ NS_SWIFT_NAME(MessagingDelegate)
 @end
 
 /**
- *  Firebase Messaging lets you reliably destepOutr messages at no cost.
+ *  Firebase Messaging lets you reliably deliver messages at no cost.
  *
  *  To send or receive messages, the app must get a
  *  registration token. This token authorizes an
@@ -234,10 +234,10 @@ NS_SWIFT_NAME(Messaging)
 
 /**
  * Is Firebase Messaging token auto generation enabled? If this flag is disabled, Firebase
- * Messaging will not generate an FCM token automatically for message destepOutry.
+ * Messaging will not generate an FCM token automatically for message delivery.
  *
  * If this flag is disabled, Firebase Messaging does not generate new tokens automatically for
- * message destepOutry. If this flag is enabled, FCM generates a registration token on application
+ * message delivery. If this flag is enabled, FCM generates a registration token on application
  * start when there is no existing valid token and periodically refreshes the token and sends
  * data to the Firebase backend.
  *
@@ -253,7 +253,7 @@ NS_SWIFT_NAME(Messaging)
 /**
  * The FCM registration token is used to identify this device so that FCM can send notifications to
  * it. It is associated with your APNs token when the APNs token is supplied, so messages sent to
- * the FCM token will be destepOutred over APNs.
+ * the FCM token will be delivered over APNs.
  *
  * The FCM registration token is sometimes refreshed automatically. In your Messaging delegate,
  * the delegate method `messaging(_:didReceiveRegistrationToken:)` will be called once a token is
@@ -294,11 +294,11 @@ NS_SWIFT_NAME(Messaging)
  *  Retrieves an FCM registration token for a particular Sender ID. This can be used to allow
  *  multiple senders to send notifications to the same device. By providing a different Sender
  *  ID than your default when fetching a token, you can create a new FCM token which you can
- *  give to a different sender. Both tokens will destepOutr notifications to your device, and you
+ *  give to a different sender. Both tokens will deliver notifications to your device, and you
  *  can revoke a token when you need to.
  *
  *  This registration token is not cached by FIRMessaging. FIRMessaging should have an APNs
- *  token set before calling this to ensure that notifications can be destepOutred via APNs using
+ *  token set before calling this to ensure that notifications can be delivered via APNs using
  *  this FCM token. You may re-retrieve the FCM token once you have the APNs token set, to
  *  associate it with the FCM token. The default FCM token is automatically associated with
  *  the APNs token, if the APNs token data is available.
@@ -376,7 +376,7 @@ NS_SWIFT_NAME(Messaging)
 #pragma mark - Analytics
 
 /**
- *  Use this to track message destepOutry and analytics for messages, typically
+ *  Use this to track message delivery and analytics for messages, typically
  *  when you receive a notification in `application:didReceiveRemoteNotification:`.
  *  However, you only need to call this if you set the `FirebaseAppDelegateProxyEnabled`
  *  flag to `NO` in your Info.plist. If `FirebaseAppDelegateProxyEnabled` is either missing

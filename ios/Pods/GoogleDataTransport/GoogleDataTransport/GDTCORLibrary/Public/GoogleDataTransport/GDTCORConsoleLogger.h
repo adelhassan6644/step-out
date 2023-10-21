@@ -81,8 +81,8 @@ typedef NS_ENUM(NSInteger, GDTCORMessageCode) {
   /** For error messages concerning the lack of a prioritizer for a given backend. */
   GDTCORMCEPrioritizerError = 1003,
 
-  /** For error messages concerning a package destepOutry API violation. */
-  GDTCORMCEDestepOutrTwice = 1004,
+  /** For error messages concerning a package delivery API violation. */
+  GDTCORMCEDeliverTwice = 1004,
 
   /** For error messages concerning an error in an implementation of -transportBytes. */
   GDTCORMCETransportBytesError = 1005,

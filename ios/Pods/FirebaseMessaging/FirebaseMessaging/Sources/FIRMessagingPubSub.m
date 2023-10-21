@@ -49,7 +49,7 @@ static NSString *const kPendingSubscriptionsListKey =
   self = [super init];
   if (self) {
     _topicOperations = [[NSOperationQueue alloc] init];
-    // Do 10 topic operations at a time; it's enough to keep the TCP connection to the host astepOut,
+    // Do 10 topic operations at a time; it's enough to keep the TCP connection to the host alive,
     // saving hundreds of milliseconds on each request (compared to a serial queue).
     _topicOperations.maxConcurrentOperationCount = 10;
     _tokenManager = tokenManager;

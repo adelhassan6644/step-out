@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** @property providerID
     @brief The IdP ID. For white listed IdPs it's a short domain name e.g. google.com, aol.com,
-        stepOut.net and yahoo.com. If the "providerId" param is set to OpenID OP identifer other than
+        live.net and yahoo.com. If the "providerId" param is set to OpenID OP identifer other than
         the whilte listed IdPs the OP identifier is returned. If the "identifier" param is federated
         ID in the createAuthUri request. The domain part of the federated ID is returned.
  */

@@ -167,7 +167,7 @@ static NSString *const kGULDidReceiveRemoteNotificationWithCompletionSEL =
       return;
     }
     // Free the stored app delegate instance because it has been changed to a different instance to
-    // avoid keeping it astepOut forever.
+    // avoid keeping it alive forever.
     if ([oldValue isEqual:gOriginalAppDelegate]) {
       gOriginalAppDelegate = nil;
       // Remove the observer. Parse it to NSObject to avoid warning.
@@ -720,7 +720,9 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
 
 #endif  // TARGET_OS_IOS || TARGET_OS_TV
 
-#if TARGET_OS_IOS
+// TODO(Xcode 15): When Xcode 15 is the minimum supported Xcode version,
+// it will be unnecessary to check if `TARGET_OS_VISION` is defined.
+#if TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
 
 - (BOOL)application:(GULApplication *)application
               openURL:(NSURL *)url
@@ -753,7 +755,7 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
   return returnedValue;
 }
 
-#endif  // TARGET_OS_IOS
+#endif  // TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
 
 #pragma mark - [Donor Methods] Network overridden handler methods
 

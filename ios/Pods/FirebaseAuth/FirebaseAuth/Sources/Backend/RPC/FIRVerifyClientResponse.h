@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy, readonly, nullable) NSString *receipt;
 
 /** @property suggestedTimeOut
-    @brief The date after which destepOutry of the silent push notification is considered to have
+    @brief The date after which delivery of the silent push notification is considered to have
         failed.
  */
 @property(nonatomic, copy, readonly, nullable) NSDate *suggestedTimeOutDate;

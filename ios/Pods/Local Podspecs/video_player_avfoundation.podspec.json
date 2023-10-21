@@ -17,13 +17,23 @@
   "documentation_url": "https://pub.dev/packages/video_player",
   "source_files": "Classes/**/*",
   "public_header_files": "Classes/**/*.h",
-  "dependencies": {
-    "Flutter": [
+  "ios": {
+    "dependencies": {
+      "Flutter": [
 
-    ]
+      ]
+    }
+  },
+  "osx": {
+    "dependencies": {
+      "FlutterMacOS": [
+
+      ]
+    }
   },
   "platforms": {
-    "ios": "11.0"
+    "ios": "11.0",
+    "osx": "10.14"
   },
   "pod_target_xcconfig": {
     "DEFINES_MODULE": "YES"

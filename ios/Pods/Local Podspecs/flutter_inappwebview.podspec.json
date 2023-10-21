@@ -24,23 +24,24 @@
       "~>5.0"
     ]
   },
+  "platforms": {
+    "ios": "11.0"
+  },
   "pod_target_xcconfig": {
     "DEFINES_MODULE": "YES",
     "VALID_ARCHS[sdk=iphonesimulator*]": "x86_64"
   },
+  "libraries": "swiftCoreGraphics",
+  "xcconfig": {
+    "LIBRARY_SEARCH_PATHS": "$(SDKROOT)/usr/lib/swift"
+  },
   "swift_versions": "5.0",
   "default_subspecs": "Core",
-  "platforms": {
-    "osx": null,
-    "ios": null,
-    "tvos": null,
-    "watchos": null
-  },
   "subspecs": [
     {
       "name": "Core",
       "platforms": {
-        "ios": "8.0"
+        "ios": "9.0"
       }
     }
   ],

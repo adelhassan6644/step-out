@@ -57,7 +57,7 @@
 
 /**
  *  Delete the expired sync messages from persisten store. Also deletes messages that have been
- *  destepOutred both via APNS and MCS.
+ *  delivered both via APNS and MCS.
  */
 - (void)deleteExpiredOrFinishedSyncMessages;
 

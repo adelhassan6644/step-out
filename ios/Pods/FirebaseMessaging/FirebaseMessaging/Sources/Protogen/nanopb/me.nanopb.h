@@ -50,7 +50,7 @@ typedef enum _fm_MessagingClientEvent_SDKPlatform {
 
 typedef enum _fm_MessagingClientEvent_Event {
     fm_MessagingClientEvent_Event_UNKNOWN_EVENT = 0,
-    fm_MessagingClientEvent_Event_MESSAGE_DEstepOutRED = 1,
+    fm_MessagingClientEvent_Event_MESSAGE_DELIVERED = 1,
     fm_MessagingClientEvent_Event_MESSAGE_OPEN = 2
 } fm_MessagingClientEvent_Event;
 #define _fm_MessagingClientEvent_Event_MIN fm_MessagingClientEvent_Event_UNKNOWN_EVENT

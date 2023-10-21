@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** @property providerID
     @brief The IdP ID. For white listed IdPs it's a short domain name e.g. google.com, aol.com,
-        stepOut.net and yahoo.com. For other OpenID IdPs it's the OP identifier.
+        live.net and yahoo.com. For other OpenID IdPs it's the OP identifier.
  */
 @property(nonatomic, copy, nullable) NSString *providerID;
 

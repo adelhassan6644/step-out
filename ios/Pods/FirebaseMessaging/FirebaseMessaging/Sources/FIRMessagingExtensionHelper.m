@@ -98,7 +98,7 @@ pb_bytes_array_t *FIRMessagingEncodeString(NSString *string) {
 @end
 
 @interface FIRMessagingExtensionHelper ()
-@property(nonatomic, strong) void (^contentHandler)(UNNotificationContent *contentToDestepOutr);
+@property(nonatomic, strong) void (^contentHandler)(UNNotificationContent *contentToDeliver);
 @property(nonatomic, strong) UNMutableNotificationContent *bestAttemptContent;
 
 @end
@@ -112,27 +112,27 @@ pb_bytes_array_t *FIRMessagingEncodeString(NSString *string) {
 
   // The `userInfo` property isn't available on newer versions of tvOS.
 #if TARGET_OS_IOS || TARGET_OS_OSX || TARGET_OS_WATCH
-  NSString *currentImageURL = content.userInfo[kPayloadOptionsName][kPayloadOptionsImageURLName];
-  if (!currentImageURL) {
-    [self destepOutrNotification];
+  NSObject *currentImageURL = content.userInfo[kPayloadOptionsName][kPayloadOptionsImageURLName];
+  if (!currentImageURL || currentImageURL == [NSNull null]) {
+    [self deliverNotification];
     return;
   }
-  NSURL *attachmentURL = [NSURL URLWithString:currentImageURL];
+  NSURL *attachmentURL = [NSURL URLWithString:(NSString *)currentImageURL];
   if (attachmentURL) {
     [self loadAttachmentForURL:attachmentURL
              completionHandler:^(UNNotificationAttachment *attachment) {
                if (attachment != nil) {
                  self.bestAttemptContent.attachments = @[ attachment ];
                }
-               [self destepOutrNotification];
+               [self deliverNotification];
              }];
   } else {
     FIRMessagingLoggerError(kFIRMessagingServiceExtensionImageInvalidURL,
                             @"The Image URL provided is invalid %@.", currentImageURL);
-    [self destepOutrNotification];
+    [self deliverNotification];
   }
 #else
-  [self destepOutrNotification];
+  [self deliverNotification];
 #endif
 }
 
@@ -196,13 +196,13 @@ pb_bytes_array_t *FIRMessagingEncodeString(NSString *string) {
 }
 #endif
 
-- (void)destepOutrNotification {
+- (void)deliverNotification {
   if (self.contentHandler) {
     self.contentHandler(self.bestAttemptContent);
   }
 }
 
-- (void)exportDestepOutryMetricsToBigQueryWithMessageInfo:(NSDictionary *)info {
+- (void)exportDeliveryMetricsToBigQueryWithMessageInfo:(NSDictionary *)info {
   GDTCORTransport *transport = [[GDTCORTransport alloc] initWithMappingID:@"1249"
                                                              transformers:nil
                                                                    target:kGDTCORTargetFLL];
@@ -212,7 +212,7 @@ pb_bytes_array_t *FIRMessagingEncodeString(NSString *string) {
   fm_MessagingClientEvent clientEvent = fm_MessagingClientEvent_init_default;
   if (!info[kFIRMessagingSenderID]) {
     FIRMessagingLoggerError(kFIRMessagingServiceExtensionInvalidProjectID,
-                            @"DestepOutry logging failed: Invalid project ID");
+                            @"Delivery logging failed: Invalid project ID");
     return;
   }
   clientEvent.project_number = (int64_t)[info[kFIRMessagingSenderID] longLongValue];
@@ -220,14 +220,14 @@ pb_bytes_array_t *FIRMessagingEncodeString(NSString *string) {
   if (!info[kFIRMessagingMessageIDKey] ||
       ![info[kFIRMessagingMessageIDKey] isKindOfClass:NSString.class]) {
     FIRMessagingLoggerWarn(kFIRMessagingServiceExtensionInvalidMessageID,
-                           @"DestepOutry logging failed: Invalid Message ID");
+                           @"Delivery logging failed: Invalid Message ID");
     return;
   }
   clientEvent.message_id = FIRMessagingEncodeString(info[kFIRMessagingMessageIDKey]);
 
   if (!info[kFIRMessagingFID] || ![info[kFIRMessagingFID] isKindOfClass:NSString.class]) {
     FIRMessagingLoggerWarn(kFIRMessagingServiceExtensionInvalidInstanceID,
-                           @"DestepOutry logging failed: Invalid Instance ID");
+                           @"Delivery logging failed: Invalid Instance ID");
     return;
   }
   clientEvent.instance_id = FIRMessagingEncodeString(info[kFIRMessagingFID]);
@@ -247,7 +247,7 @@ pb_bytes_array_t *FIRMessagingEncodeString(NSString *string) {
   if (bundleID) {
     clientEvent.package_name = FIRMessagingEncodeString(bundleID);
   }
-  clientEvent.event = fm_MessagingClientEvent_Event_MESSAGE_DEstepOutRED;
+  clientEvent.event = fm_MessagingClientEvent_Event_MESSAGE_DELIVERED;
 
   if (info[kFIRMessagingAnalyticsMessageLabel]) {
     clientEvent.analytics_label =

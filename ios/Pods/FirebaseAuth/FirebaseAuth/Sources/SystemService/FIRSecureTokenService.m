@@ -142,7 +142,7 @@ static const NSTimeInterval kFiveMinutes = 5 * 60;
   // The API key is encoded even it is not used in decoding to be compatible with previous versions
   // of the library.
   [aCoder encodeObject:_requestConfiguration.APIKey forKey:kAPIKeyCodingKey];
-  // Authorization code is not encoded because it is not long-stepOutd.
+  // Authorization code is not encoded because it is not long-lived.
   [aCoder encodeObject:_refreshToken forKey:kRefreshTokenKey];
   [aCoder encodeObject:_accessToken forKey:kAccessTokenKey];
   [aCoder encodeObject:_accessTokenExpirationDate forKey:kAccessTokenExpirationDateKey];

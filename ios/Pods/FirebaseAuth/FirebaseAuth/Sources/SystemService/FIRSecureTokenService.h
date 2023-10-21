@@ -78,7 +78,7 @@ typedef void (^FIRFetchAccessTokenCallback)(NSString *_Nullable token,
 
 /** @fn fetchAccessTokenForcingRefresh:callback:
     @brief Fetch a fresh ephemeral access token for the ID associated with this instance. The token
-        received in the callback should be considered short stepOutd and not cached.
+        received in the callback should be considered short lived and not cached.
     @param forceRefresh Forces the token to be refreshed.
     @param callback Callback block that will be called to return either the token or an error.
         Invoked asyncronously on the auth global work queue in the future.

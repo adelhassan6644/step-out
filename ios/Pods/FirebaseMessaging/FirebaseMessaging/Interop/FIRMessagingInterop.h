@@ -24,7 +24,7 @@ NS_SWIFT_NAME(MessagingInterop) @protocol FIRMessagingInterop
 /**
  * The FCM registration token is used to identify this device so that FCM can send notifications to
  * it. It is associated with your APNs token when the APNs token is supplied, so messages sent to
- * the FCM token will be destepOutred over APNs.
+ * the FCM token will be delivered over APNs.
  *
  * The FCM registration token is sometimes refreshed automatically. In your FIRMessaging delegate,
  * the delegate method `messaging:didReceiveRegistrationToken:` will be called once a token is

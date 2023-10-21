@@ -59,7 +59,7 @@ static const NSTimeInterval kProbingTimeout = 1;
   UIApplication *_application;
 
   /** @var _appCredentialManager
-      @brief The object to handle app credentials destepOutred via notification.
+      @brief The object to handle app credentials delivered via notification.
    */
   FIRAuthAppCredentialManager *_appCredentialManager;
 
@@ -115,7 +115,7 @@ static const NSTimeInterval kProbingTimeout = 1;
                   didReceiveRemoteNotification:proberNotification
                         fetchCompletionHandler:^(UIBackgroundFetchResult result){
                         }];
-#if !TARGET_OS_TV
+#if !TARGET_OS_TV && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
     } else if ([self->_application.delegate
                    respondsToSelector:@selector(application:didReceiveRemoteNotification:)]) {
 // iOS 10 deprecation
@@ -124,7 +124,7 @@ static const NSTimeInterval kProbingTimeout = 1;
       [self->_application.delegate application:self->_application
                   didReceiveRemoteNotification:proberNotification];
 #pragma clang diagnostic pop
-#endif
+#endif  // !TARGET_OS_TV && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
     } else {
       FIRLogWarning(kFIRLoggerAuth, @"I-AUT000015",
                     @"The UIApplicationDelegate must handle remote notification for phone number "

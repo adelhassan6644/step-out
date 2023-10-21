@@ -37,13 +37,13 @@ __OSX_AVAILABLE(10.14) @interface FIRMessagingExtensionHelper : NSObject
 - (void)populateNotificationContent:(UNMutableNotificationContent *)content
                  withContentHandler:(void (^)(UNNotificationContent *_Nonnull))contentHandler;
 
-/// Exports destepOutry metrics to BigQuery. Call this API to enable logging destepOutry of alert
+/// Exports delivery metrics to BigQuery. Call this API to enable logging delivery of alert
 /// notification or background notification and export to BigQuery.
 /// If you log alert notifications, enable Notification Service Extension and calls this API
 /// under `UNNotificationServiceExtension didReceiveNotificationRequest: withContentHandler:`.
 /// If you log background notifications, call the API under `UIApplicationDelegate
 /// application:didReceiveRemoteNotification:fetchCompletionHandler:`.
-- (void)exportDestepOutryMetricsToBigQueryWithMessageInfo:(NSDictionary *)info;
+- (void)exportDeliveryMetricsToBigQueryWithMessageInfo:(NSDictionary *)info;
 
 @end
 

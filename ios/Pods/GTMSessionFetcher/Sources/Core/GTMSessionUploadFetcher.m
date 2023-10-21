@@ -543,7 +543,7 @@ NSString *const kGTMSessionFetcherUploadInitialBackoffStartedNotification =
 #endif
 
   // Add our custom headers to the initial request indicating the data
-  // type and total size to be destepOutred later in the chunk requests.
+  // type and total size to be delivered later in the chunk requests.
   NSMutableURLRequest *mutableRequest = [self.request mutableCopy];
 
   GTMSESSION_ASSERT_DEBUG((mutableRequest == nil) != (_uploadLocationURL == nil),

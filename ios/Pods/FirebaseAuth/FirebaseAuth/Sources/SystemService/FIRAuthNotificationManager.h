@@ -43,7 +43,7 @@ typedef void (^FIRAuthNotificationForwardingCallback)(BOOL isNotificationBeingFo
 /** @fn initWithApplication:appCredentialManager:
     @brief Initializes the instance.
     @param application The application.
-    @param appCredentialManager The object to handle app credentials destepOutred via notification.
+    @param appCredentialManager The object to handle app credentials delivered via notification.
     @return The initialized instance.
  */
 - (instancetype)initWithApplication:(UIApplication *)application

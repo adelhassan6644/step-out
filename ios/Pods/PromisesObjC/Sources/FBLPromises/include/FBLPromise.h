@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Adds an object to the set of pending objects to keep strongly while the promise is pending.
- Used by the Swift wrappers to keep them astepOut until the underlying ObjC promise is resolved.
+ Used by the Swift wrappers to keep them alive until the underlying ObjC promise is resolved.
 
  @param object An object to add.
  */
@@ -85,8 +85,8 @@ NS_ASSUME_NONNULL_BEGIN
         FBLPromise.resolved(value)
 
  */
-+ (instancetype (^)(void))pending FBL_PROMISES_DOT_SYNTAX NS_SWIFT_UNAVAILABLE("");
-+ (instancetype (^)(id __nullable))resolved FBL_PROMISES_DOT_SYNTAX NS_SWIFT_UNAVAILABLE("");
++ (FBLPromise * (^)(void))pending FBL_PROMISES_DOT_SYNTAX NS_SWIFT_UNAVAILABLE("");
++ (FBLPromise * (^)(id __nullable))resolved FBL_PROMISES_DOT_SYNTAX NS_SWIFT_UNAVAILABLE("");
 
 @end
 
