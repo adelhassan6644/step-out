@@ -1,7 +1,7 @@
 class Images {
   static const String logo = 'assets/logo.png';
   static const String onBoarding = 'assets/images/login_image.png';
-  static const String authBG = 'assets/images/login_image.png';
+  static const String authBG = 'assets/images/auth_bg.png';
   static const String signUpImage = 'assets/images/signup_image.png';
   static const String profileBGImage = 'assets/images/profile_bg.png';
   static const String developerImage = 'assets/images/developer_image.png';

@@ -89,6 +89,8 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                             label: getTranslated("name", context),
                             hint: getTranslated("enter_your_name", context),
                             withLabel: true,
+                            onTapOutside: (v) =>
+                                setState(() => focusOnName = false),
                             onTap: () {
                               setState(() => focusOnName = !focusOnName);
                               if (!focusOnName) {
@@ -119,6 +121,8 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                             label: getTranslated("phone", context),
                             hint: getTranslated("enter_your_phone", context),
                             withLabel: true,
+                            onTapOutside: (v) =>
+                                setState(() => focusOnPhone = false),
                             onTap: () {
                               setState(() => focusOnPhone = !focusOnPhone);
                               if (!focusOnPhone) {
@@ -149,6 +153,8 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                             label: getTranslated("mail", context),
                             hint: getTranslated("enter_your_mail", context),
                             withLabel: true,
+                            onTapOutside: (v) =>
+                                setState(() => focusOnEmail = false),
                             onTap: () {
                               setState(() => focusOnEmail = !focusOnEmail);
                               if (!focusOnEmail) {
@@ -179,6 +185,8 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                             label: getTranslated("new_password", context),
                             hint: getTranslated("enter_new_password", context),
                             withLabel: true,
+                            onTapOutside: (v) =>
+                                setState(() => focusOnPassword = false),
                             onTap: () {
                               setState(
                                   () => focusOnPassword = !focusOnPassword);
@@ -216,6 +224,8 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                             hint: getTranslated(
                                 "enter_confirm_new_password", context),
                             withLabel: true,
+                            onTapOutside: (v) =>
+                                setState(() => focusOnConfirmPassword = false),
                             onTap: () {
                               setState(() => focusOnConfirmPassword =
                                   !focusOnConfirmPassword);
@@ -296,7 +306,7 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                               provider.clear();
                             },
                             child: Text(
-                              getTranslated("login_now", context),
+                              " ${getTranslated("login", context)}",
                               style: AppTextStyles.medium.copyWith(
                                 color: Styles.HEADER,
                                 overflow: TextOverflow.ellipsis,

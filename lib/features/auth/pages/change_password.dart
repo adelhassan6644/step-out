@@ -69,6 +69,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                                     hint: getTranslated(
                                         "enter_current_password", context),
                                     withLabel: true,
+                                    onTapOutside: (v) =>
+                                        setState(() => focusOnPassword = false),
                                     onTap: () {
                                       setState(() =>
                                           focusOnPassword = !focusOnPassword);
@@ -106,16 +108,18 @@ class _ChangePasswordState extends State<ChangePassword> {
                                     hint: getTranslated(
                                         "enter_new_password", context),
                                     withLabel: true,
+                                    onTapOutside: (v) => setState(
+                                        () => focusOnNewPassword = false),
                                     onTap: () {
-                                      setState(() =>
-                                          focusOnPassword = !focusOnPassword);
-                                      if (!focusOnPassword) {
+                                      setState(() => focusOnNewPassword =
+                                          !focusOnNewPassword);
+                                      if (!focusOnNewPassword) {
                                         FocusScope.of(context)
                                             .requestFocus(FocusNode());
                                       }
                                     },
-                                    focusNode: passwordNode,
-                                    alignLabel: focusOnPassword,
+                                    focusNode: newPasswordNode,
+                                    alignLabel: focusOnNewPassword,
                                     inputType: TextInputType.visiblePassword,
                                     customError: snapshot.hasError,
                                     errorText: snapshot.error,
@@ -142,13 +146,14 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 builder: (context, snapshot) {
                                   return CustomTextField(
                                     onChanged: provider.updateConfirmPassword,
-
                                     keyboardAction: TextInputAction.done,
                                     label: getTranslated(
                                         "confirm_new_password", context),
                                     hint: getTranslated(
                                         "enter_confirm_new_password", context),
                                     withLabel: true,
+                                    onTapOutside: (v) => setState(
+                                        () => focusOnConfirmPassword = false),
                                     onTap: () {
                                       setState(() => focusOnConfirmPassword =
                                           !focusOnConfirmPassword);
@@ -163,13 +168,13 @@ class _ChangePasswordState extends State<ChangePassword> {
                                     customError: snapshot.hasError,
                                     errorText: snapshot.error,
                                     validate: (v) {
-                                      if (Validations.newPassword(
+                                      if (Validations.confirmNewPassword(
                                               provider.newPassword.value
                                                   ?.trim(),
                                               v) !=
                                           null) {
                                         provider.confirmPassword.addError(
-                                            Validations.newPassword(
+                                            Validations.confirmNewPassword(
                                                 provider.newPassword.value
                                                     ?.trim(),
                                                 v)!);

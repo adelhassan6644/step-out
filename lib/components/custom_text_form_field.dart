@@ -42,6 +42,7 @@ class CustomTextField extends StatefulWidget {
   final Color? onlyBorderColor;
   final List<TextInputFormatter>? formattedType;
   final Alignment? align;
+  final Function(dynamic)? onTapOutside;
 
   const CustomTextField({
     Key? key,
@@ -78,6 +79,7 @@ class CustomTextField extends StatefulWidget {
     this.withLabel = false,
     this.label,
     this.onTap,
+    this.onTapOutside,
   }) : super(key: key);
 
   @override
@@ -131,8 +133,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
               inputFormatters: widget.inputType == TextInputType.phone
                   ? [FilteringTextInputFormatter.allow(RegExp('[0-9]'))]
                   : widget.formattedType ?? [],
-              onTapOutside: (v) =>
-                  FocusManager.instance.primaryFocus?.unfocus(),
+              onTapOutside: (v) {
+                widget.onTapOutside?.call(v);
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
               style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 14,

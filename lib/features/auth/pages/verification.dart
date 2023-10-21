@@ -11,6 +11,7 @@ import '../../../app/core/utils/text_styles.dart';
 import '../../../app/localization/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/count_down.dart';
+import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_pin_code_field.dart';
 import '../provider/auth_provider.dart';
@@ -36,9 +37,11 @@ class _VerificationState extends State<Verification> {
             Container(
               height: context.toPadding + 180.h,
               width: context.width,
-              padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                  vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+              padding: EdgeInsets.only(
+                  left: Dimensions.PADDING_SIZE_DEFAULT.w,
+                  right: Dimensions.PADDING_SIZE_DEFAULT.w,
+                  top: context.toPadding,
+                  bottom: Dimensions.PADDING_SIZE_DEFAULT.h),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: ExactAssetImage(Images.authBG),
@@ -49,10 +52,11 @@ class _VerificationState extends State<Verification> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  SizedBox(
-                    height:
-                        context.toPadding + Dimensions.PADDING_SIZE_DEFAULT.h,
+                  const CustomAppBar(
+                    backIconColor: Styles.WHITE_COLOR,
+                    withPadding: false,
                   ),
+                  const Expanded(child: SizedBox()),
                   Text(
                     getTranslated("verify_header", context),
                     textAlign: TextAlign.start,

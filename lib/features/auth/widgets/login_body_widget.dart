@@ -56,7 +56,9 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                 topRight: Radius.circular(20), topLeft: Radius.circular(20))),
         child: ListAnimator(
           data: [
-            SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT.h,),
+            SizedBox(
+              height: Dimensions.PADDING_SIZE_DEFAULT.h,
+            ),
             Form(
                 key: _formKey,
                 child: Column(
@@ -76,6 +78,8 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                                     .requestFocus(FocusNode());
                               }
                             },
+                            onTapOutside: (v) =>
+                                setState(() => focusOnEmail = false),
                             focusNode: emailNode,
                             alignLabel: focusOnEmail,
                             inputType: TextInputType.emailAddress,
@@ -94,11 +98,12 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                         builder: (context, snapshot) {
                           return CustomTextField(
                             onChanged: provider.updatePassword,
-
                             keyboardAction: TextInputAction.done,
                             label: getTranslated("password", context),
                             hint: getTranslated("enter_your_password", context),
                             withLabel: true,
+                            onTapOutside: (v) =>
+                                setState(() => focusOnPassword = false),
                             onTap: () {
                               setState(
                                   () => focusOnPassword = !focusOnPassword);
@@ -184,7 +189,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                             provider.clear();
                           },
                           child: Text(
-                            " ${getTranslated("signup_now", context)}",
+                            " ${getTranslated("signup", context)}",
                             textAlign: TextAlign.start,
                             style: AppTextStyles.medium.copyWith(
                               color: Styles.HEADER,

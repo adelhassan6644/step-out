@@ -9,6 +9,7 @@ import '../../../app/core/utils/text_styles.dart';
 import '../../../app/core/utils/validation.dart';
 import '../../../app/localization/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
+import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_text_form_field.dart';
 import '../provider/auth_provider.dart';
@@ -50,9 +51,11 @@ class _ResetPasswordState extends State<ResetPassword> {
             Container(
               height: context.toPadding + 180.h,
               width: context.width,
-              padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                  vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+              padding: EdgeInsets.only(
+                  left: Dimensions.PADDING_SIZE_DEFAULT.w,
+                  right: Dimensions.PADDING_SIZE_DEFAULT.w,
+                  top: context.toPadding,
+                  bottom: Dimensions.PADDING_SIZE_DEFAULT.h),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: ExactAssetImage(Images.authBG),
@@ -63,10 +66,11 @@ class _ResetPasswordState extends State<ResetPassword> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  SizedBox(
-                    height:
-                        context.toPadding + Dimensions.PADDING_SIZE_DEFAULT.h,
+                  const CustomAppBar(
+                    backIconColor: Styles.WHITE_COLOR,
+                    withPadding: false,
                   ),
+                  const Expanded(child: SizedBox()),
                   Row(
                     children: [
                       Text(
@@ -125,6 +129,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                                           hint: getTranslated(
                                               "enter_new_password", context),
                                           withLabel: true,
+                                          onTapOutside: (v) => setState(
+                                              () => focusOnPassword = false),
+
                                           onTap: () {
                                             setState(() => focusOnPassword =
                                                 !focusOnPassword);
@@ -167,6 +174,8 @@ class _ResetPasswordState extends State<ResetPassword> {
                                               "enter_confirm_new_password",
                                               context),
                                           withLabel: true,
+                                          onTapOutside: (v) => setState(() =>
+                                              focusOnConfirmPassword = false),
                                           onTap: () {
                                             setState(() =>
                                                 focusOnConfirmPassword =

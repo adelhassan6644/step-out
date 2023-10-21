@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
+import 'package:stepOut/components/custom_app_bar.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
 
@@ -48,9 +49,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             Container(
               height: context.toPadding + 180.h,
               width: context.width,
-              padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                  vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+              padding: EdgeInsets.only(
+                  left: Dimensions.PADDING_SIZE_DEFAULT.w,
+                  right: Dimensions.PADDING_SIZE_DEFAULT.w,
+                  top: context.toPadding,
+                  bottom: Dimensions.PADDING_SIZE_DEFAULT.h),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: ExactAssetImage(Images.authBG),
@@ -59,12 +62,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height:
-                        context.toPadding + Dimensions.PADDING_SIZE_DEFAULT.h,
+                  const CustomAppBar(
+                    backIconColor: Styles.WHITE_COLOR,
+                    withPadding: false,
                   ),
+                  const Expanded(child: SizedBox()),
                   Row(
                     children: [
                       Text(
@@ -121,6 +125,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                           hint: getTranslated(
                                               "enter_your_mail", context),
                                           withLabel: true,
+                                          onTapOutside: (v) =>
+                                              setState(() => focusOnEmail = false),
                                           onTap: () {
                                             setState(() =>
                                                 focusOnEmail = !focusOnEmail);
