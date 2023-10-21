@@ -3,7 +3,6 @@ import 'package:stepOut/features/auth/pages/reset_password.dart';
 import 'package:stepOut/features/category_details/page/category_details.dart';
 import 'package:stepOut/main_models/base_model.dart';
 import 'package:flutter/material.dart';
-import 'package:stepOut/main_page/pages/main_page.dart';
 import '../features/auth/pages/forget_password.dart';
 import '../features/auth/pages/login.dart';
 import '../features/auth/pages/register.dart';
@@ -15,6 +14,7 @@ import '../features/on_boarding/pages/on_boarding.dart';
 import '../features/place_details/page/place_details.dart';
 import '../features/splash/page/splash.dart';
 import '../main.dart';
+import '../main_page/pages/dashboard.dart';
 import 'routes.dart';
 
 abstract class CustomNavigator {
@@ -38,6 +38,7 @@ abstract class CustomNavigator {
           fromMain:
               settings.arguments != null ? settings.arguments as bool : false,
         ));
+
       case Routes.FORGET_PASSWORD:
         return _pageRoute(const ForgetPassword());
       case Routes.RESET_PASSWORD:
@@ -50,8 +51,8 @@ abstract class CustomNavigator {
         return _pageRoute(
             Verification(fromRegister: settings.arguments as bool));
 
-      case Routes.MAIN_PAGE:
-        return _pageRoute(const MainPage());
+      case Routes.DASHBOARD:
+        return _pageRoute(const DashBoard());
 
       case Routes.NEWS:
         return _pageRoute(const News());

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
-import '../../../app/core/utils/color_resources.dart';
+import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/images.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../app/core/utils/validation.dart';

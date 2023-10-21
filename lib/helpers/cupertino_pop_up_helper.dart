@@ -1,4 +1,4 @@
-import 'package:stepOut/app/core/utils/color_resources.dart';
+import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/text_styles.dart';
 import 'package:stepOut/app/localization/localization/language_constant.dart';
 import 'package:flutter/cupertino.dart';

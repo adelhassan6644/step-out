@@ -5,7 +5,7 @@ import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 
 import '../../../app/core/utils/app_snack_bar.dart';
-import '../../../app/core/utils/color_resources.dart';
+import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../app/core/utils/validation.dart';
 import '../../../app/localization/localization/language_constant.dart';

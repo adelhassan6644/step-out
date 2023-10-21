@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:stepOut/app/core/utils/color_resources.dart';
+import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import 'package:provider/provider.dart';
 

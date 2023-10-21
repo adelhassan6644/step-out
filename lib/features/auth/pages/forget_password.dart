@@ -7,7 +7,7 @@ import 'package:stepOut/components/custom_app_bar.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
 
-import '../../../app/core/utils/color_resources.dart';
+import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/images.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../app/core/utils/validation.dart';

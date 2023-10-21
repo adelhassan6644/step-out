@@ -4,7 +4,7 @@ import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:provider/provider.dart';
 
-import '../../../app/core/utils/color_resources.dart';
+import '../../../app/core/utils/styles.dart';
 import '../../../components/custom_network_image.dart';
 import '../provider/place_details_provider.dart';
 

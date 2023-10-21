@@ -7,7 +7,7 @@ import 'package:stepOut/app/core/utils/app_snack_bar.dart';
 import 'package:stepOut/app/localization/localization/language_constant.dart';
 import 'package:stepOut/features/profile/model/profile_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
-import '../../../app/core/utils/color_resources.dart';
+import '../../../app/core/utils/styles.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
 import '../repo/profile_repo.dart';

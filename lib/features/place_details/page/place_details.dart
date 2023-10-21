@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stepOut/app/core/utils/color_resources.dart';
+import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/components/custom_network_image.dart';
 import 'package:stepOut/features/place_details/provider/place_details_provider.dart';

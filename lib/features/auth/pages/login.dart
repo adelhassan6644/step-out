@@ -4,7 +4,7 @@ import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
 import 'package:stepOut/components/custom_images.dart';
 
-import '../../../app/core/utils/color_resources.dart';
+import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/images.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../app/localization/localization/language_constant.dart';

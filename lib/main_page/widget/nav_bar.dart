@@ -3,14 +3,13 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:provider/provider.dart';
 
-import '../../app/core/utils/color_resources.dart';
+import '../../app/core/utils/styles.dart';
 import '../../app/core/utils/svg_images.dart';
 import '../provider/main_page_provider.dart';
 import 'nav_bar_item.dart';
 
 class NavBar extends StatelessWidget {
-  const NavBar({Key? key, required this.controller}) : super(key: key);
-  final ZoomDrawerController controller;
+  const NavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +20,7 @@ class NavBar extends StatelessWidget {
         child: Container(
             height: 60,
             width: context.width,
-            decoration:
-                BoxDecoration(color: Styles.WHITE_COLOR, boxShadow: [
+            decoration: BoxDecoration(color: Styles.WHITE_COLOR, boxShadow: [
               BoxShadow(
                   color: Colors.black.withOpacity(0.1),
                   offset: const Offset(0, -3),
@@ -78,7 +76,6 @@ class NavBar extends StatelessWidget {
                       isSelected: provider.selectedIndex == 4,
                       withIconColor: false,
                       onTap: () {
-                        controller.toggle!();
                         provider.updateIsOpen(true);
                       },
                     ),

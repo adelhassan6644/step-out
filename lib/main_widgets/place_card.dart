@@ -3,7 +3,7 @@ import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/features/favourite/widgets/favourite_button.dart';
 import 'package:stepOut/features/home/models/places_model.dart';
-import '../app/core/utils/color_resources.dart';
+import '../app/core/utils/styles.dart';
 import '../app/core/utils/svg_images.dart';
 import '../app/core/utils/text_styles.dart';
 import '../components/custom_images.dart';

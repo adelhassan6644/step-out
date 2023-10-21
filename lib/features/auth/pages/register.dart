@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 
-import '../../../app/core/utils/color_resources.dart';
+import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/images.dart';
 import '../../../app/core/utils/svg_images.dart';

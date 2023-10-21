@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:stepOut/app/core/utils/color_resources.dart';
+import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/components/animated_widget.dart';
 import 'package:stepOut/components/empty_widget.dart';

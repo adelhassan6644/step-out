@@ -1,11 +1,8 @@
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:stepOut/features/profile/page/profile.dart';
 import 'package:stepOut/main_page/provider/main_page_provider.dart';
 import 'package:provider/provider.dart';
-import '../../../app/core/utils/color_resources.dart';
-import '../../app/core/utils/svg_images.dart';
-import '../../components/custom_images.dart';
+import '../../../app/core/utils/styles.dart';
 import '../../data/config/di.dart';
 import '../../data/network/netwok_info.dart';
 import '../../features/favourite/page/favourites.dart';
@@ -15,8 +12,7 @@ import '../../features/maps/page/map_page.dart';
 import '../widget/nav_bar.dart';
 
 class DashBoard extends StatefulWidget {
-  const DashBoard({Key? key, required this.controller}) : super(key: key);
-  final ZoomDrawerController controller;
+  const DashBoard({super.key});
   @override
   State<DashBoard> createState() => _DashBoardState();
 }
@@ -25,11 +21,10 @@ class _DashBoardState extends State<DashBoard> {
   @override
   void initState() {
     NetworkInfo.checkConnectivity(onVisible: () {
-      sl<HomeProvider>().getBanners();
-      sl<HomeProvider>().getPlaces();
-      sl<HomeProvider>().getCategories();
-      sl<HomeProvider>().getOffers();
-      sl<HomeProvider>().getNews();
+      // sl<HomeProvider>().getBanners();
+      // sl<HomeProvider>().getCategories();
+      // sl<HomeProvider>().getOffers();
+      // sl<HomeProvider>().getNews();
     });
     super.initState();
   }
@@ -54,24 +49,7 @@ class _DashBoardState extends State<DashBoard> {
     return Consumer<MainPageProvider>(builder: (_, provider, child) {
       return Scaffold(
         backgroundColor: Styles.BACKGROUND_COLOR,
-        bottomNavigationBar: NavBar(
-          controller: widget.controller,
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: provider.selectedIndex == 2
-            ? FloatingActionButton(
-                shape: const CircleBorder(),
-                onPressed: () {},
-                backgroundColor: Colors.white,
-                elevation: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: customImageIconSVG(
-                    imageName: SvgImages.stepOutLocationIcon,
-                  ),
-                ),
-              )
-            : null,
+        bottomNavigationBar: NavBar(),
         body: fragment(provider.selectedIndex),
       );
     });

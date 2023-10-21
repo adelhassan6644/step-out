@@ -13,7 +13,7 @@ import '../repo/auth_repo.dart';
 import '../../../../navigation/custom_navigation.dart';
 import '../../../../navigation/routes.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
-import '../../../app/core/utils/color_resources.dart';
+import '../../../app/core/utils/styles.dart';
 import '../../../app/localization/localization/language_constant.dart';
 
 class AuthProvider extends ChangeNotifier {
