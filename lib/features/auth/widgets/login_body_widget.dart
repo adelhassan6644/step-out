@@ -131,6 +131,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                       children: [
                         InkWell(
                           onTap: () {
+                            provider.clear();
                             CustomNavigator.push(Routes.FORGET_PASSWORD);
                           },
                           child: Text(

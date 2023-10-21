@@ -21,11 +21,11 @@ import 'package:stepOut/data/config/di.dart' as di;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  FirebaseNotifications.init();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+  //
+  // FirebaseNotifications.init();
   await di.init();
   runApp(
       MultiProvider(providers: ProviderList.providers, child: const MyApp()));

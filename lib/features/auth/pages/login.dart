@@ -16,64 +16,61 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      child: Scaffold(
-        body: Stack(
-          alignment: Alignment.topCenter,
-          children: [
-            Container(
-              height: context.toPadding + 180.h,
-              width: context.width,
-              padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                  vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: ExactAssetImage(Images.authBG),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  SizedBox(
-                    height: context.toPadding + Dimensions.PADDING_SIZE_DEFAULT.h,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        getTranslated("login_header", context),
-                        textAlign: TextAlign.start,
-                        style: AppTextStyles.semiBold
-                            .copyWith(fontSize: 24, color: Styles.WHITE_COLOR),
-                      ),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      customImageIconSVG(imageName: SvgImages.checkHand)
-                    ],
-                  ),
-                  Text(
-                    getTranslated("login_description", context),
-                    textAlign: TextAlign.start,
-                    style: AppTextStyles.medium
-                        .copyWith(fontSize: 14, color: Styles.WHITE_COLOR),
-                  ),
-                  SizedBox(
-                    height: Dimensions.PADDING_SIZE_EXTRA_SMALL.h,
-                  ),
-                ],
+    return Scaffold(
+      body: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Container(
+            height: context.toPadding + 180.h,
+            width: context.width,
+            padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: ExactAssetImage(Images.authBG),
+                fit: BoxFit.cover,
               ),
             ),
-            const Column(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Expanded(child: LoginBodyWidget()),
+                SizedBox(
+                  height: context.toPadding + Dimensions.PADDING_SIZE_DEFAULT.h,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      getTranslated("login_header", context),
+                      textAlign: TextAlign.start,
+                      style: AppTextStyles.semiBold
+                          .copyWith(fontSize: 24, color: Styles.WHITE_COLOR),
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    customImageIconSVG(imageName: SvgImages.checkHand)
+                  ],
+                ),
+                Text(
+                  getTranslated("login_description", context),
+                  textAlign: TextAlign.start,
+                  style: AppTextStyles.medium
+                      .copyWith(fontSize: 14, color: Styles.WHITE_COLOR),
+                ),
+                SizedBox(
+                  height: Dimensions.PADDING_SIZE_EXTRA_SMALL.h,
+                ),
               ],
             ),
-          ],
-        ),
+          ),
+          const Column(
+            children: [
+              Expanded(child: LoginBodyWidget()),
+            ],
+          ),
+        ],
       ),
     );
   }
