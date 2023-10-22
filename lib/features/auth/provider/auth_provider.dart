@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import '../../../app/core/utils/validation.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
-import '../../favourite/provider/favourite_provider.dart';
 import '../repo/auth_repo.dart';
 import '../../../../navigation/custom_navigation.dart';
 import '../../../../navigation/routes.dart';
@@ -151,10 +150,6 @@ class AuthProvider extends ChangeNotifier {
                   CustomNavigator.navigatorState.currentContext!,
                   listen: false)
               .getProfile();
-          Provider.of<FavouriteProvider>(
-                  CustomNavigator.navigatorState.currentContext!,
-                  listen: false)
-              .getFavourites();
           CustomNavigator.push(Routes.MAIN_PAGE, clean: true);
           clear();
         } else {

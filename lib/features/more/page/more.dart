@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/features/more/widgets/logout_button.dart';
@@ -8,17 +7,12 @@ import 'package:stepOut/navigation/routes.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/utils/svg_images.dart';
 import '../../../app/localization/localization/language_constant.dart';
-import '../../../data/config/di.dart';
 import '../../../main_page/provider/main_page_provider.dart';
 import '../widgets/more_button.dart';
 import '../widgets/profile_card.dart';
 
 class More extends StatelessWidget {
-  const More({
-    Key? key,
-    required this.controller,
-  }) : super(key: key);
-  final ZoomDrawerController controller;
+  const More({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +31,6 @@ class More extends StatelessWidget {
               icon: SvgImages.homeIcon,
               onTap: () {
                 provider.updateDashboardIndex(0);
-                sl<MainPageProvider>().updateIsOpen(false);
-                controller.toggle!();
               },
             ),
             MoreButton(
@@ -46,8 +38,6 @@ class More extends StatelessWidget {
               icon: SvgImages.userIcon,
               onTap: () {
                 provider.updateDashboardIndex(1);
-                sl<MainPageProvider>().updateIsOpen(false);
-                controller.toggle!();
               },
             ),
             MoreButton(
@@ -55,16 +45,12 @@ class More extends StatelessWidget {
               icon: SvgImages.heartIcon,
               onTap: () {
                 provider.updateDashboardIndex(3);
-                sl<MainPageProvider>().updateIsOpen(false);
-                controller.toggle!();
               },
             ),
             MoreButton(
               title: getTranslated("contact_with_us", context),
               icon: SvgImages.mailIcon,
-              onTap: () {
-                controller.toggle!();
-              },
+              onTap: () {},
             ),
             MoreButton(
               title: getTranslated("terms_conditions", context),
@@ -83,9 +69,7 @@ class More extends StatelessWidget {
             const Expanded(child: SizedBox()),
             LogoutButton(
               onTap: () {
-                sl<MainPageProvider>().updateIsOpen(false);
                 provider.updateDashboardIndex(0);
-                controller.toggle!();
               },
             ),
             const Expanded(child: SizedBox()),

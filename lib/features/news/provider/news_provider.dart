@@ -1,38 +1,30 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:stepOut/features/favourite/repo/favourite_repo.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/localization/localization/language_constant.dart';
 import '../../../data/error/failures.dart';
 import '../../../navigation/custom_navigation.dart';
-import '../model/favourite_model.dart';
+import '../model/news_model.dart';
+import '../repo/news_repo.dart';
 
-class FavouriteProvider extends ChangeNotifier {
-  final FavouriteRepo favouriteRepo;
+class NewsProvider extends ChangeNotifier {
+  final NewsRepo repo;
 
-  FavouriteProvider({
-    required this.favouriteRepo,
-  }) {
-    favouriteId.clear();
-    if (isLogin) {
-      getFavourites();
-    }
-  }
+  NewsProvider({required this.repo});
 
-  bool get isLogin => favouriteRepo.isLoggedIn();
+  bool get isLogin => repo.isLoggedIn();
 
   List<int> favouriteId = [];
 
   bool isLoading = false;
-  FavouriteModel? favouriteModel;
-  getFavourites() async {
+  NewsModel? model;
+  getNews() async {
     try {
       isLoading = true;
       notifyListeners();
-      Either<ServerFailure, Response> response =
-          await favouriteRepo.getFavourites();
+      Either<ServerFailure, Response> response = await repo.getFavourites();
       response.fold((l) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -43,10 +35,10 @@ class FavouriteProvider extends ChangeNotifier {
         isLoading = false;
         notifyListeners();
       }, (response) {
-        favouriteModel = FavouriteModel.fromJson(response.data);
+        model = NewsModel.fromJson(response.data);
         favouriteId = [];
-        if (favouriteModel!.data != null && favouriteModel!.data!.isNotEmpty) {
-          for (var e in favouriteModel!.data!) {
+        if (model!.data != null && model!.data!.isNotEmpty) {
+          for (var e in model!.data!) {
             if (e.id != null) {
               favouriteId.add(e.id!);
             }
@@ -76,8 +68,7 @@ class FavouriteProvider extends ChangeNotifier {
       }
       notifyListeners();
 
-      Either<ServerFailure, Response> response =
-          await favouriteRepo.updateFavourite(id);
+      Either<ServerFailure, Response> response = await repo.updateFavourite(id);
       response.fold((l) {
         showToast(l.error);
       }, (response) {
@@ -87,7 +78,7 @@ class FavouriteProvider extends ChangeNotifier {
           showToast("تم الاضافة الي الاماكن المفضلة");
         }
       });
-      getFavourites();
+      getNews();
       notifyListeners();
     } catch (e) {
       showToast(

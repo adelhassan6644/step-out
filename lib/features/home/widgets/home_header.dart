@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:stepOut/app/core/utils/styles.dart';
+import 'package:stepOut/app/core/utils/extensions.dart';
+import 'package:stepOut/app/core/utils/images.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
-import 'package:stepOut/app/core/utils/text_styles.dart';
+import 'package:stepOut/app/core/utils/svg_images.dart';
+
+import '../../../components/custom_images.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({Key? key}) : super(key: key);
@@ -9,27 +12,22 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      padding: EdgeInsets.only(
+        top: context.toPadding + Dimensions.PADDING_SIZE_EXTRA_SMALL.h,
+        bottom: Dimensions.PADDING_SIZE_EXTRA_SMALL.h,
+        right: Dimensions.PADDING_SIZE_DEFAULT.w,
+        left: Dimensions.PADDING_SIZE_DEFAULT.w,
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
-            height: Dimensions.PADDING_SIZE_DEFAULT.h,
-          ),
-          Text(
-            "هلا في حي الحمدانية",
-            style: AppTextStyles.bold.copyWith(
-                fontSize: 26, color: Styles.ACCENT_COLOR),
-          ),
-          SizedBox(
-            height: 8.h,
-          ),
-          Text(
-            "إذا كنت جديد هنا, خلنا نعرفك ع الحي",
-            style: AppTextStyles.semiBold
-                .copyWith(fontSize: 20, color: Styles.TITLE),
-          ),
+          customImageIconSVG(
+              imageName: SvgImages.search, width: 24, height: 24),
+          const Expanded(child: SizedBox()),
+          customImageIcon(imageName: Images.homeLogo, width: 100),
+          const Expanded(child: SizedBox()),
+          customImageIconSVG(
+              imageName: SvgImages.notification, width: 24, height: 24),
         ],
       ),
     );

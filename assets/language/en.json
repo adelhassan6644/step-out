@@ -89,5 +89,9 @@
   "register_successfully": "Account has been successfully registered",
   "enter_your_mail": "Enter your e-mail",
   "enter_your_password":"Enter your password",
-  "oops_you_must_agree_to_terms_and_conditions": "Oops, You must agree to terms and conditions"
+  "oops_you_must_agree_to_terms_and_conditions": "Oops, You must agree to terms and conditions",
+  "news": "News",
+  "offers": "Offers",
+  "categories": "Categories",
+  "there_is_no_data": "There is no data"
 }

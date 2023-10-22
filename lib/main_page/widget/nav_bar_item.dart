@@ -19,8 +19,8 @@ class BottomNavBarItem extends StatelessWidget {
     this.isSelected = false,
     this.withIconColor = true,
     required this.onTap,
-    this.width = 20,
-    this.height = 20,
+    this.width = 24,
+    this.height = 24,
   });
 
   @override
@@ -37,39 +37,6 @@ class BottomNavBarItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            svgIcon != null
-                ? customImageIconSVG(
-                    imageName: svgIcon!,
-                    color: isSelected
-                        ? Styles.ACCENT_COLOR
-                        : withIconColor
-                            ? Styles.DISABLED
-                            : null,
-                    width: width,
-                  )
-                : customImageIcon(
-                    imageName: imageIcon!,
-                    height: height,
-                    color: isSelected
-                        ? Styles.PRIMARY_COLOR
-                        : Styles.DISABLED,
-                    width: width,
-                  ),
-            name != null
-                ? Text(
-                    name!,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight:
-                          isSelected ? FontWeight.w600 : FontWeight.w400,
-                      color: isSelected
-                          ? Styles.PRIMARY_COLOR
-                          : Styles.DISABLED,
-                      overflow: TextOverflow.ellipsis,
-                      fontSize: 11,
-                    ),
-                  )
-                : const SizedBox.shrink(),
             AnimatedCrossFade(
                 crossFadeState: isSelected
                     ? CrossFadeState.showFirst
@@ -79,14 +46,44 @@ class BottomNavBarItem extends StatelessWidget {
                     child: Container(
                   width: 8,
                   height: 8,
-                  margin: const EdgeInsets.only(top: 6),
+                  margin: const EdgeInsets.only(bottom: 4),
                   decoration: const BoxDecoration(
-                      color: Color(0xFFB48DD2), shape: BoxShape.circle),
+                      color: Styles.ACCENT_COLOR, shape: BoxShape.circle),
                   child: const SizedBox(),
                 )),
                 secondChild: const SizedBox(
                   height: 6,
                 )),
+            svgIcon != null
+                ? customImageIconSVG(
+                    imageName: svgIcon!,
+                    color: isSelected
+                        ? Styles.ACCENT_COLOR
+                        : withIconColor
+                            ? Styles.DISABLED
+                            : null,
+                    width: width,
+                    height: height)
+                : customImageIcon(
+                    imageName: imageIcon!,
+                    height: height,
+                    color: isSelected ? Styles.PRIMARY_COLOR : Styles.DISABLED,
+                    width: width,
+                  ),
+            name != null
+                ? Text(
+                    name!,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight:
+                          isSelected ? FontWeight.w600 : FontWeight.w400,
+                      color:
+                          isSelected ? Styles.PRIMARY_COLOR : Styles.DISABLED,
+                      overflow: TextOverflow.ellipsis,
+                      fontSize: 11,
+                    ),
+                  )
+                : const SizedBox.shrink(),
           ],
         ),
       ),
