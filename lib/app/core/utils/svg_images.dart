@@ -11,6 +11,7 @@ class SvgImages {
   static const String aboutUsIcon = 'assets/svgs/building.svg';
   static const String location = 'assets/svgs/location.svg';
   static const String moreIcon = 'assets/svgs/more.svg';
+  static const String newsIcon = 'assets/svgs/news.svg';
   static const String search = 'assets/svgs/search.svg';
   static const String profileIcon = 'assets/svgs/profile.svg';
   static const String file = 'assets/svgs/file.svg';
@@ -18,7 +19,6 @@ class SvgImages {
   static const String uploadDocument = 'assets/svgs/document_upload.svg';
   static const String sparkles = 'assets/svgs/sparkles.svg';
   static const String seat = 'assets/svgs/seat.svg';
-  static const String searchIcon = 'assets/svgs/search_icon.svg';
   static const String filter = 'assets/svgs/filter.svg';
   static const String calendar = 'assets/svgs/calendar.svg';
   static const String wallet = 'assets/svgs/wallet.svg';
@@ -65,7 +65,6 @@ class SvgImages {
   static const String tickCircleIcon = 'assets/svgs/tick_circle.svg';
   static const String cartIcon = 'assets/svgs/cart.svg';
   static const String stackCartIcon = 'assets/svgs/stack_cart.svg';
-  static const String homeSearchIcon = 'assets/svgs/home_search.svg';
   static const String deliciousIcon = 'assets/svgs/delicious.svg';
   static const String report = 'assets/svgs/report.svg';
   static const String support = 'assets/icons/technical-support.png';

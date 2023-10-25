@@ -12,24 +12,11 @@ import '../models/news_model.dart';
 import '../models/offers_model.dart';
 import '../models/places_model.dart';
 import '../repo/home_repo.dart';
-import 'package:flutter/rendering.dart';
 
 class HomeProvider extends ChangeNotifier {
   HomeRepo homeRepo;
   HomeProvider({required this.homeRepo});
 
-  bool goingDown = false;
-  scroll(controller) {
-    controller.addListener(() {
-      if (controller.position.userScrollDirection == ScrollDirection.forward) {
-        goingDown = false;
-        notifyListeners();
-      } else {
-        goingDown = true;
-        notifyListeners();
-      }
-    });
-  }
 
   bool get isLogin => homeRepo.isLoggedIn();
 

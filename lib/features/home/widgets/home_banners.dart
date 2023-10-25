@@ -2,24 +2,17 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
-import 'package:stepOut/components/custom_button.dart';
+import 'package:stepOut/components/shimmer/custom_shimmer.dart';
 import 'package:stepOut/features/home/provider/home_provider.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
-
 import '../../../app/core/utils/styles.dart';
-import '../../../app/core/utils/svg_images.dart';
-import '../../../app/core/utils/text_styles.dart';
-import '../../../components/custom_images.dart';
 import '../../../components/custom_network_image.dart';
 import '../../../components/empty_widget.dart';
 
 class HomeBanner extends StatelessWidget {
-  const HomeBanner({
-    Key? key,
-  }) : super(key: key);
+  const HomeBanner({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +34,8 @@ class HomeBanner extends StatelessWidget {
                           CarouselSlider.builder(
                             options: CarouselOptions(
                               viewportFraction: 1,
-                              autoPlay: false,
-                              height: 245.h,
+                              autoPlay: true,
+                              height: context.height * 0.275,
                               enlargeCenterPage: false,
                               disableCenter: true,
                               pageSnapping: true,
@@ -60,91 +53,14 @@ class HomeBanner extends StatelessWidget {
                                               ?.data?[index].place?.id ??
                                           0);
                                 },
-                                child: Stack(
-                                  alignment: Alignment.bottomCenter,
-                                  children: [
-                                    CustomNetworkImage.containerNewWorkImage(
-                                        image: provider.bannerModel
-                                                ?.data?[index].image ??
-                                            "",
-                                        width: context.width,
-                                        height: 245.h,
-                                        fit: BoxFit.cover,
-                                        radius: 20),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 14.w, vertical: 12.h),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          Text(
-                                            provider.bannerModel?.data?[index]
-                                                    .place?.name ??
-                                                "",
-                                            style:
-                                                AppTextStyles.medium.copyWith(
-                                              fontSize: 18,
-                                              color: Styles.DISABLED,
-                                            ),
-                                          ),
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              customImageIconSVG(
-                                                imageName: SvgImages.location,
-                                                height: 20,
-                                                width: 20,
-                                                color: Styles.DISABLED,
-                                              ),
-                                              SizedBox(
-                                                width: 4.w,
-                                              ),
-                                              Expanded(
-                                                child: Text(
-                                                  provider
-                                                          .bannerModel
-                                                          ?.data?[index]
-                                                          .place
-                                                          ?.address ??
-                                                      "",
-                                                  style: AppTextStyles.medium
-                                                      .copyWith(
-                                                          fontSize: 18,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          color: Styles
-                                                              .DISABLED),
-                                                  maxLines: 1,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 8.w,
-                                              ),
-                                              Visibility(
-                                                visible: index ==
-                                                    provider.bannerIndex,
-                                                child: CustomButton(
-                                                  width: 110.w,
-                                                  height: 35.h,
-                                                  text: "المزيد",
-                                                  svgIcon:
-                                                      SvgImages.arrowRightIcon,
-                                                  onTap: () {
-                                                    provider.bannerController
-                                                        .nextPage();
-                                                  },
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                                child: CustomNetworkImage.containerNewWorkImage(
+                                  image: provider
+                                          .bannerModel?.data?[index].image ??
+                                      "",
+                                  height: context.height * 0.275,
+                                  width: context.width,
+                                  radius: 20,
+                                  fit: BoxFit.cover,
                                 ),
                               );
                             },
@@ -160,21 +76,18 @@ class HomeBanner extends StatelessWidget {
                               int index =
                                   provider.bannerModel!.data!.indexOf(banner);
                               return AnimatedContainer(
-                                width: index == provider.bannerIndex ? 25 : 8,
-                                height: 8,
+                                width: index == provider.bannerIndex ? 10 : 6,
+                                height: index == provider.bannerIndex ? 10 : 6,
                                 duration: const Duration(
                                   milliseconds: 200,
                                 ),
-                                margin: EdgeInsets.symmetric(horizontal: 2.w),
+                                margin: EdgeInsets.symmetric(horizontal: 4.w),
                                 decoration: BoxDecoration(
-                                    color: index == provider.bannerIndex
-                                        ? Styles.ACCENT_COLOR
-                                        : Styles.WHITE_COLOR,
-                                    borderRadius: BorderRadius.circular(100.w),
-                                    border: Border.all(
-                                        color: Styles
-                                            .ACCENT_COLOR,
-                                        width: 1)),
+                                  color: index == provider.bannerIndex
+                                      ? Styles.PRIMARY_COLOR
+                                      : Styles.ACCENT_COLOR,
+                                  borderRadius: BorderRadius.circular(100.w),
+                                ),
                               );
                             }).toList(),
                           ),
@@ -196,21 +109,34 @@ class _BannerShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-      child: Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.grey[100]!,
-        enabled: true,
-        child: Container(
-            width: context.width,
-            height: 245.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Styles.WHITE_COLOR,
-            )),
-      ),
+    return Column(
+      children: [
+        CustomShimmerContainer(
+          height: context.height * 0.275,
+          width: context.width,
+          radius: 20,
+        ),
+        SizedBox(
+          height: 12.h,
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+              4,
+              (index) => Container(
+                    width: index == 2 ? 10 : 6,
+                    height: index == 2 ? 10 : 6,
+                    margin: EdgeInsets.symmetric(horizontal: 4.w),
+                    decoration: BoxDecoration(
+                      color: index == 2
+                          ? Styles.PRIMARY_COLOR
+                          : Styles.ACCENT_COLOR,
+                      borderRadius: BorderRadius.circular(100.w),
+                    ),
+                  )),
+        ),
+      ],
     );
   }
 }

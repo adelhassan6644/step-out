@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
-import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/text_styles.dart';
 import 'package:stepOut/components/custom_network_image.dart';
 import 'package:stepOut/components/shimmer/custom_shimmer.dart';
@@ -10,92 +10,85 @@ import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
 import 'package:provider/provider.dart';
 
-import '../../../data/api/end_points.dart';
+import '../../../app/localization/localization/language_constant.dart';
+import '../../../components/empty_widget.dart';
+import '../../../components/grid_list_animator.dart';
+import '../models/categories_model.dart';
 
 class HomeCategories extends StatelessWidget {
-  const HomeCategories({Key? key}) : super(key: key);
+  const HomeCategories({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(builder: (_, provider, child) {
-      return provider.isGetCategories
-          ? SizedBox(
-              height: 90,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: Dimensions.PADDING_SIZE_DEFAULT.w,
-                  ),
-                  Expanded(
-                    child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        physics: const BouncingScrollPhysics(),
-                        itemBuilder: (_, index) => const _CategoryItemShimmer(),
-                        separatorBuilder: (_, index) => SizedBox(
-                              width: 12.w,
-                            ),
-                        itemCount: 5),
-                  ),
-                ],
-              ),
-            )
-          : provider.categoriesModel != null &&
-                  provider.categoriesModel?.data != null &&
-                  provider.categoriesModel!.data!.isNotEmpty
-              ? SizedBox(
-                  height: 90,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: Dimensions.PADDING_SIZE_DEFAULT.w,
-                      ),
-                      Expanded(
-                        child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            physics: const BouncingScrollPhysics(),
-                            itemBuilder: (_, index) => _CategoryItem(
-                                  id: provider
-                                          .categoriesModel?.data?[index].id ??
-                                      0,
-                                  title: provider
-                                      .categoriesModel?.data?[index].title,
-                                  image: provider
-                                      .categoriesModel?.data?[index].image,
-                                  color: provider
-                                      .categoriesModel?.data?[index].color,
-                                  textColor: provider
-                                      .categoriesModel?.data?[index].textColor,
+      return Padding(
+        padding: EdgeInsets.symmetric(
+            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+            vertical: Dimensions.PADDING_SIZE_SMALL.h),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              getTranslated("categories", context),
+              style: AppTextStyles.semiBold
+                  .copyWith(fontSize: 22, color: Styles.HEADER),
+            ),
+            !provider.isGetCategories
+                ? GridListAnimatorWidget(
+                    aspectRatio: 0.8,
+                    items: List.generate(
+                      9,
+                      (int index) {
+                        return AnimationConfiguration.staggeredGrid(
+                            columnCount: 3,
+                            position: index,
+                            duration: const Duration(milliseconds: 375),
+                            child: const ScaleAnimation(
+                                child: FadeInAnimation(
+                                    child: _CategoryCardShimmer())));
+                      },
+                    ),
+                  )
+                : provider.categoriesModel != null &&
+                        provider.categoriesModel!.data != null &&
+                        provider.categoriesModel!.data!.isNotEmpty
+                    ? GridListAnimatorWidget(
+                        items: List.generate(
+                          provider.categoriesModel!.data!.length,
+                          (int index) {
+                            return AnimationConfiguration.staggeredGrid(
+                              columnCount: 3,
+                              position: index,
+                              duration: const Duration(milliseconds: 375),
+                              child: ScaleAnimation(
+                                child: FadeInAnimation(
+                                  child: _CategoryCard(
+                                    item:
+                                        provider.categoriesModel?.data?[index],
+                                  ),
                                 ),
-                            separatorBuilder: (_, index) => SizedBox(
-                                  width: 12.w,
-                                ),
-                            itemCount:
-                                provider.categoriesModel?.data?.length ?? 0),
+                              ),
+                            );
+                          },
+                        ),
+                      )
+                    : EmptyState(
+                        imgWidth: 215.w,
+                        imgHeight: 220.h,
+                        spaceBtw: 12,
+                        txt: getTranslated("there_is_no_data", context),
                       ),
-                    ],
-                  ),
-                )
-              : const SizedBox();
+          ],
+        ),
+      );
     });
   }
 }
 
-class _CategoryItem extends StatelessWidget {
-  final String? title, image, textColor, color;
-  final int id;
+class _CategoryCard extends StatelessWidget {
+  final CategoryItem? item;
 
-  const _CategoryItem(
-      {Key? key,
-      this.title,
-      this.image,
-      required this.id,
-      this.textColor,
-      this.color})
-      : super(key: key);
+  const _CategoryCard({super.key, this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -105,24 +98,22 @@ class _CategoryItem extends StatelessWidget {
       highlightColor: Colors.transparent,
       focusColor: Colors.transparent,
       onTap: () {
-        CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: id);
+        CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: item?.id);
       },
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           CustomNetworkImage.circleNewWorkImage(
-            radius: 27.5,
-            padding: 10,
-            backGroundColor: color?.toColor,
-            image: image,
+            radius: 18,
+            image: item?.image,
           ),
           SizedBox(
             height: 8.h,
           ),
           Text(
-            title ?? "",
-            style: AppTextStyles.medium.copyWith(
-                fontSize: 14,
-                color: textColor?.toColor ?? Styles.HEADER),
+            item?.title ?? "",
+            style: AppTextStyles.medium
+                .copyWith(fontSize: 14, color: Styles.HEADER),
           ),
         ],
       ),
@@ -130,8 +121,8 @@ class _CategoryItem extends StatelessWidget {
   }
 }
 
-class _CategoryItemShimmer extends StatelessWidget {
-  const _CategoryItemShimmer({
+class _CategoryCardShimmer extends StatelessWidget {
+  const _CategoryCardShimmer({
     Key? key,
   }) : super(key: key);
 
@@ -139,14 +130,15 @@ class _CategoryItemShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const CustomShimmerCircleImage(
-          diameter: 55,
+        const CustomShimmerContainer(
+          radius: 18,
+          height: 100,
         ),
         SizedBox(
           height: 8.h,
         ),
         const CustomShimmerContainer(
-          width: 100,
+          width: 80,
           height: 15,
         )
       ],

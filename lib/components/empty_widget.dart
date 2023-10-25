@@ -3,6 +3,7 @@ import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:flutter/cupertino.dart';
 import '../app/core/utils/images.dart';
 import '../app/core/utils/svg_images.dart';
+import '../app/localization/localization/language_constant.dart';
 import 'custom_images.dart';
 
 class EmptyState extends StatelessWidget {
@@ -47,7 +48,7 @@ class EmptyState extends StatelessWidget {
             SizedBox(
               height: spaceBtw ?? 12.h,
             ),
-            Text(txt ?? "لا يوجد بيانات !",
+            Text(txt ?? getTranslated("there_is_no_data", context),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 16,

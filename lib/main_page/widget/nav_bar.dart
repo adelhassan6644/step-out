@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:provider/provider.dart';
 
@@ -41,43 +40,23 @@ class NavBar extends StatelessWidget {
                   ),
                   Expanded(
                     child: BottomNavBarItem(
-                      svgIcon: SvgImages.userIcon,
+                      svgIcon: SvgImages.newsIcon,
                       isSelected: provider.selectedIndex == 1,
                       onTap: () => provider.updateDashboardIndex(1),
-                      height: 18,
-                      width: 18,
                     ),
                   ),
                   Expanded(
-                    child: AnimatedCrossFade(
-                        crossFadeState: provider.selectedIndex != 2
-                            ? CrossFadeState.showFirst
-                            : CrossFadeState.showSecond,
-                        duration: const Duration(milliseconds: 200),
-                        firstChild: Center(
-                          child: BottomNavBarItem(
-                            svgIcon: SvgImages.stepOutLocationIcon,
-                            isSelected: provider.selectedIndex == 2,
-                            onTap: () => provider.updateDashboardIndex(2),
-                          ),
-                        ),
-                        secondChild: const SizedBox()),
-                  ),
-                  Expanded(
                     child: BottomNavBarItem(
-                      svgIcon: SvgImages.heartIcon,
-                      isSelected: provider.selectedIndex == 3,
-                      onTap: () => provider.updateDashboardIndex(3),
+                      svgIcon: SvgImages.location,
+                      isSelected: provider.selectedIndex == 2,
+                      onTap: () => provider.updateDashboardIndex(2),
                     ),
                   ),
                   Expanded(
                     child: BottomNavBarItem(
                       svgIcon: SvgImages.moreIcon,
-                      isSelected: provider.selectedIndex == 4,
-                      withIconColor: false,
-                      onTap: () {
-                        provider.updateIsOpen(true);
-                      },
+                      isSelected: provider.selectedIndex == 3,
+                      onTap: () => provider.updateDashboardIndex(3),
                     ),
                   ),
                 ])),

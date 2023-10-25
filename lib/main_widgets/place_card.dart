@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
-import 'package:stepOut/features/favourite/widgets/favourite_button.dart';
 import 'package:stepOut/features/home/models/places_model.dart';
 import '../app/core/utils/styles.dart';
 import '../app/core/utils/svg_images.dart';
@@ -89,7 +88,6 @@ class PlaceCard extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(top: -10, left: -10, child: FavouriteButton(id: place.id))
       ],
     );
   }

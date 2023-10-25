@@ -2,7 +2,10 @@
   "login_header" : "مرحبًا بعودتك",
   "login_description" : "سعداء لرؤيتكم مرة أخرى!",
   "forget_password_header" : "نسيت كلمة المرور",
-  "on_boarding_header" : "دليلك أصبح في جوالك",
+  "on_boarding_header_1" : "مرحبا بكم في Step Out !",
+  "on_boarding_header_2" : "Step Out هو دليلك لقضاء يوم عظيم",
+  "next": "التالي",
+  "start": "هيا بنا نبدأ",
   "on_boarding_description" : "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص",
   "reset_password_header" : "إعادة تعيين كلمة المرور",
   "reset_password_description": "قم بتعيين كلمة المرور الجديدة لحسابك",
@@ -90,5 +93,10 @@
   "register_successfully": "تم تسجيل الحساب بنجاح",
   "enter_your_mail": "ادخل البريد الالكتروني",
   "enter_your_password": "ادخل كلمة المرور",
-  "oops_you_must_agree_to_terms_and_conditions": "عفوًا، يجب الموافقة علي الشروط والآحكام أولاً"
+  "oops_you_must_agree_to_terms_and_conditions": "عفوًا، يجب الموافقة علي الشروط والآحكام أولاً",
+  "skip": "تخطي",
+  "news": "الأخبار",
+  "offers": "العروض",
+  "categories": "الأقسام",
+  "there_is_no_data": "لاغ يوجود بيانات"
 }

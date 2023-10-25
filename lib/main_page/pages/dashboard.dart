@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:stepOut/features/profile/page/profile.dart';
+import 'package:stepOut/features/more/page/more.dart';
 import 'package:stepOut/main_page/provider/main_page_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../data/config/di.dart';
 import '../../data/network/netwok_info.dart';
-import '../../features/favourite/page/favourites.dart';
 import '../../features/home/page/home.dart';
 import '../../features/home/provider/home_provider.dart';
 import '../../features/maps/page/map_page.dart';
+import '../../features/news/page/news.dart';
 import '../widget/nav_bar.dart';
 
 class DashBoard extends StatefulWidget {
@@ -34,11 +34,11 @@ class _DashBoardState extends State<DashBoard> {
       case 0:
         return const Home();
       case 1:
-        return const Profile();
+        return const News();
       case 2:
         return const MapPage();
       case 3:
-        return const Favourites();
+        return More();
       default:
         return Container();
     }
@@ -49,7 +49,7 @@ class _DashBoardState extends State<DashBoard> {
     return Consumer<MainPageProvider>(builder: (_, provider, child) {
       return Scaffold(
         backgroundColor: Styles.BACKGROUND_COLOR,
-        bottomNavigationBar: NavBar(),
+        bottomNavigationBar: const NavBar(),
         body: fragment(provider.selectedIndex),
       );
     });
