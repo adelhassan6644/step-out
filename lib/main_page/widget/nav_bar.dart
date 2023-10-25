@@ -13,54 +13,50 @@ class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<MainPageProvider>(builder: (_, provider, child) {
-      return SafeArea(
-        bottom: true,
-        top: false,
-        child: Container(
-            height: 60,
-            width: context.width,
-            decoration: BoxDecoration(color: Styles.WHITE_COLOR, boxShadow: [
-              BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  offset: const Offset(0, -3),
-                  spreadRadius: 3,
-                  blurRadius: 20)
-            ]),
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-            child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: BottomNavBarItem(
-                      svgIcon: SvgImages.homeIcon,
-                      isSelected: provider.selectedIndex == 0,
-                      onTap: () => provider.updateDashboardIndex(0),
-                    ),
+      return Container(
+          height: 80,
+          width: context.width,
+          decoration: BoxDecoration(color: Styles.WHITE_COLOR, boxShadow: [
+            BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                offset: const Offset(0, -3),
+                spreadRadius: 3,
+                blurRadius: 20)
+          ]),
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+          child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: BottomNavBarItem(
+                    svgIcon: SvgImages.homeIcon,
+                    isSelected: provider.selectedIndex == 0,
+                    onTap: () => provider.updateDashboardIndex(0),
                   ),
-                  Expanded(
-                    child: BottomNavBarItem(
-                      svgIcon: SvgImages.newsIcon,
-                      isSelected: provider.selectedIndex == 1,
-                      onTap: () => provider.updateDashboardIndex(1),
-                    ),
+                ),
+                Expanded(
+                  child: BottomNavBarItem(
+                    svgIcon: SvgImages.newsIcon,
+                    isSelected: provider.selectedIndex == 1,
+                    onTap: () => provider.updateDashboardIndex(1),
                   ),
-                  Expanded(
-                    child: BottomNavBarItem(
-                      svgIcon: SvgImages.location,
-                      isSelected: provider.selectedIndex == 2,
-                      onTap: () => provider.updateDashboardIndex(2),
-                    ),
+                ),
+                Expanded(
+                  child: BottomNavBarItem(
+                    svgIcon: SvgImages.location,
+                    isSelected: provider.selectedIndex == 2,
+                    onTap: () => provider.updateDashboardIndex(2),
                   ),
-                  Expanded(
-                    child: BottomNavBarItem(
-                      svgIcon: SvgImages.moreIcon,
-                      isSelected: provider.selectedIndex == 3,
-                      onTap: () => provider.updateDashboardIndex(3),
-                    ),
+                ),
+                Expanded(
+                  child: BottomNavBarItem(
+                    svgIcon: SvgImages.moreIcon,
+                    isSelected: provider.selectedIndex == 3,
+                    onTap: () => provider.updateDashboardIndex(3),
                   ),
-                ])),
-      );
+                ),
+              ]));
     });
   }
 }
