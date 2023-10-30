@@ -49,68 +49,72 @@ class _NewsState extends State<News> {
                   color: Styles.BORDER_COLOR,
                 ),
               ),
-              NewsCard(),
-              Expanded(
-                  child: provider.isLoading
-                      ? ListAnimator(
-                          customPadding: EdgeInsets.symmetric(
-                            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                          ),
-                          data: List.generate(
-                              4,
-                              (i) => Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: Dimensions
-                                            .PADDING_SIZE_EXTRA_SMALL.h),
-                                    child: CustomShimmerContainer(
-                                      height: 220.h,
-                                      radius: 20,
-                                    ),
-                                  )),
-                        )
-                      : provider.model != null &&
-                              provider.model!.data != null &&
-                              provider.model!.data!.isNotEmpty
-                          ? RefreshIndicator(
-                              color: Styles.PRIMARY_COLOR,
-                              onRefresh: () async {
-                                provider.getNews();
-                              },
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                    child: ListAnimator(
-                                      data: List.generate(
-                                          provider.model?.data?.length ?? 0,
-                                          (i) => NewsCard(
-                                                newsItem:
-                                                    provider.model?.data?[i],
-                                              )),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          : RefreshIndicator(
-                              color: Styles.PRIMARY_COLOR,
-                              onRefresh: () async {
-                                provider.getNews();
-                              },
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                    child: ListAnimator(
-                                      data: [
-                                        EmptyState(
-                                          imgWidth: 215.w,
-                                          imgHeight: 220.h,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ))
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+                child: NewsCard(),
+              ),
+              // Expanded(
+              //     child: provider.isLoading
+              //         ? ListAnimator(
+              //             customPadding: EdgeInsets.symmetric(
+              //               horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+              //             ),
+              //             data: List.generate(
+              //                 4,
+              //                 (i) => Padding(
+              //                       padding: EdgeInsets.symmetric(
+              //                           vertical: Dimensions
+              //                               .PADDING_SIZE_EXTRA_SMALL.h),
+              //                       child: CustomShimmerContainer(
+              //                         height: 220.h,
+              //                         radius: 20,
+              //                       ),
+              //                     )),
+              //           )
+              //         : provider.model != null &&
+              //                 provider.model!.data != null &&
+              //                 provider.model!.data!.isNotEmpty
+              //             ? RefreshIndicator(
+              //                 color: Styles.PRIMARY_COLOR,
+              //                 onRefresh: () async {
+              //                   provider.getNews();
+              //                 },
+              //                 child: Column(
+              //                   children: [
+              //                     Expanded(
+              //                       child: ListAnimator(
+              //                         data: List.generate(
+              //                             provider.model?.data?.length ?? 0,
+              //                             (i) => NewsCard(
+              //                                   newsItem:
+              //                                       provider.model?.data?[i],
+              //                                 )),
+              //                       ),
+              //                     ),
+              //                   ],
+              //                 ),
+              //               )
+              //             : RefreshIndicator(
+              //                 color: Styles.PRIMARY_COLOR,
+              //                 onRefresh: () async {
+              //                   provider.getNews();
+              //                 },
+              //                 child: Column(
+              //                   children: [
+              //                     Expanded(
+              //                       child: ListAnimator(
+              //                         data: [
+              //                           EmptyState(
+              //                             imgWidth: 215.w,
+              //                             imgHeight: 220.h,
+              //                           ),
+              //                         ],
+              //                       ),
+              //                     ),
+              //                   ],
+              //                 ),
+              //               ))
             ],
           ),
         );

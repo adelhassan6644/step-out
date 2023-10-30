@@ -72,6 +72,7 @@ dependencies:
   path_provider: ^2.0.15
   firebase_core: ^2.18.0
   rxdart: ^0.26.0
+  scroll_to_index: ^3.0.1
 
 
 

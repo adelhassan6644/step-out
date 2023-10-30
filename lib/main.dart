@@ -1,12 +1,10 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:stepOut/firebase_options.dart';
+import 'package:stepOut/features/home/models/categories_model.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'app/core/utils/app_storage_keys.dart';
 import 'app/core/utils/un_focus.dart';
 import 'app/localization/localization/app_localization.dart';
 import 'app/localization/provider/localization_provider.dart';
-import 'app/notifications/my_notification.dart';
 import 'app/theme/dark_theme.dart';
 import 'app/theme/light_theme.dart';
 import 'app/theme/theme_provider/theme_provider.dart';
@@ -14,8 +12,8 @@ import 'data/config/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'app/core/utils/app_strings.dart';
+import 'features/category_details/page/category_details.dart';
 import 'navigation/custom_navigation.dart';
-import 'navigation/routes.dart';
 import 'package:stepOut/data/config/di.dart' as di;
 
 Future<void> main() async {
@@ -62,9 +60,12 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) => MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
           child: UnFocus(child: child!)),
-      initialRoute: Routes.SPLASH,
+      home: CategoryDetails(
+        item: CategoryItem(),
+      ),
+      // initialRoute: Routes.SPLASH,
       navigatorKey: CustomNavigator.navigatorState,
-      onGenerateRoute: CustomNavigator.onCreateRoute,
+      // onGenerateRoute: CustomNavigator.onCreateRoute,
       navigatorObservers: [CustomNavigator.routeObserver],
       title: AppStrings.appName,
       scaffoldMessengerKey: CustomNavigator.scaffoldState,

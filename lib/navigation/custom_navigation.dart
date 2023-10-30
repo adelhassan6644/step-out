@@ -1,6 +1,7 @@
 import 'package:stepOut/features/auth/pages/change_password.dart';
 import 'package:stepOut/features/auth/pages/reset_password.dart';
 import 'package:stepOut/features/category_details/page/category_details.dart';
+import 'package:stepOut/features/home/models/categories_model.dart';
 import 'package:stepOut/main_models/base_model.dart';
 import 'package:flutter/material.dart';
 import '../features/auth/pages/forget_password.dart';
@@ -60,7 +61,8 @@ abstract class CustomNavigator {
                 : null));
 
       case Routes.CATEGORY_DETAILS:
-        return _pageRoute(CategoryDetails(id: settings.arguments as int));
+        return _pageRoute(
+            CategoryDetails(item: settings.arguments as CategoryItem));
 
       case Routes.PLACE_DETAILS:
         return _pageRoute(PlaceDetails(id: settings.arguments as int));

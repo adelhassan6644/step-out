@@ -98,7 +98,7 @@ class _CategoryCard extends StatelessWidget {
       highlightColor: Colors.transparent,
       focusColor: Colors.transparent,
       onTap: () {
-        CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: item?.id);
+        CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: item);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
