@@ -38,7 +38,7 @@ class _SubcategoriesAppBarState extends State<SubcategoriesAppBar> {
   Timer? timer;
   bool showSearch = false;
 
-  double _checkValue(bool value) => value ? (context.width - 36.w) : 18.w;
+  double _checkValue(bool value) => value ? (context.width - 40.w) : 18.w;
   bool _checkLang() => sl<LocalizationProvider>().locale.languageCode == "en";
 
   @override
@@ -136,14 +136,16 @@ class _SubcategoriesAppBarState extends State<SubcategoriesAppBar> {
                 top: 8.h,
                 left: _checkValue(showSearch),
                 right: _checkValue(!showSearch),
-                child: customImageIconSVG(
-                    imageName: SvgImages.search,
-                    color: Colors.black,
-                    height: 30,
-                    width: 30,
-                    onTap: () {
-                      setState(() => showSearch = true);
-                    }),
+                child: SizedBox(
+                  height: 30,
+                  width: 30,
+                  child: customImageIconSVG(
+                      imageName: SvgImages.search,
+                      color: Colors.black,
+                      onTap: () {
+                        setState(() => showSearch = true);
+                      }),
+                ),
               ),
               Positioned(
                 right: _checkLang() ? context.width - 36.w : null,
@@ -152,24 +154,18 @@ class _SubcategoriesAppBarState extends State<SubcategoriesAppBar> {
                 child: AnimatedOpacity(
                   opacity: showSearch ? 0 : 1,
                   duration: const Duration(milliseconds: 400),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () {
-                      if (!showSearch) {
-                        CustomNavigator.pop();
-                      }
-                    },
-                    child: SizedBox(
-                      height: 30,
-                      width: 30,
-                      child: Center(
-                          child: customImageIconSVG(
-                              color: Colors.black,
-                              imageName: SvgImages.backArrow)),
-                    ),
+                  child: SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: Center(
+                        child: customImageIconSVG(
+                            onTap: () {
+                              if (!showSearch) {
+                                CustomNavigator.pop();
+                              }
+                            },
+                            color: Colors.black,
+                            imageName: SvgImages.backArrow)),
                   ),
                 ),
               ),
