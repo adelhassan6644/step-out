@@ -18,7 +18,7 @@ abstract class Styles {
   static const Color FILL_COLOR = Color(0xFFFAFAFA);
   static const Color DISABLED = Color(0xFF969696);
   static const Color WHITE_COLOR = Color(0xFFFFFFFF);
-  static const Color SMOKED_WHITE_COLOR = Color(0xFFFAFAFA);
+  static const Color SMOKED_WHITE_COLOR = Color(0xFFf4f4f4);
   static const Color OFFER_COLOR = Color(0xff22BB55);
   static const Color LOGOUT_COLOR = Color(0xffDF4759);
   static const Color GREEN = Color(0xff34C759);

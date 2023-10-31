@@ -32,40 +32,48 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: EdgeInsets.symmetric(
         horizontal: withPadding ? Dimensions.PADDING_SIZE_DEFAULT.w : 0,
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Column(
         children: [
-          withBack
-              ? InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () {
-                    CustomNavigator.pop();
-                  },
-                  child: SizedBox(
-                    height: actionWidth ?? 40,
-                    width: actionWidth ?? 40,
-                    child: Center(
-                        child: customImageIconSVG(
-                            color: backIconColor ?? Colors.black,
-                            imageName: SvgImages.backArrow)),
-                  ))
-              : SizedBox(
-                  width: actionWidth ?? 40,
-                ),
-          const Expanded(child: SizedBox()),
-          Text(
-            title ?? "",
-            style: AppTextStyles.semiBold
-                .copyWith(color: Colors.black, fontSize: 14),
+          SizedBox(
+            height: context.toPadding,
           ),
-          const Expanded(child: SizedBox()),
-          actionChild ??
-              const SizedBox(
-                width: 40,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              withBack
+                  ? InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {
+                        CustomNavigator.pop();
+                      },
+                      child: SizedBox(
+                        height: actionWidth ?? 30,
+                        width: actionWidth ?? 30,
+                        child: Center(
+                            child: customImageIconSVG(
+                                color: backIconColor ?? Colors.black,
+                                imageName: SvgImages.backArrow)),
+                      ))
+                  : SizedBox(
+                      width: actionWidth ?? 30,
+                    ),
+              const Expanded(child: SizedBox()),
+              Text(
+                title ?? "",
+                style: AppTextStyles.semiBold
+                    .copyWith(color: Colors.black, fontSize: 14),
               ),
+              const Expanded(child: SizedBox()),
+              SizedBox(
+                height: actionWidth ?? 30,
+                width: actionWidth ?? 30,
+                child: actionChild ?? const SizedBox(),
+              )
+            ],
+          ),
         ],
       ),
     );

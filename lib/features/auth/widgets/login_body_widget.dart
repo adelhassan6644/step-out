@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/components/animated_widget.dart';
+import 'package:stepOut/features/home/models/categories_model.dart';
 
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
@@ -164,7 +165,8 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                             return CustomButton(
                                 text: getTranslated("login", context),
                                 onTap: () {
-                                  CustomNavigator.push(Routes.DASHBOARD, arguments: 0);
+                                  CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: CategoryItem());
+                                  // CustomNavigator.push(Routes.DASHBOARD, arguments: 0);
 
                                   // _formKey.currentState!.validate();
                                   // if (snapshot.data == true) {

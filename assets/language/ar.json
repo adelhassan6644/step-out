@@ -98,5 +98,7 @@
   "news": "الأخبار",
   "offers": "العروض",
   "categories": "الأقسام",
-  "there_is_no_data": "لاغ يوجود بيانات"
+  "there_is_no_data": "لا يوجود بيانات",
+  "search_hint": "ابحث هنا...",
+  "cancel": "الغاء"
 }

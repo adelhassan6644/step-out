@@ -8,6 +8,7 @@ import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_images.dart';
 import '../../../data/config/di.dart';
 import '../widgets/category_details_header.dart';
+import '../widgets/subcategories_app_bar.dart';
 
 class CategoryDetails extends StatefulWidget {
   final CategoryItem item;
@@ -18,10 +19,13 @@ class CategoryDetails extends StatefulWidget {
 }
 
 class _CategoryDetailsState extends State<CategoryDetails> {
+  ScrollController controller = ScrollController();
+
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
       sl<CategoryDetailsProvider>().getCategoryDetails(widget.item.id);
+      sl<CategoryDetailsProvider>().scroll(controller);
     });
     super.initState();
   }
@@ -30,17 +34,14 @@ class _CategoryDetailsState extends State<CategoryDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Styles.BACKGROUND_COLOR,
-      appBar: CustomAppBar(
-        title: widget.item.title ?? "jrb",
-        actionChild: customImageIconSVG(imageName: SvgImages.search),
+      appBar: SubcategoriesAppBar(
+        title: widget.item.title ?? "Restaurants",
       ),
-      body: const SafeArea(
-        child: Column(
-          children: [
-            CategoryDetailsHeader(),
-            CategoryDetailsBody(),
-          ],
-        ),
+      body: Column(
+        children: [
+          const CategoryDetailsHeader(),
+          CategoryDetailsBody(id: widget.item.id ?? 0, controller: controller),
+        ],
       ),
     );
   }

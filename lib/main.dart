@@ -1,4 +1,3 @@
-import 'package:stepOut/features/home/models/categories_model.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'app/core/utils/app_storage_keys.dart';
@@ -12,9 +11,10 @@ import 'data/config/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'app/core/utils/app_strings.dart';
-import 'features/category_details/page/category_details.dart';
 import 'navigation/custom_navigation.dart';
 import 'package:stepOut/data/config/di.dart' as di;
+
+import 'navigation/routes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,12 +60,9 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) => MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
           child: UnFocus(child: child!)),
-      home: CategoryDetails(
-        item: CategoryItem(),
-      ),
-      // initialRoute: Routes.SPLASH,
+      initialRoute: Routes.SPLASH,
       navigatorKey: CustomNavigator.navigatorState,
-      // onGenerateRoute: CustomNavigator.onCreateRoute,
+      onGenerateRoute: CustomNavigator.onCreateRoute,
       navigatorObservers: [CustomNavigator.routeObserver],
       title: AppStrings.appName,
       scaffoldMessengerKey: CustomNavigator.scaffoldState,

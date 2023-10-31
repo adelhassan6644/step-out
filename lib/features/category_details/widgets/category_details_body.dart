@@ -1,117 +1,123 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:stepOut/app/core/utils/extensions.dart';
+import 'package:stepOut/app/localization/localization/language_constant.dart';
+import 'package:stepOut/components/animated_widget.dart';
 
 import '../../../app/core/utils/dimensions.dart';
-import '../../../app/core/utils/text_styles.dart';
+import '../../../app/core/utils/styles.dart';
+import '../../../components/empty_widget.dart';
 import '../../../components/shimmer/custom_shimmer.dart';
 import '../provider/category_details_provider.dart';
+import 'item_card.dart';
 
 class CategoryDetailsBody extends StatelessWidget {
-  const CategoryDetailsBody({super.key});
+  const CategoryDetailsBody(
+      {super.key, required this.id, required this.controller});
+  final int id;
+  final ScrollController controller;
 
   @override
   Widget build(BuildContext context) {
-    return  Consumer<CategoryDetailsProvider>(
+    return Consumer<CategoryDetailsProvider>(
       builder: (context, provider, child) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          // children: [
-          //   Padding(
-          //     padding: EdgeInsets.symmetric(
-          //         horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-          //     child: provider.isLoading
-          //         ? const CustomShimmerContainer(
-          //       width: 150,
-          //       height: 30,
-          //     )
-          //         : Text(provider.model?.data?.title ?? "",
-          //         style: AppTextStyles.semiBold.copyWith(
-          //             fontSize: 24,
-          //             color: provider.model?.data?.textColor?.toColor)),
-          //   ),
-          //   provider.isLoading
-          //       ? Expanded(
-          //     child: Padding(
-          //       padding: EdgeInsets.symmetric(
-          //           horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-          //       child: GridListAnimatorWidget(
-          //         items: List.generate(
-          //           8,
-          //               (int index) {
-          //             return AnimationConfiguration.staggeredGrid(
-          //               columnCount: 2,
-          //               position: index,
-          //               duration: const Duration(milliseconds: 375),
-          //               child: const ScaleAnimation(
-          //                 child: FadeInAnimation(
-          //                   child: CustomShimmerContainer(),
-          //                 ),
-          //               ),
-          //             );
-          //           },
-          //         ),
-          //       ),
-          //     ),
-          //   )
-          //       : provider.model != null &&
-          //       provider.model!.data != null &&
-          //       provider.model!.data!.places != null &&
-          //       provider.model!.data!.places != null &&
-          //       provider.model!.data!.places!.isNotEmpty
-          //       ? Expanded(
-          //     child: Padding(
-          //       padding: EdgeInsets.symmetric(
-          //           horizontal:
-          //           Dimensions.PADDING_SIZE_DEFAULT.w),
-          //       child: GridListAnimatorWidget(
-          //         items: List.generate(
-          //           provider.model!.data!.places!.length,
-          //               (int index) {
-          //             return AnimationConfiguration.staggeredGrid(
-          //               columnCount: 2,
-          //               position: index,
-          //               duration:
-          //               const Duration(milliseconds: 375),
-          //               child: ScaleAnimation(
-          //                 child: FadeInAnimation(
-          //                   child: PlaceCard(
-          //                     place: provider
-          //                         .model!.data!.places![index],
-          //                   ),
-          //                 ),
-          //               ),
-          //             );
-          //           },
-          //         ),
-          //       ),
-          //     ),
-          //   )
-          //       : Expanded(
-          //     child: RefreshIndicator(
-          //       color: Styles.PRIMARY_COLOR,
-          //       onRefresh: () async {
-          //         provider.getCategoryDetails(widget.item);
-          //       },
-          //       child: Padding(
-          //         padding: EdgeInsets.symmetric(
-          //             horizontal:
-          //             Dimensions.PADDING_SIZE_DEFAULT.w),
-          //         child: ListAnimator(
-          //           data: [
-          //             EmptyState(
-          //               imgWidth: 215.w,
-          //               imgHeight: 220.h,
-          //               spaceBtw: 12,
-          //               txt: "لا يوجد اماكن الان",
-          //               subText: "اكتشف معانا اماكن جديدة",
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //   )
-          // ],
-        );
+        return Expanded(
+            child: RefreshIndicator(
+          onRefresh: () async {
+            provider.getCategoryDetails(id);
+          },
+          color: Styles.PRIMARY_COLOR,
+          child: Column(
+            children: [
+              Expanded(
+                child: ListAnimator(
+                  customPadding: EdgeInsets.symmetric(
+                      horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+                  controller: controller,
+                  data: List.generate(
+                    8,
+                    (int index) {
+                      return const ItemCard();
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )
+
+            // provider.isLoading
+            //     ? ListAnimator(
+            //         customPadding: EdgeInsets.symmetric(
+            //             horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+            //         data: List.generate(
+            //           8,
+            //           (int index) {
+            //             return CustomShimmerContainer(
+            //               height: 200.h,
+            //               width: context.width,
+            //               radius: 20,
+            //             );
+            //           },
+            //         ),
+            //       )
+            //     : provider.model != null &&
+            //             provider.model!.data != null &&
+            //             provider.model!.data!.places != null &&
+            //             provider.model!.data!.places != null &&
+            //             provider.model!.data!.places!.isNotEmpty
+            //         ? RefreshIndicator(
+            //             onRefresh: () async {
+            //               provider.getCategoryDetails(id);
+            //             },
+            //             color: Styles.PRIMARY_COLOR,
+            //             child: Column(
+            //               children: [
+            //                 Expanded(
+            //                   child: ListAnimator(
+            //                     customPadding: EdgeInsets.symmetric(
+            //                         horizontal:
+            //                             Dimensions.PADDING_SIZE_DEFAULT.w),
+            //                     data: List.generate(
+            //                       8,
+            //                       (int index) {
+            //                         return const ItemCard();
+            //                       },
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ],
+            //             ),
+            //           )
+            //         : RefreshIndicator(
+            //             color: Styles.PRIMARY_COLOR,
+            //             onRefresh: () async {
+            //               provider.getCategoryDetails(id);
+            //             },
+            //             child: Column(
+            //               children: [
+            //                 Expanded(
+            //                   child: ListAnimator(
+            //                     customPadding: EdgeInsets.symmetric(
+            //                         horizontal:
+            //                             Dimensions.PADDING_SIZE_DEFAULT.w),
+            //                     data: [
+            //                       EmptyState(
+            //                         imgWidth: 215.w,
+            //                         imgHeight: 220.h,
+            //                         spaceBtw: 12,
+            //                         txt: getTranslated(
+            //                             "there_is_no_data", context),
+            //                         subText:
+            //                             "انتظرنا حتي تكتشف معانا اماكن جديدة",
+            //                       ),
+            //                     ],
+            //                   ),
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            );
       },
     );
   }

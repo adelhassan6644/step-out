@@ -96,5 +96,7 @@
   "news": "News",
   "offers": "Offers",
   "categories": "Categories",
-  "there_is_no_data": "There is no data"
+  "there_is_no_data": "There is no data",
+  "search_hint": "Search here ...",
+  "cancel": "Cancel"
 }

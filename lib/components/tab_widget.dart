@@ -1,68 +1,61 @@
-import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
-import '../../app/core/utils/styles.dart';
-import 'custom_images.dart';
+import 'package:stepOut/app/core/utils/dimensions.dart';
+import 'package:stepOut/app/core/utils/text_styles.dart';
+
+import '../app/core/utils/styles.dart';
+import '../components/custom_images.dart';
 
 class TabWidget extends StatelessWidget {
   const TabWidget({
-    required this.title,
+    required this.label,
     required this.isSelected,
-    required this.onTab,
-    this.iconSize,
-    this.iconColor,
-    this.height,
-    this.backGroundColor,
-    this.innerVPadding,
-    this.innerHPadding,
-    this.svgIcon,
+    required this.onTap,
     Key? key,
+    this.svgIcon,
   }) : super(key: key);
-  final String title;
+  final String label;
   final bool isSelected;
-  final Function() onTab;
+  final Function() onTap;
   final String? svgIcon;
-  final double? iconSize;
-  final Color? iconColor;
-  final double? height;
-  final Color? backGroundColor;
-  final double? innerVPadding, innerHPadding;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTab,
+      onTap: onTap,
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
       child: Container(
-        height: height,
+        height: 40,
         padding: EdgeInsets.symmetric(
-            horizontal: innerHPadding ?? 24.w, vertical: innerVPadding ?? 5),
+            horizontal:  Dimensions.PADDING_SIZE_DEFAULT.w,
+            vertical: 6.h),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6),
-            color: isSelected
-                ? backGroundColor ?? Styles.ACCENT_COLOR
-                : null),
+            border: Border(
+                bottom: BorderSide(
+                    width: 2,
+                    color: isSelected
+                        ? Styles.PRIMARY_COLOR
+                        : Styles.BORDER_COLOR))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (svgIcon != null)
               customImageIconSVG(
-                  imageName: svgIcon!,
-                  color: isSelected
-                      ? Styles.WHITE_COLOR
-                      : iconColor ?? Styles.ACCENT_COLOR,
-                  height: iconSize?.h,
-                  width: iconSize?.w),
-            if (svgIcon != null) SizedBox(width: 4.w),
-            Expanded(
+                imageName: svgIcon!,
+                color: isSelected
+                    ? Styles.WHITE_COLOR
+                    : Styles.WHITE_COLOR.withOpacity(.5),
+              ),
+            if (svgIcon != null) const SizedBox(width: 4),
+            Center(
               child: Text(
-                title,
-                overflow: TextOverflow.ellipsis,
+                label,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 13,
+                style: AppTextStyles.semiBold.copyWith(
                   overflow: TextOverflow.ellipsis,
-                  fontWeight: isSelected ? FontWeight.w500 : FontWeight.w400,
-                  color: isSelected
-                      ? Styles.WHITE_COLOR
-                      : Styles.ACCENT_COLOR,
+                  fontSize: 16,
+                  color: isSelected ? Styles.PRIMARY_COLOR : Styles.TITLE,
                 ),
               ),
             ),
