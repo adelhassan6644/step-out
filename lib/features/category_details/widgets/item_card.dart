@@ -15,6 +15,10 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
       child: Container(
         margin: EdgeInsets.only(
           bottom: Dimensions.PADDING_SIZE_DEFAULT.h,
