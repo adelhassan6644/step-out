@@ -65,7 +65,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const CustomAppBar(
-                    backIconColor: Styles.WHITE_COLOR,
+                    fromAuth: true,
                     withPadding: false,
                   ),
                   const Expanded(child: SizedBox()),
@@ -125,8 +125,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                           hint: getTranslated(
                                               "enter_your_mail", context),
                                           withLabel: true,
-                                          onTapOutside: (v) =>
-                                              setState(() => focusOnEmail = false),
+                                          onTapOutside: (v) => setState(
+                                              () => focusOnEmail = false),
                                           onTap: () {
                                             setState(() =>
                                                 focusOnEmail = !focusOnEmail);

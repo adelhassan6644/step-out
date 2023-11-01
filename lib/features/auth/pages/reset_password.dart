@@ -67,7 +67,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   const CustomAppBar(
-                    backIconColor: Styles.WHITE_COLOR,
+                    fromAuth: true,
                     withPadding: false,
                   ),
                   const Expanded(child: SizedBox()),
