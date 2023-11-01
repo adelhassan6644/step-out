@@ -15,13 +15,9 @@
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/app.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/debug_ios_bundle_flutter_assets.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/debug_ios_bundle_flutter_assets.stamp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/flutter_assets.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_07_2023__2_19_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_07_2023__2_19_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/e5af93aeb062c1faf752195ab72478e5.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/e5af93aeb062c1faf752195ab72478e5.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/components/custom_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/custom_app_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/auth/pages/forget_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/auth/pages/forget_password.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/auth/pages/reset_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/auth/pages/reset_password.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/auth/pages/verification.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/auth/pages/verification.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
