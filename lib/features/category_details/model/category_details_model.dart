@@ -1,5 +1,3 @@
-import '../../home/models/places_model.dart';
-
 class CategoryDetailsModel {
   String? message;
   Data? data;
@@ -28,7 +26,6 @@ class Data {
   String? textColor;
   String? color;
   String? description;
-  List<PlaceItem>? places;
 
   Data(
       {this.id,
@@ -37,7 +34,7 @@ class Data {
       this.textColor,
       this.color,
       this.description,
-      this.places});
+     });
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -46,12 +43,6 @@ class Data {
     textColor = json['text_color'];
     color = json['color'];
     description = json['description'];
-    if (json['places'] != null) {
-      places = [];
-      json['places'].forEach((v) {
-        places!.add(PlaceItem.fromJson(v));
-      });
-    }
   }
 
   Map<String, dynamic> toJson() {
@@ -62,9 +53,7 @@ class Data {
     data['text_color'] = textColor;
     data['color'] = color;
     data['description'] = description;
-    if (places != null) {
-      data['places'] = places!.map((v) => v.toJson()).toList();
-    }
+
     return data;
   }
 }

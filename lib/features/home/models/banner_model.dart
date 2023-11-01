@@ -1,5 +1,3 @@
-import 'package:stepOut/features/home/models/places_model.dart';
-
 class BannerModel {
   String? message;
   List<Data>? data;
@@ -28,27 +26,26 @@ class BannerModel {
 
 class Data {
   int? id;
+  int? itemId;
   String? image;
   String? title;
-  PlaceItem? place;
 
-  Data({this.id, this.image, this.title, this.place});
+  Data({this.id, this.itemId, this.image, this.title});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    itemId = json['item_id'];
     image = json['image'];
     title = json['title'];
-    place = json['place'] != null ? PlaceItem.fromJson(json['place']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
+    data['item_id'] = itemId;
     data['image'] = image;
     data['title'] = title;
-    if (place != null) {
-      data['place'] = place!.toJson();
-    }
+
     return data;
   }
 }

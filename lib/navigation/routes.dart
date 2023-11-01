@@ -14,9 +14,8 @@ class Routes {
   static const EDIT_PROFILE = "EDIT_PROFILE";
   static const MAP = "PICK_LOCATION";
   static const CATEGORY_DETAILS = "CATEGORY_DETAILS";
-  static const PLACE_DETAILS = "PLACE_DETAILS";
+  static const ITEM_DETAILS = "ITEM_DETAILS";
   static const CONTACT_WITH_US = "CONTACT_WITH_US";
   static const ABOUT_US = "ABOUT_US";
   static const TERMS = "TERMS";
-
 }

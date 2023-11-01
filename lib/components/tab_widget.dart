@@ -8,13 +8,16 @@ import '../components/custom_images.dart';
 class TabWidget extends StatelessWidget {
   const TabWidget({
     required this.label,
+     this.fontSize=16,
+    this.withUpperBorder = false,
     required this.isSelected,
     required this.onTap,
     Key? key,
     this.svgIcon,
   }) : super(key: key);
+  final double fontSize;
   final String label;
-  final bool isSelected;
+  final bool isSelected, withUpperBorder;
   final Function() onTap;
   final String? svgIcon;
   @override
@@ -26,17 +29,18 @@ class TabWidget extends StatelessWidget {
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       child: Container(
-        height: 40,
         padding: EdgeInsets.symmetric(
-            horizontal:  Dimensions.PADDING_SIZE_DEFAULT.w,
-            vertical: 6.h),
+            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w, vertical: 8.h),
         decoration: BoxDecoration(
-            border: Border(
-                bottom: BorderSide(
-                    width: 2,
-                    color: isSelected
-                        ? Styles.PRIMARY_COLOR
-                        : Styles.BORDER_COLOR))),
+          border: Border(
+            top: withUpperBorder
+                ? const BorderSide(width: 2, color: Styles.BORDER_COLOR)
+                : const BorderSide(width: 0, color: Colors.transparent),
+            bottom: BorderSide(
+                width: 2,
+                color: isSelected ? Styles.PRIMARY_COLOR : Styles.BORDER_COLOR),
+          ),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -48,15 +52,14 @@ class TabWidget extends StatelessWidget {
                     : Styles.WHITE_COLOR.withOpacity(.5),
               ),
             if (svgIcon != null) const SizedBox(width: 4),
-            Center(
-              child: Text(
-                label,
-                textAlign: TextAlign.center,
-                style: AppTextStyles.semiBold.copyWith(
-                  overflow: TextOverflow.ellipsis,
-                  fontSize: 16,
-                  color: isSelected ? Styles.PRIMARY_COLOR : Styles.TITLE,
-                ),
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              style: AppTextStyles.semiBold.copyWith(
+                overflow: TextOverflow.ellipsis,
+                fontSize: fontSize,
+                color: isSelected ? Styles.PRIMARY_COLOR : Styles.TITLE,
               ),
             ),
           ],

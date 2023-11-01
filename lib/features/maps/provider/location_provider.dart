@@ -9,7 +9,7 @@ import '../../../app/localization/localization/language_constant.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
 import '../../../navigation/custom_navigation.dart';
-import '../../home/models/places_model.dart';
+import '../../item_details/model/item_details_model.dart';
 import '../models/location_model.dart';
 import '../models/prediction_model.dart';
 import '../repo/maps_repo.dart';
@@ -34,7 +34,9 @@ class LocationProvider extends ChangeNotifier {
       altitude: 1,
       heading: 1,
       speed: 1,
-      speedAccuracy: 1,altitudeAccuracy: 1, headingAccuracy: 1);
+      speedAccuracy: 1,
+      altitudeAccuracy: 1,
+      headingAccuracy: 1);
   Position pickPosition = Position(
       longitude: 0,
       latitude: 0,
@@ -43,7 +45,9 @@ class LocationProvider extends ChangeNotifier {
       altitude: 1,
       heading: 1,
       speed: 1,
-      speedAccuracy: 1, altitudeAccuracy: 1, headingAccuracy: 1);
+      speedAccuracy: 1,
+      altitudeAccuracy: 1,
+      headingAccuracy: 1);
   Future<List<PredictionModel>> searchLocation(
       BuildContext context, String text) async {
     if (text.isNotEmpty) {
@@ -86,14 +90,15 @@ class LocationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  getLocation(
-    bool fromAddress, {required GoogleMapController mapController}) async {
+  getLocation(bool fromAddress,
+      {required GoogleMapController mapController}) async {
     isLoading = true;
     notifyListeners();
-      await Geolocator.requestPermission();
-      Position newLocalData = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high,);
-      _myPosition = newLocalData;
+    await Geolocator.requestPermission();
+    Position newLocalData = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+    _myPosition = newLocalData;
     if (fromAddress) {
       position = _myPosition!;
     } else {
@@ -142,16 +147,16 @@ class LocationProvider extends ChangeNotifier {
       notifyListeners();
 
       pickPosition = Position(
-        latitude: position.target.latitude,
-        longitude: position.target.longitude,
-        timestamp: DateTime.now(),
-        heading: 1,
-        accuracy: 1,
-        altitude: 1,
-        speedAccuracy: 1,
-        speed: 1,
-          altitudeAccuracy: 1, headingAccuracy: 1
-      );
+          latitude: position.target.latitude,
+          longitude: position.target.longitude,
+          timestamp: DateTime.now(),
+          heading: 1,
+          accuracy: 1,
+          altitude: 1,
+          speedAccuracy: 1,
+          speed: 1,
+          altitudeAccuracy: 1,
+          headingAccuracy: 1);
       decodeLatLong(
           latitude: position.target.latitude,
           longitude: position.target.longitude);
@@ -169,17 +174,17 @@ class LocationProvider extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     }
-
   }
 
-
-  PlacesModel? placesModel;
+  List<ItemDetailsModel>? model;
   bool isGetPlaces = false;
   getPlaces(position) async {
     try {
+      model?.clear();
       isGetPlaces = true;
       notifyListeners();
-      Either<ServerFailure, Response> response = await locationRepo.getLocationPlaces(position: position);
+      Either<ServerFailure, Response> response =
+          await locationRepo.getLocationPlaces(position: position);
       response.fold((fail) {
         isGetPlaces = false;
         CustomSnackBar.showSnackBar(
@@ -190,7 +195,7 @@ class LocationProvider extends ChangeNotifier {
                 borderColor: Colors.transparent));
         notifyListeners();
       }, (success) {
-        placesModel = PlacesModel.fromJson(success.data);
+        // model = ItemDetailsModel.fromJson(success.data);
         isGetPlaces = false;
         notifyListeners();
       });
@@ -205,5 +210,4 @@ class LocationProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-
 }

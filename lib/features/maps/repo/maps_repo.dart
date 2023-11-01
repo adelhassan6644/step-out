@@ -51,7 +51,7 @@ class MapsRepo {
   Future<Either<ServerFailure, Response>> getLocationPlaces(
       {var position}) async {
     try {
-      Response response = await dioClient.get(uri: EndPoints.place);
+      Response response = await dioClient.get(uri: "");
       if (response.statusCode == 200) {
         return Right(response);
       } else {

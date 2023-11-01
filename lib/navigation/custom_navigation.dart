@@ -2,6 +2,7 @@ import 'package:stepOut/features/auth/pages/change_password.dart';
 import 'package:stepOut/features/auth/pages/reset_password.dart';
 import 'package:stepOut/features/category_details/page/category_details.dart';
 import 'package:stepOut/features/home/models/categories_model.dart';
+import 'package:stepOut/features/item_details/page/item_details.dart';
 import 'package:stepOut/main_models/base_model.dart';
 import 'package:flutter/material.dart';
 import '../features/auth/pages/forget_password.dart';
@@ -11,7 +12,6 @@ import '../features/auth/pages/verification.dart';
 import '../features/contact_with_us/page/contact_with_us.dart';
 import '../features/maps/page/map_page.dart';
 import '../features/on_boarding/pages/on_boarding.dart';
-import '../features/place_details/page/place_details.dart';
 import '../features/splash/page/splash.dart';
 import '../main.dart';
 import '../main_page/pages/dashboard.dart';
@@ -64,8 +64,8 @@ abstract class CustomNavigator {
         return _pageRoute(
             CategoryDetails(item: settings.arguments as CategoryItem));
 
-      case Routes.PLACE_DETAILS:
-        return _pageRoute(PlaceDetails(id: settings.arguments as int));
+      case Routes.ITEM_DETAILS:
+        return _pageRoute(ItemDetails(id: settings.arguments as int));
 
       case Routes.CONTACT_WITH_US:
         return _pageRoute(const ContactWithUs());

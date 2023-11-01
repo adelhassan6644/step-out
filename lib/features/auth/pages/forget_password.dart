@@ -65,8 +65,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const CustomAppBar(
-                    fromAuth: true,
+                    withSafeArea: false,
                     withPadding: false,
+                    backColor: Styles.WHITE_COLOR,
                   ),
                   const Expanded(child: SizedBox()),
                   Row(

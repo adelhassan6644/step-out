@@ -12,6 +12,7 @@ class AppStrings {
   static LocationModel defaultDrop = LocationModel(
       address: defaultAddress, longitude: defaultLong, latitude: defaultLat);
 
+  static const String networkImage = 'https://images.unsplash.com/photo-1575936123452-b67c3203c357?auto=format&fit=crop&q=80&w=2940&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
   static const String fontFamily = 'ar';
   static const String noRouteFound = 'No Route Found';
   static const String cachedRandomQuote = 'CACHED_RANDOM_QUOTE';

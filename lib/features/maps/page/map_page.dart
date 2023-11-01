@@ -7,7 +7,7 @@ import '../../../app/core/utils/app_strings.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../main_models/base_model.dart';
 import '../provider/location_provider.dart';
-import '../widget/map_places.dart';
+import '../widget/map_items.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({this.baseModel, Key? key}) : super(key: key);

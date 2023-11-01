@@ -31,35 +31,6 @@ class HomeRepo {
     }
   }
 
-
-  Future<Either<ServerFailure, Response>> getHomeNews() async {
-    try {
-      Response response = await dioClient.get(uri: EndPoints.news);
-      if (response.statusCode == 200) {
-        return Right(response);
-      } else {
-        return left(ServerFailure(response.data['message']));
-      }
-    } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
-    }
-  }
-
-
-
-  Future<Either<ServerFailure, Response>> getHomePlaces() async {
-    try {
-      Response response = await dioClient.get(uri: EndPoints.place);
-      if (response.statusCode == 200) {
-        return Right(response);
-      } else {
-        return left(ServerFailure(response.data['message']));
-      }
-    } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
-    }
-  }
-
   Future<Either<ServerFailure, Response>> getHomeOffers() async {
     try {
       Response response = await dioClient.get(uri: EndPoints.offers);

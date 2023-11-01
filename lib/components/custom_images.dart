@@ -35,8 +35,7 @@ Widget customCircleSvgIcon(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CircleAvatar(
-          backgroundColor:
-              color ?? Styles.PRIMARY_COLOR.withOpacity(0.1),
+          backgroundColor: color ?? Styles.PRIMARY_COLOR.withOpacity(0.1),
           radius: radius ?? 24.w,
           child: SvgPicture.asset(
             imageName,
@@ -51,8 +50,8 @@ Widget customCircleSvgIcon(
               ),
               Text(
                 title ?? "",
-                style: AppTextStyles.medium.copyWith(
-                    color: Styles.PRIMARY_COLOR, fontSize: 10),
+                style: AppTextStyles.medium
+                    .copyWith(color: Styles.PRIMARY_COLOR, fontSize: 10),
                 overflow: TextOverflow.ellipsis,
               )
             ],
@@ -66,8 +65,7 @@ Widget customCircleSvgIcon(
 Widget customContainerSvgIcon(
     {required String imageName,
     Function? onTap,
-    color,
-    imageColor,
+    Color? color,
     bool withShadow = false,
     double? width,
     double? height,
@@ -90,11 +88,12 @@ Widget customContainerSvgIcon(
                       blurRadius: 5)
                 ]
               : null,
-          color: color ?? Styles.PRIMARY_COLOR.withOpacity(0.1),
+          color:
+              color?.withOpacity(0.2) ?? Styles.PRIMARY_COLOR.withOpacity(0.2),
           borderRadius: BorderRadius.circular(radius ?? 12)),
       child: SvgPicture.asset(
         imageName,
-        color: imageColor,
+        color: color,
       ),
     ),
   );

@@ -8,30 +8,19 @@ import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../data/error/failures.dart';
 import '../models/categories_model.dart';
-import '../models/news_model.dart';
 import '../models/offers_model.dart';
-import '../models/places_model.dart';
 import '../repo/home_repo.dart';
 
 class HomeProvider extends ChangeNotifier {
   HomeRepo homeRepo;
   HomeProvider({required this.homeRepo});
 
-
   bool get isLogin => homeRepo.isLoggedIn();
 
   CarouselController bannerController = CarouselController();
-  late int _placesIndex = 0;
-  int get bannerIndex => _placesIndex;
-  void setPlacesIndex(int index) {
-    _placesIndex = index;
-    notifyListeners();
-  }
-
-  late int _offersIndex = 0;
-  int get offersIndex => _offersIndex;
-  void setOffersIndex(int index) {
-    _offersIndex = index;
+  int bannerIndex = 0;
+  void setBannerIndex(int index) {
+    bannerIndex = index;
     notifyListeners();
   }
 
@@ -68,39 +57,6 @@ class HomeProvider extends ChangeNotifier {
     }
   }
 
-  PlacesModel? placesModel;
-  bool isGetPlaces = false;
-  getPlaces() async {
-    try {
-      isGetPlaces = true;
-      notifyListeners();
-      Either<ServerFailure, Response> response = await homeRepo.getHomePlaces();
-      response.fold((fail) {
-        isGetPlaces = false;
-        CustomSnackBar.showSnackBar(
-            notification: AppNotification(
-                message: ApiErrorHandler.getMessage(fail),
-                isFloating: true,
-                backgroundColor: Styles.IN_ACTIVE,
-                borderColor: Colors.transparent));
-        notifyListeners();
-      }, (success) {
-        placesModel = PlacesModel.fromJson(success.data);
-        isGetPlaces = false;
-        notifyListeners();
-      });
-    } catch (e) {
-      isGetPlaces = false;
-      CustomSnackBar.showSnackBar(
-          notification: AppNotification(
-              message: e.toString(),
-              isFloating: true,
-              backgroundColor: Styles.IN_ACTIVE,
-              borderColor: Colors.transparent));
-      notifyListeners();
-    }
-  }
-
   CategoriesModel? categoriesModel;
   bool isGetCategories = false;
   getCategories() async {
@@ -125,45 +81,6 @@ class HomeProvider extends ChangeNotifier {
       });
     } catch (e) {
       isGetCategories = false;
-      CustomSnackBar.showSnackBar(
-          notification: AppNotification(
-              message: e.toString(),
-              isFloating: true,
-              backgroundColor: Styles.IN_ACTIVE,
-              borderColor: Colors.transparent));
-      notifyListeners();
-    }
-  }
-
-  // bool show = false;
-  // showAllNews() {
-  //   show = true;
-  //   notifyListeners();
-  // }
-
-  NewsModel? newsModel;
-  bool isExploring = false;
-  getNews() async {
-    try {
-      isExploring = true;
-      notifyListeners();
-      Either<ServerFailure, Response> response = await homeRepo.getHomeNews();
-      response.fold((fail) {
-        isExploring = false;
-        CustomSnackBar.showSnackBar(
-            notification: AppNotification(
-                message: ApiErrorHandler.getMessage(fail),
-                isFloating: true,
-                backgroundColor: Styles.IN_ACTIVE,
-                borderColor: Colors.transparent));
-        notifyListeners();
-      }, (success) {
-        newsModel = NewsModel.fromJson(success.data);
-        isExploring = false;
-        notifyListeners();
-      });
-    } catch (e) {
-      isExploring = false;
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
               message: e.toString(),

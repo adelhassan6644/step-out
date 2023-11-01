@@ -53,8 +53,9 @@ class _VerificationState extends State<Verification> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   const CustomAppBar(
-                    fromAuth: true,
+                    withSafeArea: false,
                     withPadding: false,
+                    backColor: Styles.WHITE_COLOR,
                   ),
                   const Expanded(child: SizedBox()),
                   Text(

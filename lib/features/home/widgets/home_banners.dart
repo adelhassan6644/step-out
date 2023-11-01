@@ -40,7 +40,7 @@ class HomeBanner extends StatelessWidget {
                               disableCenter: true,
                               pageSnapping: true,
                               onPageChanged: (index, reason) {
-                                provider.setPlacesIndex(index);
+                                provider.setBannerIndex(index);
                               },
                             ),
                             disableGesture: true,
@@ -48,9 +48,9 @@ class HomeBanner extends StatelessWidget {
                             itemBuilder: (context, index, _) {
                               return InkWell(
                                 onTap: () {
-                                  CustomNavigator.push(Routes.PLACE_DETAILS,
+                                  CustomNavigator.push(Routes.ITEM_DETAILS,
                                       arguments: provider.bannerModel
-                                              ?.data?[index].place?.id ??
+                                              ?.data?[index].itemId ??
                                           0);
                                 },
                                 child: CustomNetworkImage.containerNewWorkImage(

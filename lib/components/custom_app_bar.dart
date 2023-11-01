@@ -12,16 +12,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool withBack;
   final bool withPadding;
   final double? height;
-  final bool fromAuth;
+  final bool withSafeArea;
+  final Color? backColor;
   final double? actionWidth;
 
   const CustomAppBar(
       {Key? key,
       this.title,
       this.height,
+      this.backColor,
       this.withPadding = true,
       this.withBack = true,
-      this.fromAuth = false,
+      this.withSafeArea = true,
       this.actionWidth,
       this.actionChild})
       : super(key: key);
@@ -29,7 +31,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      top: !fromAuth,
+      top: withSafeArea,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: withPadding ? Dimensions.PADDING_SIZE_DEFAULT.w : 0,
@@ -51,7 +53,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       width: actionWidth ?? 30,
                       child: Center(
                           child: customImageIconSVG(
-                              color: fromAuth ? Colors.white : Colors.black,
+                              color: backColor ?? Colors.black,
                               imageName: SvgImages.backArrow)),
                     ))
                 : SizedBox(

@@ -52,6 +52,7 @@ class SvgImages {
   static const String faceBook = 'assets/svgs/facebook.svg';
   static const String twitter = 'assets/svgs/twitter.svg';
   static const String instagram = 'assets/svgs/instagram.svg';
+  static const String export = 'assets/svgs/export.svg';
   static const String tiktok = 'assets/svgs/tiktok.svg';
   static const String mailIcon = 'assets/svgs/mail.svg';
   static const String lockIcon = 'assets/svgs/lock.svg';

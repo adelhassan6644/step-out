@@ -9,7 +9,7 @@ import '../../../app/core/utils/styles.dart';
 import '../../../components/empty_widget.dart';
 import '../../../components/shimmer/custom_shimmer.dart';
 import '../provider/category_details_provider.dart';
-import 'item_card.dart';
+import '../../../main_widgets/item_card.dart';
 
 class CategoryDetailsBody extends StatelessWidget {
   const CategoryDetailsBody(

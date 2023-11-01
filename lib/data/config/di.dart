@@ -12,11 +12,11 @@ import '../../features/category_details/repo/category_details_repo.dart';
 import '../../features/contact_with_us/provider/contact_provider.dart';
 import '../../features/contact_with_us/repo/contact_repo.dart';
 import '../../features/home/provider/home_provider.dart';
+import '../../features/item_details/provider/item_details_provider.dart';
+import '../../features/item_details/repo/item_details_repo.dart';
 import '../../features/maps/repo/maps_repo.dart';
 import '../../features/news/provider/news_provider.dart';
 import '../../features/news/repo/news_repo.dart';
-import '../../features/place_details/provider/place_details_provider.dart';
-import '../../features/place_details/repo/place_details_repo.dart';
 import '../../features/profile/provider/profile_provider.dart';
 import '../../features/profile/repo/profile_repo.dart';
 import '../../main_page/provider/main_page_provider.dart';
@@ -56,7 +56,7 @@ Future<void> init() async {
   sl.registerLazySingleton(
       () => CategoryDetailsRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
-      () => PlaceDetailsRepo(sharedPreferences: sl(), dioClient: sl()));
+      () => ItemDetailsRepo(sharedPreferences: sl(), dioClient: sl()));
   // sl.registerLazySingleton(
   //     () => SettingRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
@@ -71,7 +71,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => AuthProvider(authRepo: sl()));
   sl.registerLazySingleton(() => NewsProvider(repo: sl()));
   sl.registerLazySingleton(() => CategoryDetailsProvider(repo: sl()));
-  sl.registerLazySingleton(() => PlaceDetailsProvider(repo: sl()));
+  sl.registerLazySingleton(() => ItemDetailsProvider(repo: sl()));
   sl.registerLazySingleton(() => HomeProvider(homeRepo: sl()));
   sl.registerLazySingleton(() => ProfileProvider(profileRepo: sl()));
   sl.registerLazySingleton(() => MapProvider());
