@@ -77,4 +77,5 @@ class SvgImages {
   static const String login = 'assets/svgs/login.svg';
   static const String send = 'assets/svgs/send.svg';
   static const String trash = 'assets/svgs/trash.svg';
+  static const String clock = 'assets/svgs/clock.svg';
 }

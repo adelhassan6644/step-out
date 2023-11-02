@@ -13,7 +13,9 @@ import '../../features/contact_with_us/provider/contact_provider.dart';
 import '../../features/contact_with_us/repo/contact_repo.dart';
 import '../../features/home/provider/home_provider.dart';
 import '../../features/item_details/provider/item_details_provider.dart';
+import '../../features/item_details/provider/send_rate_provider.dart';
 import '../../features/item_details/repo/item_details_repo.dart';
+import '../../features/item_details/repo/ratting_repo.dart';
 import '../../features/maps/repo/maps_repo.dart';
 import '../../features/news/provider/news_provider.dart';
 import '../../features/news/repo/news_repo.dart';
@@ -57,6 +59,8 @@ Future<void> init() async {
       () => CategoryDetailsRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
       () => ItemDetailsRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(
+      () => RattingRepo(sharedPreferences: sl(), dioClient: sl()));
   // sl.registerLazySingleton(
   //     () => SettingRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
@@ -72,6 +76,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => NewsProvider(repo: sl()));
   sl.registerLazySingleton(() => CategoryDetailsProvider(repo: sl()));
   sl.registerLazySingleton(() => ItemDetailsProvider(repo: sl()));
+  sl.registerLazySingleton(() => RattingProvider(repo: sl()));
   sl.registerLazySingleton(() => HomeProvider(homeRepo: sl()));
   sl.registerLazySingleton(() => ProfileProvider(profileRepo: sl()));
   sl.registerLazySingleton(() => MapProvider());

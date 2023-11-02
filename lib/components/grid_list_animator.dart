@@ -11,7 +11,7 @@ class GridListAnimatorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
       padding: EdgeInsets.only(top: 20.h),
-      crossAxisCount: 3,
+      crossAxisCount: 2,
       physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
       addAutomaticKeepAlives: true,

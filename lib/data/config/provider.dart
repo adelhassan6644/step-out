@@ -10,6 +10,7 @@ import '../../features/category_details/provider/category_details_provider.dart'
 import '../../features/contact_with_us/provider/contact_provider.dart';
 import '../../features/home/provider/home_provider.dart';
 import '../../features/item_details/provider/item_details_provider.dart';
+import '../../features/item_details/provider/send_rate_provider.dart';
 import '../../features/news/provider/news_provider.dart';
 import '../../features/profile/provider/profile_provider.dart';
 import '../../features/splash/provider/splash_provider.dart';
@@ -30,6 +31,7 @@ abstract class ProviderList {
     ChangeNotifierProvider(create: (_) => di.sl<MapProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<CategoryDetailsProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<ItemDetailsProvider>()),
+    ChangeNotifierProvider(create: (_) => di.sl<RattingProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<CalenderProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<LocationProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<ContactProvider>()),

@@ -35,64 +35,60 @@ class _ItemDetailsState extends State<ItemDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Styles.BACKGROUND_COLOR,
-      body: SafeArea(
-        top: false,
-        child:
-            Consumer<ItemDetailsProvider>(builder: (context, provider, child) {
+      body: Consumer<ItemDetailsProvider>(builder: (context, provider, child) {
           return provider.isLoading
-              ? Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    CustomNetworkImage.containerNewWorkImage(
-                        image: "",
-                        width: context.width,
-                        height: context.height,
-                        fit: BoxFit.fitWidth,
-                        radius: 0),
-                    const Column(
-                      children: [
-                        CustomAppBar(),
-                        Expanded(child: SizedBox()),
-                        PlaceDetailsWidgetShimmer(),
-                      ],
-                    ),
-                  ],
-                )
-              : provider.model == null
-                  ? Stack(
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        Column(
-                          children: [
-                            CustomNetworkImage.containerNewWorkImage(
-                                image: AppStrings.networkImage,
-                                imageWidget: const Column(
-                                  children: [
-                                    CustomAppBar(
-                                      withSafeArea: true,
-                                      backColor: Styles.WHITE_COLOR,
-                                    ),
-                                    Expanded(child: SizedBox())
-                                  ],
-                                ),
-                                height: 240.h,
-                                width: context.width,
-                                radius: 0),
-                            const Expanded(child: SizedBox()),
-                          ],
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 175.h),
-                          child: const ItemDetailsBody(),
-                        ),
-                      ],
-                    )
-                  : const EmptyState(
-                      emptyHeight: 200,
-                      imgHeight: 110,
-                    );
+        ? Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              CustomNetworkImage.containerNewWorkImage(
+                  image: "",
+                  width: context.width,
+                  height: context.height,
+                  fit: BoxFit.fitWidth,
+                  radius: 0),
+              const Column(
+                children: [
+                  CustomAppBar(),
+                  Expanded(child: SizedBox()),
+                  PlaceDetailsWidgetShimmer(),
+                ],
+              ),
+            ],
+          )
+        : provider.model == null
+            ? Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  Column(
+                    children: [
+                      CustomNetworkImage.containerNewWorkImage(
+                          image: AppStrings.networkImage,
+                          imageWidget: const Column(
+                            children: [
+                              CustomAppBar(
+                                withSafeArea: true,
+                                backColor: Styles.WHITE_COLOR,
+                              ),
+                              Expanded(child: SizedBox())
+                            ],
+                          ),
+                          height: 240.h,
+                          width: context.width,
+                          radius: 0),
+                      const Expanded(child: SizedBox()),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 175.h),
+                    child: const ItemDetailsBody(),
+                  ),
+                ],
+              )
+            : const EmptyState(
+                emptyHeight: 200,
+                imgHeight: 110,
+              );
         }),
-      ),
     );
   }
 }

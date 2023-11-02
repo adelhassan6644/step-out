@@ -13,7 +13,7 @@ class Validations {
 
   static String? mail(String? email) {
     if (email == null ||
-        email!.length < 8 ||
+        email.length < 8 ||
         !email.contains("@") ||
         !email.contains(".com")) {
       return getTranslated("please_enter_valid_email",
@@ -118,4 +118,14 @@ class Validations {
       return null;
     }
   }
+
+  static String? feedBack(String? value) {
+    if (value == null || value.length < 4) {
+      return getTranslated("please_enter_your_feedback",
+          CustomNavigator.navigatorState.currentContext!);
+    } else {
+      return null;
+    }
+  }
+
 }

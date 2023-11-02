@@ -1,48 +1,50 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:stepOut/app/core/utils/extensions.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
+import 'package:stepOut/components/animated_widget.dart';
 
+import '../../../app/core/utils/app_strings.dart';
+import '../../../app/core/utils/dimensions.dart';
 import '../../../components/custom_network_image.dart';
+import '../../../components/grid_list_animator.dart';
 import '../provider/item_details_provider.dart';
 
 class ItemDetailsImages extends StatelessWidget {
-  final List<String> images;
-  const ItemDetailsImages({super.key, required this.images});
+  const ItemDetailsImages({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return images.isEmpty
-        ? CustomNetworkImage.containerNewWorkImage(
-            image: "",
-            width: context.width,
-            height: context.height,
-            fit: BoxFit.fitWidth,
-            radius: 0)
-        : Consumer<ItemDetailsProvider>(builder: (context, provider, child) {
-            return CarouselSlider.builder(
-              options: CarouselOptions(
-                viewportFraction: 1,
-                autoPlay: false,
-                height: context.height,
-                enlargeCenterPage: false,
-                disableCenter: true,
-                pageSnapping: true,
-                onPageChanged: (index, reason) {
-                  // provider.setPlacesIndex(index);
+    return Expanded(
+      child: ListAnimator(
+        customPadding:
+            EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+        data: [
+          Consumer<ItemDetailsProvider>(builder: (context, provider, child) {
+            return GridListAnimatorWidget(
+              aspectRatio: 1.6,
+              items: List.generate(
+                8,
+                (int index) {
+                  return AnimationConfiguration.staggeredGrid(
+                    columnCount: 2,
+                    position: index,
+                    duration: const Duration(milliseconds: 375),
+                    child: ScaleAnimation(
+                      child: FadeInAnimation(
+                        child: CustomNetworkImage.containerNewWorkImage(
+                            radius: 20, image: AppStrings.networkImage),
+                      ),
+                    ),
+                  );
                 },
               ),
-              disableGesture: true,
-              itemCount: images.length,
-              itemBuilder: (context, index, _) {
-                return CustomNetworkImage.containerNewWorkImage(
-                    image: images[index],
-                    width: context.width,
-                    fit: BoxFit.fitWidth,
-                    height: context.height,
-                    radius: 0);
-              },
             );
-          });
+          }),
+          SizedBox(
+            height: 24.h,
+          )
+        ],
+      ),
+    );
   }
 }

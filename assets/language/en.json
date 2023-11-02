@@ -98,5 +98,13 @@
   "categories": "Categories",
   "there_is_no_data": "There is no data",
   "search_hint": "Search here ...",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "information": "Information",
+  "feedback": "Feedback",
+  "ratting": "Ratting",
+  "images": "Images",
+  "our_services": "Our Services",
+  "rate": "Feedback & Rate",
+  "enter_your_rate": "Enter your Feedback & Rate",
+  "please_enter_your_feedback": "Oops, You must Enter your Feedback first"
 }

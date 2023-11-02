@@ -100,5 +100,14 @@
   "categories": "الأقسام",
   "there_is_no_data": "لا يوجود بيانات",
   "search_hint": "ابحث هنا...",
-  "cancel": "الغاء"
+  "cancel": "الغاء",
+  "information": "المعلومات",
+  "ratting": "التقييم",
+  "feedback": "التقيمات",
+  "images": "الصور",
+  "our_services": "خدماتنا",
+  "rate": "تقييم",
+  "enter_your_rate": "ادخل تقييمك",
+  "please_enter_your_feedback": "عفوًا، يجب عليك إدخال تقييمك أولاً"
+
 }

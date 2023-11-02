@@ -6,6 +6,7 @@ import 'package:stepOut/components/custom_network_image.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
 
+import '../app/core/utils/app_strings.dart';
 import '../app/core/utils/svg_images.dart';
 import '../app/core/utils/text_styles.dart';
 import '../components/custom_images.dart';
@@ -35,7 +36,7 @@ class ItemCard extends StatelessWidget {
               radius: 20,
               width: context.width,
               height: 100.h,
-              image: "",
+              image: AppStrings.networkImage,
             ),
             Padding(
               padding: EdgeInsets.symmetric(

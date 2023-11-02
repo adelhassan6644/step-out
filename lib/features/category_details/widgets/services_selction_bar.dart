@@ -27,7 +27,7 @@ class ServicesSelectionBar extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  SizedBox(width: 18.h),
+                  SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT.w),
                   ...List.generate(
                     provider.filters.length,
                     (index) {
@@ -35,8 +35,9 @@ class ServicesSelectionBar extends StatelessWidget {
                           .add(GlobalKey(debugLabel: "$index"));
                       Future.delayed(const Duration(seconds: 1), () {
                         provider.animatedScrollServices(provider
-                            .servicesKeys[provider.selectedFilter]
-                            .currentContext??context);
+                                .servicesKeys[provider.selectedFilter]
+                                .currentContext ??
+                            context);
                       });
                       return InkWell(
                         key: provider.servicesKeys[index],

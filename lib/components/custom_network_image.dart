@@ -102,7 +102,8 @@ class CustomNetworkImage {
     return CachedNetworkImage(
       imageUrl: image == "" || image == null
           ? "https://"
-          : EndPoints.imageUrl + image,
+          // : EndPoints.imageUrl + image,
+          :  image,
       repeat: ImageRepeat.noRepeat,
       errorWidget: (a, c, b) => Container(
         height: radius! * 2,

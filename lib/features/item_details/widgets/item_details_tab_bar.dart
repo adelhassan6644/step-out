@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:stepOut/app/localization/localization/language_constant.dart';
 import 'package:stepOut/features/item_details/provider/item_details_provider.dart';
 
 import '../../../components/tab_widget.dart';
@@ -15,9 +16,9 @@ class ItemDetailsTabBar extends StatelessWidget {
             3,
             (index) => Expanded(
                   child: TabWidget(
-                    fontSize: 15,
+                    fontSize: 16,
                     withUpperBorder: true,
-                    label: provider.tabs[index],
+                    label: getTranslated(provider.tabs[index], context),
                     isSelected: provider.selectedTab == index,
                     onTap: () => provider.onSelectTab(index),
                   ),

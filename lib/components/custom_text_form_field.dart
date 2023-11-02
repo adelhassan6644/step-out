@@ -21,6 +21,7 @@ class CustomTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final FormFieldValidator<String>? validate;
   final int? maxLines;
+  final int? minLines;
   final TextEditingController? controller;
   final bool keyboardPadding;
   final bool withLabel;
@@ -43,9 +44,11 @@ class CustomTextField extends StatefulWidget {
   final List<TextInputFormatter>? formattedType;
   final Alignment? align;
   final Function(dynamic)? onTapOutside;
+  final double? height;
 
   const CustomTextField({
     Key? key,
+    this.height,
     this.suffixIcon,
     this.keyboardAction = TextInputAction.next,
     this.align,
@@ -59,6 +62,7 @@ class CustomTextField extends StatefulWidget {
     this.withWidth = false,
     this.readOnly = false,
     this.maxLines = 1,
+    this.minLines = 1,
     this.isEnabled = true,
     this.withPadding = true,
     this.alignLabel = false,
@@ -109,7 +113,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       ? Styles.PRIMARY_COLOR
                       : Styles.BORDER_COLOR),
               borderRadius: BorderRadius.circular(15.0)),
-          height: 65,
+          height: widget.height ?? 65,
           child: Center(
             child: TextFormField(
               focusNode: widget.focusNode,
@@ -127,6 +131,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   widget.isPassword == true ? _isHidden : widget.obscureText,
               controller: widget.controller,
               maxLines: widget.maxLines,
+              minLines: widget.minLines,
               validator: widget.validate,
               keyboardType: widget.inputType,
               onChanged: widget.onChanged,

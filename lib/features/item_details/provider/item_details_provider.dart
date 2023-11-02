@@ -17,7 +17,14 @@ class ItemDetailsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<String> tabs = ["Information", "Images", "Feedback"];
+  List<String> tabs = ["information", "images", "feedback"];
+
+
+  List<String> services = ["information", "images", "feedback","information", "images", "feedback","information", "images", "feedback",];
+
+
+
+
 
   ItemDetailsModel? model;
   bool isLoading = false;

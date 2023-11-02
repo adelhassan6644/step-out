@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
+import 'package:stepOut/components/animated_widget.dart';
 import 'package:stepOut/components/shimmer/custom_shimmer.dart';
 import 'package:stepOut/features/item_details/model/item_details_model.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -11,6 +13,10 @@ import '../../../app/core/utils/text_styles.dart';
 import '../../../app/localization/localization/language_constant.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_images.dart';
+import 'item_details_contact_info.dart';
+import 'item_details_location.dart';
+import 'item_details_offers.dart';
+import 'item_services_widget.dart';
 
 class ItemDetailsInfo extends StatelessWidget {
   final ItemDetailsModel? model;
@@ -18,184 +24,40 @@ class ItemDetailsInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-          horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-          vertical: Dimensions.PADDING_SIZE_SMALL.h),
-      decoration: const BoxDecoration(
-          color: Styles.WHITE_COLOR,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(35), topRight: Radius.circular(35))),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            model?.category ?? "",
-            style: AppTextStyles.light.copyWith(
-                fontSize: 16,
-                overflow: TextOverflow.ellipsis,
-                color: model?.nameColor?.toColor),
-            maxLines: 1,
-          ),
+    return Expanded(
+      child: ListAnimator(
+        customPadding: EdgeInsets.only(top: Dimensions.PADDING_SIZE_DEFAULT.h),
+        data: [
+          ///Services
+          const ItemServicesWidget(),
+
+          ///Divider
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 4.h),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Text(
-                    model?.name ?? "",
-                    style: AppTextStyles.medium.copyWith(
-                        fontSize: 22,
-                        overflow: TextOverflow.ellipsis,
-                        color: Styles.TITLE),
-                    maxLines: 1,
-                  ),
-                ),
-                CustomButton(
-                  text: getTranslated("share", context),
-                  width: 110,
-                  height: 35,
-                  withBorderColor: false,
-                  withShadow: true,
-                  iconSize: 15,
-                  textColor: Styles.ACCENT_COLOR,
-                  svgIcon: SvgImages.share,
-                  backgroundColor: Styles.WHITE_COLOR,
-                  textSize: 14,
-                )
-              ],
+            padding: EdgeInsets.symmetric(
+                vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h),
+            child: const Divider(
+              color: Styles.BORDER_COLOR,
             ),
           ),
+
+          ///Contact Info
+          const ItemDetailsContactInfo(),
+
+          ///Item Details Location
+          const ItemDetailsLocation(),
+
+          ///Divider
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 4.h),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                customImageIconSVG(
-                    imageName: SvgImages.location,
-                    height: 18,
-                    width: 18,
-                    color: const Color(0xFF656565)),
-                SizedBox(
-                  width: 8.w,
-                ),
-                Expanded(
-                  child: Text(
-                    model?.address ?? "",
-                    style: AppTextStyles.medium.copyWith(
-                      fontSize: 18,
-                      overflow: TextOverflow.ellipsis,
-                      color: const Color(0xFF656565),
-                    ),
-                    maxLines: 2,
-                  ),
-                ),
-              ],
+            padding: EdgeInsets.symmetric(
+                vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h),
+            child: const Divider(
+              color: Styles.BORDER_COLOR,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 4.h),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                customImageIconSVG(
-                    imageName: SvgImages.phoneIcon,
-                    height: 16,
-                    width: 18,
-                    color: const Color(0xFF656565)),
-                SizedBox(
-                  width: 8.w,
-                ),
-                Expanded(
-                  child: Text(
-                    model?.phone ?? "",
-                    style: AppTextStyles.medium.copyWith(
-                      fontSize: 18,
-                      overflow: TextOverflow.ellipsis,
-                      color: const Color(0xFF656565),
-                    ),
-                    maxLines: 1,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 20.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Visibility(
-                    visible: model?.description != null,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "وصف",
-                          style: AppTextStyles.light.copyWith(
-                            fontSize: 16,
-                            color: const Color(0xFF656565),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 4.w,
-                        ),
-                        Text(
-                          model?.description ?? "",
-                          style: AppTextStyles.medium.copyWith(
-                            fontSize: 16,
-                            overflow: TextOverflow.ellipsis,
-                            color: Styles.DETAILS_COLOR,
-                          ),
-                          maxLines: 10,
-                        ),
-                        SizedBox(
-                          height: 4.w,
-                        ),
-                      ],
-                    )),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    customContainerSvgIcon(
-                        imageName: SvgImages.faceBook,
-                        height: 42.0,
-                        width: 42.0,
-                        radius: 100,
-                        withShadow: true,
-                        color: Styles.WHITE_COLOR,
-                        onTap: () async {
-                          launchUrl(Uri.parse(model?.facebook ?? ""),
-                              mode: LaunchMode.externalApplication);
-                        }),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    customContainerSvgIcon(
-                        imageName: SvgImages.instagram,
-                        height: 42.0,
-                        width: 42.0,
-                        radius: 100,
-                        withShadow: true,
-                        color: Styles.WHITE_COLOR,
-                        onTap: () async {
-                          launchUrl(Uri.parse(model?.instagram! ?? ""),
-                              mode: LaunchMode.externalApplication);
-                        }),
-                  ],
-                )
-              ],
-            ),
-          ),
-          CustomButton(
-            text: getTranslated("location", context),
-            onTap: () async {
-              await launch(
-                  'https://www.google.com/maps/search/?api=1&query=${model?.lat},${model?.long}');
-            },
-          ),
+
+          ///Item Details Offers
+          const ItemDetailsOffer(),
+
           SizedBox(
             height: 24.h,
           )
