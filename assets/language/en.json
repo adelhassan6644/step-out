@@ -110,5 +110,7 @@
   "language": "Language",
   "select_language": "Select Language",
   "notifications": "Notifications",
-  "no_notifications": "There's no Notifications"
+  "no_notifications": "There's no Notifications",
+  "about_step_out": "About Step Out",
+  "something_went_wrong": "Something went wrong !"
 }

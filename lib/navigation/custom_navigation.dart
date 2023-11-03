@@ -13,6 +13,8 @@ import '../features/auth/pages/verification.dart';
 import '../features/contact_with_us/page/contact_with_us.dart';
 import '../features/maps/page/map_page.dart';
 import '../features/on_boarding/pages/on_boarding.dart';
+import '../features/setting/pages/about_us.dart';
+import '../features/setting/pages/terms.dart';
 import '../features/splash/page/splash.dart';
 import '../main.dart';
 import '../main_page/pages/dashboard.dart';
@@ -71,14 +73,14 @@ abstract class CustomNavigator {
       case Routes.NOTIFICATIONS:
         return _pageRoute(const Notifications());
 
-        case Routes.CONTACT_WITH_US:
+      case Routes.CONTACT_WITH_US:
         return _pageRoute(const ContactWithUs());
 
-      // case Routes.ABOUT_US:
-      //   return _pageRoute(const AboutUs());
-      //
-      // case Routes.TERMS:
-      //   return _pageRoute(const Terms());
+      case Routes.ABOUT_US:
+        return _pageRoute(const AboutUs());
+
+      case Routes.TERMS:
+        return _pageRoute(const Terms());
 
       default:
         return MaterialPageRoute(builder: (_) => const MyApp());

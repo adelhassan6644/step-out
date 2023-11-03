@@ -22,6 +22,8 @@ import '../../features/notifications/provider/notifications_provider.dart';
 import '../../features/notifications/repo/notifications_repo.dart';
 import '../../features/profile/provider/profile_provider.dart';
 import '../../features/profile/repo/profile_repo.dart';
+import '../../features/setting/provider/setting_provider.dart';
+import '../../features/setting/repo/setting_repo.dart';
 import '../../main_page/provider/main_page_provider.dart';
 import '../../main_providers/map_provider.dart';
 import '../api/end_points.dart';
@@ -62,8 +64,8 @@ Future<void> init() async {
       () => ItemDetailsRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
       () => RattingRepo(sharedPreferences: sl(), dioClient: sl()));
-  // sl.registerLazySingleton(
-  //     () => SettingRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(
+      () => SettingRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
       () => ContactRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
@@ -84,7 +86,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => MapProvider());
   sl.registerLazySingleton(() => LocationProvider(locationRepo: sl()));
   sl.registerLazySingleton(() => NotificationsProvider(repo: sl()));
-  // sl.registerLazySingleton(() => SettingProvider(repo: sl()));
+  sl.registerLazySingleton(() => SettingProvider(repo: sl()));
   sl.registerLazySingleton(() => ContactProvider(contactRepo: sl()));
 
   // External

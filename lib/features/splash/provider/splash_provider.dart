@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:stepOut/features/setting/provider/setting_provider.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
+import '../../../data/config/di.dart';
 import '../repo/splash_repo.dart';
 
 class SplashProvider extends ChangeNotifier {
@@ -9,6 +11,7 @@ class SplashProvider extends ChangeNotifier {
 
   startTheApp() {
     Future.delayed(const Duration(milliseconds: 4500), () {
+      sl<SettingProvider>().getSetting();
       if (splashRepo.isFirstTime()) {
         CustomNavigator.push(Routes.ON_BOARDING, clean: true);
       } else if (!splashRepo.isLogin()) {
