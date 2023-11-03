@@ -20,7 +20,7 @@ class EmptyState extends StatelessWidget {
     Key? key,
     this.emptyHeight,
     this.spaceBtw,
-    this.isSvg = true,
+    this.isSvg = false,
     this.img,
     this.imgHeight,
     this.imgWidth,

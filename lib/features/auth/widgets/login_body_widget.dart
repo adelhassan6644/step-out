@@ -165,8 +165,9 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                             return CustomButton(
                                 text: getTranslated("login", context),
                                 onTap: () {
-                                  CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: CategoryItem());
-                                  // CustomNavigator.push(Routes.DASHBOARD, arguments: 0);
+                                  // CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: CategoryItem());
+                                  CustomNavigator.push(Routes.DASHBOARD,
+                                      arguments: 0);
 
                                   // _formKey.currentState!.validate();
                                   // if (snapshot.data == true) {

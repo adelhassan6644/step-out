@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stepOut/app/core/utils/app_strings.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/localization/localization/language_constant.dart';
@@ -12,9 +13,7 @@ import '../../../components/custom_network_image.dart';
 import '../../../components/empty_widget.dart';
 
 class HomeOffers extends StatelessWidget {
-  const HomeOffers({
-    Key? key,
-  }) : super(key: key);
+  const HomeOffers({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,47 +36,32 @@ class HomeOffers extends StatelessWidget {
             height: 12.h,
           ),
           Consumer<HomeProvider>(builder: (context, provider, child) {
-            return !provider.isGetOffers
+            return provider.isGetOffers
                 ? const _OfferShimmer()
                 : provider.offersModel != null &&
                         provider.offersModel?.data != null &&
                         provider.offersModel!.data!.isNotEmpty
-                    ? SizedBox(
-                        height: 140.h,
+                    ? SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
                         child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Expanded(
-                              child: ListView(
-                                  scrollDirection: Axis.horizontal,
-                                  physics: const BouncingScrollPhysics(),
-                                  children: [
-                                    SizedBox(
-                                      width: 10.w,
-                                    ),
-                                    ...List.generate(
-                                        provider.categoriesModel?.data
-                                                ?.length ??
-                                            0,
-                                        (index) => Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 8.w),
-                                              child: CustomNetworkImage
-                                                  .containerNewWorkImage(
-                                                      image: provider
-                                                              .offersModel
-                                                              ?.data?[index]
-                                                              .image ??
-                                                          "",
-                                                      height: 140.h,
-                                                      width:
-                                                          context.width * 0.7,
-                                                      fit: BoxFit.cover,
-                                                      radius: 20),
-                                            ))
-                                  ]),
-                            ),
+                            SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT.w),
+                            ...List.generate(
+                                provider.categoriesModel?.data?.length ?? 6,
+                                (index) => Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 8.w),
+                                      child: CustomNetworkImage
+                                          .containerNewWorkImage(
+                                              image: provider.offersModel
+                                                      ?.data?[index].image ??
+                                                  AppStrings.networkImage,
+                                              height: 140.h,
+                                              width: context.width * 0.7,
+                                              fit: BoxFit.cover,
+                                              radius: 20),
+                                    ))
                           ],
                         ),
                       )

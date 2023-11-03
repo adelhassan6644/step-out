@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:stepOut/app/core/utils/app_strings.dart';
+import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/text_styles.dart';
@@ -33,9 +35,10 @@ class HomeCategories extends StatelessWidget {
               style: AppTextStyles.semiBold
                   .copyWith(fontSize: 22, color: Styles.HEADER),
             ),
-            !provider.isGetCategories
+            provider.isGetCategories
                 ? GridListAnimatorWidget(
-                    aspectRatio: 0.8,
+                    aspectRatio: 0.9,
+                    columnCount: 3,
                     items: List.generate(
                       9,
                       (int index) {
@@ -53,8 +56,10 @@ class HomeCategories extends StatelessWidget {
                         provider.categoriesModel!.data != null &&
                         provider.categoriesModel!.data!.isNotEmpty
                     ? GridListAnimatorWidget(
+                        aspectRatio: 0.9,
+                        columnCount: 3,
                         items: List.generate(
-                          provider.categoriesModel!.data!.length,
+                          provider.categoriesModel?.data?.length ?? 5,
                           (int index) {
                             return AnimationConfiguration.staggeredGrid(
                               columnCount: 3,
@@ -88,7 +93,7 @@ class HomeCategories extends StatelessWidget {
 class _CategoryCard extends StatelessWidget {
   final CategoryItem? item;
 
-  const _CategoryCard({super.key, this.item});
+  const _CategoryCard({this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -100,22 +105,24 @@ class _CategoryCard extends StatelessWidget {
       onTap: () {
         CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: item);
       },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          CustomNetworkImage.circleNewWorkImage(
-            radius: 18,
-            image: item?.image,
-          ),
-          SizedBox(
-            height: 8.h,
-          ),
-          Text(
-            item?.title ?? "",
-            style: AppTextStyles.medium
-                .copyWith(fontSize: 14, color: Styles.HEADER),
-          ),
-        ],
+      child: SizedBox(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CustomNetworkImage.containerNewWorkImage(
+                image: item?.image ?? AppStrings.networkImage,
+                height: 100,
+                width: context.width),
+            SizedBox(
+              height: 8.h,
+            ),
+            Text(
+              item?.title ?? "34jkebg",
+              style: AppTextStyles.medium
+                  .copyWith(fontSize: 14, color: Styles.HEADER),
+            ),
+          ],
+        ),
       ),
     );
   }
