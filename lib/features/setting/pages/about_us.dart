@@ -35,24 +35,33 @@ class AboutUs extends StatelessWidget {
                         horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
                       ),
                       data: [
-                        Center(
-                          child: Image.asset(
-                            Images.splash,
-                            width: context.width * 0.3,
-                            height: context.height * 0.23,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                          child: Text(
-                            getTranslated("about_step_out", context),
-                            style: AppTextStyles.semiBold
-                                .copyWith(fontSize: 18, color: Styles.TITLE),
+                        Visibility(
+                          visible: provider.model != null,
+                          child: Column(
+                            children: [
+                              Center(
+                                child: Image.asset(
+                                  Images.splash,
+                                  width: context.width * 0.3,
+                                  height: context.height * 0.23,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical:
+                                        Dimensions.PADDING_SIZE_DEFAULT.h),
+                                child: Text(
+                                  getTranslated("about_step_out", context),
+                                  style: AppTextStyles.semiBold.copyWith(
+                                      fontSize: 18, color: Styles.TITLE),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         provider.model != null
-                            ? HtmlWidget(provider.model?.data?.aboutUs ?? "About Us")
+                            ? HtmlWidget(
+                                provider.model?.data?.aboutUs ?? "About Us")
                             : EmptyState(
                                 txt: getTranslated(
                                     "something_went_wrong", context),
