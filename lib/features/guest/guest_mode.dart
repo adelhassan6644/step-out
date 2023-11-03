@@ -1,6 +1,5 @@
 import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/text_styles.dart';
-import 'package:stepOut/app/localization/localization/language_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:stepOut/components/animated_widget.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
@@ -8,6 +7,7 @@ import 'package:stepOut/navigation/routes.dart';
 
 import '../../app/core/utils/dimensions.dart';
 import '../../app/core/utils/images.dart';
+import '../../app/localization/language_constant.dart';
 import '../../components/custom_button.dart';
 import '../../components/custom_images.dart';
 

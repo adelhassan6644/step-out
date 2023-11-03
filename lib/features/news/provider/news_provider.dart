@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../data/error/failures.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../model/news_model.dart';

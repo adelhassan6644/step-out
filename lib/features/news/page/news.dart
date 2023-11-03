@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
-import 'package:stepOut/components/animated_widget.dart';
-import 'package:stepOut/components/empty_widget.dart';
-import 'package:stepOut/components/shimmer/custom_shimmer.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/utils/text_styles.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../data/config/di.dart';
 import '../provider/news_provider.dart';
 import '../widgets/news_card.dart';

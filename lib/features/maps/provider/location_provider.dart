@@ -5,10 +5,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
-import '../../../app/localization/localization/language_constant.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
-import '../../../navigation/custom_navigation.dart';
 import '../../item_details/model/item_details_model.dart';
 import '../models/location_model.dart';
 import '../models/prediction_model.dart';
@@ -56,8 +54,7 @@ class LocationProvider extends ChangeNotifier {
       response.fold((error) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
-                message: getTranslated(error.error,
-                    CustomNavigator.navigatorState.currentContext!),
+                message: ApiErrorHandler.getMessage(error),
                 isFloating: true,
                 backgroundColor: Styles.ACTIVE,
                 borderColor: Colors.transparent));

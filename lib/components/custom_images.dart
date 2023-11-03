@@ -99,6 +99,43 @@ Widget customContainerSvgIcon(
   );
 }
 
+Widget customContainerImage(
+    {required String imageName,
+    Function? onTap,
+    Color? color,
+    Color? backGroundColor,
+    bool withShadow = false,
+    double? width,
+    double? height,
+    double? radius}) {
+  return InkWell(
+    onTap: () {
+      onTap!();
+    },
+    child: Container(
+      height: height ?? 50,
+      width: width ?? 50,
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+          boxShadow: withShadow
+              ? [
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      offset: const Offset(2, 2),
+                      spreadRadius: 3,
+                      blurRadius: 5)
+                ]
+              : null,
+          color: backGroundColor ?? Styles.PRIMARY_COLOR.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(radius ?? 12)),
+      child: Image.asset(
+        imageName,
+        color: color,
+      ),
+    ),
+  );
+}
+
 Widget customImageIconSVG(
     {required String imageName,
     Color? color,

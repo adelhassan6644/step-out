@@ -1,4 +1,6 @@
-import '../../localization/provider/language_provider.dart';
+import '../../../features/language/model/language_model.dart';
+import 'images.dart';
+
 class AppStorageKey {
   static const String userId = "user_id";
   static const String apiToken = "api_token";
@@ -11,8 +13,15 @@ class AppStorageKey {
   static const String languageCode = "languageCode";
   static const String countryCode = "countryCode";
   static List<LanguageModel> languages = [
-    LanguageModel(imageUrl: 'Images.united_kingdom', languageName: 'english', countryCode: 'US', languageCode: 'en'),
-    LanguageModel(imageUrl: 'Images.arabic', languageName: 'arabic', countryCode: 'SA', languageCode: 'ar'),
+    LanguageModel(
+        icon: Images.english,
+        name: 'English',
+        countryCode: 'US',
+        languageCode: 'en'),
+    LanguageModel(
+        icon: Images.arabic,
+        name: "عربي",
+        countryCode: 'SA',
+        languageCode: 'ar'),
   ];
-
 }

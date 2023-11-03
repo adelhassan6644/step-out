@@ -8,7 +8,6 @@ class SvgImages {
   static const String appLogo = 'assets/svgs/app_logo.svg';
   static const String homeIcon = 'assets/svgs/home.svg';
   static const String heartIcon = 'assets/svgs/heart.svg';
-  static const String aboutUsIcon = 'assets/svgs/building.svg';
   static const String location = 'assets/svgs/location.svg';
   static const String moreIcon = 'assets/svgs/more.svg';
   static const String newsIcon = 'assets/svgs/news.svg';
@@ -17,28 +16,13 @@ class SvgImages {
   static const String file = 'assets/svgs/file.svg';
   static const String documentFile = 'assets/svgs/document_text.svg';
   static const String uploadDocument = 'assets/svgs/document_upload.svg';
-  static const String sparkles = 'assets/svgs/sparkles.svg';
-  static const String seat = 'assets/svgs/seat.svg';
-  static const String filter = 'assets/svgs/filter.svg';
   static const String calendar = 'assets/svgs/calendar.svg';
-  static const String wallet = 'assets/svgs/wallet.svg';
-  static const String roadLine = 'assets/svgs/road_line.svg';
-  static const String carPlate = 'assets/svgs/car_plate.svg';
-  static const String carColor = 'assets/svgs/car_color.svg';
-  static const String newOffer = 'assets/svgs/new_offer.svg';
-  static const String alarm = 'assets/svgs/alarm.svg';
   static const String emptyStar = 'assets/svgs/empty_star.svg';
   static const String fillStar = 'assets/svgs/fill_star.svg';
   static const String backArrow = 'assets/svgs/arrow.svg';
-  static const String maleIcon = 'assets/svgs/male.svg';
-  static const String femaleIcon = 'assets/svgs/female.svg';
-  static const String editor = 'assets/svgs/editor.svg';
   static const String map = 'assets/svgs/map.svg';
   static const String down = 'assets/svgs/down.svg';
   static const String userIcon = 'assets/svgs/user.svg';
-  static const String userNumber = 'assets/svgs/user_number.svg';
-  static const String notifications = 'assets/svgs/alert.svg';
-  static const String card = 'assets/svgs/card.svg';
   static const String rate = 'assets/svgs/rate.svg';
   static const String call = 'assets/svgs/call.svg';
   static const String logout = 'assets/svgs/logout.svg';
@@ -55,6 +39,9 @@ class SvgImages {
   static const String export = 'assets/svgs/export.svg';
   static const String tiktok = 'assets/svgs/tiktok.svg';
   static const String mailIcon = 'assets/svgs/mail.svg';
+  static const String contactWithUs = 'assets/svgs/contact_with_us.svg';
+  static const String aboutUs = 'assets/svgs/about_us.svg';
+  static const String terms = 'assets/svgs/terms.svg';
   static const String lockIcon = 'assets/svgs/lock.svg';
   static const String eyeIcon = 'assets/svgs/eye.svg';
   static const String hiddenEyeIcon = 'assets/svgs/hidden_eye.svg';
@@ -78,4 +65,6 @@ class SvgImages {
   static const String send = 'assets/svgs/send.svg';
   static const String trash = 'assets/svgs/trash.svg';
   static const String clock = 'assets/svgs/clock.svg';
+  static const String alarm = 'assets/svgs/alarm.svg';
+  static const String language = 'assets/svgs/language.svg';
 }

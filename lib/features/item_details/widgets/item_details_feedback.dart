@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
-
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_bottom_sheet.dart';
 import '../../../components/custom_button.dart';

@@ -7,7 +7,7 @@ import 'package:stepOut/components/custom_images.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/images.dart';
 import '../../../app/core/utils/text_styles.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../widgets/login_body_widget.dart';
 
 class Login extends StatelessWidget {

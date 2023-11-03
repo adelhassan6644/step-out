@@ -4,7 +4,7 @@ import 'package:stepOut/app/core/utils/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stepOut/components/custom_app_bar.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_text_form_field.dart';

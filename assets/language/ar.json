@@ -108,6 +108,10 @@
   "our_services": "خدماتنا",
   "rate": "تقييم",
   "enter_your_rate": "ادخل تقييمك",
-  "please_enter_your_feedback": "عفوًا، يجب عليك إدخال تقييمك أولاً"
+  "please_enter_your_feedback": "عفوًا، يجب عليك إدخال تقييمك أولاً",
+  "language": "اللغة",
+  "select_language": "اختر اللغة",
+  "notifications": "الاشعارات",
+  "no_notifications": "لا يوجد اشعارات"
 
 }

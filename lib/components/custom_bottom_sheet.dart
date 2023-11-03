@@ -5,7 +5,7 @@ import 'package:stepOut/app/core/utils/extensions.dart';
 
 import '../app/core/utils/styles.dart';
 import '../app/core/utils/text_styles.dart';
-import '../app/localization/localization/language_constant.dart';
+import '../app/localization/language_constant.dart';
 import '../navigation/custom_navigation.dart';
 import 'animated_widget.dart';
 import 'custom_button.dart';

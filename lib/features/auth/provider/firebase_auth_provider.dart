@@ -2,19 +2,16 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:stepOut/app/localization/localization/language_constant.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../components/loading_dialog.dart';
-import '../../../data/config/di.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../../navigation/routes.dart';
-import '../../home/provider/home_provider.dart';
-import '../../profile/provider/profile_provider.dart';
 import '../repo/firebase_auth_repo.dart';
 
 class FirebaseAuthProvider extends ChangeNotifier {

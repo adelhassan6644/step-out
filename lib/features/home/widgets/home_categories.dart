@@ -12,7 +12,7 @@ import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
 import 'package:provider/provider.dart';
 
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../components/empty_widget.dart';
 import '../../../components/grid_list_animator.dart';
 import '../models/categories_model.dart';

@@ -3,8 +3,6 @@ import 'package:stepOut/features/home/repo/home_repo.dart';
 import 'package:stepOut/features/maps/provider/location_provider.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../app/localization/provider/language_provider.dart';
-import '../../app/localization/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/auth/provider/auth_provider.dart';
 import '../../features/category_details/provider/category_details_provider.dart';
@@ -16,9 +14,12 @@ import '../../features/item_details/provider/item_details_provider.dart';
 import '../../features/item_details/provider/send_rate_provider.dart';
 import '../../features/item_details/repo/item_details_repo.dart';
 import '../../features/item_details/repo/ratting_repo.dart';
+import '../../features/language/provider/localization_provider.dart';
 import '../../features/maps/repo/maps_repo.dart';
 import '../../features/news/provider/news_provider.dart';
 import '../../features/news/repo/news_repo.dart';
+import '../../features/notifications/provider/notifications_provider.dart';
+import '../../features/notifications/repo/notifications_repo.dart';
 import '../../features/profile/provider/profile_provider.dart';
 import '../../features/profile/repo/profile_repo.dart';
 import '../../main_page/provider/main_page_provider.dart';
@@ -65,10 +66,11 @@ Future<void> init() async {
   //     () => SettingRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
       () => ContactRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(
+      () => NotificationsRepo(sharedPreferences: sl(), dioClient: sl()));
 
   //provider
   sl.registerLazySingleton(() => LocalizationProvider(sharedPreferences: sl()));
-  sl.registerLazySingleton(() => LanguageProvider());
   sl.registerLazySingleton(() => ThemeProvider(sharedPreferences: sl()));
   sl.registerLazySingleton(() => MainPageProvider());
   sl.registerLazySingleton(() => SplashProvider(splashRepo: sl()));
@@ -81,6 +83,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => ProfileProvider(profileRepo: sl()));
   sl.registerLazySingleton(() => MapProvider());
   sl.registerLazySingleton(() => LocationProvider(locationRepo: sl()));
+  sl.registerLazySingleton(() => NotificationsProvider(repo: sl()));
   // sl.registerLazySingleton(() => SettingProvider(repo: sl()));
   sl.registerLazySingleton(() => ContactProvider(contactRepo: sl()));
 

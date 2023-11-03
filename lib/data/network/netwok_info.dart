@@ -4,7 +4,8 @@ import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 
-import '../../app/localization/localization/language_constant.dart';
+import '../../app/localization/language_constant.dart';
+
 
 class NetworkInfo {
   final Connectivity connectivity;

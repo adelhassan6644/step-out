@@ -106,5 +106,9 @@
   "our_services": "Our Services",
   "rate": "Feedback & Rate",
   "enter_your_rate": "Enter your Feedback & Rate",
-  "please_enter_your_feedback": "Oops, You must Enter your Feedback first"
+  "please_enter_your_feedback": "Oops, You must Enter your Feedback first",
+  "language": "Language",
+  "select_language": "Select Language",
+  "notifications": "Notifications",
+  "no_notifications": "There's no Notifications"
 }

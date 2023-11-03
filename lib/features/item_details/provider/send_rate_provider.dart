@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../data/error/failures.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../repo/ratting_repo.dart';
@@ -35,7 +35,6 @@ class RattingProvider extends ChangeNotifier {
   bool isLoading = false;
 
   sendFeedback(id) async {
-    print(ratting);
     if (ratting != -1) {
       try {
         isLoading = true;

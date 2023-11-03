@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import '../../app/core/utils/styles.dart';
 import '../../app/core/utils/text_styles.dart';
-import '../app/localization/localization/language_constant.dart';
+import '../app/localization/language_constant.dart';
 
 class CountDown extends StatefulWidget {
   const CountDown({super.key, this.timeBySecond = 60, this.onCount});

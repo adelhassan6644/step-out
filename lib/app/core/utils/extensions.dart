@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../../features/language/provider/localization_provider.dart';
 import '../../../navigation/custom_navigation.dart';
-import '../../localization/provider/localization_provider.dart';
 
 extension StringExtension on String {
   String capitalize() {

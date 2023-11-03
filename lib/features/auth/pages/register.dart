@@ -6,7 +6,7 @@ import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/images.dart';
 import '../../../app/core/utils/svg_images.dart';
 import '../../../app/core/utils/text_styles.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_images.dart';
 import '../widgets/register_body_widget.dart';
 

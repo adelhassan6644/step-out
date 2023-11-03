@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:stepOut/app/core/utils/extensions.dart';
-import 'package:stepOut/app/localization/localization/language_constant.dart';
 import 'package:stepOut/components/animated_widget.dart';
 
 import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/styles.dart';
-import '../../../components/empty_widget.dart';
-import '../../../components/shimmer/custom_shimmer.dart';
 import '../provider/category_details_provider.dart';
 import '../../../main_widgets/item_card.dart';
 

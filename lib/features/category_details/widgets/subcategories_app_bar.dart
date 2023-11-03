@@ -5,15 +5,15 @@ import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
-import 'package:stepOut/app/localization/localization/language_constant.dart';
-import 'package:stepOut/app/localization/provider/localization_provider.dart';
 import 'package:stepOut/components/custom_images.dart';
 import 'package:stepOut/features/category_details/provider/category_details_provider.dart';
 
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../data/config/di.dart';
 import '../../../navigation/custom_navigation.dart';
+import '../../language/provider/localization_provider.dart';
 
 class SubcategoriesAppBar extends StatefulWidget
     implements PreferredSizeWidget {

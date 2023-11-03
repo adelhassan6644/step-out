@@ -4,11 +4,11 @@ import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
 import 'package:stepOut/app/core/utils/text_styles.dart';
-import 'package:stepOut/app/localization/localization/language_constant.dart';
 import 'package:stepOut/components/custom_images.dart';
 import 'package:stepOut/features/item_details/widgets/item_details_info.dart';
 
 import '../../../app/core/utils/styles.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_network_image.dart';
 import '../provider/item_details_provider.dart';
 import 'item_details_feedback.dart';

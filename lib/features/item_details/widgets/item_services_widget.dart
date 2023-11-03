@@ -3,11 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/app_strings.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
-import 'package:stepOut/app/localization/localization/language_constant.dart';
 import 'package:stepOut/components/custom_network_image.dart';
 import 'package:stepOut/features/item_details/provider/item_details_provider.dart';
 
 import '../../../app/core/utils/text_styles.dart';
+import '../../../app/localization/language_constant.dart';
 
 class ItemServicesWidget extends StatelessWidget {
   const ItemServicesWidget({super.key});

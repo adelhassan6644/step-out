@@ -1,8 +1,8 @@
 import 'package:stepOut/app/core/utils/dimensions.dart';
-import 'package:stepOut/app/localization/localization/language_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_button.dart';
 import '../provider/contact_provider.dart';

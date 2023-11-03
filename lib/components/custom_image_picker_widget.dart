@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import '../app/core/utils/styles.dart';
 import '../app/core/utils/svg_images.dart';
 import '../app/core/utils/text_styles.dart';
-import '../app/localization/localization/language_constant.dart';
+import '../app/localization/language_constant.dart';
 import 'custom_images.dart';
 import 'image_pop_up_viewer.dart';
 import 'marquee_widget.dart';

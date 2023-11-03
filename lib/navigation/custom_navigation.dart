@@ -3,6 +3,7 @@ import 'package:stepOut/features/auth/pages/reset_password.dart';
 import 'package:stepOut/features/category_details/page/category_details.dart';
 import 'package:stepOut/features/home/models/categories_model.dart';
 import 'package:stepOut/features/item_details/page/item_details.dart';
+import 'package:stepOut/features/notifications/page/notifications.dart';
 import 'package:stepOut/main_models/base_model.dart';
 import 'package:flutter/material.dart';
 import '../features/auth/pages/forget_password.dart';
@@ -67,7 +68,10 @@ abstract class CustomNavigator {
       case Routes.ITEM_DETAILS:
         return _pageRoute(ItemDetails(id: settings.arguments as int));
 
-      case Routes.CONTACT_WITH_US:
+      case Routes.NOTIFICATIONS:
+        return _pageRoute(const Notifications());
+
+        case Routes.CONTACT_WITH_US:
         return _pageRoute(const ContactWithUs());
 
       // case Routes.ABOUT_US:

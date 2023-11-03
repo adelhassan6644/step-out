@@ -1,7 +1,7 @@
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import '../../app/core/utils/text_styles.dart';
-import '../../app/localization/localization/language_constant.dart';
+import '../../app/localization/language_constant.dart';
 
 class CheckConnectionDialog extends StatelessWidget {
   const CheckConnectionDialog({required this.isConnected, Key? key})

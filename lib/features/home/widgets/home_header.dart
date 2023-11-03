@@ -3,6 +3,8 @@ import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/images.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
+import 'package:stepOut/navigation/custom_navigation.dart';
+import 'package:stepOut/navigation/routes.dart';
 
 import '../../../components/custom_images.dart';
 
@@ -27,6 +29,7 @@ class HomeHeader extends StatelessWidget {
           customImageIcon(imageName: Images.homeLogo, width: 100),
           const Expanded(child: SizedBox()),
           customImageIconSVG(
+            onTap: ()=>CustomNavigator.push(Routes.NOTIFICATIONS),
               imageName: SvgImages.notification, width: 24, height: 24),
         ],
       ),

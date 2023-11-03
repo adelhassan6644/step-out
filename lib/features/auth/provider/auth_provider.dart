@@ -6,6 +6,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/utils/validation.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
 import '../repo/auth_repo.dart';
@@ -13,7 +14,6 @@ import '../../../../navigation/custom_navigation.dart';
 import '../../../../navigation/routes.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
-import '../../../app/localization/localization/language_constant.dart';
 
 class AuthProvider extends ChangeNotifier {
   final AuthRepo authRepo;

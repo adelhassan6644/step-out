@@ -2,7 +2,7 @@ import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:flutter/cupertino.dart';
 import '../../navigation/custom_navigation.dart';
 import '../app/core/utils/styles.dart';
-import '../app/localization/localization/language_constant.dart';
+import '../app/localization/language_constant.dart';
 import '../components/custom_button.dart';
 
 class DateTimePicker extends StatefulWidget {

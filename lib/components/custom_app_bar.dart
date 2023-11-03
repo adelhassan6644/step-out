@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
-import 'package:stepOut/app/localization/provider/localization_provider.dart';
 import 'package:stepOut/components/custom_images.dart';
 import '../../navigation/custom_navigation.dart';
 import '../app/core/utils/text_styles.dart';
 import '../data/config/di.dart';
+import '../features/language/provider/localization_provider.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;

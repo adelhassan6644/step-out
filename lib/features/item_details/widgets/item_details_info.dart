@@ -1,17 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/components/animated_widget.dart';
 import 'package:stepOut/components/shimmer/custom_shimmer.dart';
 import 'package:stepOut/features/item_details/model/item_details_model.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/svg_images.dart';
-import '../../../app/core/utils/text_styles.dart';
-import '../../../app/localization/localization/language_constant.dart';
-import '../../../components/custom_button.dart';
 import '../../../components/custom_images.dart';
 import 'item_details_contact_info.dart';
 import 'item_details_location.dart';

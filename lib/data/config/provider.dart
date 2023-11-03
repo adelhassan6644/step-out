@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:stepOut/data/config/di.dart' as di;
 
-import '../../app/localization/provider/localization_provider.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/auth/provider/auth_provider.dart';
 import '../../features/category_details/provider/category_details_provider.dart';
@@ -11,7 +10,9 @@ import '../../features/contact_with_us/provider/contact_provider.dart';
 import '../../features/home/provider/home_provider.dart';
 import '../../features/item_details/provider/item_details_provider.dart';
 import '../../features/item_details/provider/send_rate_provider.dart';
+import '../../features/language/provider/localization_provider.dart';
 import '../../features/news/provider/news_provider.dart';
+import '../../features/notifications/provider/notifications_provider.dart';
 import '../../features/profile/provider/profile_provider.dart';
 import '../../features/splash/provider/splash_provider.dart';
 import '../../main_page/provider/main_page_provider.dart';
@@ -23,6 +24,7 @@ abstract class ProviderList {
     ChangeNotifierProvider(create: (_) => di.sl<ThemeProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<LocalizationProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<MainPageProvider>()),
+    ChangeNotifierProvider(create: (_) => di.sl<NotificationsProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<SplashProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<AuthProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<NewsProvider>()),

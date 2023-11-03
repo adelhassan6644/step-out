@@ -2,8 +2,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'app/core/utils/app_storage_keys.dart';
 import 'app/core/utils/un_focus.dart';
-import 'app/localization/localization/app_localization.dart';
-import 'app/localization/provider/localization_provider.dart';
+import 'app/localization/app_localization.dart';
 import 'app/theme/dark_theme.dart';
 import 'app/theme/light_theme.dart';
 import 'app/theme/theme_provider/theme_provider.dart';
@@ -11,6 +10,7 @@ import 'data/config/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'app/core/utils/app_strings.dart';
+import 'features/language/provider/localization_provider.dart';
 import 'navigation/custom_navigation.dart';
 import 'package:stepOut/data/config/di.dart' as di;
 

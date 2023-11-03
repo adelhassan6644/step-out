@@ -27,8 +27,8 @@ class EndPoints {
   static const String aboutUs = 'about_us';
   static const String setting = 'contact';
   static const String notifications = 'notification/notification';
-  static const String readNotification = 'notification/read';
-  static const String deleteNotification = 'notification/delete';
+  static  readNotification(id)=> 'notification/read';
+  static  deleteNotification(id)=> 'notification/read';
   static const String sendRate = 'rate/send';
 
   /// maps

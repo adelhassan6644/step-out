@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:stepOut/app/localization/localization/language_constant.dart';
 import 'package:stepOut/features/item_details/provider/item_details_provider.dart';
 
+import '../../../app/localization/language_constant.dart';
 import '../../../components/tab_widget.dart';
 
 class ItemDetailsTabBar extends StatelessWidget {

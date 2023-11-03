@@ -4,7 +4,7 @@ import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/text_styles.dart';
-import '../../../app/localization/localization/language_constant.dart';
+import '../../../app/localization/language_constant.dart';
 import '../widgets/on_boarding_body.dart';
 
 class OnBoarding extends StatelessWidget {
