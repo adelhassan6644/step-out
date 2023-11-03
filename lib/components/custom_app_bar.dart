@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
+import 'package:stepOut/app/localization/provider/localization_provider.dart';
 import 'package:stepOut/components/custom_images.dart';
 import '../../navigation/custom_navigation.dart';
 import '../app/core/utils/text_styles.dart';
+import '../data/config/di.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
@@ -52,9 +54,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       height: actionWidth ?? 30,
                       width: actionWidth ?? 30,
                       child: Center(
-                          child: customImageIconSVG(
-                              color: backColor ?? Colors.black,
-                              imageName: SvgImages.backArrow)),
+                          child: RotatedBox(
+                        quarterTurns:
+                            sl<LocalizationProvider>().locale.languageCode ==
+                                    "ar"
+                                ? 0
+                                : 2,
+                        child: customImageIconSVG(
+                            color: backColor ?? Colors.black,
+                            imageName: SvgImages.backArrow),
+                      )),
                     ))
                 : SizedBox(
                     width: actionWidth ?? 30,
@@ -63,7 +72,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             Text(
               title ?? "",
               style: AppTextStyles.semiBold
-                  .copyWith(color: Colors.black, fontSize: 14),
+                  .copyWith(color: Colors.black, fontSize: 18),
             ),
             const Expanded(child: SizedBox()),
             SizedBox(

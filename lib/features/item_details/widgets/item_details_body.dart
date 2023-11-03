@@ -44,33 +44,11 @@ class ItemDetailsBody extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          RichText(
-                            text: TextSpan(
-                              text: ' (142) ',
-                              style: AppTextStyles.regular.copyWith(
-                                  fontSize: 14, color: Styles.ACCENT_COLOR),
-                              children: [
-                                TextSpan(
-                                  text: getTranslated("ratting", context),
-                                  style: AppTextStyles.semiBold.copyWith(
-                                      fontSize: 16, color: Styles.TITLE),
-                                ),
-                                TextSpan(
-                                  text: ' 4.0  ',
-                                  style: AppTextStyles.semiBold.copyWith(
-                                      fontSize: 16, color: Styles.TITLE),
-                                ),
-                              ],
-                            ),
-                          ),
-                          customImageIconSVG(
-                              imageName: SvgImages.fillStar, height: 24),
-                          const Expanded(child: SizedBox()),
                           customContainerSvgIcon(
                             radius: 100,
                             width: 40,
                             height: 40,
-                            imageName: SvgImages.export,
+                            imageName: SvgImages.instagram,
                             color: Styles.PRIMARY_COLOR,
                           ),
                           const SizedBox(width: 6),
@@ -83,11 +61,29 @@ class ItemDetailsBody extends StatelessWidget {
                           ),
                           const SizedBox(width: 6),
                           customContainerSvgIcon(
-                            radius: 100,
-                            width: 40,
-                            height: 40,
-                            imageName: SvgImages.instagram,
-                            color: Styles.PRIMARY_COLOR,
+                              radius: 100,
+                              width: 40,
+                              height: 40,
+                              imageName: SvgImages.export,
+                              color: Styles.PRIMARY_COLOR,
+                              onTap: () {}),
+                          const Expanded(child: SizedBox()),
+                          customImageIconSVG(
+                              imageName: SvgImages.fillStar, height: 24),
+                          RichText(
+                            text: TextSpan(
+                              text:
+                                  ' 4.0 ${getTranslated("ratting", context)} ',
+                              style: AppTextStyles.semiBold
+                                  .copyWith(fontSize: 16, color: Styles.TITLE),
+                              children: [
+                                TextSpan(
+                                  text: '(142)',
+                                  style: AppTextStyles.regular.copyWith(
+                                      fontSize: 14, color: Styles.ACCENT_COLOR),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

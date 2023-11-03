@@ -31,6 +31,7 @@ class ItemDetailsProvider extends ChangeNotifier {
   getDetails(id) async {
     try {
       model = null;
+      selectedTab=0;
       isLoading = true;
       notifyListeners();
       Either<ServerFailure, Response> response = await repo.getDetails(id);

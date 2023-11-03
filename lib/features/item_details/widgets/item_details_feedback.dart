@@ -36,26 +36,20 @@ class ItemDetailsFeedback extends StatelessWidget {
                   horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
               child: Consumer<RattingProvider>(
                   builder: (context, provider, child) {
-                return StreamBuilder<String?>(
-                    stream: provider.feedbackStream,
-                    builder: (context, snapshot) {
-                      return CustomButton(
-                        text: getTranslated("rate", context),
-                        onTap: () => CustomBottomSheet.show(
-                            height: 500.h,
-                            label: getTranslated("rate", context),
-                            list: const SendRateBottomSheet(),
-                            onConfirm: () {
-                              if (snapshot.data == null ||
-                                  snapshot.data!.length < 4) {
-                                provider.formKey.currentState!.validate();
-                              }
-                              provider.sendFeedback(1);
-                            },
-                            onClose: () => provider.clear(),
-                            isLoading: provider.isLoading),
-                      );
-                    });
+                return CustomButton(
+                  text: getTranslated("rate", context),
+                  onTap: () => CustomBottomSheet.show(
+                      height: 500.h,
+                      label: getTranslated("rate", context),
+                      list: const SendRateBottomSheet(),
+                      onConfirm: () {
+                        if (provider.formKey.currentState!.validate()) {
+                          provider.sendFeedback(1);
+                        }
+                      },
+                      onClose: () => provider.clear(),
+                      isLoading: provider.isLoading),
+                );
               }),
             ),
           ],
