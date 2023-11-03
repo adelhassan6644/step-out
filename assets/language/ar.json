@@ -114,6 +114,7 @@
   "notifications": "الاشعارات",
   "no_notifications": "لا يوجد اشعارات",
   "about_step_out": "عن Step Out",
-  "something_went_wrong": "حدث خطآ ما !"
+  "something_went_wrong": "حدث خطآ ما !",
+  "remove_acc": "حذف الحساب"
 
 }

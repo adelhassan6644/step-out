@@ -18,5 +18,6 @@ class Routes {
   static const CONTACT_WITH_US = "CONTACT_WITH_US";
   static const ABOUT_US = "ABOUT_US";
   static const TERMS = "TERMS";
+  static const PROFILE = "PROFILE";
   static const NOTIFICATIONS = "NOTIFICATIONS";
 }

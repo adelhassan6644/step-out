@@ -21,7 +21,7 @@ class MoreOptions extends StatelessWidget {
         MoreButton(
           title: getTranslated("profile", context),
           icon: SvgImages.userIcon,
-          onTap: () {},
+          onTap: () => CustomNavigator.push(Routes.PROFILE),
         ),
         MoreButton(
           title: getTranslated("notifications", context),

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:stepOut/app/core/utils/svg_images.dart';
+import 'package:stepOut/components/custom_images.dart';
 import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/dimensions.dart';
-
+import '../../../app/core/utils/text_styles.dart';
+import '../../../app/localization/language_constant.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({Key? key}) : super(key: key);
@@ -14,71 +17,37 @@ class ProfileBody extends StatelessWidget {
     return Consumer<ProfileProvider>(builder: (_, provider, child) {
       return Container(
         margin:
-            EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+            EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT.w),
         padding: EdgeInsets.symmetric(
             horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
             vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
+        decoration: const BoxDecoration(
             color: Styles.WHITE_COLOR,
-            border: Border.all(color: Styles.LIGHT_BORDER_COLOR)),
-        // child: Column(
-        //   children: [
-        //     Row(
-        //       children: [
-        //         Expanded(
-        //           child: Text(
-        //             getTranslated("personal_information", context),
-        //             style: AppTextStyles.medium.copyWith(
-        //                 color: ColorResources.HEADER,
-        //                 fontSize: 16,
-        //                 overflow: TextOverflow.ellipsis),
-        //           ),
-        //         ),
-        //         CustomButton(
-        //           text: getTranslated("edit", context),
-        //           width: 100,
-        //           height: 35,
-        //           withBorderColor: false,
-        //           withShadow: true,
-        //           iconSize: 15,
-        //           textColor: ColorResources.ACCENT_COLOR,
-        //           svgIcon: SvgImages.edit,
-        //           backgroundColor: ColorResources.WHITE_COLOR,
-        //           textSize: 14,
-        //           onTap: () => provider.updateProfile(),
-        //           isLoading: provider.isUpdate,
-        //         )
-        //       ],
-        //     ),
-        //     SizedBox(
-        //       height: 18.h,
-        //     ),
-        //     CustomTextFormField(
-        //       controller: provider.nameTEC,
-        //       hint: getTranslated("name", context),
-        //       inputType: TextInputType.name,
-        //       valid: Validations.name,
-        //       pSvgIcon: SvgImages.userIcon,
-        //     ),
-        //     CustomTextFormField(
-        //       controller: provider.phoneTEC,
-        //       hint: getTranslated("phone_number", context),
-        //       inputType: TextInputType.phone,
-        //       valid: Validations.phone,
-        //       pSvgIcon: SvgImages.phoneIcon,
-        //     ),
-        //     CustomTextFormField(
-        //       controller: provider.emailTEC,
-        //       hint: getTranslated("mail", context),
-        //       inputType: TextInputType.emailAddress,
-        //       valid: Validations.mail,
-        //       pSvgIcon: SvgImages.mailIcon,
-        //       read: true,
-        //       addBorder: true,
-        //     ),
-        //   ],
-        // ),
+            border: Border(
+                top: BorderSide(color: Styles.BORDER_COLOR),
+                bottom: BorderSide(color: Styles.BORDER_COLOR))),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                customImageIconSVG(imageName: SvgImages.userIcon),
+                SizedBox(width: 16.w),
+                Expanded(
+                  child: Text(
+                    getTranslated("personal_information", context),
+                    style: AppTextStyles.medium.copyWith(
+                        color: Styles.PRIMARY_COLOR,
+                        fontSize: 16,
+                        overflow: TextOverflow.ellipsis),
+                  ),
+                ),
+                SizedBox(width: 16.w),
+                customImageIconSVG(imageName: SvgImages.edit),
+              ],
+            ),
+            SizedBox(height: 16.h),
+          ],
+        ),
       );
     });
   }

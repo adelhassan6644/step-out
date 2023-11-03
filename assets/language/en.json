@@ -112,5 +112,6 @@
   "notifications": "Notifications",
   "no_notifications": "There's no Notifications",
   "about_step_out": "About Step Out",
-  "something_went_wrong": "Something went wrong !"
+  "something_went_wrong": "Something went wrong !",
+  "remove_acc": "Remove Account"
 }

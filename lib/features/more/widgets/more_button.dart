@@ -10,9 +10,14 @@ import '../../language/provider/localization_provider.dart';
 
 class MoreButton extends StatelessWidget {
   const MoreButton(
-      {required this.title, required this.icon, this.onTap, Key? key})
+      {required this.title,
+      this.withBottomBorder = false,
+      required this.icon,
+      this.onTap,
+      Key? key})
       : super(key: key);
   final String title, icon;
+  final bool withBottomBorder;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
@@ -22,10 +27,13 @@ class MoreButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(
             vertical: Dimensions.PADDING_SIZE_SMALL.h,
             horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
             border: Border(
-          top: BorderSide(
+          top: const BorderSide(
             color: Styles.BORDER_COLOR,
+          ),
+          bottom: BorderSide(
+            color: withBottomBorder ? Styles.BORDER_COLOR : Colors.transparent,
           ),
         )),
         child: Row(
