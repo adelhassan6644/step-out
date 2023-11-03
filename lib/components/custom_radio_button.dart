@@ -29,9 +29,12 @@ class CustomRadioButton extends StatelessWidget {
             horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
             vertical: Dimensions.PADDING_SIZE_SMALL.h),
         decoration: BoxDecoration(
-            color: check ? Styles.PRIMARY_COLOR.withOpacity(0.15) : null,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Styles.PRIMARY_COLOR)),
+          color: check
+              ? Styles.PRIMARY_COLOR.withOpacity(0.2)
+              : Styles.SMOKED_WHITE_COLOR,
+          borderRadius: BorderRadius.circular(12),
+          // border: Border.all(color: Styles.PRIMARY_COLOR),
+        ),
         child: Row(
           children: [
             Visibility(
