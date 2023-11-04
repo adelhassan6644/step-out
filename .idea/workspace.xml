@@ -13,18 +13,8 @@
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.stamp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/language/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/ar.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/svgs/camera.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/svgs/camera.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/svgs/edit.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/svgs/edit.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/svgs/lock.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/svgs/lock.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/more/widgets/more_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/more/widgets/more_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/more/widgets/more_options.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/more/widgets/more_options.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/profile/page/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/profile/page/profile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/profile/widgets/change_password_button.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/auth/pages/change_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/auth/pages/change_password.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/profile/widgets/profile_body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/profile/widgets/profile_body.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/navigation/custom_navigation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/navigation/custom_navigation.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/navigation/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/navigation/routes.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,22 +58,22 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "/Users/user/SoftweareCloud2/step-out/assets/svgs",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "flutter.settings",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/user/SoftweareCloud2/step-out/assets/svgs&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/svgs" />

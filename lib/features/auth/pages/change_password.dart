@@ -53,6 +53,10 @@ class _ChangePasswordState extends State<ChangePassword> {
             Consumer<AuthProvider>(builder: (_, provider, child) {
               return Expanded(
                 child: ListAnimator(
+                  customPadding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                    vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
+                  ),
                   data: [
                     Form(
                         key: _formKey,

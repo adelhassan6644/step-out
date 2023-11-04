@@ -30,6 +30,7 @@
   "new_password": "New password",
   "enter_new_password": "Enter New Password",
   "current_password": "Current password",
+  "enter_current_password": "Enter Current password",
   "password": "password",
   "confirm_password": "confirm password",
   "personal_information": "Personal Information",
