@@ -10,4 +10,5 @@ class Images {
   static const String arabic = 'assets/images/saudi-arabia.png';
   static const String english = 'assets/images/united-states-of-america.png';
   static const String removeAcc = 'assets/images/remove_account.png';
+  static const String contactWithUsBG = 'assets/images/contact_with_us_bg.png';
 }

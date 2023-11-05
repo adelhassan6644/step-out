@@ -67,4 +67,5 @@ class SvgImages {
   static const String clock = 'assets/svgs/clock.svg';
   static const String alarm = 'assets/svgs/alarm.svg';
   static const String language = 'assets/svgs/language.svg';
+  static const String supportCall = 'assets/svgs/support_call.svg';
 }
