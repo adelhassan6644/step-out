@@ -115,5 +115,8 @@
   "about_step_out": "About Step Out",
   "something_went_wrong": "Something went wrong !",
   "remove_acc": "Remove Account",
-  "edit_profile": "Edit personal information"
+  "edit_profile": "Edit personal information",
+  "are_you_sure_remove_account": "Are you sure you want to remove your account ?",
+  "your_acc_deleted_successfully": "Your Account has been deleted successfully !",
+  "remove": "Remove"
 }

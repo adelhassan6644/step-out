@@ -117,6 +117,9 @@
   "about_step_out": "عن Step Out",
   "something_went_wrong": "حدث خطآ ما !",
   "remove_acc": "حذف الحساب",
-  "edit_profile": "تعديل المعلومات الشخصية"
+  "edit_profile": "تعديل المعلومات الشخصية",
+  "are_you_sure_remove_account": "هل أنت متأكد أنك تريد حذف حسابك ؟",
+  "your_acc_deleted_successfully": "تم حذف حسابك بنجاح !",
+  "remove": "حذف"
 
 }

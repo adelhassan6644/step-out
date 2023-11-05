@@ -5,10 +5,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/app_snack_bar.dart';
+import 'package:stepOut/features/auth/provider/auth_provider.dart';
 import 'package:stepOut/features/profile/model/profile_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
+import 'package:stepOut/navigation/routes.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/localization/language_constant.dart';
+import '../../../data/config/di.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
 import '../repo/profile_repo.dart';
@@ -156,6 +159,40 @@ class ProfileProvider extends ChangeNotifier {
       });
     } catch (e) {
       isLoading = false;
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: e.toString(),
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Styles.RED_COLOR,
+              isFloating: true));
+      notifyListeners();
+    }
+  }
+
+  bool isDeleting = false;
+  deleteAcc() async {
+    try {
+      isDeleting = true;
+      notifyListeners();
+
+      Either<ServerFailure, Response> response = await profileRepo.deleteAcc();
+
+      response.fold((fail) {
+        showToast(ApiErrorHandler.getMessage(fail));
+      }, (response) {
+        CustomSnackBar.showSnackBar(
+            notification: AppNotification(
+                message: getTranslated("your_acc_deleted_successfully",
+                    CustomNavigator.navigatorState.currentContext!),
+                backgroundColor: Styles.ACTIVE,
+                borderColor: Styles.ACTIVE,
+                isFloating: true));
+        sl<AuthProvider>().logOut();
+      });
+      isDeleting = false;
+      notifyListeners();
+    } catch (e) {
+      isDeleting = false;
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
               message: e.toString(),
