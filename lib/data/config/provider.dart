@@ -14,6 +14,7 @@ import '../../features/language/provider/localization_provider.dart';
 import '../../features/news/provider/news_provider.dart';
 import '../../features/notifications/provider/notifications_provider.dart';
 import '../../features/profile/provider/profile_provider.dart';
+import '../../features/search/provider/search_provider.dart';
 import '../../features/setting/provider/setting_provider.dart';
 import '../../features/splash/provider/splash_provider.dart';
 import '../../main_page/provider/main_page_provider.dart';
@@ -38,6 +39,7 @@ abstract class ProviderList {
     ChangeNotifierProvider(create: (_) => di.sl<CalenderProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<LocationProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<ContactProvider>()),
+    ChangeNotifierProvider(create: (_) => di.sl<SearchProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<SettingProvider>()),
   ];
 }

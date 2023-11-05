@@ -24,13 +24,18 @@ class HomeHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           customImageIconSVG(
-              imageName: SvgImages.search, width: 24, height: 24),
+              onTap: () => CustomNavigator.push(Routes.SEARCH),
+              imageName: SvgImages.search,
+              width: 24,
+              height: 24),
           const Expanded(child: SizedBox()),
           customImageIcon(imageName: Images.homeLogo, width: 100),
           const Expanded(child: SizedBox()),
           customImageIconSVG(
-            onTap: ()=>CustomNavigator.push(Routes.NOTIFICATIONS),
-              imageName: SvgImages.notification, width: 24, height: 24),
+              onTap: () => CustomNavigator.push(Routes.NOTIFICATIONS),
+              imageName: SvgImages.notification,
+              width: 24,
+              height: 24),
         ],
       ),
     );
