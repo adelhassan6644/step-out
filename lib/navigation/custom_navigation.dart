@@ -4,6 +4,7 @@ import 'package:stepOut/features/category_details/page/category_details.dart';
 import 'package:stepOut/features/home/models/categories_model.dart';
 import 'package:stepOut/features/item_details/page/item_details.dart';
 import 'package:stepOut/features/notifications/page/notifications.dart';
+import 'package:stepOut/features/profile/page/edit_profile.dart';
 import 'package:stepOut/features/profile/page/profile.dart';
 import 'package:stepOut/main_models/base_model.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +58,9 @@ abstract class CustomNavigator {
 
       case Routes.PROFILE:
         return _pageRoute(const Profile());
+
+      case Routes.EDIT_PROFILE:
+        return _pageRoute(const EditProfile());
 
       case Routes.DASHBOARD:
         return _pageRoute(const DashBoard());

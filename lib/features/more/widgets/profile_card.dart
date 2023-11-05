@@ -49,7 +49,9 @@ class ProfileCard extends StatelessWidget {
               children: [
                 const Expanded(child: SizedBox()),
                 Text(
-                  provider.isLogin ? provider.nameTEC.text.trim() : "Guest",
+                  provider.isLogin
+                      ? provider.profileModel?.name ?? ""
+                      : "Guest",
                   style: AppTextStyles.bold.copyWith(
                       color: Styles.SPLASH_BACKGROUND_COLOR,
                       fontSize: 16,
@@ -58,7 +60,7 @@ class ProfileCard extends StatelessWidget {
                 SizedBox(height: 8.h),
                 Text(
                   provider.isLogin
-                      ? provider.emailTEC.text.trim()
+                      ? provider.profileModel?.email ?? ""
                       : "guest@stepOut.com",
                   style: AppTextStyles.regular.copyWith(
                       color: Styles.SPLASH_BACKGROUND_COLOR, fontSize: 12),

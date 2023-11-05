@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/app_snack_bar.dart';
 import 'package:stepOut/features/profile/model/profile_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
@@ -23,21 +24,26 @@ class ProfileProvider extends ChangeNotifier {
   bool get isLogin => profileRepo.isLoggedIn();
 
   ProfileModel? profileModel;
-  TextEditingController nameTEC = TextEditingController();
-  TextEditingController emailTEC = TextEditingController();
-  TextEditingController phoneTEC = TextEditingController();
+
+  final name = BehaviorSubject<String?>();
+  Function(String?) get updateName => name.sink.add;
+  Stream<String?> get nameStream => name.stream.asBroadcastStream();
+
+  final phone = BehaviorSubject<String?>();
+  Function(String?) get updatePhone => phone.sink.add;
+  Stream<String?> get phoneStream => phone.stream.asBroadcastStream();
 
   File? profileImage;
   onSelectImage(File? file) {
     profileImage = file;
+    updateProfile();
     notifyListeners();
   }
 
   clear() {
     profileImage = null;
-    nameTEC.clear();
-    phoneTEC.clear();
-    emailTEC.clear();
+    updateName(null);
+    updatePhone(null);
     profileModel = null;
   }
 
@@ -60,8 +66,8 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   bool checkData(Map<String, dynamic> body) {
-    return _boolCheckString(nameTEC.text.trim(), "name", body) ||
-        _boolCheckString(phoneTEC.text.trim(), "phone", body);
+    return _boolCheckString(name.value?.trim(), "name", body) ||
+        _boolCheckString(phone.value?.trim(), "phone", body);
   }
 
   bool isUpdate = false;
@@ -70,7 +76,7 @@ class ProfileProvider extends ChangeNotifier {
     Map<String, dynamic> body = {
       "name": profileModel?.name,
       "phone": profileModel?.phone,
-      "email": profileModel?.email,
+      // "email": profileModel?.email,
     };
 
     if (checkData(body) || hasImage()) {
@@ -79,11 +85,11 @@ class ProfileProvider extends ChangeNotifier {
           "photo": await MultipartFile.fromFile(profileImage!.path),
         });
       }
-      if (_boolCheckString(phoneTEC.text.trim(), "phone", body)) {
-        body["phone"] = phoneTEC.text.trim();
+      if (_boolCheckString(phone.value?.trim(), "phone", body)) {
+        body["phone"] = phone.value?.trim();
       }
-      if (_boolCheckString(nameTEC.text.trim(), "name", body)) {
-        body["name"] = nameTEC.text.trim();
+      if (_boolCheckString(name.value?.trim(), "name", body)) {
+        body["name"] = name.value?.trim();
       }
 
       try {
@@ -97,12 +103,7 @@ class ProfileProvider extends ChangeNotifier {
                   isFloating: true,
                   backgroundColor: Styles.IN_ACTIVE,
                   borderColor: Colors.red));
-
-          // showToast(ApiErrorHandler.getMessage(fail));
-          isUpdate = false;
-          notifyListeners();
         }, (response) {
-          // getProfile();
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: getTranslated("your_profile_successfully_updated",
@@ -110,9 +111,9 @@ class ProfileProvider extends ChangeNotifier {
                   isFloating: true,
                   backgroundColor: Styles.ACTIVE,
                   borderColor: Colors.transparent));
-          isUpdate = false;
-          notifyListeners();
         });
+        isUpdate = false;
+        notifyListeners();
       } catch (e) {
         isUpdate = false;
         CustomSnackBar.showSnackBar(
@@ -150,7 +151,6 @@ class ProfileProvider extends ChangeNotifier {
         notifyListeners();
       }, (response) {
         profileModel = ProfileModel.fromJson(response.data['data']);
-        initProfileData();
         isLoading = false;
         notifyListeners();
       });
@@ -167,8 +167,7 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   initProfileData() {
-    nameTEC.text = profileModel?.name ?? "";
-    emailTEC.text = profileModel?.email ?? "";
-    phoneTEC.text = profileModel?.phone ?? "";
+    updatePhone(profileModel?.phone);
+    updateName(profileModel?.name);
   }
 }

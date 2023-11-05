@@ -3,6 +3,8 @@ import 'package:stepOut/app/core/utils/svg_images.dart';
 import 'package:stepOut/components/custom_images.dart';
 import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:stepOut/navigation/custom_navigation.dart';
+import 'package:stepOut/navigation/routes.dart';
 
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/dimensions.dart';
@@ -10,7 +12,7 @@ import '../../../app/core/utils/text_styles.dart';
 import '../../../app/localization/language_constant.dart';
 
 class ProfileBody extends StatelessWidget {
-  const ProfileBody({Key? key}) : super(key: key);
+  const ProfileBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +29,13 @@ class ProfileBody extends StatelessWidget {
                 top: BorderSide(color: Styles.BORDER_COLOR),
                 bottom: BorderSide(color: Styles.BORDER_COLOR))),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                customImageIconSVG(imageName: SvgImages.userIcon),
-                SizedBox(width: 16.w),
+                customImageIconSVG(
+                    imageName: SvgImages.userIcon, width: 24, height: 24),
+                const SizedBox(width: 16),
                 Expanded(
                   child: Text(
                     getTranslated("personal_information", context),
@@ -41,11 +45,74 @@ class ProfileBody extends StatelessWidget {
                         overflow: TextOverflow.ellipsis),
                   ),
                 ),
-                SizedBox(width: 16.w),
-                customImageIconSVG(imageName: SvgImages.edit),
+                const SizedBox(width: 16),
+                customImageIconSVG(
+                    imageName: SvgImages.edit,
+                    onTap: () => CustomNavigator.push(Routes.EDIT_PROFILE)),
               ],
             ),
-            SizedBox(height: 16.h),
+            SizedBox(height: 12.h),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    getTranslated("name", context),
+                    style: AppTextStyles.regular
+                        .copyWith(fontSize: 14, color: Styles.HINT_COLOR),
+                  ),
+
+                  ///Phone
+                  StreamBuilder<String?>(
+                      stream: provider.nameStream,
+                      builder: (context, snapshot) {
+                        return Text(
+                          snapshot.hasData
+                              ? snapshot.data ?? "Step Out"
+                              : "Step Out",
+                          style: AppTextStyles.medium
+                              .copyWith(fontSize: 14, color: Styles.TITLE),
+                        );
+                      }),
+
+                  Divider(
+                    color: Styles.BORDER_COLOR,
+                    height: 24.h,
+                  ),
+                  Text(
+                    getTranslated("phone", context),
+                    style: AppTextStyles.regular
+                        .copyWith(fontSize: 14, color: Styles.HINT_COLOR),
+                  ),
+
+                  ///Phone
+                  StreamBuilder<String?>(
+                      stream: provider.phoneStream,
+                      builder: (context, snapshot) {
+                        return Text(
+                          snapshot.hasData ? snapshot.data ?? "12345" : "12345",
+                          style: AppTextStyles.medium
+                              .copyWith(fontSize: 14, color: Styles.TITLE),
+                        );
+                      }),
+                  Divider(
+                    color: Styles.BORDER_COLOR,
+                    height: 24.h,
+                  ),
+                  Text(
+                    getTranslated("mail", context),
+                    style: AppTextStyles.regular
+                        .copyWith(fontSize: 14, color: Styles.HINT_COLOR),
+                  ),
+                  Text(
+                    provider.profileModel?.email ?? "stepOut@gmail.com",
+                    style: AppTextStyles.medium
+                        .copyWith(fontSize: 14, color: Styles.TITLE),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       );
