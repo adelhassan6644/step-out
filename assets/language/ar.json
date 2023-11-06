@@ -123,6 +123,9 @@
   "your_acc_deleted_successfully": "تم حذف حسابك بنجاح !",
   "remove": "حذف",
   "technical_support_team": "فريق الدعم الفني",
-  "follow_us": "تابعنا"
+  "follow_us": "تابعنا",
+  "search": "البحث",
+  "no_result_found": "لا توجد نتائج",
+  "no_result_found_description": "يبدو الأمر كما لو أننا لا نستطيع العثور على أي نتائج بناءً على بحثك"
 
 }

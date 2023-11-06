@@ -122,4 +122,7 @@
   "remove": "Remove",
   "technical_support_team": "Technical support team",
   "follow_us": "Follow us",
+  "search": "Search",
+  "no_result_found": "No result found",
+  "no_result_found_description": "It like we can’t find any results based on your search"
 }

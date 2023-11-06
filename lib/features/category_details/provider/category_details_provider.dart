@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:stepOut/data/error/api_error_handler.dart';
 import 'package:stepOut/features/category_details/repo/category_details_repo.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
