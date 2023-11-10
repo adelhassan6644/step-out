@@ -21,31 +21,41 @@ class AuthProvider extends ChangeNotifier {
     required this.authRepo,
   }) {
     updateMail(kDebugMode ? "adel@gmail.com" : authRepo.getMail());
+    _mailTEC = TextEditingController(
+        text: kDebugMode ? "adel@gmail.com" : authRepo.getMail());
   }
 
   final TextEditingController codeTEC = TextEditingController();
 
+  final TextEditingController nameTEC = TextEditingController();
   final name = BehaviorSubject<String?>();
   Function(String?) get updateName => name.sink.add;
   Stream<String?> get nameStream => name.stream.asBroadcastStream();
 
+  final TextEditingController phoneTEC = TextEditingController();
   final phone = BehaviorSubject<String?>();
   Function(String?) get updatePhone => phone.sink.add;
   Stream<String?> get phoneStream => phone.stream.asBroadcastStream();
+
+  late TextEditingController _mailTEC;
+  TextEditingController get mailTEC => _mailTEC;
 
   final mail = BehaviorSubject<String?>();
   Function(String?) get updateMail => mail.sink.add;
   Stream<String?> get mailStream => mail.stream.asBroadcastStream();
 
+  final TextEditingController passwordTEC = TextEditingController();
   final password = BehaviorSubject<String?>();
   Function(String?) get updatePassword => password.sink.add;
   Stream<String?> get passwordStream => password.stream.asBroadcastStream();
 
+  final TextEditingController newPasswordTEC = TextEditingController();
   final newPassword = BehaviorSubject<String?>();
   Function(String?) get updateNewPassword => newPassword.sink.add;
   Stream<String?> get newPasswordStream =>
       newPassword.stream.asBroadcastStream();
 
+  final TextEditingController confirmPasswordTEC = TextEditingController();
   final confirmPassword = BehaviorSubject<String?>();
   Function(String?) get updateConfirmPassword => confirmPassword.sink.add;
   Stream<String?> get confirmPasswordStream =>
@@ -97,10 +107,17 @@ class AuthProvider extends ChangeNotifier {
       });
 
   clear() {
+    codeTEC.clear();
+    nameTEC.clear();
+    mailTEC.clear();
+    phoneTEC.clear();
+    passwordTEC.clear();
+    newPasswordTEC.clear();
+    confirmPasswordTEC.clear();
+
     updateName(null);
     updatePhone(null);
     updateMail(null);
-    codeTEC.clear();
     updatePassword(null);
     updateNewPassword(null);
     updateConfirmPassword(null);

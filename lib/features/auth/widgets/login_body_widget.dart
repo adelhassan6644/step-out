@@ -68,6 +68,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                         builder: (context, snapshot) {
                           return CustomTextField(
                             onChanged: provider.updateMail,
+                            controller: provider.mailTEC,
                             label: getTranslated("mail", context),
                             hint: getTranslated("enter_your_mail", context),
                             withLabel: true,
@@ -98,6 +99,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                         builder: (context, snapshot) {
                           return CustomTextField(
                             onChanged: provider.updatePassword,
+                            controller: provider.passwordTEC,
                             keyboardAction: TextInputAction.done,
                             label: getTranslated("password", context),
                             hint: getTranslated("enter_your_password", context),
@@ -164,14 +166,14 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                             return CustomButton(
                                 text: getTranslated("login", context),
                                 onTap: () {
-                                  // CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: CategoryItem());
-                                  CustomNavigator.push(Routes.DASHBOARD,
-                                      arguments: 0);
+                                  // // CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: CategoryItem());
+                                  // CustomNavigator.push(Routes.DASHBOARD,
+                                  //     arguments: 0);
 
-                                  // _formKey.currentState!.validate();
-                                  // if (snapshot.data == true) {
-                                  //   provider.logIn();
-                                  // }
+                                  _formKey.currentState!.validate();
+                                  if (snapshot.data == true) {
+                                    provider.logIn();
+                                  }
                                 },
                                 isLoading: provider.isLogin);
                           }),

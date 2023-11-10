@@ -86,6 +86,7 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                         builder: (context, snapshot) {
                           return CustomTextField(
                             onChanged: provider.updateName,
+                            controller: provider.nameTEC,
                             label: getTranslated("name", context),
                             hint: getTranslated("enter_your_name", context),
                             withLabel: true,
@@ -117,6 +118,7 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                         stream: provider.phoneStream,
                         builder: (context, snapshot) {
                           return CustomTextField(
+                            controller: provider.phoneTEC,
                             onChanged: provider.updatePhone,
                             label: getTranslated("phone", context),
                             hint: getTranslated("enter_your_phone", context),
@@ -149,6 +151,7 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                         stream: provider.mailStream,
                         builder: (context, snapshot) {
                           return CustomTextField(
+                            controller: provider.mailTEC,
                             onChanged: provider.updateMail,
                             label: getTranslated("mail", context),
                             hint: getTranslated("enter_your_mail", context),
@@ -182,6 +185,7 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                         builder: (context, snapshot) {
                           return CustomTextField(
                             onChanged: provider.updateNewPassword,
+                            controller: provider.newPasswordTEC,
                             label: getTranslated("new_password", context),
                             hint: getTranslated("enter_new_password", context),
                             withLabel: true,
@@ -217,6 +221,7 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                         stream: provider.confirmPasswordStream,
                         builder: (context, snapshot) {
                           return CustomTextField(
+                            controller: provider.confirmPasswordTEC,
                             onChanged: provider.updateConfirmPassword,
                             keyboardAction: TextInputAction.done,
                             label:
