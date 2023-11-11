@@ -7,6 +7,8 @@ import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/utils/validation.dart';
 import '../../../app/localization/language_constant.dart';
+import '../../../components/confirmation_dialog.dart';
+import '../../../components/custom_simple_dialog.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
 import '../repo/auth_repo.dart';
@@ -160,11 +162,14 @@ class AuthProvider extends ChangeNotifier {
         authRepo.saveUserId(success.data['data']["id"]);
         if (success.data['data']["email_verified_at"] != null) {
           authRepo.setLoggedIn();
-          Provider.of<ProfileProvider>(
-                  CustomNavigator.navigatorState.currentContext!,
-                  listen: false)
-              .getProfile();
-          CustomNavigator.push(Routes.MAIN_PAGE, clean: true);
+          CustomNavigator.push(Routes.MAIN_PAGE, clean: true, arguments: 0);
+          CustomSnackBar.showSnackBar(
+              notification: AppNotification(
+                  message: getTranslated("logged_in_successfully",
+                      CustomNavigator.navigatorState.currentContext!),
+                  isFloating: true,
+                  backgroundColor: Styles.IN_ACTIVE,
+                  borderColor: Colors.transparent));
           clear();
         } else {
           CustomNavigator.push(Routes.VERIFICATION, arguments: true);
@@ -201,7 +206,9 @@ class AuthProvider extends ChangeNotifier {
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
-      }, (success) {});
+      }, (success) {
+        CustomNavigator.push(Routes.VERIFICATION, arguments: false);
+      });
       _isForget = false;
       notifyListeners();
     } catch (e) {
@@ -286,25 +293,24 @@ class AuthProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (success) {
-        // Future.delayed(
-        //     Duration.zero,
-        //     () => CustomSimpleDialog.parentSimpleDialog(
-        //             canDismiss: false,
-        //             customListWidget: [
-        //               ConfirmationDialog(
-        //                 image: Images.success,
-        //                 title: getTranslated(
-        //                     "your_password_changed_successfully",
-        //                     CustomNavigator.navigatorState.currentContext!),
-        //                 description: getTranslated(
-        //                     "you_can_now_login_with_your_new_password",
-        //                     CustomNavigator.navigatorState.currentContext!),
-        //                 mainTextButton: getTranslated("login",
-        //                     CustomNavigator.navigatorState.currentContext!),
-        //                 onTapMain: () =>
-        //                     CustomNavigator.push(Routes.LOGIN, clean: true),
-        //               )
-        //             ]));
+        Future.delayed(
+            Duration.zero,
+            () => CustomSimpleDialog.parentSimpleDialog(
+                    canDismiss: false,
+                    customListWidget: [
+                      ConfirmationDialog(
+                        title: getTranslated("your_password_reset_successfully",
+                            CustomNavigator.navigatorState.currentContext!),
+                        description: getTranslated(
+                            "your_password_reset_description",
+                            CustomNavigator.navigatorState.currentContext!),
+                        withOneButton: true,
+                        txtBtn: getTranslated("login",
+                            CustomNavigator.navigatorState.currentContext!),
+                        onContinue: () =>
+                            CustomNavigator.push(Routes.LOGIN, clean: true),
+                      )
+                    ]));
         clear();
       });
       _isReset = false;
@@ -339,18 +345,25 @@ class AuthProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (success) {
-        // Future.delayed(
-        //     Duration.zero,
-        // () => CustomSimpleDialog.parentSimpleDialog(
-        //         canDismiss: false,
-        //         customListWidget: [
-        //           ConfirmationDialog(
-        //             image: Images.success,
-        //             title: getTranslated(
-        //                 "your_password_changed_successfully",
-        //                 CustomNavigator.navigatorState.currentContext!),
-        //           ),
-        //         ]));
+        Future.delayed(
+            Duration.zero,
+            () => CustomSimpleDialog.parentSimpleDialog(
+                    canDismiss: false,
+                    customListWidget: [
+                      ConfirmationDialog(
+                        title: getTranslated(
+                            "your_password_changed_successfully",
+                            CustomNavigator.navigatorState.currentContext!),
+                        description: getTranslated(
+                            "your_password_reset_description",
+                            CustomNavigator.navigatorState.currentContext!),
+                        withOneButton: true,
+                        txtBtn: getTranslated("confirm",
+                            CustomNavigator.navigatorState.currentContext!),
+                        onContinue: () => CustomNavigator.push(Routes.MAIN_PAGE,
+                            clean: true, arguments: 3),
+                      )
+                    ]));
         clear();
       });
       _isChange = false;

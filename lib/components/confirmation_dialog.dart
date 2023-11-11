@@ -12,13 +12,16 @@ class ConfirmationDialog extends StatelessWidget {
       {required this.txtBtn,
       this.txtBtn2,
       this.icon,
+      this.title,
       this.description,
+      this.withOneButton = false,
       this.onContinue,
       Key? key})
       : super(key: key);
   final void Function()? onContinue;
   final String txtBtn;
-  final String? description, txtBtn2;
+  final bool withOneButton;
+  final String? title, description, txtBtn2;
   final String? icon;
   @override
   Widget build(BuildContext context) {
@@ -27,41 +30,57 @@ class ConfirmationDialog extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        customImageIconSVG(imageName: (icon ?? SvgImages.alarm)),
-        SizedBox(
-          height: 16.h,
-        ),
-        if (description != null)
-          Text(
-            description!,
-            textAlign: TextAlign.center,
-            style: AppTextStyles.regular.copyWith(
-              fontSize: 14,
-              // color: ColorResources.DETAILS_COLOR
+        Visibility(
+            visible: icon != null,
+            child: customImageIconSVG(imageName: (icon ?? SvgImages.alarm))),
+        Visibility(
+          visible: title != null,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Text(
+              title ?? "",
+              textAlign: TextAlign.center,
+              style: AppTextStyles.semiBold
+                  .copyWith(fontSize: 18, color: Styles.TITLE),
             ),
           ),
+        ),
+        Visibility(
+          visible: description != null,
+          child: Text(
+            description ?? "",
+            textAlign: TextAlign.center,
+            style: AppTextStyles.regular
+                .copyWith(fontSize: 14, color: Styles.DETAILS_COLOR),
+          ),
+        ),
         SizedBox(
           height: 24.h,
         ),
-        Row(
-          children: [
-            Expanded(
-                child: CustomButton(
-              onTap: onContinue,
-              text: txtBtn,
-            )),
-            SizedBox(
-              width: 16.w,
-            ),
-            Expanded(
-                child: CustomButton(
-              onTap: () => CustomNavigator.pop(),
-              text: txtBtn2 ?? "رجوع",
-              backgroundColor: Styles.PRIMARY_COLOR.withOpacity(0.1),
-              textColor: Styles.PRIMARY_COLOR,
-            ))
-          ],
-        )
+        withOneButton
+            ? CustomButton(
+                onTap: onContinue,
+                text: txtBtn,
+              )
+            : Row(
+                children: [
+                  Expanded(
+                      child: CustomButton(
+                    onTap: onContinue,
+                    text: txtBtn,
+                  )),
+                  SizedBox(
+                    width: 16.w,
+                  ),
+                  Expanded(
+                      child: CustomButton(
+                    onTap: () => CustomNavigator.pop(),
+                    text: txtBtn2 ?? "رجوع",
+                    backgroundColor: Styles.PRIMARY_COLOR.withOpacity(0.1),
+                    textColor: Styles.PRIMARY_COLOR,
+                  ))
+                ],
+              )
       ],
     );
   }
