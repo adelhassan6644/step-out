@@ -131,32 +131,37 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                           );
                         }),
 
-                    SizedBox(
-                      height: 3.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            CustomNavigator.push(Routes.FORGET_PASSWORD);
-                            provider.clear();
-                          },
-                          child: Text(
-                            getTranslated("forget_password", context),
-                            style: AppTextStyles.medium.copyWith(
-                              color: Styles.HEADER,
-                              fontSize: 12,
-                              decoration: TextDecoration.underline,
-                              decorationColor: Styles.HEADER,
+                    ///Forget Password && Remember me
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h,
+                          horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL.w),
+                      child: Row(
+                        children: [
+                          _RememberMe(
+                            check: provider.isRememberMe,
+                            onChange: (v) => provider.onRememberMe(v),
+                          ),
+                          const Expanded(child: SizedBox()),
+                          InkWell(
+                            onTap: () {
+                              CustomNavigator.push(Routes.FORGET_PASSWORD);
+                              provider.clear();
+                            },
+                            child: Text(
+                              getTranslated("forget_password", context),
+                              style: AppTextStyles.medium.copyWith(
+                                color: Styles.HEADER,
+                                fontSize: 12,
+                                decoration: TextDecoration.underline,
+                                decorationColor: Styles.HEADER,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 12.w,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
+
                     Padding(
                       padding: EdgeInsets.symmetric(
                         vertical: 24.h,
@@ -228,5 +233,61 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
         ),
       );
     });
+  }
+}
+
+class _RememberMe extends StatelessWidget {
+  const _RememberMe({
+    Key? key,
+    this.check = false,
+    required this.onChange,
+  }) : super(key: key);
+  final bool check;
+  final Function(bool) onChange;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Row(
+        children: [
+          InkWell(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            onTap: () => onChange(!check),
+            child: Container(
+              width: 18.w,
+              height: 18.h,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: check ? Styles.PRIMARY_COLOR : Styles.WHITE_COLOR,
+                  border: Border.all(
+                      color:
+                          check ? Styles.PRIMARY_COLOR : Styles.DETAILS_COLOR,
+                      width: 1)),
+              child: check
+                  ? const Icon(
+                      Icons.check,
+                      color: Styles.WHITE_COLOR,
+                      size: 16,
+                    )
+                  : null,
+            ),
+          ),
+          SizedBox(width: 12.w),
+          Expanded(
+            child: Text(
+              getTranslated("remember_me", context),
+              maxLines: 1,
+              style: AppTextStyles.medium.copyWith(
+                  fontSize: 12,
+                  overflow: TextOverflow.ellipsis,
+                  color: check ? Styles.PRIMARY_COLOR : Styles.DETAILS_COLOR),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

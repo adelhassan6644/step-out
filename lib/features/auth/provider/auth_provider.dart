@@ -154,11 +154,13 @@ class AuthProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (success) {
+        ///To Remember
         if (_isRememberMe) {
           authRepo.remember(mail.value!.trim());
         } else {
           authRepo.forget();
         }
+
         authRepo.saveUserId(success.data['data']["id"]);
         if (success.data['data']["email_verified_at"] != null) {
           authRepo.setLoggedIn();
@@ -278,7 +280,6 @@ class AuthProvider extends ChangeNotifier {
 
   bool _isReset = false;
   bool get isReset => _isReset;
-
   resetPassword() async {
     try {
       _isReset = true;
