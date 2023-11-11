@@ -138,7 +138,6 @@ class AuthProvider extends ChangeNotifier {
 
   bool _isLogin = false;
   bool get isLogin => _isLogin;
-
   logIn() async {
     try {
       _isLogin = true;
@@ -193,7 +192,6 @@ class AuthProvider extends ChangeNotifier {
 
   bool _isForget = false;
   bool get isForget => _isForget;
-
   forgetPassword() async {
     try {
       _isForget = true;
