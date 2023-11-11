@@ -241,6 +241,7 @@ class AuthProvider extends ChangeNotifier {
           code: codeTEC.text.trim(),
           fromRegister: fromRegister,
           updateHeader: fromRegister);
+
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
