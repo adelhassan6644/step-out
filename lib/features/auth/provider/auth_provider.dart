@@ -17,9 +17,7 @@ import '../../../app/core/utils/styles.dart';
 
 class AuthProvider extends ChangeNotifier {
   final AuthRepo authRepo;
-  AuthProvider({
-    required this.authRepo,
-  }) {
+  AuthProvider({required this.authRepo}) {
     updateMail(kDebugMode ? "adel@gmail.com" : authRepo.getMail());
     _mailTEC = TextEditingController(
         text: kDebugMode ? "adel@gmail.com" : authRepo.getMail());
@@ -39,7 +37,6 @@ class AuthProvider extends ChangeNotifier {
 
   late TextEditingController _mailTEC;
   TextEditingController get mailTEC => _mailTEC;
-
   final mail = BehaviorSubject<String?>();
   Function(String?) get updateMail => mail.sink.add;
   Stream<String?> get mailStream => mail.stream.asBroadcastStream();

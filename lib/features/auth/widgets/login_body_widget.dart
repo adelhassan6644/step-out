@@ -44,9 +44,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
   Widget build(BuildContext context) {
     return Consumer<AuthProvider>(builder: (_, provider, child) {
       return Container(
-        margin: EdgeInsets.only(
-          top: context.toPadding + 160.h,
-        ),
+        margin: EdgeInsets.only(top: context.toPadding + 160.h),
         padding: EdgeInsets.symmetric(
             horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
             vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
@@ -63,6 +61,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                 key: _formKey,
                 child: Column(
                   children: [
+                    ///Mail
                     StreamBuilder<String?>(
                         stream: provider.mailStream,
                         builder: (context, snapshot) {
@@ -94,6 +93,8 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                             },
                           );
                         }),
+
+                    ///Password
                     StreamBuilder<String?>(
                         stream: provider.passwordStream,
                         builder: (context, snapshot) {
@@ -126,10 +127,10 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                               }
                               return null;
                             },
-                            // valid: Validations.password,
                             isPassword: true,
                           );
                         }),
+
                     SizedBox(
                       height: 3.h,
                     ),
@@ -138,8 +139,8 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                       children: [
                         InkWell(
                           onTap: () {
-                            provider.clear();
                             CustomNavigator.push(Routes.FORGET_PASSWORD);
+                            provider.clear();
                           },
                           child: Text(
                             getTranslated("forget_password", context),
@@ -166,14 +167,14 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                             return CustomButton(
                                 text: getTranslated("login", context),
                                 onTap: () {
-                                  // // CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: CategoryItem());
-                                  // CustomNavigator.push(Routes.DASHBOARD,
-                                  //     arguments: 0);
+                                  // CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: CategoryItem());
+                                  provider.clear();
+                                  CustomNavigator.push(Routes.PROFILE);
 
-                                  _formKey.currentState!.validate();
-                                  if (snapshot.data == true) {
-                                    provider.logIn();
-                                  }
+                                  // _formKey.currentState!.validate();
+                                  // if (snapshot.data == true) {
+                                  //   provider.logIn();
+                                  // }
                                 },
                                 isLoading: provider.isLogin);
                           }),

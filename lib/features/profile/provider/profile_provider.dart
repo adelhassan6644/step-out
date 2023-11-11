@@ -28,10 +28,12 @@ class ProfileProvider extends ChangeNotifier {
 
   ProfileModel? profileModel;
 
+  final TextEditingController nameTEC = TextEditingController();
   final name = BehaviorSubject<String?>();
   Function(String?) get updateName => name.sink.add;
   Stream<String?> get nameStream => name.stream.asBroadcastStream();
 
+  final TextEditingController phoneTEC = TextEditingController();
   final phone = BehaviorSubject<String?>();
   Function(String?) get updatePhone => phone.sink.add;
   Stream<String?> get phoneStream => phone.stream.asBroadcastStream();
@@ -204,7 +206,11 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   initProfileData() {
-    updatePhone(profileModel?.phone);
+    nameTEC.text = profileModel?.name ?? "";
+    phoneTEC.text = profileModel?.phone ?? "";
+
     updateName(profileModel?.name);
+    updatePhone(profileModel?.phone);
+    notifyListeners();
   }
 }
