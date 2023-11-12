@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "_flutterfire_internals",
-      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.9",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.12",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -267,7 +267,7 @@
     },
     {
       "name": "firebase_core",
-      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_core-2.19.0",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_core-2.22.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -297,19 +297,19 @@
     },
     {
       "name": "firebase_messaging",
-      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_messaging-14.7.1",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_messaging-14.7.4",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "firebase_messaging_platform_interface",
-      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_messaging_platform_interface-4.5.10",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_messaging_platform_interface-4.5.13",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "firebase_messaging_web",
-      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_messaging_web-3.5.10",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_messaging_web-3.5.13",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -1322,7 +1322,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-11-10T15:50:03.025079Z",
+  "generated": "2023-11-12T20:35:59.883058Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }
