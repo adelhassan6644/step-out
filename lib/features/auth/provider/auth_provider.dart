@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:stepOut/features/success/model/success_model.dart';
 import '../../../app/core/utils/validation.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/confirmation_dialog.dart';
@@ -144,7 +145,7 @@ class AuthProvider extends ChangeNotifier {
         authRepo.saveUserId(success.data['data']["id"]);
         if (success.data['data']["email_verified_at"] != null) {
           authRepo.setLoggedIn();
-          CustomNavigator.push(Routes.MAIN_PAGE, clean: true, arguments: 0);
+          CustomNavigator.push(Routes.DASHBOARD, clean: true, arguments: 0);
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: getTranslated("logged_in_successfully",
@@ -234,13 +235,20 @@ class AuthProvider extends ChangeNotifier {
                 borderColor: Colors.transparent));
       }, (success) {
         if (fromRegister) {
-          CustomSnackBar.showSnackBar(
-              notification: AppNotification(
-                  message: getTranslated("register_successfully",
-                      CustomNavigator.navigatorState.currentContext!),
-                  isFloating: true,
-                  backgroundColor: Styles.ACTIVE,
-                  borderColor: Colors.transparent));
+          authRepo.setLoggedIn();
+          CustomNavigator.push(
+            Routes.SUCCESS_PAGE,
+            clean: true,
+            arguments: SuccessModel(
+                title: getTranslated("register_success_title",
+                    CustomNavigator.navigatorState.currentContext!),
+                description: getTranslated("register_success_description",
+                    CustomNavigator.navigatorState.currentContext!),
+                onTap: () {
+                  CustomNavigator.push(Routes.DASHBOARD,
+                      arguments: 0, clean: true);
+                }),
+          );
           clear();
         } else {
           CustomNavigator.push(Routes.RESET_PASSWORD, replace: true);
@@ -343,7 +351,7 @@ class AuthProvider extends ChangeNotifier {
                         withOneButton: true,
                         txtBtn: getTranslated("confirm",
                             CustomNavigator.navigatorState.currentContext!),
-                        onContinue: () => CustomNavigator.push(Routes.MAIN_PAGE,
+                        onContinue: () => CustomNavigator.push(Routes.DASHBOARD,
                             clean: true, arguments: 3),
                       )
                     ]));

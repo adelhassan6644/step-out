@@ -1,5 +1,6 @@
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
+import 'package:stepOut/app/core/utils/images.dart';
 import '../../app/core/utils/text_styles.dart';
 import '../../navigation/custom_navigation.dart';
 import '../app/core/utils/styles.dart';
@@ -32,7 +33,7 @@ class ConfirmationDialog extends StatelessWidget {
       children: [
         Visibility(
             visible: icon != null,
-            child: customImageIconSVG(imageName: (icon ?? SvgImages.alarm))),
+            child: customImageIcon(imageName: (icon ?? Images.success))),
         Visibility(
           visible: title != null,
           child: Padding(

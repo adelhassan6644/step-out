@@ -215,7 +215,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                     InkWell(
                       onTap: () {
                         provider.clear();
-                        CustomNavigator.push(Routes.MAIN_PAGE, clean: true);
+                        CustomNavigator.push(Routes.DASHBOARD, clean: true);
                       },
                       child: Padding(
                         padding: EdgeInsets.only(top: 12.h),

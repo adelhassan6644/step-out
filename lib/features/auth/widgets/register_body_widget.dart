@@ -284,7 +284,7 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                                     }
                                   }
                                 },
-                                isLoading: provider.isLogin);
+                                isLoading: provider.isRegister);
                           }),
                     ),
                     Row(
@@ -321,7 +321,7 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                     ),
                     InkWell(
                       onTap: () {
-                        CustomNavigator.push(Routes.MAIN_PAGE, clean: true);
+                        CustomNavigator.push(Routes.DASHBOARD, clean: true);
                         provider.clear();
                       },
                       child: Padding(

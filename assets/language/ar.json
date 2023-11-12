@@ -128,6 +128,8 @@
   "search": "البحث",
   "no_result_found": "لا توجد نتائج",
   "no_result_found_description": "يبدو الأمر كما لو أننا لا نستطيع العثور على أي نتائج بناءً على بحثك",
-  "logged_in_successfully": "تم تسجيل دخولك بنجاح"
+  "logged_in_successfully": "تم تسجيل دخولك بنجاح",
+  "register_success_title": "أنت جاهز تمامًا",
+  "register_success_description": "تم إنشاء الملف الشخصي الخاص بك"
 
 }
