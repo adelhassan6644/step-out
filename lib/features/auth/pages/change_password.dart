@@ -66,7 +66,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 stream: provider.passwordStream,
                                 builder: (context, snapshot) {
                                   return CustomTextField(
-                                    controller: provider.passwordTEC,
                                     onChanged: provider.updatePassword,
                                     keyboardAction: TextInputAction.done,
                                     label: getTranslated(
@@ -106,7 +105,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 stream: provider.newPasswordStream,
                                 builder: (context, snapshot) {
                                   return CustomTextField(
-                                    controller: provider.newPasswordTEC,
                                     onChanged: provider.updateNewPassword,
                                     keyboardAction: TextInputAction.done,
                                     label:
@@ -151,7 +149,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 stream: provider.confirmPasswordStream,
                                 builder: (context, snapshot) {
                                   return CustomTextField(
-                                    controller: provider.confirmPasswordTEC,
                                     onChanged: provider.updateConfirmPassword,
                                     keyboardAction: TextInputAction.done,
                                     label: getTranslated(

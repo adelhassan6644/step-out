@@ -121,7 +121,6 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                       stream: provider.mailStream,
                                       builder: (context, snapshot) {
                                         return CustomTextField(
-                                          controller: provider.mailTEC,
                                           onChanged: provider.updateMail,
                                           label: getTranslated("mail", context),
                                           hint: getTranslated(

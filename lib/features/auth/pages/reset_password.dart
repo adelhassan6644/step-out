@@ -124,7 +124,6 @@ class _ResetPasswordState extends State<ResetPassword> {
                                       stream: provider.newPasswordStream,
                                       builder: (context, snapshot) {
                                         return CustomTextField(
-                                          controller: provider.newPasswordTEC,
                                           onChanged: provider.updateNewPassword,
                                           label: getTranslated(
                                               "new_password", context),
@@ -167,8 +166,6 @@ class _ResetPasswordState extends State<ResetPassword> {
                                       stream: provider.confirmPasswordStream,
                                       builder: (context, snapshot) {
                                         return CustomTextField(
-                                          controller:
-                                              provider.confirmPasswordTEC,
                                           onChanged:
                                               provider.updateConfirmPassword,
                                           keyboardAction: TextInputAction.done,

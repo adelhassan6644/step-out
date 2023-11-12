@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/components/animated_widget.dart';
@@ -66,8 +67,8 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                         stream: provider.mailStream,
                         builder: (context, snapshot) {
                           return CustomTextField(
+                            initialValue: provider.mail.value,
                             onChanged: provider.updateMail,
-                            controller: provider.mailTEC,
                             label: getTranslated("mail", context),
                             hint: getTranslated("enter_your_mail", context),
                             withLabel: true,
@@ -100,7 +101,6 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                         builder: (context, snapshot) {
                           return CustomTextField(
                             onChanged: provider.updatePassword,
-                            controller: provider.passwordTEC,
                             keyboardAction: TextInputAction.done,
                             label: getTranslated("password", context),
                             hint: getTranslated("enter_your_password", context),
@@ -145,8 +145,8 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                           const Expanded(child: SizedBox()),
                           InkWell(
                             onTap: () {
-                              CustomNavigator.push(Routes.FORGET_PASSWORD);
                               provider.clear();
+                              CustomNavigator.push(Routes.FORGET_PASSWORD);
                             },
                             child: Text(
                               getTranslated("forget_password", context),
@@ -197,8 +197,8 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                         ),
                         InkWell(
                           onTap: () {
-                            CustomNavigator.push(Routes.REGISTER, clean: true);
                             provider.clear();
+                            CustomNavigator.push(Routes.REGISTER, clean: true);
                           },
                           child: Text(
                             " ${getTranslated("signup", context)}",
@@ -214,8 +214,8 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                     ),
                     InkWell(
                       onTap: () {
-                        CustomNavigator.push(Routes.MAIN_PAGE, clean: true);
                         provider.clear();
+                        CustomNavigator.push(Routes.MAIN_PAGE, clean: true);
                       },
                       child: Padding(
                         padding: EdgeInsets.only(top: 12.h),

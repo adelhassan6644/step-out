@@ -13,4 +13,5 @@ class Images {
   static const String contactWithUsBG = 'assets/images/contact_with_us_bg.png';
   static const String emptySearch = 'assets/images/empty_search.png';
   static const String startSearch = 'assets/images/start_search.png';
+  static const String success = 'assets/images/success.png';
 }

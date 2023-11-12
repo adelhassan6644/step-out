@@ -67,12 +67,11 @@ class _EditProfileState extends State<EditProfile> {
                                 builder: (context, snapshot) {
                                   return CustomTextField(
                                     onChanged: provider.updateName,
-                                    controller: provider.nameTEC,
+                                    initialValue: provider.name.value,
                                     keyboardAction: TextInputAction.done,
                                     label: getTranslated("name", context),
                                     hint: getTranslated(
                                         "enter_your_name", context),
-                                    // initialValue: provider.name.value,
                                     withLabel: true,
                                     onTapOutside: (v) =>
                                         setState(() => focusOnName = false),
@@ -105,12 +104,11 @@ class _EditProfileState extends State<EditProfile> {
                                 builder: (context, snapshot) {
                                   return CustomTextField(
                                     onChanged: provider.updatePhone,
-                                    controller: provider.phoneTEC,
+                                    initialValue: provider.phone.value,
                                     keyboardAction: TextInputAction.done,
                                     label: getTranslated("phone", context),
                                     hint: getTranslated(
                                         "enter_your_phone", context),
-                                    initialValue: provider.phone.value,
                                     withLabel: true,
                                     onTapOutside: (v) =>
                                         setState(() => focusOnName = false),
