@@ -4,7 +4,6 @@ import 'package:stepOut/app/core/utils/images.dart';
 import '../../app/core/utils/text_styles.dart';
 import '../../navigation/custom_navigation.dart';
 import '../app/core/utils/styles.dart';
-import '../app/core/utils/svg_images.dart';
 import 'custom_button.dart';
 import 'custom_images.dart';
 
@@ -37,7 +36,7 @@ class ConfirmationDialog extends StatelessWidget {
         Visibility(
           visible: title != null,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding: EdgeInsets.only(bottom: 16.0, top: icon != null ? 16 : 0),
             child: Text(
               title ?? "",
               textAlign: TextAlign.center,
