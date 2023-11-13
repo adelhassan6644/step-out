@@ -1,12 +1,11 @@
 include ':app'
-
 def localPropertiesFile = new File(rootProject.projectDir, "local.properties")
 def properties = new Properties()
 
 //for appcenter build
 if(System.getenv("IS_CI_BUILD") == "true") {
     properties.load(localPropertiesFile.newDataInputStream())
-    properties.setProperty("flutter.sdk", "D:/New Flutter")
+    properties.setProperty("flutter.sdk", "/Users/runner/work/1/s/flutter")
     properties.store(localPropertiesFile.newWriter(), null)
 }
 
