@@ -114,20 +114,6 @@
       <option name="presentableId" value="Default" />
       <updated>1688516389160</updated>
     </task>
-    <task id="LOCAL-00014" summary="update about us">
-      <created>1689259681145</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1689259681145</updated>
-    </task>
-    <task id="LOCAL-00015" summary="update favourite button">
-      <created>1689259770922</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1689259770922</updated>
-    </task>
     <task id="LOCAL-00016" summary="update change password">
       <created>1689260949715</created>
       <option name="number" value="00016" />
@@ -457,7 +443,21 @@
       <option name="project" value="LOCAL" />
       <updated>1699877339481</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="add AppCenter">
+      <created>1699884177164</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1699884177164</updated>
+    </task>
+    <task id="LOCAL-00064" summary="add AppCenter">
+      <created>1699884258647</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1699884258647</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
