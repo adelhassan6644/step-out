@@ -36,7 +36,6 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
-
 android {
     afterEvaluate {
         if(System.getenv("IS_CI_BUILD") == "true"){
@@ -118,6 +117,15 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+    defaultConfig {
+        applicationId "com.eBrandstepOut.stepOut"
+        minSdkVersion 21
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        multiDexEnabled true
+    }
+
     signingConfigs {
         release {
             keyAlias keystoreProperties['keyAlias']
@@ -131,8 +139,7 @@ android {
         release {
             signingConfig signingConfigs.release
         }
-    }
-}
+    }}
 
 flutter {
     source '../..'
