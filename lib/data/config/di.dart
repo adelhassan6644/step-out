@@ -3,6 +3,7 @@ import 'package:stepOut/features/home/repo/home_repo.dart';
 import 'package:stepOut/features/maps/provider/location_provider.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stepOut/features/search/repo/search_repo.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/auth/provider/auth_provider.dart';
 import '../../features/category_details/provider/category_details_provider.dart';
@@ -22,6 +23,7 @@ import '../../features/notifications/provider/notifications_provider.dart';
 import '../../features/notifications/repo/notifications_repo.dart';
 import '../../features/profile/provider/profile_provider.dart';
 import '../../features/profile/repo/profile_repo.dart';
+import '../../features/search/provider/search_provider.dart';
 import '../../features/setting/provider/setting_provider.dart';
 import '../../features/setting/repo/setting_repo.dart';
 import '../../main_page/provider/main_page_provider.dart';
@@ -70,6 +72,8 @@ Future<void> init() async {
       () => ContactRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
       () => NotificationsRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(
+      () => SearchRepo(sharedPreferences: sl(), dioClient: sl()));
 
   //provider
   sl.registerLazySingleton(() => LocalizationProvider(sharedPreferences: sl()));
@@ -88,6 +92,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => NotificationsProvider(repo: sl()));
   sl.registerLazySingleton(() => SettingProvider(repo: sl()));
   sl.registerLazySingleton(() => ContactProvider(contactRepo: sl()));
+  sl.registerLazySingleton(() => SearchProvider(repo: sl()));
 
   // External
   final sharedPreferences = await SharedPreferences.getInstance();

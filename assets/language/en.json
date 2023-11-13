@@ -87,7 +87,8 @@
   "location": "Location",
   "register_with_us": "Register with us",
   "and_enjoy_all_the_features_available_in_the_application": "and enjoy all the features available in the application",
-  "your_password_reset_successfully": "Your password reset successfully",
+  "your_password_reset_successfully": "Your password reset succeeded",
+  "your_password_reset_description": "Now, Login with your new password",
   "invalid_credentials": "Invalid Credentials",
   "register_successfully": "Account has been successfully registered",
   "enter_your_mail": "Enter your e-mail",
@@ -99,6 +100,7 @@
   "categories": "Categories",
   "there_is_no_data": "There is no data",
   "search_hint": "Search here ...",
+  "search_description": "Search for what you are looking  for",
   "cancel": "Cancel",
   "information": "Information",
   "feedback": "Feedback",
@@ -118,5 +120,13 @@
   "edit_profile": "Edit personal information",
   "are_you_sure_remove_account": "Are you sure you want to remove your account ?",
   "your_acc_deleted_successfully": "Your Account has been deleted successfully !",
-  "remove": "Remove"
+  "remove": "Remove",
+  "technical_support_team": "Technical support team",
+  "follow_us": "Follow us",
+  "search": "Search",
+  "no_result_found": "No result found",
+  "no_result_found_description": "It like we can’t find any results based on your search",
+  "logged_in_successfully": "You logged in successfully",
+  "register_success_title": "You're all set",
+  "register_success_description": "Your profile has been created"
 }

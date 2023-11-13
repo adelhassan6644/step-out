@@ -90,6 +90,7 @@
   "register_with_us": "سجل معنا",
   "and_enjoy_all_the_features_available_in_the_application": "واستمتع بجميع الميزات المتوفرة في التطبيق",
   "your_password_reset_successfully": "تم اعادة ضبط كلمة المرور بنجاح",
+  "your_password_reset_description": "الآن، قم بتسجيل الدخول باستخدام كلمة المرور الجديدة الخاصة بك",
   "invalid_credentials": "بيانات الدخول غير صحيحة",
   "register_successfully": "تم تسجيل الحساب بنجاح",
   "enter_your_mail": "ادخل البريد الالكتروني",
@@ -101,6 +102,7 @@
   "categories": "الأقسام",
   "there_is_no_data": "لا يوجود بيانات",
   "search_hint": "ابحث هنا...",
+  "search_description": "ابحث عن ما تريد",
   "cancel": "الغاء",
   "information": "المعلومات",
   "ratting": "التقييم",
@@ -120,6 +122,14 @@
   "edit_profile": "تعديل المعلومات الشخصية",
   "are_you_sure_remove_account": "هل أنت متأكد أنك تريد حذف حسابك ؟",
   "your_acc_deleted_successfully": "تم حذف حسابك بنجاح !",
-  "remove": "حذف"
+  "remove": "حذف",
+  "technical_support_team": "فريق الدعم الفني",
+  "follow_us": "تابعنا",
+  "search": "البحث",
+  "no_result_found": "لا توجد نتائج",
+  "no_result_found_description": "يبدو الأمر كما لو أننا لا نستطيع العثور على أي نتائج بناءً على بحثك",
+  "logged_in_successfully": "تم تسجيل دخولك بنجاح",
+  "register_success_title": "أنت جاهز تمامًا",
+  "register_success_description": "تم إنشاء الملف الشخصي الخاص بك"
 
 }

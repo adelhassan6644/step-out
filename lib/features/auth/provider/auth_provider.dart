@@ -1,12 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:stepOut/features/success/model/success_model.dart';
 import '../../../app/core/utils/validation.dart';
 import '../../../app/localization/language_constant.dart';
+import '../../../components/confirmation_dialog.dart';
+import '../../../components/custom_simple_dialog.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
 import '../repo/auth_repo.dart';
@@ -17,11 +19,7 @@ import '../../../app/core/utils/styles.dart';
 
 class AuthProvider extends ChangeNotifier {
   final AuthRepo authRepo;
-  AuthProvider({
-    required this.authRepo,
-  }) {
-    updateMail(kDebugMode ? "adel@gmail.com" : authRepo.getMail());
-  }
+  AuthProvider({required this.authRepo});
 
   final TextEditingController codeTEC = TextEditingController();
 
@@ -97,10 +95,10 @@ class AuthProvider extends ChangeNotifier {
       });
 
   clear() {
+    codeTEC.clear();
     updateName(null);
     updatePhone(null);
     updateMail(null);
-    codeTEC.clear();
     updatePassword(null);
     updateNewPassword(null);
     updateConfirmPassword(null);
@@ -122,7 +120,6 @@ class AuthProvider extends ChangeNotifier {
 
   bool _isLogin = false;
   bool get isLogin => _isLogin;
-
   logIn() async {
     try {
       _isLogin = true;
@@ -138,19 +135,24 @@ class AuthProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (success) {
+        ///To Remember
         if (_isRememberMe) {
           authRepo.remember(mail.value!.trim());
         } else {
           authRepo.forget();
         }
+
         authRepo.saveUserId(success.data['data']["id"]);
         if (success.data['data']["email_verified_at"] != null) {
           authRepo.setLoggedIn();
-          Provider.of<ProfileProvider>(
-                  CustomNavigator.navigatorState.currentContext!,
-                  listen: false)
-              .getProfile();
-          CustomNavigator.push(Routes.MAIN_PAGE, clean: true);
+          CustomNavigator.push(Routes.DASHBOARD, clean: true, arguments: 0);
+          CustomSnackBar.showSnackBar(
+              notification: AppNotification(
+                  message: getTranslated("logged_in_successfully",
+                      CustomNavigator.navigatorState.currentContext!),
+                  isFloating: true,
+                  backgroundColor: Styles.IN_ACTIVE,
+                  borderColor: Colors.transparent));
           clear();
         } else {
           CustomNavigator.push(Routes.VERIFICATION, arguments: true);
@@ -172,7 +174,6 @@ class AuthProvider extends ChangeNotifier {
 
   bool _isForget = false;
   bool get isForget => _isForget;
-
   forgetPassword() async {
     try {
       _isForget = true;
@@ -180,6 +181,7 @@ class AuthProvider extends ChangeNotifier {
       Either<ServerFailure, Response> response = await authRepo.forgetPassword(
         mail: mail.value!.trim(),
       );
+
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -187,7 +189,10 @@ class AuthProvider extends ChangeNotifier {
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
-      }, (success) {});
+      }, (success) {
+        CustomNavigator.push(Routes.VERIFICATION, arguments: false);
+      });
+
       _isForget = false;
       notifyListeners();
     } catch (e) {
@@ -220,6 +225,7 @@ class AuthProvider extends ChangeNotifier {
           code: codeTEC.text.trim(),
           fromRegister: fromRegister,
           updateHeader: fromRegister);
+
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
@@ -229,13 +235,20 @@ class AuthProvider extends ChangeNotifier {
                 borderColor: Colors.transparent));
       }, (success) {
         if (fromRegister) {
-          CustomSnackBar.showSnackBar(
-              notification: AppNotification(
-                  message: getTranslated("register_successfully",
-                      CustomNavigator.navigatorState.currentContext!),
-                  isFloating: true,
-                  backgroundColor: Styles.ACTIVE,
-                  borderColor: Colors.transparent));
+          authRepo.setLoggedIn();
+          CustomNavigator.push(
+            Routes.SUCCESS_PAGE,
+            clean: true,
+            arguments: SuccessModel(
+                title: getTranslated("register_success_title",
+                    CustomNavigator.navigatorState.currentContext!),
+                description: getTranslated("register_success_description",
+                    CustomNavigator.navigatorState.currentContext!),
+                onTap: () {
+                  CustomNavigator.push(Routes.DASHBOARD,
+                      arguments: 0, clean: true);
+                }),
+          );
           clear();
         } else {
           CustomNavigator.push(Routes.RESET_PASSWORD, replace: true);
@@ -257,7 +270,6 @@ class AuthProvider extends ChangeNotifier {
 
   bool _isReset = false;
   bool get isReset => _isReset;
-
   resetPassword() async {
     try {
       _isReset = true;
@@ -272,25 +284,24 @@ class AuthProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (success) {
-        // Future.delayed(
-        //     Duration.zero,
-        //     () => CustomSimpleDialog.parentSimpleDialog(
-        //             canDismiss: false,
-        //             customListWidget: [
-        //               ConfirmationDialog(
-        //                 image: Images.success,
-        //                 title: getTranslated(
-        //                     "your_password_changed_successfully",
-        //                     CustomNavigator.navigatorState.currentContext!),
-        //                 description: getTranslated(
-        //                     "you_can_now_login_with_your_new_password",
-        //                     CustomNavigator.navigatorState.currentContext!),
-        //                 mainTextButton: getTranslated("login",
-        //                     CustomNavigator.navigatorState.currentContext!),
-        //                 onTapMain: () =>
-        //                     CustomNavigator.push(Routes.LOGIN, clean: true),
-        //               )
-        //             ]));
+        Future.delayed(
+            Duration.zero,
+            () => CustomSimpleDialog.parentSimpleDialog(
+                    canDismiss: false,
+                    customListWidget: [
+                      ConfirmationDialog(
+                        title: getTranslated("your_password_reset_successfully",
+                            CustomNavigator.navigatorState.currentContext!),
+                        description: getTranslated(
+                            "your_password_reset_description",
+                            CustomNavigator.navigatorState.currentContext!),
+                        withOneButton: true,
+                        txtBtn: getTranslated("login",
+                            CustomNavigator.navigatorState.currentContext!),
+                        onContinue: () =>
+                            CustomNavigator.push(Routes.LOGIN, clean: true),
+                      )
+                    ]));
         clear();
       });
       _isReset = false;
@@ -325,18 +336,25 @@ class AuthProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (success) {
-        // Future.delayed(
-        //     Duration.zero,
-        // () => CustomSimpleDialog.parentSimpleDialog(
-        //         canDismiss: false,
-        //         customListWidget: [
-        //           ConfirmationDialog(
-        //             image: Images.success,
-        //             title: getTranslated(
-        //                 "your_password_changed_successfully",
-        //                 CustomNavigator.navigatorState.currentContext!),
-        //           ),
-        //         ]));
+        Future.delayed(
+            Duration.zero,
+            () => CustomSimpleDialog.parentSimpleDialog(
+                    canDismiss: false,
+                    customListWidget: [
+                      ConfirmationDialog(
+                        title: getTranslated(
+                            "your_password_changed_successfully",
+                            CustomNavigator.navigatorState.currentContext!),
+                        description: getTranslated(
+                            "your_password_reset_description",
+                            CustomNavigator.navigatorState.currentContext!),
+                        withOneButton: true,
+                        txtBtn: getTranslated("confirm",
+                            CustomNavigator.navigatorState.currentContext!),
+                        onContinue: () => CustomNavigator.push(Routes.DASHBOARD,
+                            clean: true, arguments: 3),
+                      )
+                    ]));
         clear();
       });
       _isChange = false;

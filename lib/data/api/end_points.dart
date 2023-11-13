@@ -18,6 +18,7 @@ class EndPoints {
   static getProfile(id) => 'client/$id';
   static deleteAcc(id) => 'client/$id';
   static updateProfile(id) => 'client/$id';
+  static const String search = 'check/verificationCode';
   static getFavourites(id) => 'favorites/$id';
   static const String postFavourite = 'favorite';
   static const String banners = 'banner';

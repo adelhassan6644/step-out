@@ -9,6 +9,7 @@ import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/custom_text_form_field.dart';
+import '../../../data/config/di.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -33,6 +34,9 @@ class _EditProfileState extends State<EditProfile> {
     phoneNode.addListener(() {
       focusOnPhone = phoneNode.hasFocus;
     });
+
+    Future.delayed(
+        Duration.zero, () => sl<ProfileProvider>().initProfileData());
     super.initState();
   }
 
@@ -63,9 +67,11 @@ class _EditProfileState extends State<EditProfile> {
                                 builder: (context, snapshot) {
                                   return CustomTextField(
                                     onChanged: provider.updateName,
+                                    initialValue: provider.name.value,
                                     keyboardAction: TextInputAction.done,
                                     label: getTranslated("name", context),
-                                    initialValue: provider.name.value ?? "",
+                                    hint: getTranslated(
+                                        "enter_your_name", context),
                                     withLabel: true,
                                     onTapOutside: (v) =>
                                         setState(() => focusOnName = false),
@@ -98,9 +104,11 @@ class _EditProfileState extends State<EditProfile> {
                                 builder: (context, snapshot) {
                                   return CustomTextField(
                                     onChanged: provider.updatePhone,
+                                    initialValue: provider.phone.value,
                                     keyboardAction: TextInputAction.done,
                                     label: getTranslated("phone", context),
-                                    initialValue: provider.phone.value ?? "",
+                                    hint: getTranslated(
+                                        "enter_your_phone", context),
                                     withLabel: true,
                                     onTapOutside: (v) =>
                                         setState(() => focusOnName = false),

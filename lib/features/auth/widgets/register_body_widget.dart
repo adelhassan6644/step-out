@@ -149,6 +149,7 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                         stream: provider.mailStream,
                         builder: (context, snapshot) {
                           return CustomTextField(
+                            initialValue: provider.mail.value,
                             onChanged: provider.updateMail,
                             label: getTranslated("mail", context),
                             hint: getTranslated("enter_your_mail", context),
@@ -283,7 +284,7 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                                     }
                                   }
                                 },
-                                isLoading: provider.isLogin);
+                                isLoading: provider.isRegister);
                           }),
                     ),
                     Row(
@@ -320,7 +321,7 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                     ),
                     InkWell(
                       onTap: () {
-                        CustomNavigator.push(Routes.MAIN_PAGE, clean: true);
+                        CustomNavigator.push(Routes.DASHBOARD, clean: true);
                         provider.clear();
                       },
                       child: Padding(
@@ -364,8 +365,8 @@ class _AgreeToTerms extends StatelessWidget {
             focusColor: Colors.transparent,
             onTap: () => onChange(!check),
             child: Container(
-              width: 20.w,
-              height: 20.h,
+              width: 18.w,
+              height: 18.h,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: check ? Styles.PRIMARY_COLOR : Styles.WHITE_COLOR,
@@ -382,7 +383,7 @@ class _AgreeToTerms extends StatelessWidget {
                   : null,
             ),
           ),
-          SizedBox(width: 16.w),
+          SizedBox(width: 12.w),
           Text(
             getTranslated("agree_to", context),
             style: AppTextStyles.regular

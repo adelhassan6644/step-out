@@ -66,6 +66,7 @@ Widget customContainerSvgIcon(
     {required String imageName,
     Function? onTap,
     Color? color,
+    Color? backGround,
     bool withShadow = false,
     double? width,
     double? height,
@@ -88,8 +89,7 @@ Widget customContainerSvgIcon(
                       blurRadius: 5)
                 ]
               : null,
-          color:
-              color?.withOpacity(0.2) ?? Styles.PRIMARY_COLOR.withOpacity(0.2),
+          color: backGround ?? Styles.PRIMARY_COLOR.withOpacity(0.2),
           borderRadius: BorderRadius.circular(radius ?? 12)),
       child: SvgPicture.asset(
         imageName,

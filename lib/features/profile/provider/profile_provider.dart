@@ -8,7 +8,6 @@ import 'package:stepOut/app/core/utils/app_snack_bar.dart';
 import 'package:stepOut/features/auth/provider/auth_provider.dart';
 import 'package:stepOut/features/profile/model/profile_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
-import 'package:stepOut/navigation/routes.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../data/config/di.dart';
@@ -18,11 +17,7 @@ import '../repo/profile_repo.dart';
 
 class ProfileProvider extends ChangeNotifier {
   final ProfileRepo profileRepo;
-  ProfileProvider({required this.profileRepo}) {
-    if (isLogin) {
-      getProfile();
-    }
-  }
+  ProfileProvider({required this.profileRepo});
 
   bool get isLogin => profileRepo.isLoggedIn();
 
@@ -204,7 +199,8 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   initProfileData() {
-    updatePhone(profileModel?.phone);
     updateName(profileModel?.name);
+    updatePhone(profileModel?.phone);
+    notifyListeners();
   }
 }
