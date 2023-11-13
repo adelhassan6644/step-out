@@ -6,6 +6,7 @@ if (localPropertiesFile.exists()) {
     }
 }
 
+
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
     throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
@@ -29,7 +30,70 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion flutter.compileSdkVersion
+    afterEvaluate {
+        if(System.getenv("IS_CI_BUILD") == "true"){
+            // if you are creating bundle for release build then task name below will be bundleRelease
+            // if apk, then it will be assembleRelease
+            // if any flavor then, for staging flavor it will be bundleStagingRelease and assembleStagingRelease respectively
+            def bundleTask = project.tasks.findByName('assembleRelease')
+
+            // Create a custom task to run after bundleRelease or assembleRelease
+            task copyBuildTask(dependsOn: bundleTask) {
+                // Configure your custom task here
+                doLast {
+                    // Code to run after bundleRelease or asssembleRelease for appcenter
+                    println "Copying builds..."
+
+                    // if any flavor then path will change accordingly, for staging it will be -
+                    // def apkPath = file('../../build/app/outputs/flutter-apk/app-staging-release.apk')
+                    def apkPath = file('../../build/app/outputs/flutter-apk/app-release.apk')
+                    if(apkPath.exists()) {
+                        def apkDir = file('build/outputs/apk/')
+                        apkDir.mkdirs()
+                        copy {
+                            from apkPath.parent
+                            into apkDir
+                            include apkPath.name
+                        }
+                        println "Apk file moved to: ${apkDir}/${apkPath.name}"
+                    }
+
+                    // if any flavor then path will change accordingly, for staging it will be -
+                    // def bundlePath = file('../../build/app/outputs/bundle/stagingRelease/app-staging-release.aab')
+                    def bundlePath = file('../../build/app/outputs/bundle/release/app-release.aab')
+                    if(bundlePath.exists()) {
+                        def bundleDir = file('build/outputs/bundle/')
+                        bundleDir.mkdirs()
+                        copy {
+                            from bundlePath.parent
+                            into bundlePath
+                            include bundlePath.name
+                        }
+                        println "AAB file moved to: ${bundleDir}/${bundlePath.name}"
+                    }
+
+                    // if any flavor then path will change accordingly, for staging it will be -
+                    //def mappingPath = file('../../build/app/outputs/mapping/stagingRelease/mapping.txt')
+                    def mappingPath = file('../../build/app/outputs/mapping/release/mapping.txt')
+                    if(mappingPath.exists()) {
+                        def mappingDir = file('build/outputs/mapping/')
+                        mappingDir.mkdirs()
+                        copy {
+                            from mappingPath.parent
+                            into mappingDir
+                            include mappingPath.name
+                        }
+                        println "Mapping file moved to: ${mappingDir}/${mappingPath.name}"
+                    }
+                }
+            }
+
+            if(bundleTask != null) {
+                bundleTask.finalizedBy(copyBuildTask)
+            }
+        }
+    }
+    compileSdkVersion compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -46,7 +110,6 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.eBrandstepOut.stepOut"
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
@@ -57,8 +120,6 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
     }
@@ -75,4 +136,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.3.0')
     implementation 'com.google.firebase:firebase-messaging:23.1.2'
     implementation "com.google.android.material:material:1.8.0"
+    def appCenterSdkVersion = '4.4.5'
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 }
