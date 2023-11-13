@@ -1,4 +1,0 @@
-#Mon Nov 13 20:06:14 EET 2023
-base.0=/Users/user/SoftweareCloud2/step-out/ios/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
