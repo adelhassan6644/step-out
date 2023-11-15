@@ -231,25 +231,25 @@
     },
     {
       "name": "firebase_analytics",
-      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_analytics-10.6.4",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_analytics-10.7.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "firebase_analytics_platform_interface",
-      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_analytics_platform_interface-3.7.6",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_analytics_platform_interface-3.8.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "firebase_analytics_web",
-      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_analytics_web-0.5.5+6",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_analytics_web-0.5.5+7",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "firebase_auth",
-      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_auth-4.13.0",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/firebase_auth-4.14.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -369,9 +369,9 @@
     },
     {
       "name": "flutter_inappwebview_internal_annotations",
-      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/flutter_inappwebview_internal_annotations-1.1.0",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/flutter_inappwebview_internal_annotations-1.1.1",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "2.15"
     },
     {
       "name": "flutter_keyboard_visibility",
@@ -1299,9 +1299,9 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/win32-5.0.9",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/win32-5.1.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.1"
     },
     {
       "name": "xdg_directories",
@@ -1328,7 +1328,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-11-13T21:33:31.277704Z",
+  "generated": "2023-11-15T20:22:53.889350Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }
