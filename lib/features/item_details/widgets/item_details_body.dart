@@ -94,7 +94,7 @@ class ItemDetailsBody extends StatelessWidget {
                         ],
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                        padding: EdgeInsets.only(top: 8.h,bottom:4.h,),
                         child: Text(
                           "Aroma",
                           style: AppTextStyles.semiBold.copyWith(fontSize: 18),
