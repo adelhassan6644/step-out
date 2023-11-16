@@ -56,7 +56,7 @@ class HomeCategories extends StatelessWidget {
                         provider.categoriesModel!.data != null &&
                         provider.categoriesModel!.data!.isNotEmpty
                     ? GridListAnimatorWidget(
-                        aspectRatio: 0.9,
+                        aspectRatio: 0.78,
                         columnCount: 3,
                         items: List.generate(
                           provider.categoriesModel?.data?.length ?? 5,

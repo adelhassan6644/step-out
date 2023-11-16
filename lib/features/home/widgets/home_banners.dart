@@ -33,12 +33,16 @@ class HomeBanner extends StatelessWidget {
                         children: [
                           CarouselSlider.builder(
                             options: CarouselOptions(
-                              viewportFraction: 1,
-                              autoPlay: true,
                               height: context.height * 0.275,
-                              enlargeCenterPage: false,
                               disableCenter: true,
                               pageSnapping: true,
+                              autoPlay: true,
+                              aspectRatio: 1.0,
+                              viewportFraction: 1.0,
+                              autoPlayInterval: const Duration(seconds: 5),
+                              autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                              autoPlayCurve: Curves.fastOutSlowIn,
+                              enlargeCenterPage: true,
                               onPageChanged: (index, reason) {
                                 provider.setBannerIndex(index);
                               },
@@ -72,10 +76,9 @@ class HomeBanner extends StatelessWidget {
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: provider.bannerModel!.data!.map((banner) {
-                              int index =
-                                  provider.bannerModel!.data!.indexOf(banner);
-                              return AnimatedContainer(
+                            children: List.generate(
+                              provider.bannerModel?.data?.length ?? 0,
+                              (index) => AnimatedContainer(
                                 width: index == provider.bannerIndex ? 10 : 6,
                                 height: index == provider.bannerIndex ? 10 : 6,
                                 duration: const Duration(
@@ -88,8 +91,8 @@ class HomeBanner extends StatelessWidget {
                                       : Styles.ACCENT_COLOR,
                                   borderRadius: BorderRadius.circular(100.w),
                                 ),
-                              );
-                            }).toList(),
+                              ),
+                            ),
                           ),
                         ],
                       )
