@@ -12,7 +12,8 @@ import '../app/core/utils/text_styles.dart';
 import '../components/custom_images.dart';
 
 class ItemCard extends StatelessWidget {
-  const ItemCard({super.key});
+  const ItemCard({super.key, this.width});
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +24,7 @@ class ItemCard extends StatelessWidget {
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       child: Container(
-        margin: EdgeInsets.only(
-          bottom: Dimensions.PADDING_SIZE_DEFAULT.h,
-        ),
+        width: width ?? context.width,
         decoration: BoxDecoration(
             color: Styles.SMOKED_WHITE_COLOR,
             borderRadius: BorderRadius.circular(20)),

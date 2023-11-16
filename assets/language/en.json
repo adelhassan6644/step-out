@@ -128,5 +128,6 @@
   "no_result_found_description": "It like we can’t find any results based on your search",
   "logged_in_successfully": "You logged in successfully",
   "register_success_title": "You're all set",
-  "register_success_description": "Your profile has been created"
+  "register_success_description": "Your profile has been created",
+  "delete": "Delete"
 }

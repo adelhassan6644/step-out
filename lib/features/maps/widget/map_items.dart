@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
+import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/main_widgets/item_card.dart';
 import 'package:provider/provider.dart';
 
@@ -17,56 +18,50 @@ class MapPlaces extends StatelessWidget {
         return provider.isGetPlaces
             ? SizedBox(
                 height: 232.h,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: Dimensions.PADDING_SIZE_DEFAULT.w,
-                    ),
-                    Expanded(
-                      child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          physics: const BouncingScrollPhysics(),
-                          itemBuilder: (_, index) => CustomShimmerContainer(
-                                height: 220.h,
-                                width: 210.w,
-                              ),
-                          separatorBuilder: (_, index) => SizedBox(
-                                width: 12.w,
-                              ),
-                          itemCount: 5),
-                    ),
-                  ],
-                ),
-              )
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(width: 10.w),
+                      ...List.generate(
+                        5,
+                        (index) => Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8.w),
+                          child: CustomShimmerContainer(
+                            height: 220.h,
+                            width: context.width * 0.85,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ))
             : provider.model != null &&
                     provider.model != null &&
                     provider.model!.isNotEmpty
                 ? SizedBox(
                     height: 232.h,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: Dimensions.PADDING_SIZE_DEFAULT.w,
-                        ),
-                        Expanded(
-                          child: ListView.separated(
-                              scrollDirection: Axis.horizontal,
-                              physics: const BouncingScrollPhysics(),
-                              itemBuilder: (_, index) =>
-                                  // ItemCard(place: provider.model![index]),
-                                  const ItemCard(),
-                              separatorBuilder: (_, index) => SizedBox(
-                                    width: 12.w,
-                                  ),
-                              itemCount: provider.model!.length),
-                        ),
-                      ],
-                    ),
-                  )
+                    child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(width: 10.w),
+                          ...List.generate(
+                              5,
+                              (index) => Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 8.w),
+                                    child: ItemCard(
+                                      width: context.width * 0.85,
+                                    ),
+                                  ))
+                        ],
+                      ),
+                    ))
                 : const SizedBox();
       }),
     );
