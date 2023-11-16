@@ -51,15 +51,15 @@ class ItemCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           "Item Name",
-                          style: AppTextStyles.medium.copyWith(
-                              fontSize: 16, color: Styles.ACCENT_COLOR),
+                          style: AppTextStyles.semiBold.copyWith(
+                              fontSize: 14, color: Styles.ACCENT_COLOR),
                         ),
                       ),
                       SizedBox(width: 16.w),
                       Text(
                         "4",
-                        style: AppTextStyles.semiBold.copyWith(
-                            fontSize: 16,
+                        style: AppTextStyles.medium.copyWith(
+                            fontSize: 14,
                             height: 1.2,
                             color: Styles.PRIMARY_COLOR),
                       ),
@@ -68,8 +68,8 @@ class ItemCard extends StatelessWidget {
                         4,
                         (index) => customImageIconSVG(
                             imageName: SvgImages.fillStar,
-                            height: 24,
-                            width: 24),
+                            height: 20,
+                            width: 20),
                       )
                     ],
                   ),
@@ -92,6 +92,8 @@ class ItemCard extends StatelessWidget {
                     children: [
                       customImageIconSVG(
                           imageName: SvgImages.location,
+                          width: 20,
+                          height: 20,
                           color: Styles.PRIMARY_COLOR),
                       SizedBox(width: 8.w),
                       Text(
