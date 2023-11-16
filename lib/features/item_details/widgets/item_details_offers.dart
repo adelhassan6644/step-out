@@ -20,16 +20,19 @@ class ItemDetailsOffer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+            padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
             child: Text(
               getTranslated("offers", context),
               style: AppTextStyles.semiBold.copyWith(
-                  fontSize: 18,
+                  fontSize: 16,
                   overflow: TextOverflow.ellipsis,
                   color: Styles.TITLE),
             ),
           ),
-          SizedBox(height: 12.h,),
+          SizedBox(
+            height: 12.h,
+          ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -42,8 +45,8 @@ class ItemDetailsOffer extends StatelessWidget {
                     padding: EdgeInsets.symmetric(
                         horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL.w),
                     child: CustomNetworkImage.containerNewWorkImage(
-                        height: 90.h,
-                        width: context.width*0.7,
+                        height: 100.h,
+                        width: context.width * 0.7,
                         radius: 20,
                         image: AppStrings.networkImage),
                   ),

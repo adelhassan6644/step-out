@@ -31,13 +31,14 @@ class ItemDetailsLocation extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                customImageIconSVG(imageName: SvgImages.location),
+                customImageIconSVG(
+                    imageName: SvgImages.location, width: 20, height: 20),
                 SizedBox(width: 8.w),
                 Expanded(
                   child: Text(
                     "El Bahrain",
                     style: AppTextStyles.medium.copyWith(
-                        fontSize: 16,
+                        fontSize: 14,
                         overflow: TextOverflow.ellipsis,
                         color: Styles.TITLE),
                     maxLines: 1,

@@ -24,7 +24,7 @@ class ItemServicesWidget extends StatelessWidget {
             child: Text(
               getTranslated("our_services", context),
               style: AppTextStyles.semiBold.copyWith(
-                  fontSize: 18,
+                  fontSize: 16,
                   overflow: TextOverflow.ellipsis,
                   color: Styles.TITLE),
             ),
@@ -34,30 +34,31 @@ class ItemServicesWidget extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT.w),
+                SizedBox(width: 12.w),
                 ...List.generate(
                   provider.services.length,
-                  (index) => InkWell(
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    // onTap: () => provider.onSelectFilter(index),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 6.w, vertical: 4.h),
-                          child: CustomNetworkImage.circleNewWorkImage(
+                  (index) => Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 6.w, vertical: 4.h),
+                    child: InkWell(
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CustomNetworkImage.circleNewWorkImage(
                               radius: 30, image: AppStrings.networkImage),
-                        ),
-                        Text(
-                          provider.services[index],
-                          style: AppTextStyles.medium
-                              .copyWith(fontSize: 14, color: Styles.TITLE),
-                        ),
-                      ],
+                          const SizedBox(height: 4),
+                          Text(
+                            provider.services[index],
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.medium
+                                .copyWith(fontSize: 14, color: Styles.TITLE),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 )
