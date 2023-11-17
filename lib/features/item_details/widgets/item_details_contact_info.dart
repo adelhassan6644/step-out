@@ -20,13 +20,14 @@ class ItemDetailsContactInfo extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              customImageIconSVG(imageName: SvgImages.call),
+              customImageIconSVG(
+                  imageName: SvgImages.call, width: 20, height: 20),
               SizedBox(width: 8.w),
               Expanded(
                 child: Text(
                   "123412345",
                   style: AppTextStyles.medium.copyWith(
-                      fontSize: 16,
+                      fontSize: 14,
                       overflow: TextOverflow.ellipsis,
                       color: Styles.TITLE),
                   maxLines: 1,
@@ -39,13 +40,14 @@ class ItemDetailsContactInfo extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                customImageIconSVG(imageName: SvgImages.clock),
+                customImageIconSVG(
+                    imageName: SvgImages.clock, width: 20, height: 20),
                 SizedBox(width: 8.w),
                 Expanded(
                   child: Text(
                     "8 PM - 5 Am",
                     style: AppTextStyles.medium.copyWith(
-                        fontSize: 16,
+                        fontSize: 14,
                         overflow: TextOverflow.ellipsis,
                         color: Styles.TITLE),
                     maxLines: 1,
@@ -65,7 +67,7 @@ class ItemDetailsContactInfo extends StatelessWidget {
                 (index) => Text(
                       "#SEAMOL",
                       style: AppTextStyles.medium.copyWith(
-                          fontSize: 16,
+                          fontSize: 14,
                           overflow: TextOverflow.ellipsis,
                           color: Styles.PRIMARY_COLOR),
                     )),

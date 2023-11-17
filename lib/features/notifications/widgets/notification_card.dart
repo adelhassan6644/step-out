@@ -62,8 +62,8 @@ class _NotificationCardState extends State<NotificationCard> {
                   : Styles.PRIMARY_COLOR.withOpacity(0.1),
               imageName: Images.logo,
               radius: 100,
-              width: 60,
-              height: 60,
+              width: 50,
+              height: 50,
             ),
             SizedBox(
               width: 8.w,
@@ -79,7 +79,7 @@ class _NotificationCardState extends State<NotificationCard> {
                     textAlign: TextAlign.start,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.medium
-                        .copyWith(fontSize: 16, color: Styles.TITLE),
+                        .copyWith(fontSize: 14, color: Styles.TITLE),
                   ),
                   Row(
                     children: [
@@ -89,7 +89,7 @@ class _NotificationCardState extends State<NotificationCard> {
                                   ?.dateFormat(format: "EEE dd/mm") ??
                               "434/ef/f",
                           style: AppTextStyles.regular.copyWith(
-                              fontSize: 14, color: Styles.DETAILS_COLOR)),
+                              fontSize: 12, color: Styles.DETAILS_COLOR)),
                     ],
                   ),
                 ],

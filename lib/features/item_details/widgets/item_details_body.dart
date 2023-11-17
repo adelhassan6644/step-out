@@ -43,44 +43,50 @@ class ItemDetailsBody extends StatelessWidget {
                   child: Column(
                     children: [
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           customContainerSvgIcon(
                             radius: 100,
-                            width: 40,
-                            height: 40,
+                            width: 35,
+                            height: 35,
                             imageName: SvgImages.instagram,
                             color: Styles.PRIMARY_COLOR,
+                            onTap: () {},
                           ),
                           const SizedBox(width: 6),
                           customContainerSvgIcon(
                             radius: 100,
-                            width: 40,
-                            height: 40,
+                            width: 35,
+                            height: 35,
                             imageName: SvgImages.faceBook,
                             color: Styles.PRIMARY_COLOR,
+                            onTap: () {},
                           ),
                           const SizedBox(width: 6),
                           customContainerSvgIcon(
-                              radius: 100,
-                              width: 40,
-                              height: 40,
-                              imageName: SvgImages.export,
-                              color: Styles.PRIMARY_COLOR,
-                              onTap: () {}),
+                            radius: 100,
+                            width: 35,
+                            height: 35,
+                            imageName: SvgImages.export,
+                            color: Styles.PRIMARY_COLOR,
+                            onTap: () {},
+                          ),
                           const Expanded(child: SizedBox()),
                           customImageIconSVG(
-                              imageName: SvgImages.fillStar, height: 24),
+                              imageName: SvgImages.fillStar,
+                              height: 20,
+                              width: 20),
                           RichText(
                             text: TextSpan(
                               text:
                                   ' 4.0 ${getTranslated("ratting", context)} ',
                               style: AppTextStyles.semiBold
-                                  .copyWith(fontSize: 16, color: Styles.TITLE),
+                                  .copyWith(fontSize: 14, color: Styles.TITLE),
                               children: [
                                 TextSpan(
                                   text: '(142)',
                                   style: AppTextStyles.regular.copyWith(
-                                      fontSize: 14, color: Styles.ACCENT_COLOR),
+                                      fontSize: 12, color: Styles.ACCENT_COLOR),
                                 ),
                               ],
                             ),
@@ -88,7 +94,7 @@ class ItemDetailsBody extends StatelessWidget {
                         ],
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 12.h),
+                        padding: EdgeInsets.only(top: 8.h,bottom:4.h,),
                         child: Text(
                           "Aroma",
                           style: AppTextStyles.semiBold.copyWith(fontSize: 18),
@@ -98,7 +104,6 @@ class ItemDetailsBody extends StatelessWidget {
                         "Cafe` & Restaurant",
                         style: AppTextStyles.medium.copyWith(fontSize: 14),
                       ),
-                      SizedBox(height: 24.h),
                     ],
                   ),
                 ),

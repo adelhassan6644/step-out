@@ -9,8 +9,9 @@ import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_images.dart';
 import '../../../components/custom_loading.dart';
 import '../../../data/config/di.dart';
+import '../../../navigation/custom_navigation.dart';
+import '../../../navigation/routes.dart';
 import '../widgets/category_details_header.dart';
-import '../widgets/subcategories_app_bar.dart';
 
 class CategoryDetails extends StatefulWidget {
   final CategoryItem item;
@@ -36,12 +37,12 @@ class _CategoryDetailsState extends State<CategoryDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Styles.BACKGROUND_COLOR,
-      // appBar: SubcategoriesAppBar(
-      //   title: widget.item.title ?? "Restaurants",
-      // ),
       appBar: CustomAppBar(
         title: widget.item.title ?? "Restaurants",
-        actionChild: customImageIconSVG(imageName: SvgImages.search),
+        actionChild: customImageIconSVG(
+          imageName: SvgImages.search,
+          onTap: () => CustomNavigator.push(Routes.SEARCH),
+        ),
         actionWidth: 25,
       ),
       body: Consumer<CategoryDetailsProvider>(builder: (_, provider, child) {

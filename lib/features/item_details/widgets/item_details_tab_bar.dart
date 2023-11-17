@@ -16,7 +16,7 @@ class ItemDetailsTabBar extends StatelessWidget {
             3,
             (index) => Expanded(
                   child: TabWidget(
-                    fontSize: 16,
+                    fontSize: 15,
                     withUpperBorder: true,
                     label: getTranslated(provider.tabs[index], context),
                     isSelected: provider.selectedTab == index,

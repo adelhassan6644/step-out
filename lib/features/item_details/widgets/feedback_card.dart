@@ -39,7 +39,7 @@ class FeedbackCard extends StatelessWidget {
                   Text(
                     "Jon Due",
                     style: AppTextStyles.medium.copyWith(
-                        fontSize: 16,
+                        fontSize: 14,
                         overflow: TextOverflow.ellipsis,
                         color: Styles.TITLE),
                     maxLines: 1,
@@ -48,8 +48,8 @@ class FeedbackCard extends StatelessWidget {
                     children: List.generate(
                       5,
                       (index) => customImageIconSVG(
-                        height: 15,
-                        width: 15,
+                        height: 14,
+                        width: 14,
                         color: 2 < index ? Styles.DETAILS_COLOR : Colors.amber,
                         imageName: 2 < index
                             ? SvgImages.emptyStar
@@ -66,7 +66,7 @@ class FeedbackCard extends StatelessWidget {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
             maxLines: 3,
             style: AppTextStyles.medium.copyWith(
-                fontSize: 14,
+                fontSize: 12,
                 overflow: TextOverflow.ellipsis,
                 color: Styles.DETAILS_COLOR),
           ),
