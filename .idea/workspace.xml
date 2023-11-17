@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add tag places">
-      <change afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/share_plus" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/dart_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/dart_plugin_registrant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-    </list>
+    <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add jks" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="staging" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,8 +42,7 @@
     <setting file="file://$PROJECT_DIR$/lib/components/empty_widget.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/features/home/page/home.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/features/home/provider/home_provider.dart" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/lib/features/item_details/widgets/item_details_feedback.dart" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/lib/features/item_details/widgets/send_rate_bottom_sheet.dart" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/features/notifications/provider/notifications_provider.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/helpers/location_helper.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/main.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pubspec.yaml" root0="FORCE_HIGHLIGHTING" />
@@ -73,33 +58,33 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/user/SoftweareCloud2/step-out/assets/svgs&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "/Users/user/SoftweareCloud2/step-out/ios",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "flutter.settings",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets/svgs" />
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android" />
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android\gradle\wrapper" />
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android\app" />
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android\app\src" />
+      <recent name="$PROJECT_DIR$/lib/features" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\lib\features\profile\page" />
@@ -132,6 +117,209 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688516389160</updated>
+    </task>
+    <task id="LOCAL-00040" summary="first commit">
+      <created>1699025127013</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1699025127013</updated>
+    </task>
+    <task id="LOCAL-00041" summary="first commit">
+      <created>1699025230996</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1699025230996</updated>
+    </task>
+    <task id="LOCAL-00042" summary="update(pubspec)">
+      <created>1699194058869</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1699194058869</updated>
+    </task>
+    <task id="LOCAL-00043" summary="first commit">
+      <created>1699203561102</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1699203561102</updated>
+    </task>
+    <task id="LOCAL-00044" summary="first commit">
+      <created>1699203593954</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1699203593954</updated>
+    </task>
+    <task id="LOCAL-00045" summary="first commit">
+      <created>1699203897826</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1699203897826</updated>
+    </task>
+    <task id="LOCAL-00046" summary="first commit">
+      <created>1699204275295</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1699204275295</updated>
+    </task>
+    <task id="LOCAL-00047" summary="first commit">
+      <created>1699211718434</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1699211718434</updated>
+    </task>
+    <task id="LOCAL-00048" summary="first commit">
+      <created>1699211747761</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1699211747761</updated>
+    </task>
+    <task id="LOCAL-00049" summary="first commit">
+      <created>1699211778814</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1699211778814</updated>
+    </task>
+    <task id="LOCAL-00050" summary="first commit">
+      <created>1699211820993</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1699211820994</updated>
+    </task>
+    <task id="LOCAL-00051" summary="first commit">
+      <created>1699211873089</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1699211873089</updated>
+    </task>
+    <task id="LOCAL-00052" summary="first commit">
+      <created>1699211940096</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1699211940096</updated>
+    </task>
+    <task id="LOCAL-00053" summary="first commit">
+      <created>1699212043243</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1699212043243</updated>
+    </task>
+    <task id="LOCAL-00054" summary="first commit">
+      <created>1699632786945</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1699632786945</updated>
+    </task>
+    <task id="LOCAL-00055" summary="first commit">
+      <created>1699735399425</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1699735399425</updated>
+    </task>
+    <task id="LOCAL-00056" summary="first commit">
+      <created>1699736682601</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1699736682601</updated>
+    </task>
+    <task id="LOCAL-00057" summary="first commit">
+      <created>1699816267137</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1699816267137</updated>
+    </task>
+    <task id="LOCAL-00058" summary="add AppCenter">
+      <created>1699872445942</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1699872445942</updated>
+    </task>
+    <task id="LOCAL-00059" summary="add AppCenter">
+      <created>1699873029490</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1699873029490</updated>
+    </task>
+    <task id="LOCAL-00060" summary="add AppCenter">
+      <created>1699875494693</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1699875494693</updated>
+    </task>
+    <task id="LOCAL-00061" summary="add AppCenter">
+      <created>1699877278114</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1699877278114</updated>
+    </task>
+    <task id="LOCAL-00062" summary="add AppCenter">
+      <created>1699877339481</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1699877339481</updated>
+    </task>
+    <task id="LOCAL-00063" summary="add AppCenter">
+      <created>1699884177164</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1699884177164</updated>
+    </task>
+    <task id="LOCAL-00064" summary="add AppCenter">
+      <created>1699884258647</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1699884258647</updated>
+    </task>
+    <task id="LOCAL-00065" summary="add AppCenter">
+      <created>1699884333115</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1699884333115</updated>
+    </task>
+    <task id="LOCAL-00066" summary="add AppCenter">
+      <created>1699884807864</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1699884807864</updated>
+    </task>
+    <task id="LOCAL-00067" summary="add AppCenter">
+      <created>1699885030395</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1699885030395</updated>
+    </task>
+    <task id="LOCAL-00068" summary="add AppCenter">
+      <created>1699885614493</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1699885614493</updated>
     </task>
     <task id="LOCAL-00069" summary="add AppCenter">
       <created>1699885634302</created>
@@ -267,216 +455,13 @@
       <updated>1700183212707</updated>
     </task>
     <task id="LOCAL-00088" summary="add jks">
-      <created>1700316596582</created>
+      <created>1700184066249</created>
       <option name="number" value="00088" />
       <option name="presentableId" value="LOCAL-00088" />
       <option name="project" value="LOCAL" />
-      <updated>1700316596583</updated>
+      <updated>1700184066249</updated>
     </task>
-    <task id="LOCAL-00089" summary="add jks">
-      <created>1700317792438</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1700317792438</updated>
-    </task>
-    <task id="LOCAL-00090" summary="add jks">
-      <created>1700317917088</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1700317917088</updated>
-    </task>
-    <task id="LOCAL-00091" summary="add jks">
-      <created>1700345836313</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1700345836314</updated>
-    </task>
-    <task id="LOCAL-00092" summary="add jks">
-      <created>1700571113241</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1700571113241</updated>
-    </task>
-    <task id="LOCAL-00093" summary="add jks">
-      <created>1700591946179</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1700591946180</updated>
-    </task>
-    <task id="LOCAL-00094" summary="add jks">
-      <created>1700592057186</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1700592057186</updated>
-    </task>
-    <task id="LOCAL-00095" summary="add jks">
-      <created>1700593503791</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1700593503791</updated>
-    </task>
-    <task id="LOCAL-00096" summary="add jks">
-      <created>1700599819550</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1700599819550</updated>
-    </task>
-    <task id="LOCAL-00097" summary="add jks">
-      <created>1700600371812</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1700600371812</updated>
-    </task>
-    <task id="LOCAL-00098" summary="add jks">
-      <created>1700602070048</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1700602070048</updated>
-    </task>
-    <task id="LOCAL-00099" summary="add jks">
-      <created>1701118288030</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1701118288031</updated>
-    </task>
-    <task id="LOCAL-00100" summary="add jks">
-      <created>1701118457399</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1701118457399</updated>
-    </task>
-    <task id="LOCAL-00101" summary="add jks">
-      <created>1701118956750</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1701118956751</updated>
-    </task>
-    <task id="LOCAL-00102" summary="add jks">
-      <created>1701119167649</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1701119167649</updated>
-    </task>
-    <task id="LOCAL-00103" summary="add jks">
-      <created>1701119271695</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1701119271695</updated>
-    </task>
-    <task id="LOCAL-00104" summary="add jks">
-      <created>1701119299343</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1701119299343</updated>
-    </task>
-    <task id="LOCAL-00105" summary="add jks">
-      <created>1701121583517</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1701121583518</updated>
-    </task>
-    <task id="LOCAL-00106" summary="add jks">
-      <created>1701121958164</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1701121958164</updated>
-    </task>
-    <task id="LOCAL-00107" summary="add jks">
-      <created>1701122774672</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1701122774672</updated>
-    </task>
-    <task id="LOCAL-00108" summary="add jks">
-      <created>1701122856811</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1701122856811</updated>
-    </task>
-    <task id="LOCAL-00109" summary="add jks">
-      <created>1701198417085</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1701198417086</updated>
-    </task>
-    <task id="LOCAL-00110" summary="add jks">
-      <created>1701199454420</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1701199454420</updated>
-    </task>
-    <task id="LOCAL-00111" summary="add jks">
-      <created>1701200928651</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1701200928651</updated>
-    </task>
-    <task id="LOCAL-00112" summary="add jks">
-      <created>1701203117178</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1701203117178</updated>
-    </task>
-    <task id="LOCAL-00113" summary="add jks">
-      <created>1701203970725</created>
-      <option name="number" value="00113" />
-      <option name="presentableId" value="LOCAL-00113" />
-      <option name="project" value="LOCAL" />
-      <updated>1701203970725</updated>
-    </task>
-    <task id="LOCAL-00114" summary="add jks">
-      <created>1701204586942</created>
-      <option name="number" value="00114" />
-      <option name="presentableId" value="LOCAL-00114" />
-      <option name="project" value="LOCAL" />
-      <updated>1701204586942</updated>
-    </task>
-    <task id="LOCAL-00115" summary="add tag places">
-      <created>1701289847012</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1701289847012</updated>
-    </task>
-    <task id="LOCAL-00116" summary="add tag places">
-      <created>1701298369962</created>
-      <option name="number" value="00116" />
-      <option name="presentableId" value="LOCAL-00116" />
-      <option name="project" value="LOCAL" />
-      <updated>1701298369962</updated>
-    </task>
-    <task id="LOCAL-00117" summary="add tag places">
-      <created>1701299331720</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1701299331720</updated>
-    </task>
-    <option name="localTasksCounter" value="118" />
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -517,18 +502,6 @@
     <MESSAGE value="add AppCenter" />
     <MESSAGE value="first commit" />
     <MESSAGE value="add jks" />
-    <MESSAGE value="add tag places" />
-    <option name="LAST_COMMIT_MESSAGE" value="add tag places" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/features/profile/provider/profile_provider.dart</url>
-          <line>182</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="add jks" />
   </component>
 </project>
