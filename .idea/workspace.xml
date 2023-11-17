@@ -4,61 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add jks">
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/version" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/version" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/FMDB.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/Firebase.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/FirebaseCore.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/FirebaseCoreInternal.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/FirebaseInstallations.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/FirebaseMessaging.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/Flutter.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/GoogleDataTransport.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/GoogleUtilities.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/Pods-Runner.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/PromisesObjC.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/Reachability.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/connectivity.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/firebase_core.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/firebase_messaging.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/flutter_local_notifications.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/flutter_native_splash.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/geolocator_apple.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/image_picker_ios.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/nanopb.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/path_provider_foundation.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/shared_preferences_foundation.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/sqflite.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/url_launcher_ios.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/video_player_avfoundation.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/build/ios/Pods.build/Release-iphonesimulator/webview_flutter_wkwebview.build/dgph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_body.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/splash/provider/splash_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/splash/provider/splash_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/file_selector_linux" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/file_selector_linux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/flutter_keyboard_visibility_linux" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/flutter_keyboard_visibility_linux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/image_picker_linux" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/image_picker_linux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/package_info_plus" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/package_info_plus" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/wakelock_plus" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/wakelock_plus" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/ephemeral/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/ephemeral/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-    </list>
+    <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add jks" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,26 +58,26 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/adelh/Documents/GitHub/step-out/android&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "/Users/user/SoftweareCloud2/step-out/ios",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "flutter.settings",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android" />
@@ -171,20 +117,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688516389160</updated>
-    </task>
-    <task id="LOCAL-00037" summary="first commit">
-      <created>1698971502593</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1698971502593</updated>
-    </task>
-    <task id="LOCAL-00038" summary="first commit">
-      <created>1699023125746</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1699023125746</updated>
     </task>
     <task id="LOCAL-00039" summary="first commit">
       <created>1699024971329</created>
@@ -515,7 +447,21 @@
       <option name="project" value="LOCAL" />
       <updated>1700148766394</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="add jks">
+      <created>1700182806671</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1700182806672</updated>
+    </task>
+    <task id="LOCAL-00087" summary="add jks">
+      <created>1700183212707</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1700183212707</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
