@@ -1206,6 +1206,13 @@
             </list>
           </value>
         </entry>
+        <entry key="should_rebuild">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/should_rebuild-1.0.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="sky_engine">
           <value>
             <list>
@@ -1713,6 +1720,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/shared_preferences_web-2.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.3.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/shimmer-3.0.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/should_rebuild-1.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/source_span-1.10.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/sprintf-7.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/sqflite-2.3.0/lib" />

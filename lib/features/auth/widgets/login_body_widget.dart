@@ -4,6 +4,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/components/animated_widget.dart';
+import 'package:should_rebuild/should_rebuild.dart' as should;
 
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
@@ -66,32 +67,36 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                     StreamBuilder<String?>(
                         stream: provider.mailStream,
                         builder: (context, snapshot) {
-                          return CustomTextField(
-                            initialValue: provider.mail.value,
-                            onChanged: provider.updateMail,
-                            label: getTranslated("mail", context),
-                            hint: getTranslated("enter_your_mail", context),
-                            withLabel: true,
-                            onTap: () {
-                              setState(() => focusOnEmail = !focusOnEmail);
-                              if (!focusOnEmail) {
-                                FocusScope.of(context)
-                                    .requestFocus(FocusNode());
-                              }
-                            },
-                            onTapOutside: (v) =>
-                                setState(() => focusOnEmail = false),
-                            focusNode: emailNode,
-                            alignLabel: focusOnEmail,
-                            inputType: TextInputType.emailAddress,
-                            customError: snapshot.hasError,
-                            errorText: snapshot.error,
-                            validate: (v) {
-                              if (Validations.mail(v) != null) {
-                                provider.mail.addError(Validations.mail(v)!);
-                              }
-                              return null;
-                            },
+                          return should.ShouldRebuild<CustomTextField>(
+                            shouldRebuild: (o, n) => o.key != n.key,
+                            child: CustomTextField(
+                              key: ValueKey("${snapshot.data}"),
+                              initialValue: provider.mail.value,
+                              onChanged: provider.updateMail,
+                              label: getTranslated("mail", context),
+                              hint: getTranslated("enter_your_mail", context),
+                              withLabel: true,
+                              onTap: () {
+                                setState(() => focusOnEmail = !focusOnEmail);
+                                if (!focusOnEmail) {
+                                  FocusScope.of(context)
+                                      .requestFocus(FocusNode());
+                                }
+                              },
+                              onTapOutside: (v) =>
+                                  setState(() => focusOnEmail = false),
+                              focusNode: emailNode,
+                              alignLabel: focusOnEmail,
+                              inputType: TextInputType.emailAddress,
+                              customError: snapshot.hasError,
+                              errorText: snapshot.error,
+                              validate: (v) {
+                                if (Validations.mail(v) != null) {
+                                  provider.mail.addError(Validations.mail(v)!);
+                                }
+                                return null;
+                              },
+                            ),
                           );
                         }),
 

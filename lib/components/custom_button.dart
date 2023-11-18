@@ -1,3 +1,4 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
@@ -50,20 +51,20 @@ class CustomButton extends StatelessWidget {
     return GestureDetector(
         onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
-          if (onTap != null) {
+          if (onTap != null && !isLoading) {
             onTap!();
           }
         },
-        child: AnimatedContainer(
-          width: isLoading ? 90.w : width ?? context.width,
-          height: height ?? 60.h,
+        child: Container(
+          width: width ?? context.width,
+          height: height ?? 50.h,
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           decoration: BoxDecoration(
             color: backgroundColor,
             boxShadow: withShadow
                 ? [
                     BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: Colors.black.withOpacity(0.06),
                         spreadRadius: 2,
                         blurRadius: 2,
                         offset: const Offset(1, 1))
@@ -73,24 +74,13 @@ class CustomButton extends StatelessWidget {
                 color: withBorderColor
                     ? borderColor ?? Styles.PRIMARY_COLOR
                     : Colors.transparent),
-            borderRadius: BorderRadius.circular(radius ?? 15),
-            gradient: backgroundColor != null
-                ? null
-                : const LinearGradient(
-                    colors: Styles.kBackgroundGradient,
-                  ),
+            borderRadius: BorderRadius.circular(radius ?? 30),
           ),
-          duration: const Duration(
-            milliseconds: 600,
-          ),
-          curve: Curves.easeInOutSine,
           child: Center(
             child: isLoading
-                ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CircularProgressIndicator(
-                      color: textColor ?? Styles.WHITE_COLOR,
-                    ),
+                ? SpinKitThreeBounce(
+                    color: textColor ?? Styles.WHITE_COLOR,
+                    size: 25,
                   )
                 : Row(
                     mainAxisSize: MainAxisSize.min,
@@ -99,6 +89,7 @@ class CustomButton extends StatelessWidget {
                         text,
                         textAlign: TextAlign.center,
                         style: AppTextStyles.medium.copyWith(
+                          height: 1,
                           fontSize: textSize ?? 16,
                           overflow: TextOverflow.ellipsis,
                           color: textColor ?? Styles.WHITE_COLOR,

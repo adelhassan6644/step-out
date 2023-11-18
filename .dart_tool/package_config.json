@@ -1034,6 +1034,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "should_rebuild",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/should_rebuild-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/user/dvelopment/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -1328,7 +1334,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-11-16T19:47:59.417008Z",
+  "generated": "2023-11-18T14:12:06.526043Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }

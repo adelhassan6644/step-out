@@ -16,16 +16,4 @@ class SplashRepo {
   setFirstTime() {
     sharedPreferences.setBool(AppStorageKey.notFirstTime, true);
   }
-
-  getMail() {
-    if (sharedPreferences.containsKey(
-      AppStorageKey.mail,
-    )) {
-      return sharedPreferences.getString(
-        AppStorageKey.mail,
-      );
-    }
-  }
-
-
 }

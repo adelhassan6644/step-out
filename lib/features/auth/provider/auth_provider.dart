@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/features/profile/provider/profile_provider.dart';
@@ -19,7 +20,9 @@ import '../../../app/core/utils/styles.dart';
 
 class AuthProvider extends ChangeNotifier {
   final AuthRepo authRepo;
-  AuthProvider({required this.authRepo});
+  AuthProvider({required this.authRepo}) {
+    updateMail(kDebugMode ? "adel@gmail.com" : authRepo.getMail());
+  }
 
   final TextEditingController codeTEC = TextEditingController();
 
