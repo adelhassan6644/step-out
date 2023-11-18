@@ -67,7 +67,7 @@ class Data {
     tiktok = json['tiktok'];
     snapchat = json['snapchat'];
     image = json['image'];
-    whatsApp = json['whatsApp'];
+    whatsApp = json['whatsapp'];
     phone = json['phone'];
     aboutUs = json['aboutUs'];
     createdAt = json['created_at'];
