@@ -275,7 +275,7 @@ class AuthProvider extends ChangeNotifier {
       _isReset = true;
       notifyListeners();
       Either<ServerFailure, Response> response = await authRepo.reset(
-          password: password.value!.trim(), email: mail.value!.trim());
+          password: newPassword.value!.trim(), email: mail.value!.trim());
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(

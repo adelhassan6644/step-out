@@ -1,11 +1,9 @@
 class EndPoints {
-  static const String baseUrl =
-      'https://stepOut-elhemdania.softwarecloud2.com/api/';
+  static const String baseUrl = 'https://dashboard.stepoutnet.com/api/';
   static const String googleMapsBaseUrl = 'https://maps.googleapis.com';
-  static const String imageUrl =
-      'https://stepOut-elhemdania.softwarecloud2.com/';
+  static const String imageUrl = 'https://dashboard.stepoutnet.com/';
   static const String apiKey =
-      's7xrpFdw4G0F21rfLyD4TaBkjVJYgwGfI3y60OyRnjw9zOggruX30eToVWvs';
+      's7xrprFdw4G0F21rfLyD4TaBkjVJYgwGfI3y355yRnjw9zOggruX30eToVWvsASerert';
   static const String topic = 'stepOut';
   static const String logIn = 'login';
   static const String forgetPassword = 'resetPassword/email';
@@ -29,8 +27,8 @@ class EndPoints {
   static const String aboutUs = 'about_us';
   static const String setting = 'contact';
   static const String notifications = 'notification/notification';
-  static  readNotification(id)=> 'notification/read';
-  static  deleteNotification(id)=> 'notification/read';
+  static readNotification(id) => 'notification/read';
+  static deleteNotification(id) => 'notification/read';
   static const String sendRate = 'rate/send';
 
   /// maps
