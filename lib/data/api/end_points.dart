@@ -25,7 +25,7 @@ class EndPoints {
   static const String category = 'category';
   static const String offers = 'offer';
   static const String aboutUs = 'about_us';
-  static const String setting = 'contact';
+  static const String setting = 'setting';
   static const String notifications = 'notification/notification';
   static readNotification(id) => 'notification/read';
   static deleteNotification(id) => 'notification/read';

@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add jks">
-      <change beforePath="$PROJECT_DIR$/lib/components/custom_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/custom_button.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/svgs/global.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/svgs/snapchat.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/core/utils/svg_images.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/core/utils/svg_images.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/api/end_points.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/api/end_points.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/auth/widgets/register_body_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/auth/widgets/register_body_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/contact_with_us/page/contact_with_us.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/contact_with_us/page/contact_with_us.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/setting/model/setting_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/setting/model/setting_model.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,33 +67,33 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/user/SoftweareCloud2/step-out/ios&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "/Users/user/SoftweareCloud2/step-out/assets/svgs",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "flutter.settings",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/svgs" />
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android" />
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android\gradle\wrapper" />
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android\app" />
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android\app\src" />
-      <recent name="$PROJECT_DIR$/lib/features" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\lib\features\profile\page" />
@@ -119,13 +126,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688516389160</updated>
-    </task>
-    <task id="LOCAL-00041" summary="first commit">
-      <created>1699025230996</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1699025230996</updated>
     </task>
     <task id="LOCAL-00042" summary="update(pubspec)">
       <created>1699194058869</created>
@@ -463,7 +463,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700317792438</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="add jks">
+      <created>1700317917088</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1700317917088</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

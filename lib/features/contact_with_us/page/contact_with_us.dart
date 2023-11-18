@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/images.dart';
 import 'package:stepOut/components/animated_widget.dart';
+import 'package:stepOut/features/setting/provider/setting_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/svg_images.dart';
@@ -11,7 +13,6 @@ import '../../../app/core/utils/text_styles.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_images.dart';
-import '../provider/contact_provider.dart';
 
 class ContactWithUs extends StatelessWidget {
   const ContactWithUs({super.key});
@@ -23,7 +24,7 @@ class ContactWithUs extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-              child: Consumer<ContactProvider>(builder: (_, provider, child) {
+              child: Consumer<SettingProvider>(builder: (_, provider, child) {
             return ListAnimator(
               customPadding: EdgeInsets.symmetric(
                   horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
@@ -81,7 +82,8 @@ class ContactWithUs extends StatelessWidget {
                                   fontSize: 14, color: Styles.HINT_COLOR),
                             ),
                             Text(
-                              provider.contactModel?.email ?? "Step Out",
+                              provider.model?.data?.email ??
+                                  "StepOut@gmail.com",
                               style: AppTextStyles.medium
                                   .copyWith(fontSize: 14, color: Styles.TITLE),
                             ),
@@ -97,7 +99,7 @@ class ContactWithUs extends StatelessWidget {
                                   fontSize: 14, color: Styles.HINT_COLOR),
                             ),
                             Text(
-                              provider.contactModel?.phone ?? "12345",
+                              provider.model?.data?.phone ?? "12345",
                               style: AppTextStyles.medium
                                   .copyWith(fontSize: 14, color: Styles.TITLE),
                             ),
@@ -117,27 +119,111 @@ class ContactWithUs extends StatelessWidget {
                         overflow: TextOverflow.ellipsis),
                   ),
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  runAlignment: WrapAlignment.center,
+                  alignment: WrapAlignment.center,
+                  spacing: 16.w,
+                  runSpacing: 16.h,
                   children: [
-                    customContainerSvgIcon(
-                      radius: 100,
-                      width: 40,
-                      height: 40,
-                      imageName: SvgImages.instagram,
-                      color: Styles.PRIMARY_COLOR,
-                    ),
-                    SizedBox(width: 16.w),
-                    customContainerSvgIcon(
-                      radius: 100,
-                      width: 40,
-                      height: 40,
-                      imageName: SvgImages.faceBook,
-                      color: Styles.PRIMARY_COLOR,
-                    ),
+                    ///Facebook
+                    if (provider.model?.data?.facebook != null)
+                      customContainerSvgIcon(
+                        imageName: SvgImages.faceBook,
+                        color: Styles.PRIMARY_COLOR,
+                        height: 40,
+                        width: 40,
+                        radius: 100,
+                        onTap: () async {
+                          launchUrl(Uri.parse(provider.model!.data!.facebook!),
+                              mode: LaunchMode.externalApplication);
+                        },
+                      ),
+
+                    ///Instagram
+                    if (provider.model?.data?.instagram != null)
+                      customContainerSvgIcon(
+                        imageName: SvgImages.instagram,
+                        color: Styles.PRIMARY_COLOR,
+                        height: 40,
+                        width: 40,
+                        radius: 100,
+                        onTap: () async {
+                          launchUrl(Uri.parse(provider.model!.data!.instagram!),
+                              mode: LaunchMode.externalApplication);
+                        },
+                      ),
+
+                    ///Twitter
+                    if (provider.model?.data?.twitter != null)
+                      customContainerSvgIcon(
+                        imageName: SvgImages.twitter,
+                        color: Styles.PRIMARY_COLOR,
+                        height: 40,
+                        width: 40,
+                        radius: 100,
+                        onTap: () async {
+                          launchUrl(Uri.parse(provider.model!.data!.twitter!),
+                              mode: LaunchMode.externalApplication);
+                        },
+                      ),
+
+                    ///Tiktok
+                    if (provider.model?.data?.tiktok != null)
+                      customContainerSvgIcon(
+                        imageName: SvgImages.tiktok,
+                        color: Styles.PRIMARY_COLOR,
+                        height: 40,
+                        width: 40,
+                        radius: 100,
+                        onTap: () async {
+                          launchUrl(Uri.parse(provider.model!.data!.tiktok!),
+                              mode: LaunchMode.externalApplication);
+                        },
+                      ),
+
+                    ///WhatsApp
+                    if ((provider.model?.data?.whatsApp != null))
+                      customContainerSvgIcon(
+                          imageName: SvgImages.whatsApp,
+                          color: Styles.PRIMARY_COLOR,
+                          height: 40,
+                          width: 40,
+                          radius: 100,
+                          onTap: () async {
+                            await launch(
+                                "whatsapp://send?phone=${provider.model?.data?.whatsApp}");
+                          }),
+
+                    ///SnapChat
+                    if (provider.model?.data?.snapchat != null)
+                      customContainerSvgIcon(
+                        imageName: SvgImages.snapchat,
+                        color: Styles.PRIMARY_COLOR,
+                        height: 40,
+                        width: 40,
+                        radius: 100,
+                        onTap: () async {
+                          launchUrl(Uri.parse(provider.model!.data!.snapchat!),
+                              mode: LaunchMode.externalApplication);
+                        },
+                      ),
+
+                    ///Website
+                    if (provider.model?.data?.website != null)
+                      customContainerSvgIcon(
+                        imageName: SvgImages.global,
+                        color: Styles.PRIMARY_COLOR,
+                        height: 40,
+                        width: 40,
+                        radius: 100,
+                        onTap: () async {
+                          launchUrl(Uri.parse(provider.model!.data!.website!),
+                              mode: LaunchMode.externalApplication);
+                        },
+                      ),
                   ],
-                )
+                ),
               ],
             );
           }))
