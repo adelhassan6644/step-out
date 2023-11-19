@@ -38,7 +38,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
     return Scaffold(
       backgroundColor: Styles.BACKGROUND_COLOR,
       appBar: CustomAppBar(
-        title: widget.item.title ?? "Restaurants",
+        title: widget.item.name ?? "Restaurants",
         actionChild: customImageIconSVG(
           imageName: SvgImages.search,
           onTap: () => CustomNavigator.push(Routes.SEARCH),

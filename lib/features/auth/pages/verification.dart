@@ -5,8 +5,6 @@ import 'package:stepOut/app/core/utils/images.dart';
 import 'package:stepOut/app/core/utils/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:stepOut/navigation/custom_navigation.dart';
-import 'package:stepOut/navigation/routes.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
@@ -128,10 +126,8 @@ class _VerificationState extends State<Verification> {
                                         onTap: () {
                                           if (_formKey.currentState!
                                               .validate()) {
-                                            CustomNavigator.push(
-                                                Routes.RESET_PASSWORD);
-                                            // provider
-                                            //     .verify(widget.fromRegister);
+                                            provider
+                                                .verify(widget.fromRegister);
                                           }
                                         },
                                         isLoading: provider.isVerify),

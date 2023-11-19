@@ -67,11 +67,9 @@ class AuthRepo {
       {required String mail, required String password}) async {
     try {
       Response response = await dioClient.post(uri: EndPoints.logIn, data: {
-        // "phone": "1234567891",
         "email": mail,
         "password": password,
-        if(!kDebugMode)
-          "fcm_token": await saveDeviceToken()
+        // if (!kDebugMode) "fcm_token": await saveDeviceToken()
       });
 
       if (response.statusCode == 200) {
@@ -89,7 +87,7 @@ class AuthRepo {
       {required String password, required String email}) async {
     try {
       Response response =
-      await dioClient.post(uri: EndPoints.resetPassword, data: {
+          await dioClient.post(uri: EndPoints.resetPassword, data: {
         "email": email,
         "newPassword": password,
       });
@@ -129,7 +127,7 @@ class AuthRepo {
       {required String mail}) async {
     try {
       Response response =
-      await dioClient.post(uri: EndPoints.forgetPassword, data: {
+          await dioClient.post(uri: EndPoints.forgetPassword, data: {
         "email": mail,
       });
 
@@ -155,9 +153,8 @@ class AuthRepo {
         "name": name,
         "phone": phone,
         "email": mail,
-        if (code != null) "invitation_code": code,
         "password": password,
-        "fcm_token": await saveDeviceToken()
+        // if (!kDebugMode) "fcm_token": await saveDeviceToken()
       });
 
       if (response.statusCode == 200) {
@@ -191,9 +188,9 @@ class AuthRepo {
 
   Future<Either<ServerFailure, Response>> verifyMail(
       {required String mail,
-        required String code,
-        required bool fromRegister,
-        bool updateHeader = false}) async {
+      required String code,
+      required bool fromRegister,
+      bool updateHeader = false}) async {
     try {
       Response response = await dioClient.post(
           uri: fromRegister

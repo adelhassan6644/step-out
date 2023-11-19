@@ -32,6 +32,7 @@ class Data {
   String? snapchat;
   String? image;
   String? phone;
+  String? whatsApp;
   String? aboutUs;
   String? createdAt;
   String? updatedAt;
@@ -48,6 +49,7 @@ class Data {
       this.tiktok,
       this.snapchat,
       this.image,
+      this.whatsApp,
       this.phone,
       this.aboutUs,
       this.createdAt,
@@ -65,6 +67,7 @@ class Data {
     tiktok = json['tiktok'];
     snapchat = json['snapchat'];
     image = json['image'];
+    whatsApp = json['whatsapp'];
     phone = json['phone'];
     aboutUs = json['aboutUs'];
     createdAt = json['created_at'];
@@ -75,18 +78,19 @@ class Data {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['terms'] = terms;
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['twitter'] = this.twitter;
-    data['website'] = this.website;
-    data['instagram'] = this.instagram;
-    data['facebook'] = this.facebook;
-    data['tiktok'] = this.tiktok;
-    data['image'] = this.image;
-    data['phone'] = this.phone;
-    data['aboutUs'] = this.aboutUs;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    data['name'] = name;
+    data['email'] = email;
+    data['twitter'] = twitter;
+    data['website'] = website;
+    data['instagram'] = instagram;
+    data['facebook'] = facebook;
+    data['tiktok'] = tiktok;
+    data['image'] = image;
+    data['phone'] = phone;
+    data['aboutUs'] = aboutUs;
+    data['whatsApp'] = whatsApp;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

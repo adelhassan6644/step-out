@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/features/profile/provider/profile_provider.dart';
@@ -19,7 +20,10 @@ import '../../../app/core/utils/styles.dart';
 
 class AuthProvider extends ChangeNotifier {
   final AuthRepo authRepo;
-  AuthProvider({required this.authRepo});
+  AuthProvider({required this.authRepo}) {
+    updateMail(kDebugMode ? "adel@gmail.com" : authRepo.getMail());
+    mailTEC = TextEditingController(text: "adel@gmail.com");
+  }
 
   final TextEditingController codeTEC = TextEditingController();
 
@@ -31,6 +35,7 @@ class AuthProvider extends ChangeNotifier {
   Function(String?) get updatePhone => phone.sink.add;
   Stream<String?> get phoneStream => phone.stream.asBroadcastStream();
 
+  late TextEditingController mailTEC;
   final mail = BehaviorSubject<String?>();
   Function(String?) get updateMail => mail.sink.add;
   Stream<String?> get mailStream => mail.stream.asBroadcastStream();
@@ -98,6 +103,7 @@ class AuthProvider extends ChangeNotifier {
     codeTEC.clear();
     updateName(null);
     updatePhone(null);
+    mailTEC.clear();
     updateMail(null);
     updatePassword(null);
     updateNewPassword(null);
@@ -240,14 +246,11 @@ class AuthProvider extends ChangeNotifier {
             Routes.SUCCESS_PAGE,
             clean: true,
             arguments: SuccessModel(
-                title: getTranslated("register_success_title",
-                    CustomNavigator.navigatorState.currentContext!),
-                description: getTranslated("register_success_description",
-                    CustomNavigator.navigatorState.currentContext!),
-                onTap: () {
-                  CustomNavigator.push(Routes.DASHBOARD,
-                      arguments: 0, clean: true);
-                }),
+              title: getTranslated("register_success_title",
+                  CustomNavigator.navigatorState.currentContext!),
+              description: getTranslated("register_success_description",
+                  CustomNavigator.navigatorState.currentContext!),
+            ),
           );
           clear();
         } else {
@@ -275,7 +278,7 @@ class AuthProvider extends ChangeNotifier {
       _isReset = true;
       notifyListeners();
       Either<ServerFailure, Response> response = await authRepo.reset(
-          password: password.value!.trim(), email: mail.value!.trim());
+          password: newPassword.value!.trim(), email: mail.value!.trim());
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(

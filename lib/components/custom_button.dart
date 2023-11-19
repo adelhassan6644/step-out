@@ -1,3 +1,4 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
@@ -54,8 +55,8 @@ class CustomButton extends StatelessWidget {
             onTap!();
           }
         },
-        child: AnimatedContainer(
-          width: isLoading ? 90.w : width ?? context.width,
+        child: Container(
+          width: width ?? context.width,
           height: height ?? 60.h,
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           decoration: BoxDecoration(
@@ -80,17 +81,11 @@ class CustomButton extends StatelessWidget {
                     colors: Styles.kBackgroundGradient,
                   ),
           ),
-          duration: const Duration(
-            milliseconds: 600,
-          ),
-          curve: Curves.easeInOutSine,
           child: Center(
             child: isLoading
-                ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CircularProgressIndicator(
-                      color: textColor ?? Styles.WHITE_COLOR,
-                    ),
+                ? SpinKitThreeBounce(
+                    color: textColor ?? Styles.WHITE_COLOR,
+                    size: 25,
                   )
                 : Row(
                     mainAxisSize: MainAxisSize.min,

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/components/animated_widget.dart';
-
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../app/core/utils/validation.dart';
@@ -67,7 +65,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                         stream: provider.mailStream,
                         builder: (context, snapshot) {
                           return CustomTextField(
-                            initialValue: provider.mail.value,
+                            controller: provider.mailTEC,
                             onChanged: provider.updateMail,
                             label: getTranslated("mail", context),
                             hint: getTranslated("enter_your_mail", context),
@@ -172,14 +170,13 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                             return CustomButton(
                                 text: getTranslated("login", context),
                                 onTap: () {
-                                  // CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: CategoryItem());
-                                  provider.clear();
-                                  CustomNavigator.push(Routes.PROFILE);
+                                  _formKey.currentState!.validate();
 
-                                  // _formKey.currentState!.validate();
-                                  // if (snapshot.data == true) {
-                                  //   provider.logIn();
-                                  // }
+                                  if (snapshot.hasData) {
+                                    if (snapshot.data!) {
+                                      provider.logIn();
+                                    }
+                                  }
                                 },
                                 isLoading: provider.isLogin);
                           }),
@@ -270,7 +267,7 @@ class _RememberMe extends StatelessWidget {
                   ? const Icon(
                       Icons.check,
                       color: Styles.WHITE_COLOR,
-                      size: 16,
+                      size: 14,
                     )
                   : null,
             ),

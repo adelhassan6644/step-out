@@ -40,7 +40,8 @@ class HomeBanner extends StatelessWidget {
                               aspectRatio: 1.0,
                               viewportFraction: 1.0,
                               autoPlayInterval: const Duration(seconds: 5),
-                              autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                              autoPlayAnimationDuration:
+                                  const Duration(milliseconds: 800),
                               autoPlayCurve: Curves.fastOutSlowIn,
                               enlargeCenterPage: true,
                               onPageChanged: (index, reason) {

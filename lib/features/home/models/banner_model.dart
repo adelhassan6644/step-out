@@ -28,23 +28,26 @@ class Data {
   int? id;
   int? itemId;
   String? image;
-  String? title;
+  String? name;
+  String? status;
 
-  Data({this.id, this.itemId, this.image, this.title});
+  Data({this.id, this.status, this.itemId, this.image, this.name});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    itemId = json['item_id'];
+    status = json['status'];
+    itemId = json['place_id'];
     image = json['image'];
-    title = json['title'];
+    name = json['name'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
+    data['status'] = status;
     data['item_id'] = itemId;
     data['image'] = image;
-    data['title'] = title;
+    data['name'] = name;
 
     return data;
   }

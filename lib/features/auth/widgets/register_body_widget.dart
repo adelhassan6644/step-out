@@ -378,7 +378,7 @@ class _AgreeToTerms extends StatelessWidget {
                   ? const Icon(
                       Icons.check,
                       color: Styles.WHITE_COLOR,
-                      size: 16,
+                      size: 14,
                     )
                   : null,
             ),

@@ -117,7 +117,7 @@ class _CategoryCard extends StatelessWidget {
               height: 8.h,
             ),
             Text(
-              item?.title ?? "34jkebg",
+              item?.name ?? "34jkebg",
               style: AppTextStyles.medium
                   .copyWith(fontSize: 14, color: Styles.HEADER),
             ),

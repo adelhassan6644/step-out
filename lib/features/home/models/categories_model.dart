@@ -25,44 +25,29 @@ class CategoriesModel {
 }
 
 class CategoryItem {
-  int? id;
-  String? image;
-  String? title;
-  String? color;
-  String? textColor;
-  String? description;
-  String? createdAt;
-  String? updatedAt;
+  final int? id;
+  final String? image;
+  final String? name;
+  final String? description;
 
-  CategoryItem(
-      {this.id,
-      this.image,
-      this.title,
-      this.description,
-      this.color,
-      this.textColor,
-      this.createdAt,
-      this.updatedAt});
+  CategoryItem({
+    this.id,
+    this.image,
+    this.name,
+    this.description,
+  });
 
-  CategoryItem.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    image = json['image'];
-    title = json['title'];
-    color = json['color'];
-    textColor = json['text_color'];
-    description = json['description'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
+  factory CategoryItem.fromJson(Map<String, dynamic> json) => CategoryItem(
+        id: json["id"],
+        image: json["image"],
+        name: json["name"],
+        description: json["description"],
+      );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['image'] = image;
-    data['title'] = title;
-    data['description'] = description;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "image": image,
+        "name": name,
+        "description": description,
+      };
 }

@@ -28,8 +28,8 @@ class CustomNetworkImage {
       Widget? imageWidget,
       bool edges = false}) {
     return CachedNetworkImage(
-      // imageUrl: EndPoints.imageUrl + image,
-      imageUrl: image,
+      imageUrl: EndPoints.imageUrl + image,
+      // imageUrl: image,
       fadeInDuration: const Duration(seconds: 1),
       fadeOutDuration: const Duration(seconds: 1),
       errorWidget: (a, b, c) => Container(
@@ -102,8 +102,8 @@ class CustomNetworkImage {
     return CachedNetworkImage(
       imageUrl: image == "" || image == null
           ? "https://"
-          // : EndPoints.imageUrl + image,
-          :  image,
+          : EndPoints.imageUrl + image,
+      // : image,
       repeat: ImageRepeat.noRepeat,
       errorWidget: (a, c, b) => Container(
         height: radius! * 2,

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:substring_highlight/substring_highlight.dart';
@@ -21,26 +23,41 @@ class SuccessPage extends StatefulWidget {
 }
 
 class _SuccessPageState extends State<SuccessPage> {
+  late Timer _timer;
+  int _count = 0;
   @override
   void initState() {
-    if (widget.successModel.isPopUp) {
-      Future.delayed(const Duration(seconds: 500), () {
-        if (widget.successModel.onTap != null) {
-          widget.successModel.onTap?.call();
+    countDown();
+    super.initState();
+  }
+
+  countDown() {
+    _timer = Timer.periodic(
+      const Duration(seconds: 2),
+      (timer) {
+        if (_count != 0) {
+          --_count;
         } else {
           CustomNavigator.push(Routes.DASHBOARD, clean: true);
+
+          if (_timer.isActive) _timer.cancel();
         }
-      });
-    }
-    super.initState();
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    if (_timer.isActive) _timer.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => !widget.successModel.isPopUp,
-      child: Scaffold(
-        body: Container(
+    return Scaffold(
+      body: WillPopScope(
+        onWillPop: () async => !widget.successModel.isPopUp,
+        child: Container(
           height: context.height,
           width: context.width,
           padding: EdgeInsets.symmetric(

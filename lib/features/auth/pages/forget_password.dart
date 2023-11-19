@@ -4,9 +4,6 @@ import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/components/custom_app_bar.dart';
-import 'package:stepOut/navigation/custom_navigation.dart';
-import 'package:stepOut/navigation/routes.dart';
-
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/images.dart';
 import '../../../app/core/utils/text_styles.dart';
@@ -162,10 +159,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                                   .mail.value
                                                   ?.trim()) ==
                                               null) {
-                                            CustomNavigator.push(
-                                                Routes.VERIFICATION,
-                                                arguments: false);
-                                            // provider.forgetPassword();
+                                            provider.forgetPassword();
                                           }
                                         },
                                         isLoading: provider.isForget),
