@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stepOut/app/core/utils/app_strings.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
@@ -40,44 +39,52 @@ class NewsCard extends StatelessWidget {
               children: [
                 /// Title
                 Text(
-                  "title",
+                  newsItem?.title ?? "",
                   style: AppTextStyles.semiBold
                       .copyWith(fontSize: 18, color: Styles.ACCENT_COLOR),
                 ),
 
-                /// Description
+                /// content
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    "description",
+                    newsItem?.content ?? "",
                     style: AppTextStyles.medium
                         .copyWith(fontSize: 14, color: Styles.DETAILS_COLOR),
                   ),
                 ),
 
                 /// Location
-                Row(
-                  children: [
-                    customImageIconSVG(
-                        imageName: SvgImages.location,
-                        color: Styles.DETAILS_COLOR),
-                    SizedBox(width: 8.w),
-                    Text(
-                      "Location",
-                      style: AppTextStyles.semiBold
-                          .copyWith(fontSize: 14, color: Styles.DETAILS_COLOR),
-                    ),
-                  ],
+                GestureDetector(
+                  onTap: () async {
+                    await launch(
+                        'https://www.google.com/maps/search/?api=1&query=${newsItem?.lat},${newsItem?.long}');
+                  },
+                  child: Row(
+                    children: [
+                      customImageIconSVG(
+                          imageName: SvgImages.location,
+                          height: 20,
+                          width: 20,
+                          color: Styles.DETAILS_COLOR),
+                      SizedBox(width: 8.w),
+                      Text(
+                        newsItem?.address ?? "",
+                        style: AppTextStyles.semiBold.copyWith(
+                            fontSize: 14, color: Styles.DETAILS_COLOR),
+                      ),
+                    ],
+                  ),
                 ),
 
                 /// Link
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: InkWell(
-                    onTap: () async => await launchUrl(Uri.parse(
-                        "https://www.bbc.com/news/live/world-middle-east-67223217")),
+                    onTap: () async =>
+                        await launchUrl(Uri.parse(newsItem?.url ?? "")),
                     child: Text(
-                      "https://www.bbc.com/news/live/world-middle-east-67223217",
+                      newsItem?.url ?? "url",
                       maxLines: 1,
                       style: AppTextStyles.semiBold.copyWith(
                           fontSize: 14,
@@ -96,7 +103,7 @@ class NewsCard extends StatelessWidget {
               height: 120,
               width: context.width,
               radius: 16,
-              image: AppStrings.networkImage)
+              image: newsItem?.image ?? "")
         ],
       ),
     );

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:provider/provider.dart';
+import 'package:stepOut/components/custom_loading.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../app/localization/language_constant.dart';
+import '../../../components/animated_widget.dart';
+import '../../../components/empty_widget.dart';
 import '../../../data/config/di.dart';
 import '../provider/news_provider.dart';
 import '../widgets/news_card.dart';
@@ -46,72 +49,76 @@ class _NewsState extends State<News> {
                   color: Styles.BORDER_COLOR,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-                child: NewsCard(),
-              ),
-              // Expanded(
-              //     child: provider.isLoading
-              //         ? ListAnimator(
-              //             customPadding: EdgeInsets.symmetric(
-              //               horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-              //             ),
-              //             data: List.generate(
-              //                 4,
-              //                 (i) => Padding(
-              //                       padding: EdgeInsets.symmetric(
-              //                           vertical: Dimensions
-              //                               .PADDING_SIZE_EXTRA_SMALL.h),
-              //                       child: CustomShimmerContainer(
-              //                         height: 220.h,
-              //                         radius: 20,
-              //                       ),
-              //                     )),
-              //           )
-              //         : provider.model != null &&
-              //                 provider.model!.data != null &&
-              //                 provider.model!.data!.isNotEmpty
-              //             ? RefreshIndicator(
-              //                 color: Styles.PRIMARY_COLOR,
-              //                 onRefresh: () async {
-              //                   provider.getNews();
-              //                 },
-              //                 child: Column(
-              //                   children: [
-              //                     Expanded(
-              //                       child: ListAnimator(
-              //                         data: List.generate(
-              //                             provider.model?.data?.length ?? 0,
-              //                             (i) => NewsCard(
-              //                                   newsItem:
-              //                                       provider.model?.data?[i],
-              //                                 )),
-              //                       ),
-              //                     ),
-              //                   ],
-              //                 ),
-              //               )
-              //             : RefreshIndicator(
-              //                 color: Styles.PRIMARY_COLOR,
-              //                 onRefresh: () async {
-              //                   provider.getNews();
-              //                 },
-              //                 child: Column(
-              //                   children: [
-              //                     Expanded(
-              //                       child: ListAnimator(
-              //                         data: [
-              //                           EmptyState(
-              //                             imgWidth: 215.w,
-              //                             imgHeight: 220.h,
-              //                           ),
-              //                         ],
-              //                       ),
-              //                     ),
-              //                   ],
-              //                 ),
-              //               ))
+              Expanded(
+                  child: provider.isLoading
+                      ? ListAnimator(
+                          customPadding: EdgeInsets.symmetric(
+                            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                          ),
+                          data: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 150.h),
+                              child: const CustomLoading(),
+                            )
+                          ],
+                        )
+                      : provider.model != null &&
+                              provider.model!.data != null &&
+                              provider.model!.data!.isNotEmpty
+                          ? RefreshIndicator(
+                              color: Styles.PRIMARY_COLOR,
+                              onRefresh: () async {
+                                provider.getNews();
+                              },
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    child: ListAnimator(
+                                      customPadding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            Dimensions.PADDING_SIZE_DEFAULT.w,
+                                      ),
+                                      data: List.generate(
+                                          provider.model?.data?.length ?? 0,
+                                          (i) => NewsCard(
+                                                newsItem:
+                                                    provider.model?.data?[i],
+                                              )),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          : RefreshIndicator(
+                              color: Styles.PRIMARY_COLOR,
+                              onRefresh: () async {
+                                provider.getNews();
+                              },
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    child: ListAnimator(
+                                      customPadding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            Dimensions.PADDING_SIZE_DEFAULT.w,
+                                      ),
+                                      data: [
+                                        SizedBox(
+                                          height: 100.h,
+                                        ),
+                                        EmptyState(
+                                          imgWidth: 215.w,
+                                          imgHeight: 220.h,
+                                        ),
+                                        SizedBox(
+                                          height: 100.h,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ))
             ],
           ),
         );

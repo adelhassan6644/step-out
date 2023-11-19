@@ -2,6 +2,7 @@ import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../app/core/utils/images.dart';
+import '../app/core/utils/styles.dart';
 import '../data/api/end_points.dart';
 
 class CustomNetworkImage {
@@ -23,6 +24,7 @@ class CustomNetworkImage {
       double? height,
       double? width,
       BoxFit? fit,
+      Color? borderColor,
       isPlaceHolder = true,
       double? widthOfShimmer,
       Widget? imageWidget,
@@ -77,6 +79,7 @@ class CustomNetworkImage {
           height: height ?? 40,
           padding: padding,
           decoration: BoxDecoration(
+            border: Border.all(color:borderColor?? Colors.transparent),
             borderRadius: edges
                 ? BorderRadius.only(
                     topRight: Radius.circular(radius ?? 10),

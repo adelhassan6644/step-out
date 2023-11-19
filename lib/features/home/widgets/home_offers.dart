@@ -48,7 +48,7 @@ class HomeOffers extends StatelessWidget {
                           children: [
                             SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT.w),
                             ...List.generate(
-                                provider.categoriesModel?.data?.length ?? 6,
+                                provider.offersModel?.data?.length ?? 0,
                                 (index) => Padding(
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 8.w),
@@ -60,7 +60,9 @@ class HomeOffers extends StatelessWidget {
                                               height: 140.h,
                                               width: context.width * 0.7,
                                               fit: BoxFit.cover,
-                                              radius: 20),
+                                              radius: 20,
+                                              borderColor:
+                                                  Styles.PRIMARY_COLOR),
                                     ))
                           ],
                         ),

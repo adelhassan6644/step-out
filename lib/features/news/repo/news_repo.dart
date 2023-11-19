@@ -18,30 +18,10 @@ class NewsRepo {
     return sharedPreferences.containsKey(AppStorageKey.isLogin);
   }
 
-  Future<Either<ServerFailure, Response>> updateFavourite(id) async {
-    try {
-      Response response = await dioClient.post(
-          uri: EndPoints.postFavourite,
-          data: {
-            "client_id": sharedPreferences.getString(AppStorageKey.userId),
-            "place_id": id
-          });
-
-      if (response.statusCode == 200) {
-        return Right(response);
-      } else {
-        return left(ServerFailure(response.data['message']));
-      }
-    } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
-    }
-  }
-
-  Future<Either<ServerFailure, Response>> getFavourites() async {
+  Future<Either<ServerFailure, Response>> getNews() async {
     try {
       Response response = await dioClient.get(
-        uri: EndPoints.getFavourites(
-            sharedPreferences.getString(AppStorageKey.userId)),
+        uri: EndPoints.news,
       );
       if (response.statusCode == 200) {
         return Right(response);

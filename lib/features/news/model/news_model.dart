@@ -25,46 +25,97 @@ class NewsModel {
 }
 
 class NewsItem {
-  int? id;
-  String? image;
-  String? title;
-  String? description;
-  String? link;
-  double? lat;
-  double? long;
-  String? address;
+  final int? id;
+  final String? author;
+  final String? image;
+  final String? address;
+  final String? url;
+  final String? status;
+  final String? title;
+  final String? content;
+  final dynamic lat;
+  final dynamic long;
+  final List<Image>? images;
 
   NewsItem({
     this.id,
+    this.author,
     this.image,
+    this.address,
+    this.url,
+    this.status,
     this.title,
-    this.description,
-    this.link,
     this.lat,
     this.long,
-    this.address,
+    this.content,
+    this.images,
   });
 
-  NewsItem.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    link = json['link'];
-    image = json['image'];
-    title = json['title'];
-    address = json['address'];
-    description = json['description'];
-    lat = json['lat'] != null ? double.parse(json['lat'].toString()) : null;
-    long = json['long'] != null ? double.parse(json['long'].toString()) : null;
-  }
+  factory NewsItem.fromJson(Map<String, dynamic> json) => NewsItem(
+        id: json["id"],
+        author: json["author"],
+        image: json["image"],
+        url: json["url"],
+        address: json["address"],
+        status: json["status"],
+        title: json["title"],
+        lat: json["lat"],
+        long: json["long"],
+        content: json["content"],
+        images: json["images"] == null
+            ? []
+            : List<Image>.from(json["images"]!.map((x) => Image.fromJson(x))),
+      );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['title'] = title;
-    data['description'] = description;
-    data['link'] = link;
-    data['address'] = address;
-    data['lat'] = lat;
-    data['long'] = long;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "author": author,
+        "image": image,
+        "address": address,
+        "url": url,
+        "status": status,
+        "lat": lat,
+        "long": long,
+        "title": title,
+        "content": content,
+        "images": images == null
+            ? []
+            : List<dynamic>.from(images!.map((x) => x.toJson())),
+      };
+}
+
+class Image {
+  final int? id;
+  final String? image;
+  final int? newsId;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+
+  Image({
+    this.id,
+    this.image,
+    this.newsId,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  factory Image.fromJson(Map<String, dynamic> json) => Image(
+        id: json["id"],
+        image: json["image"],
+        newsId: json["news_id"],
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "image": image,
+        "news_id": newsId,
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
+      };
 }

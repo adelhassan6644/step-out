@@ -37,7 +37,7 @@ class HomeCategories extends StatelessWidget {
             ),
             provider.isGetCategories
                 ? GridListAnimatorWidget(
-                    aspectRatio: 0.9,
+                    aspectRatio: 0.78,
                     columnCount: 3,
                     items: List.generate(
                       9,
