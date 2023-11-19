@@ -27,7 +27,7 @@ class MoreButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(
             vertical: Dimensions.PADDING_SIZE_SMALL.h,
             horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
             border: Border(
           top: const BorderSide(
             color: Styles.BORDER_COLOR,
@@ -47,7 +47,7 @@ class MoreButton extends StatelessWidget {
                 child: Text(title,
                     maxLines: 1,
                     style: AppTextStyles.medium.copyWith(
-                        fontSize: 18,
+                        fontSize: 16,
                         overflow: TextOverflow.ellipsis,
                         color: Styles.TITLE)),
               ),

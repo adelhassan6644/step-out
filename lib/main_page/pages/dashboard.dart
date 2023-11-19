@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stepOut/features/more/page/more.dart';
+import 'package:stepOut/features/news/provider/news_provider.dart';
+import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import 'package:stepOut/main_page/provider/main_page_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/utils/styles.dart';
@@ -20,13 +22,19 @@ class DashBoard extends StatefulWidget {
 class _DashBoardState extends State<DashBoard> {
   @override
   void initState() {
-    NetworkInfo.checkConnectivity(onVisible: () {
-      // sl<HomeProvider>().getBanners();
-      // sl<HomeProvider>().getCategories();
-      // sl<HomeProvider>().getOffers();
-      // sl<HomeProvider>().getNews();
-    });
+    initData();
+    NetworkInfo.checkConnectivity(onVisible: initData);
     super.initState();
+  }
+
+  initData() {
+    Future.delayed(Duration.zero, () {
+      sl<HomeProvider>().getBanners();
+      sl<HomeProvider>().getCategories();
+      sl<HomeProvider>().getOffers();
+      sl<NewsProvider>().getNews();
+      sl<ProfileProvider>().getProfile();
+    });
   }
 
   Widget fragment(int index) {
@@ -38,7 +46,7 @@ class _DashBoardState extends State<DashBoard> {
       case 2:
         return const MapPage();
       case 3:
-        return More();
+        return const More();
       default:
         return Container();
     }

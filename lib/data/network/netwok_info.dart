@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 import '../../app/localization/language_constant.dart';
 
-
 class NetworkInfo {
   final Connectivity connectivity;
   NetworkInfo(this.connectivity);

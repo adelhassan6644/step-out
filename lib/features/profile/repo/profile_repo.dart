@@ -21,7 +21,7 @@ class ProfileRepo {
   Future<Either<ServerFailure, Response>> updateProfile(
       {required dynamic body}) async {
     try {
-      Response response = await dioClient.patch(
+      Response response = await dioClient.post(
           uri: EndPoints.updateProfile(
               sharedPreferences.getString(AppStorageKey.userId)),
           data: FormData.fromMap(body));
@@ -51,7 +51,6 @@ class ProfileRepo {
       return left(ServerFailure(ApiErrorHandler.getMessage(error)));
     }
   }
-
 
   Future<Either<ServerFailure, Response>> deleteAcc() async {
     try {

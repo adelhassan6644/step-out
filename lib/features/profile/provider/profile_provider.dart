@@ -1,10 +1,10 @@
-import 'dart:developer';
 import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/app_snack_bar.dart';
+import 'package:stepOut/components/loading_dialog.dart';
 import 'package:stepOut/features/auth/provider/auth_provider.dart';
 import 'package:stepOut/features/profile/model/profile_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
@@ -34,7 +34,7 @@ class ProfileProvider extends ChangeNotifier {
   File? profileImage;
   onSelectImage(File? file) {
     profileImage = file;
-    updateProfile();
+    updateProfile(updatePhoto: true);
     notifyListeners();
   }
 
@@ -69,18 +69,16 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   bool isUpdate = false;
-  updateProfile() async {
-    isUpdate = true;
+  updateProfile({bool updatePhoto = false}) async {
     Map<String, dynamic> body = {
-      "name": profileModel?.name,
-      "phone": profileModel?.phone,
-      // "email": profileModel?.email,
+      "name": profileModel?.name?.trim(),
+      "phone": profileModel?.phone?.trim(),
     };
 
     if (checkData(body) || hasImage()) {
       if (profileImage != null) {
         body.addAll({
-          "photo": await MultipartFile.fromFile(profileImage!.path),
+          "photo": MultipartFile.fromFileSync(profileImage!.path),
         });
       }
       if (_boolCheckString(phone.value?.trim(), "phone", body)) {
@@ -91,7 +89,12 @@ class ProfileProvider extends ChangeNotifier {
       }
 
       try {
-        log(body.entries.toString());
+        if (updatePhoto) {
+          loadingDialog();
+        } else {
+          isUpdate = true;
+        }
+        notifyListeners();
         Either<ServerFailure, Response> response =
             await profileRepo.updateProfile(body: body);
         response.fold((fail) {
@@ -102,6 +105,7 @@ class ProfileProvider extends ChangeNotifier {
                   backgroundColor: Styles.IN_ACTIVE,
                   borderColor: Colors.red));
         }, (response) {
+          getProfile(withLoading: false);
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: getTranslated("your_profile_successfully_updated",
@@ -109,11 +113,22 @@ class ProfileProvider extends ChangeNotifier {
                   isFloating: true,
                   backgroundColor: Styles.ACTIVE,
                   borderColor: Colors.transparent));
+          if (!updatePhoto) {
+            CustomNavigator.pop();
+          }
         });
-        isUpdate = false;
+        if (updatePhoto) {
+          CustomNavigator.pop();
+        } else {
+          isUpdate = false;
+        }
         notifyListeners();
       } catch (e) {
-        isUpdate = false;
+        if (updatePhoto) {
+          CustomNavigator.pop();
+        } else {
+          isUpdate = false;
+        }
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
                 message: e.toString(),
@@ -123,7 +138,6 @@ class ProfileProvider extends ChangeNotifier {
         notifyListeners();
       }
     } else {
-      isUpdate = false;
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
               message: getTranslated("you_must_change_something",
@@ -136,24 +150,30 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   bool isLoading = false;
-  getProfile() async {
+  getProfile({bool withLoading = true}) async {
     try {
-      isLoading = true;
-      notifyListeners();
+      if (withLoading) {
+        isLoading = true;
+        notifyListeners();
+      }
 
       Either<ServerFailure, Response> response = await profileRepo.getProfile();
 
       response.fold((fail) {
         showToast(ApiErrorHandler.getMessage(fail));
-        isLoading = false;
-        notifyListeners();
       }, (response) {
         profileModel = ProfileModel.fromJson(response.data['data']);
+        initProfileData();
+      });
+      if (withLoading) {
         isLoading = false;
         notifyListeners();
-      });
+      }
     } catch (e) {
-      isLoading = false;
+      if (withLoading) {
+        isLoading = false;
+        notifyListeners();
+      }
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
               message: e.toString(),

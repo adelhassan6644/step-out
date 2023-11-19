@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
+import 'package:stepOut/components/shimmer/custom_shimmer.dart';
 import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -48,23 +49,34 @@ class ProfileCard extends StatelessWidget {
             child: Column(
               children: [
                 const Expanded(child: SizedBox()),
-                Text(
-                  provider.isLogin
-                      ? provider.profileModel?.name ?? ""
-                      : "Guest",
-                  style: AppTextStyles.bold.copyWith(
-                      color: Styles.SPLASH_BACKGROUND_COLOR,
-                      fontSize: 16,
-                      height: 1),
-                ),
+                provider.isLoading
+                    ? const CustomShimmerContainer(
+                        width: 100,
+                        height: 18,
+                      )
+                    : Text(
+                        provider.isLogin
+                            ? provider.profileModel?.name ?? ""
+                            : "Guest",
+                        style: AppTextStyles.bold.copyWith(
+                            color: Styles.SPLASH_BACKGROUND_COLOR,
+                            fontSize: 16,
+                            height: 1),
+                      ),
                 SizedBox(height: 8.h),
-                Text(
-                  provider.isLogin
-                      ? provider.profileModel?.email ?? ""
-                      : "guest@stepOut.com",
-                  style: AppTextStyles.regular.copyWith(
-                      color: Styles.SPLASH_BACKGROUND_COLOR, fontSize: 12),
-                ),
+                provider.isLoading
+                    ? const CustomShimmerContainer(
+                        width: 200,
+                        height: 18,
+                      )
+                    : Text(
+                        provider.isLogin
+                            ? provider.profileModel?.email ?? ""
+                            : "guest@stepOut.com",
+                        style: AppTextStyles.regular.copyWith(
+                            color: Styles.SPLASH_BACKGROUND_COLOR,
+                            fontSize: 12),
+                      ),
               ],
             ),
           ),

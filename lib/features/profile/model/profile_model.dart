@@ -7,12 +7,7 @@ class ProfileModel {
   DateTime? createdAt;
 
   ProfileModel(
-      {this.id,
-      this.name,
-      this.email,
-      this.phone,
-      this.image,
-      this.createdAt});
+      {this.id, this.name, this.email, this.phone, this.image, this.createdAt});
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
         id: json["id"],
