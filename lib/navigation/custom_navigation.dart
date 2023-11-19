@@ -14,6 +14,7 @@ import '../features/auth/pages/register.dart';
 import '../features/auth/pages/verification.dart';
 import '../features/contact_with_us/page/contact_with_us.dart';
 import '../features/maps/page/map_page.dart';
+import '../features/news/page/news.dart';
 import '../features/on_boarding/pages/on_boarding.dart';
 import '../features/search/page/search.dart';
 import '../features/setting/pages/about_us.dart';
@@ -67,6 +68,9 @@ abstract class CustomNavigator {
 
       case Routes.DASHBOARD:
         return _pageRoute(const DashBoard());
+
+      case Routes.NEWS:
+        return _pageRoute(const News());
 
       case Routes.MAP:
         return _pageRoute(MapPage(

@@ -37,14 +37,14 @@ class NavBar extends StatelessWidget {
                 ),
                 Expanded(
                   child: BottomNavBarItem(
-                    svgIcon: SvgImages.newsIcon,
+                    svgIcon: SvgImages.location,
                     isSelected: provider.selectedIndex == 1,
                     onTap: () => provider.updateDashboardIndex(1),
                   ),
                 ),
                 Expanded(
                   child: BottomNavBarItem(
-                    svgIcon: SvgImages.location,
+                    svgIcon: SvgImages.notification,
                     isSelected: provider.selectedIndex == 2,
                     onTap: () => provider.updateDashboardIndex(2),
                   ),

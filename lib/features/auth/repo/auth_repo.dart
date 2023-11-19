@@ -69,7 +69,7 @@ class AuthRepo {
       Response response = await dioClient.post(uri: EndPoints.logIn, data: {
         "email": mail,
         "password": password,
-        // if (!kDebugMode) "fcm_token": await saveDeviceToken()
+        if (!kDebugMode) "fcm_token": await saveDeviceToken()
       });
 
       if (response.statusCode == 200) {

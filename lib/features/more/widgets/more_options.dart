@@ -24,9 +24,9 @@ class MoreOptions extends StatelessWidget {
           onTap: () => CustomNavigator.push(Routes.PROFILE),
         ),
         MoreButton(
-          title: getTranslated("notifications", context),
-          icon: SvgImages.notification,
-          onTap: () => CustomNavigator.push(Routes.NOTIFICATIONS),
+          title: getTranslated("news", context),
+          icon: SvgImages.newsIcon,
+          onTap: () => CustomNavigator.push(Routes.NEWS),
         ),
         Consumer<LocalizationProvider>(builder: (_, provider, child) {
           return MoreButton(

@@ -63,7 +63,7 @@ class ProfileCard extends StatelessWidget {
                             fontSize: 16,
                             height: 1),
                       ),
-                SizedBox(height: 8.h),
+                SizedBox(height: 4.h),
                 provider.isLoading
                     ? const CustomShimmerContainer(
                         width: 200,

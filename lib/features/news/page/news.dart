@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:provider/provider.dart';
+import 'package:stepOut/components/custom_app_bar.dart';
 import 'package:stepOut/components/custom_loading.dart';
-import '../../../app/core/utils/text_styles.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/empty_widget.dart';
@@ -27,41 +28,35 @@ class _NewsState extends State<News> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<NewsProvider>(
-      builder: (context, provider, child) {
-        return SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                  vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
-                ),
-                child: Text(getTranslated("news", context),
-                    style: AppTextStyles.semiBold
-                        .copyWith(fontSize: 24, color: Styles.HEADER)),
-              ),
-              Padding(
-                padding:
-                    EdgeInsets.only(bottom: Dimensions.PADDING_SIZE_DEFAULT.h),
-                child: const Divider(
-                  color: Styles.BORDER_COLOR,
-                ),
-              ),
-              Expanded(
+    return Scaffold(
+      appBar: CustomAppBar(
+        title: getTranslated("news", context),
+      ),
+      body: Consumer<NewsProvider>(
+        builder: (context, provider, child) {
+          return SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Padding(
+                //   padding: EdgeInsets.symmetric(
+                //     horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                //     vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
+                //   ),
+                //   child: Text(getTranslated("news", context),
+                //       style: AppTextStyles.semiBold
+                //           .copyWith(fontSize: 24, color: Styles.HEADER)),
+                // ),
+                // Padding(
+                //   padding: EdgeInsets.only(
+                //       bottom: Dimensions.PADDING_SIZE_DEFAULT.h),
+                //   child: const Divider(
+                //     color: Styles.BORDER_COLOR,
+                //   ),
+                // ),
+                Expanded(
                   child: provider.isLoading
-                      ? ListAnimator(
-                          customPadding: EdgeInsets.symmetric(
-                            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                          ),
-                          data: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(vertical: 150.h),
-                              child: const CustomLoading(),
-                            )
-                          ],
-                        )
+                      ? const CustomLoading()
                       : provider.model != null &&
                               provider.model!.data != null &&
                               provider.model!.data!.isNotEmpty
@@ -103,26 +98,26 @@ class _NewsState extends State<News> {
                                             Dimensions.PADDING_SIZE_DEFAULT.w,
                                       ),
                                       data: [
-                                        SizedBox(
-                                          height: 100.h,
-                                        ),
-                                        EmptyState(
-                                          imgWidth: 215.w,
-                                          imgHeight: 220.h,
-                                        ),
-                                        SizedBox(
-                                          height: 100.h,
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: context.height * 0.25),
+                                          child: EmptyState(
+                                            imgWidth: 215.w,
+                                            imgHeight: 220.h,
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
                                 ],
                               ),
-                            ))
-            ],
-          ),
-        );
-      },
+                            ),
+                )
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

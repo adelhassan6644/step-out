@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stepOut/features/more/page/more.dart';
 import 'package:stepOut/features/news/provider/news_provider.dart';
+import 'package:stepOut/features/notifications/page/notifications.dart';
 import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import 'package:stepOut/main_page/provider/main_page_provider.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,6 @@ class _DashBoardState extends State<DashBoard> {
       sl<HomeProvider>().getBanners();
       sl<HomeProvider>().getCategories();
       sl<HomeProvider>().getOffers();
-      sl<NewsProvider>().getNews();
       sl<ProfileProvider>().getProfile();
     });
   }
@@ -42,9 +42,9 @@ class _DashBoardState extends State<DashBoard> {
       case 0:
         return const Home();
       case 1:
-        return const News();
-      case 2:
         return const MapPage();
+      case 2:
+        return const Notifications();
       case 3:
         return const More();
       default:

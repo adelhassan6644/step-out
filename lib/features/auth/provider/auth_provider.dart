@@ -4,12 +4,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/features/profile/provider/profile_provider.dart';
-import 'package:provider/provider.dart';
 import 'package:stepOut/features/success/model/success_model.dart';
+import 'package:stepOut/main_page/provider/main_page_provider.dart';
 import '../../../app/core/utils/validation.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/confirmation_dialog.dart';
 import '../../../components/custom_simple_dialog.dart';
+import '../../../data/config/di.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
 import '../repo/auth_repo.dart';
@@ -158,7 +159,7 @@ class AuthProvider extends ChangeNotifier {
                   message: getTranslated("logged_in_successfully",
                       CustomNavigator.navigatorState.currentContext!),
                   isFloating: true,
-                  backgroundColor: Styles.IN_ACTIVE,
+                  backgroundColor: Styles.ACTIVE,
                   borderColor: Colors.transparent));
           clear();
         } else {
@@ -416,9 +417,8 @@ class AuthProvider extends ChangeNotifier {
     CustomNavigator.push(Routes.SPLASH, clean: true);
     await authRepo.clearSharedData();
     clear();
-    Provider.of<ProfileProvider>(CustomNavigator.navigatorState.currentContext!,
-            listen: false)
-        .clear();
+    sl<ProfileProvider>().clear();
+    sl<MainPageProvider>().updateDashboardIndex(0);
     CustomSnackBar.showSnackBar(
         notification: AppNotification(
             message: getTranslated("your_logged_out_successfully",
