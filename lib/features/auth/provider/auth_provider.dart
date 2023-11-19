@@ -22,7 +22,6 @@ class AuthProvider extends ChangeNotifier {
   final AuthRepo authRepo;
   AuthProvider({required this.authRepo}) {
     updateMail(kDebugMode ? "adel@gmail.com" : authRepo.getMail());
-    mailTEC = TextEditingController(text: "adel@gmail.com");
   }
 
   final TextEditingController codeTEC = TextEditingController();
@@ -35,7 +34,6 @@ class AuthProvider extends ChangeNotifier {
   Function(String?) get updatePhone => phone.sink.add;
   Stream<String?> get phoneStream => phone.stream.asBroadcastStream();
 
-  late TextEditingController mailTEC;
   final mail = BehaviorSubject<String?>();
   Function(String?) get updateMail => mail.sink.add;
   Stream<String?> get mailStream => mail.stream.asBroadcastStream();
@@ -103,7 +101,6 @@ class AuthProvider extends ChangeNotifier {
     codeTEC.clear();
     updateName(null);
     updatePhone(null);
-    mailTEC.clear();
     updateMail(null);
     updatePassword(null);
     updateNewPassword(null);
@@ -246,11 +243,14 @@ class AuthProvider extends ChangeNotifier {
             Routes.SUCCESS_PAGE,
             clean: true,
             arguments: SuccessModel(
-              title: getTranslated("register_success_title",
-                  CustomNavigator.navigatorState.currentContext!),
-              description: getTranslated("register_success_description",
-                  CustomNavigator.navigatorState.currentContext!),
-            ),
+                title: getTranslated("register_success_title",
+                    CustomNavigator.navigatorState.currentContext!),
+                description: getTranslated("register_success_description",
+                    CustomNavigator.navigatorState.currentContext!),
+                onTap: () {
+                  CustomNavigator.push(Routes.DASHBOARD,
+                      arguments: 0, clean: true);
+                }),
           );
           clear();
         } else {

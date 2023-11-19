@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add jks" />
+    <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add jks">
+      <change afterPath="$PROJECT_DIR$/assets/svgs/global.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/svgs/snapchat.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/core/utils/svg_images.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/core/utils/svg_images.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/api/end_points.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/api/end_points.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/auth/widgets/register_body_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/auth/widgets/register_body_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/contact_with_us/page/contact_with_us.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/contact_with_us/page/contact_with_us.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/setting/model/setting_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/setting/model/setting_model.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="staging" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,7 +47,6 @@
     <setting file="file://$PROJECT_DIR$/assets/language/ar.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/assets/language/en.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ios/Podfile" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ios/Podfile.lock" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/components/custom_button.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/components/empty_widget.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/features/home/page/home.dart" root0="FORCE_HIGHLIGHTING" />
@@ -70,7 +78,7 @@
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/adelh/Documents/GitHub/step-out/android&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/user/SoftweareCloud2/step-out/assets/svgs&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -81,11 +89,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/svgs" />
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android" />
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android\gradle\wrapper" />
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android\app" />
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\android\app\src" />
-      <recent name="$PROJECT_DIR$/lib/features" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\adelh\Documents\GitHub\step-out\lib\features\profile\page" />
@@ -118,41 +126,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688516389160</updated>
-    </task>
-    <task id="LOCAL-00037" summary="first commit">
-      <created>1698971502593</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1698971502593</updated>
-    </task>
-    <task id="LOCAL-00038" summary="first commit">
-      <created>1699023125746</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1699023125746</updated>
-    </task>
-    <task id="LOCAL-00039" summary="first commit">
-      <created>1699024971329</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1699024971329</updated>
-    </task>
-    <task id="LOCAL-00040" summary="first commit">
-      <created>1699025127013</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1699025127013</updated>
-    </task>
-    <task id="LOCAL-00041" summary="first commit">
-      <created>1699025230996</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1699025230996</updated>
     </task>
     <task id="LOCAL-00042" summary="update(pubspec)">
       <created>1699194058869</created>
@@ -462,7 +435,42 @@
       <option name="project" value="LOCAL" />
       <updated>1700148766394</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="add jks">
+      <created>1700182806671</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1700182806672</updated>
+    </task>
+    <task id="LOCAL-00087" summary="add jks">
+      <created>1700183212707</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1700183212707</updated>
+    </task>
+    <task id="LOCAL-00088" summary="add jks">
+      <created>1700316596582</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1700316596583</updated>
+    </task>
+    <task id="LOCAL-00089" summary="add jks">
+      <created>1700317792438</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1700317792438</updated>
+    </task>
+    <task id="LOCAL-00090" summary="add jks">
+      <created>1700317917088</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1700317917088</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
