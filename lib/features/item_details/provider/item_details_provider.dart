@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:overlay_tooltip/overlay_tooltip.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../data/error/failures.dart';
@@ -31,9 +30,6 @@ class ItemDetailsProvider extends ChangeNotifier {
     "images",
     "feedback",
   ];
-
-  final TooltipController focusController = TooltipController();
-  bool focus = false;
 
   ItemDetailsModel? model;
   bool isLoading = false;
