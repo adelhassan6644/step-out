@@ -11,7 +11,7 @@ import '../../../components/custom_text_form_field.dart';
 import '../provider/auth_provider.dart';
 
 class ChangePassword extends StatefulWidget {
-  const ChangePassword({Key? key}) : super(key: key);
+  const ChangePassword({super.key});
 
   @override
   State<ChangePassword> createState() => _ChangePasswordState();
@@ -95,7 +95,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                                       }
                                       return null;
                                     },
-                                    // valid: Validations.password,
                                     isPassword: true,
                                   );
                                 }),
@@ -139,7 +138,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                                       }
                                       return null;
                                     },
-                                    // valid: Validations.password,
                                     isPassword: true,
                                   );
                                 }),
@@ -185,7 +183,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                                       }
                                       return null;
                                     },
-                                    // valid: Validations.password,
                                     isPassword: true,
                                   );
                                 }),
@@ -200,8 +197,10 @@ class _ChangePasswordState extends State<ChangePassword> {
                                     return CustomButton(
                                         text: getTranslated("confirm", context),
                                         onTap: () {
-                                          if (snapshot.data == true) {
-                                            provider.changePassword();
+                                          if (snapshot.hasData) {
+                                            if (snapshot.data!) {
+                                              provider.changePassword();
+                                            }
                                           }
                                         },
                                         isLoading: provider.isChange);

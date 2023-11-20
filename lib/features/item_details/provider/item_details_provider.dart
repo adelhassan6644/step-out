@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:overlay_tooltip/overlay_tooltip.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../data/error/failures.dart';
@@ -19,19 +20,27 @@ class ItemDetailsProvider extends ChangeNotifier {
 
   List<String> tabs = ["information", "images", "feedback"];
 
+  List<String> services = [
+    "information",
+    "images",
+    "feedback",
+    "information",
+    "images",
+    "feedback",
+    "information",
+    "images",
+    "feedback",
+  ];
 
-  List<String> services = ["information", "images", "feedback","information", "images", "feedback","information", "images", "feedback",];
-
-
-
-
+  final TooltipController focusController = TooltipController();
+  bool focus = false;
 
   ItemDetailsModel? model;
   bool isLoading = false;
   getDetails(id) async {
     try {
       model = null;
-      selectedTab=0;
+      selectedTab = 0;
       isLoading = true;
       notifyListeners();
       Either<ServerFailure, Response> response = await repo.getDetails(id);

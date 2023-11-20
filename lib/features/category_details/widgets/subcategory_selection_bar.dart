@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../components/tab_widget.dart';
+import '../../home/models/categories_model.dart';
 import '../provider/category_details_provider.dart';
 
 class SubcategorySelectionBar extends StatelessWidget {
-  const SubcategorySelectionBar({super.key});
+  const SubcategorySelectionBar({super.key, required this.subCategories});
+  final List<SubCategoryModel> subCategories;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class SubcategorySelectionBar extends StatelessWidget {
           child: Row(
             children: [
               ...List.generate(
-                provider.subCategories.length,
+                subCategories.length,
                 (index) {
                   provider.subCategoriesKeys
                       .add(GlobalKey(debugLabel: "$index"));
@@ -28,7 +30,7 @@ class SubcategorySelectionBar extends StatelessWidget {
                   });
                   return TabWidget(
                     key: provider.subCategoriesKeys[index],
-                    label: provider.subCategories[index],
+                    label: subCategories[index].name ?? "",
                     isSelected: index == provider.selectedSubCategory,
                     onTap: () => provider.onSelectSubCategory(index),
                   );

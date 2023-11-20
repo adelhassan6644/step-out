@@ -50,7 +50,8 @@ class _CategoryDetailsState extends State<CategoryDetails> {
             ? const CustomLoading()
             : Column(
                 children: [
-                  const CategoryDetailsHeader(),
+                  CategoryDetailsHeader(
+                      subCategories: widget.item.subCategories ?? []),
                   CategoryDetailsBody(
                       id: widget.item.id ?? 0, controller: controller),
                 ],

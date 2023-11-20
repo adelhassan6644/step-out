@@ -202,7 +202,7 @@ class ProfileProvider extends ChangeNotifier {
                 backgroundColor: Styles.ACTIVE,
                 borderColor: Styles.ACTIVE,
                 isFloating: true));
-        sl<AuthProvider>().logOut();
+        Future.delayed(Duration.zero, () => sl<AuthProvider>().logOut());
       });
       isDeleting = false;
       notifyListeners();
