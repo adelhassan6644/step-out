@@ -13,6 +13,7 @@ import '../model/category_details_model.dart';
 class CategoryDetailsProvider extends ChangeNotifier {
   CategoryDetailsRepo repo;
   CategoryDetailsProvider({required this.repo});
+  TextEditingController searchTEC = TextEditingController();
 
   int? selectedCategoryId;
   updateCategoryId(id) {
@@ -67,8 +68,6 @@ class CategoryDetailsProvider extends ChangeNotifier {
     notifyListeners();
     getCategoryDetails();
   }
-
-  TextEditingController searchTEC = TextEditingController();
 
   CategoryDetailsModel? model;
   bool isLoading = false;
