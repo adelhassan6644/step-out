@@ -58,7 +58,7 @@ class FiltrationBottomSheet extends StatelessWidget {
                             child: Container(
                               margin: EdgeInsets.symmetric(horizontal: 6.w),
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 16.w, vertical: 8.h),
+                                  horizontal: 12.w, vertical: 6.h),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: provider.selectedCategory?.id ==
@@ -135,7 +135,7 @@ class FiltrationBottomSheet extends StatelessWidget {
                               child: Container(
                                 margin: EdgeInsets.symmetric(horizontal: 6.w),
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 16.w, vertical: 8.h),
+                                    horizontal: 12.w, vertical: 6.h),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(12),
                                     color: provider.selectedSubCategory ==
