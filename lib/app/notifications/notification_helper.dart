@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import '../../data/config/di.dart';
 import '../../features/notifications/provider/notifications_provider.dart';
+import '../../main_page/provider/main_page_provider.dart';
 import '../../navigation/custom_navigation.dart';
 import '../../navigation/routes.dart';
 part 'firebase_notification_helper.dart';

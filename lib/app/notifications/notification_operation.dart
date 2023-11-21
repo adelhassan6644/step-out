@@ -41,5 +41,8 @@ updateUserFunctions({@required notify}) async {
 }
 
 Future<void> handlePathByRoute(Map notify) async {
-  CustomNavigator.push(Routes.NOTIFICATIONS);
+  Future.delayed(Duration.zero, () {
+    sl<MainPageProvider>().updateDashboardIndex(2);
+    CustomNavigator.push(Routes.DASHBOARD, clean: true, arguments: 0);
+  });
 }
