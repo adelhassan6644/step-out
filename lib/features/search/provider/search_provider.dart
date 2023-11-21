@@ -70,6 +70,7 @@ class SearchProvider extends ChangeNotifier {
     selectedSubCategory = null;
     selectedServices.clear();
     selectedSubServices.clear();
+    servicesModel?.clear();
     notifyListeners();
   }
 
