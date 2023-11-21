@@ -8,6 +8,7 @@ import 'package:stepOut/app/localization/language_constant.dart';
 import 'package:stepOut/components/custom_bottom_sheet.dart';
 import 'package:stepOut/components/custom_images.dart';
 import 'package:stepOut/features/search/widgets/search_bar_widgtet.dart';
+import 'package:stepOut/navigation/custom_navigation.dart';
 
 import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/styles.dart';
@@ -42,7 +43,7 @@ class _SearchHeaderState extends State<SearchHeader> {
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () {
-                    provider.clear();
+                    provider.clearTEC();
                   },
                   child: Visibility(
                     visible: provider.searchTEC.text.isNotEmpty,
@@ -76,12 +77,15 @@ class _SearchHeaderState extends State<SearchHeader> {
               color: Styles.WHITE_COLOR,
               imageName: SvgImages.filter,
               onTap: () => CustomBottomSheet.show(
-                height: context.height*0.8,
+                height: context.height * 0.8,
                 withPadding: false,
                 list: const FiltrationBottomSheet(),
-                onClose: ()=>provider.clear(),
+                onDismiss: () => provider.clear(),
                 label: getTranslated("filter", context),
-                onConfirm: () => provider.getResult(),
+                onConfirm: () {
+                  CustomNavigator.pop();
+                  provider.getResult();
+                },
               ),
             )
           ],

@@ -21,6 +21,7 @@ abstract class CustomBottomSheet {
       bool? isLoading,
       bool withPadding = true,
       BuildContext? context,
+      Function()? onDismiss,
       Function()? onClose}) {
     return showMaterialModalBottomSheet(
       enableDrag: true,
@@ -81,7 +82,7 @@ abstract class CustomBottomSheet {
                               GestureDetector(
                                 onTap: () {
                                   CustomNavigator.pop();
-                                  onClose?.call();
+                                  onDismiss?.call();
                                 },
                                 child: const Icon(
                                   Icons.highlight_remove,

@@ -17,7 +17,12 @@ class SearchProvider extends ChangeNotifier {
 
   final TextEditingController searchTEC = TextEditingController();
 
-  List<ItemDetailsModel> result = [];
+  clearTEC() {
+    searchTEC.clear();
+    result.clear();
+    notifyListeners();
+  }
+
   int? range;
   onSelectRange(v) {
     range = v;
@@ -65,12 +70,12 @@ class SearchProvider extends ChangeNotifier {
   }
 
   clear() {
-    searchTEC.clear();
     selectedCategory = null;
     selectedSubCategory = null;
     selectedServices.clear();
     selectedSubServices.clear();
     servicesModel?.clear();
+    getResult();
     notifyListeners();
   }
 
@@ -117,6 +122,7 @@ class SearchProvider extends ChangeNotifier {
     }
   }
 
+  List<ItemDetailsModel> result = [];
   bool isLoading = false;
   getResult() async {
     try {
