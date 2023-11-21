@@ -169,7 +169,6 @@ class FiltrationBottomSheet extends StatelessWidget {
           ),
 
           ///Service
-
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -192,92 +191,83 @@ class FiltrationBottomSheet extends StatelessWidget {
               provider.isGetServices
                   ? const _ShimmerLoading()
                   : Visibility(
-                      visible: provider.servicesModel != null &&
-                          provider.servicesModel!.isNotEmpty,
-                      child: AnimatedCrossFade(
-                        crossFadeState: provider.selectedSubCategory == null
-                            ? CrossFadeState.showFirst
-                            : CrossFadeState.showSecond,
-                        duration: const Duration(milliseconds: 800),
-                        firstChild: SizedBox(width: context.width),
-                        secondChild: Padding(
-                          padding: EdgeInsets.only(bottom: 12.h),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                    width: Dimensions.PADDING_SIZE_DEFAULT.w),
-                                ...List.generate(
-                                  provider.servicesModel?.length ?? 0,
-                                  (index) => Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 6.w, vertical: 4.h),
-                                    child: SizedBox(
-                                      width: 60.w,
-                                      child: InkWell(
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        splashColor: Colors.transparent,
-                                        onTap: () => provider.onSelectService(
-                                            provider.servicesModel?[index].id),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            CustomNetworkImage
-                                                .circleNewWorkImage(
-                                                    radius: 30,
-                                                    image: provider
-                                                        .servicesModel?[index]
-                                                        .image),
-                                            const SizedBox(height: 4),
-                                            Text(
-                                              provider.servicesModel?[index]
-                                                      .name ??
-                                                  "",
-                                              textAlign: TextAlign.center,
-                                              maxLines: 2,
-                                              style: AppTextStyles.medium
-                                                  .copyWith(
-                                                      fontSize: 14,
-                                                      color: Styles.TITLE),
-                                            ),
-                                          ],
-                                        ),
-                                        // Container(
-                                        //   margin:
-                                        //       EdgeInsets.symmetric(horizontal: 6.w),
-                                        //   padding: EdgeInsets.symmetric(
-                                        //       horizontal: 12.w, vertical: 6.h),
-                                        //   decoration: BoxDecoration(
-                                        //       borderRadius:
-                                        //           BorderRadius.circular(100),
-                                        //       color: provider.selectedServices
-                                        //               .contains(provider
-                                        //                   .servicesModel?[index].id)
-                                        //           ? Styles.PRIMARY_COLOR
-                                        //           : Styles.PRIMARY_COLOR
-                                        //               .withOpacity(0.1)),
-                                        //   child: Text(
-                                        //     provider.servicesModel?[index].name ?? "",
-                                        //     style: AppTextStyles.medium.copyWith(
-                                        //         fontSize: 14,
-                                        //         color: provider.selectedServices
-                                        //                 .contains(provider
-                                        //                     .servicesModel?[index].id)
-                                        //             ? Styles.WHITE_COLOR
-                                        //             : Styles.PRIMARY_COLOR),
-                                        //   ),
-                                        // ),
+                      visible: (provider.servicesModel != null &&
+                          provider.servicesModel!.isNotEmpty),
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 12.h),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                  width: Dimensions.PADDING_SIZE_DEFAULT.w),
+                              ...List.generate(
+                                provider.servicesModel?.length ?? 0,
+                                (index) => Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 6.w, vertical: 4.h),
+                                  child: SizedBox(
+                                    width: 60.w,
+                                    child: InkWell(
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      splashColor: Colors.transparent,
+                                      onTap: () => provider.onSelectService(
+                                          provider.servicesModel?[index].id),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          CustomNetworkImage.circleNewWorkImage(
+                                              radius: 30,
+                                              image: provider
+                                                  .servicesModel?[index].image),
+                                          const SizedBox(height: 4),
+                                          Text(
+                                            provider.servicesModel?[index]
+                                                    .name ??
+                                                "",
+                                            textAlign: TextAlign.center,
+                                            maxLines: 2,
+                                            style: AppTextStyles.medium
+                                                .copyWith(
+                                                    fontSize: 14,
+                                                    color: Styles.TITLE),
+                                          ),
+                                        ],
                                       ),
+                                      // Container(
+                                      //   margin:
+                                      //       EdgeInsets.symmetric(horizontal: 6.w),
+                                      //   padding: EdgeInsets.symmetric(
+                                      //       horizontal: 12.w, vertical: 6.h),
+                                      //   decoration: BoxDecoration(
+                                      //       borderRadius:
+                                      //           BorderRadius.circular(100),
+                                      //       color: provider.selectedServices
+                                      //               .contains(provider
+                                      //                   .servicesModel?[index].id)
+                                      //           ? Styles.PRIMARY_COLOR
+                                      //           : Styles.PRIMARY_COLOR
+                                      //               .withOpacity(0.1)),
+                                      //   child: Text(
+                                      //     provider.servicesModel?[index].name ?? "",
+                                      //     style: AppTextStyles.medium.copyWith(
+                                      //         fontSize: 14,
+                                      //         color: provider.selectedServices
+                                      //                 .contains(provider
+                                      //                     .servicesModel?[index].id)
+                                      //             ? Styles.WHITE_COLOR
+                                      //             : Styles.PRIMARY_COLOR),
+                                      //   ),
+                                      // ),
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
