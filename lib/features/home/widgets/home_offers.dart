@@ -17,26 +17,27 @@ class HomeOffers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_SMALL.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+    return Consumer<HomeProvider>(builder: (context, provider, child) {
+      return Padding(
+        padding:
+            EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_SMALL.h),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+              ),
+              child: Text(
+                getTranslated("offers", context),
+                style: AppTextStyles.semiBold
+                    .copyWith(fontSize: 22, color: Styles.HEADER),
+              ),
             ),
-            child: Text(
-              getTranslated("offers", context),
-              style: AppTextStyles.semiBold
-                  .copyWith(fontSize: 22, color: Styles.HEADER),
+            SizedBox(
+              height: 12.h,
             ),
-          ),
-          SizedBox(
-            height: 12.h,
-          ),
-          Consumer<HomeProvider>(builder: (context, provider, child) {
-            return provider.isGetOffers
+            provider.isGetOffers
                 ? const _OfferShimmer()
                 : provider.offersModel != null &&
                         provider.offersModel?.data != null &&
@@ -69,12 +70,12 @@ class HomeOffers extends StatelessWidget {
                       )
                     : EmptyState(
                         emptyHeight: 140.h,
-                        imgHeight: 50,
-                      );
-          }),
-        ],
-      ),
-    );
+                        withImage: false,
+                      ),
+          ],
+        ),
+      );
+    });
   }
 }
 

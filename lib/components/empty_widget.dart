@@ -16,12 +16,14 @@ class EmptyState extends StatelessWidget {
   final double? spaceBtw;
   final String? txt;
   final String? subText;
+  final bool withImage;
 
   const EmptyState({
     Key? key,
     this.emptyHeight,
     this.spaceBtw,
     this.isSvg = false,
+    this.withImage = true,
     this.img,
     this.imgHeight,
     this.imgWidth,
@@ -36,6 +38,7 @@ class EmptyState extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        if(withImage)
         !isSvg
             ? customImageIcon(
                 imageName: img ?? Images.logo,

@@ -97,9 +97,8 @@ class HomeBanner extends StatelessWidget {
                           ),
                         ],
                       )
-                    : const EmptyState(
-                        emptyHeight: 200,
-                        imgHeight: 110,
+                    : EmptyState(
+                        emptyHeight: context.height * 0.3,
                       ),
           ],
         ),
