@@ -197,6 +197,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                                     return CustomButton(
                                         text: getTranslated("confirm", context),
                                         onTap: () {
+                                          _formKey.currentState!.validate();
+
                                           if (snapshot.hasData) {
                                             if (snapshot.data!) {
                                               provider.changePassword();

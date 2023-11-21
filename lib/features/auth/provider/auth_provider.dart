@@ -6,6 +6,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import 'package:stepOut/features/success/model/success_model.dart';
 import 'package:stepOut/main_page/provider/main_page_provider.dart';
+import '../../../app/core/utils/images.dart';
 import '../../../app/core/utils/validation.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/confirmation_dialog.dart';
@@ -344,17 +345,16 @@ class AuthProvider extends ChangeNotifier {
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
       }, (success) {
+        clear();
         Future.delayed(
             Duration.zero,
             () => CustomSimpleDialog.parentSimpleDialog(
                     canDismiss: false,
                     customListWidget: [
                       ConfirmationDialog(
+                        icon: Images.success,
                         title: getTranslated(
                             "your_password_changed_successfully",
-                            CustomNavigator.navigatorState.currentContext!),
-                        description: getTranslated(
-                            "your_password_reset_description",
                             CustomNavigator.navigatorState.currentContext!),
                         withOneButton: true,
                         txtBtn: getTranslated("confirm",
@@ -363,7 +363,6 @@ class AuthProvider extends ChangeNotifier {
                             clean: true, arguments: 3),
                       )
                     ]));
-        clear();
       });
       _isChange = false;
       notifyListeners();
