@@ -19,6 +19,7 @@ abstract class CustomBottomSheet {
       double? height,
       Widget? child,
       bool? isLoading,
+      bool withPadding = true,
       BuildContext? context,
       Function()? onClose}) {
     return showMaterialModalBottomSheet(
@@ -52,7 +53,9 @@ abstract class CustomBottomSheet {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(bottom: 1.h),
+                          padding: EdgeInsets.only(
+                            bottom: 8.h,
+                          ),
                           child: Container(
                             height: 5.h,
                             width: 50.w,
@@ -65,7 +68,7 @@ abstract class CustomBottomSheet {
                         Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                              vertical: 16.h),
+                              vertical: 8.h),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -78,6 +81,7 @@ abstract class CustomBottomSheet {
                               GestureDetector(
                                 onTap: () {
                                   CustomNavigator.pop();
+                                  onClose?.call();
                                 },
                                 child: const Icon(
                                   Icons.highlight_remove,
@@ -90,7 +94,7 @@ abstract class CustomBottomSheet {
                         ),
                         Padding(
                           padding: EdgeInsets.only(
-                            bottom: 16.h,
+                            bottom: 8.h,
                             right: 24.w,
                             left: 24.w,
                           ),
@@ -102,7 +106,10 @@ abstract class CustomBottomSheet {
                             child: ListAnimator(
                           data: [
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 24.w),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: withPadding
+                                      ? Dimensions.PADDING_SIZE_DEFAULT.w
+                                      : 0),
                               child: list!,
                             )
                           ],
@@ -131,7 +138,7 @@ abstract class CustomBottomSheet {
           ),
         );
       },
-    ).then((value) => onClose != null ? onClose() : () {});
+    ).then((value) => onClose?.call());
   }
 }
 

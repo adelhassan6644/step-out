@@ -16,52 +16,48 @@ class MapPlaces extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 12.h),
       child: Consumer<LocationProvider>(builder: (_, provider, child) {
         return provider.isGetPlaces
-            ? SizedBox(
-                height: 232.h,
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(width: 10.w),
-                      ...List.generate(
-                        5,
-                        (index) => Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.w),
-                          child: CustomShimmerContainer(
-                            height: 220.h,
-                            width: context.width * 0.85,
-                          ),
+            ? SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(width: 10.w),
+                    ...List.generate(
+                      5,
+                      (index) => Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.w),
+                        child: CustomShimmerContainer(
+                          height: 220.h,
+                          width: context.width * 0.85,
                         ),
-                      )
-                    ],
-                  ),
-                ))
+                      ),
+                    )
+                  ],
+                ),
+              )
             : provider.model != null &&
                     provider.model != null &&
                     provider.model!.isNotEmpty
-                ? SizedBox(
-                    height: 232.h,
-                    child: SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(width: 10.w),
-                          ...List.generate(
-                              5,
-                              (index) => Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 8.w),
-                                    child: ItemCard(
-                                      width: context.width * 0.85,
-                                    ),
-                                  ))
-                        ],
-                      ),
-                    ))
+                ? SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 10.w),
+                        ...List.generate(
+                            5,
+                            (index) => Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 8.w),
+                                  child: ItemCard(
+                                    width: context.width * 0.85,
+                                  ),
+                                ))
+                      ],
+                    ),
+                  )
                 : const SizedBox();
       }),
     );

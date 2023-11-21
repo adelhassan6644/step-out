@@ -84,34 +84,22 @@ class _OfferShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 140.h,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 10.w,
-          ),
-          Expanded(
-            child: ListView(
-                scrollDirection: Axis.horizontal,
-                physics: const BouncingScrollPhysics(),
-                children: [
-                  SizedBox(
-                    width: 6.w,
-                  ),
-                  ...List.generate(
-                      4,
-                      (index) => Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8.w),
-                            child: CustomShimmerContainer(
-                              height: 140.h,
-                              width: context.width * 0.7,
-                            ),
-                          ))
-                ]),
-          ),
+          SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL.w),
+          ...List.generate(
+              6,
+              (index) => Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL.w),
+                    child: CustomShimmerContainer(
+                      height: 140.h,
+                      width: context.width * 0.7,
+                    ),
+                  ))
         ],
       ),
     );

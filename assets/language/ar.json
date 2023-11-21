@@ -132,6 +132,9 @@
   "register_success_title": "أنت جاهز تمامًا",
   "register_success_description": "تم إنشاء الملف الشخصي الخاص بك",
   "delete": "حذف",
-  "loading": "تحميل..."
+  "loading": "تحميل...",
+  "all": "الجميع",
+  "filter": "تصفية",
+  "services": "الخدمات"
 
 }

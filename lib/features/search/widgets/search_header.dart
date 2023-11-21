@@ -2,13 +2,17 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
+import 'package:stepOut/app/localization/language_constant.dart';
+import 'package:stepOut/components/custom_bottom_sheet.dart';
 import 'package:stepOut/components/custom_images.dart';
 import 'package:stepOut/features/search/widgets/search_bar_widgtet.dart';
 
 import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/styles.dart';
 import '../provider/search_provider.dart';
+import 'filtration_bottom_sheet.dart';
 
 class SearchHeader extends StatefulWidget {
   const SearchHeader({super.key});
@@ -54,12 +58,12 @@ class _SearchHeaderState extends State<SearchHeader> {
                   ),
                 ),
                 onSearch: (v) {
-                  provider.getResult(v);
+                  provider.getResult();
                 },
                 onChanged: (v) {
                   if (timer != null) if (timer!.isActive) timer!.cancel();
                   timer = Timer(const Duration(milliseconds: 400), () {
-                    provider.getResult(v);
+                    provider.getResult();
                   });
                 },
               ),
@@ -71,6 +75,14 @@ class _SearchHeaderState extends State<SearchHeader> {
               backGround: Styles.PRIMARY_COLOR,
               color: Styles.WHITE_COLOR,
               imageName: SvgImages.filter,
+              onTap: () => CustomBottomSheet.show(
+                height: context.height*0.8,
+                withPadding: false,
+                list: const FiltrationBottomSheet(),
+                onClose: ()=>provider.clear(),
+                label: getTranslated("filter", context),
+                onConfirm: () => provider.getResult(),
+              ),
             )
           ],
         ),

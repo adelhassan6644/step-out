@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:stepOut/data/error/api_error_handler.dart';
 import 'package:stepOut/features/category_details/repo/category_details_repo.dart';
+import 'package:stepOut/features/home/models/categories_model.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../data/error/failures.dart';
@@ -12,6 +13,15 @@ import '../model/category_details_model.dart';
 class CategoryDetailsProvider extends ChangeNotifier {
   CategoryDetailsRepo repo;
   CategoryDetailsProvider({required this.repo});
+
+  int? selectedCategoryId;
+  updateCategoryId(id) {
+    selectedCategoryId = id;
+    selectedServicesId.clear();
+    getServices();
+    getCategoryDetails();
+    notifyListeners();
+  }
 
   bool goingDown = false;
   scroll(controller) {
@@ -25,15 +35,6 @@ class CategoryDetailsProvider extends ChangeNotifier {
     });
   }
 
-  List<String> subCategories = [
-    "All",
-    "BreakFast",
-    "Lunch",
-    "Dinner",
-    "Fast Food",
-    "Burger"
-  ];
-
   final List<GlobalKey> subCategoriesKeys = [];
   animatedScrollSubCategories(BuildContext context) {
     Scrollable.ensureVisible(context,
@@ -42,47 +43,48 @@ class CategoryDetailsProvider extends ChangeNotifier {
         alignment: 0.5);
   }
 
-  int selectedSubCategory = 0;
-  onSelectSubCategory(i) {
-    selectedSubCategory = i;
-    animatedScrollServices(subCategoriesKeys[i].currentContext!);
+  int? selectedSubCategoryId;
+  int selectedSubCategoryIndex = 0;
+  onSelectSubCategory(i, id) {
+    if (id != selectedSubCategoryId) {
+      selectedSubCategoryId = id;
+      selectedSubCategoryIndex = i;
+      selectedServicesId.clear();
+      animatedScrollSubCategories(subCategoriesKeys[i].currentContext!);
+      getServices();
+      getCategoryDetails();
+    }
     notifyListeners();
   }
 
-  final List<GlobalKey> servicesKeys = [];
-  animatedScrollServices(BuildContext context) {
-    Scrollable.ensureVisible(context,
-        curve: Curves.ease,
-        duration: const Duration(seconds: 1),
-        alignment: 0.5);
-  }
-
-  int selectedFilter = 0;
-  onSelectFilter(i) {
-    selectedFilter = i;
-    animatedScrollServices(servicesKeys[i].currentContext!);
+  List<int> selectedServicesId = [];
+  onSelectService(id) {
+    if (selectedServicesId.contains(id)) {
+      selectedServicesId.removeWhere((e) => e == id);
+    } else {
+      selectedServicesId.add(id);
+    }
     notifyListeners();
+    getCategoryDetails();
   }
-
-  List<String> filters = [
-    "Smoking",
-    "Non-Smoking",
-    "Kids Area",
-    "Swimming Pool",
-    "Sea View",
-    "Mol"
-  ];
 
   TextEditingController searchTEC = TextEditingController();
 
   CategoryDetailsModel? model;
   bool isLoading = false;
-  getCategoryDetails(id) async {
+  getCategoryDetails() async {
     try {
+      model = null;
       isLoading = true;
       notifyListeners();
-      Either<ServerFailure, Response> response =
-          await repo.getCategoryDetails(id);
+      Map<String, dynamic> filter = {
+        "category_id": selectedCategoryId,
+        if (selectedSubCategoryId != -1)
+          "sub_category_id": selectedSubCategoryId,
+        if (selectedServicesId.isNotEmpty) "service_id": selectedServicesId,
+      };
+      Either<ServerFailure, Response> response = await repo.getCategoryDetails(
+          categoryId: selectedCategoryId!, filter: filter);
       response.fold((fail) {
         isLoading = false;
         CustomSnackBar.showSnackBar(
@@ -105,6 +107,49 @@ class CategoryDetailsProvider extends ChangeNotifier {
               isFloating: true,
               backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
+      notifyListeners();
+    }
+  }
+
+  List<SubCategoryModel>? servicesModel;
+  bool isGetServices = false;
+  getServices() async {
+    try {
+      servicesModel?.clear();
+      isGetServices = true;
+      notifyListeners();
+
+      Either<ServerFailure, Response> response =
+          await repo.getServices(id: selectedSubCategoryId);
+
+      response.fold(
+        (fail) {
+          CustomSnackBar.showSnackBar(
+              notification: AppNotification(
+                  message: ApiErrorHandler.getMessage(fail),
+                  isFloating: true,
+                  backgroundColor: Styles.IN_ACTIVE,
+                  borderColor: Colors.transparent));
+        },
+        (success) {
+          servicesModel = List<SubCategoryModel>.from(
+            success.data["data"].map(
+              (x) => SubCategoryModel.fromJson(x),
+            ),
+          );
+        },
+      );
+
+      isGetServices = false;
+      notifyListeners();
+    } catch (e) {
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: e.toString(),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Colors.transparent));
+      isGetServices = false;
       notifyListeners();
     }
   }

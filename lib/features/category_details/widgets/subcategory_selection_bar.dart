@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:stepOut/app/core/utils/dimensions.dart';
 import '../../../components/tab_widget.dart';
 import '../../home/models/categories_model.dart';
 import '../provider/category_details_provider.dart';
@@ -11,28 +12,30 @@ class SubcategorySelectionBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<CategoryDetailsProvider>(builder: (_, provider, child) {
-      return SizedBox(
-        height: 50,
+      return Padding(
+        padding: EdgeInsets.only(bottom: 12.h),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
               ...List.generate(
                 subCategories.length,
-                (index) {
+                    (index) {
                   provider.subCategoriesKeys
                       .add(GlobalKey(debugLabel: "$index"));
                   Future.delayed(const Duration(seconds: 1), () {
                     provider.animatedScrollSubCategories(provider
-                            .subCategoriesKeys[provider.selectedSubCategory]
-                            .currentContext ??
+                        .subCategoriesKeys[
+                    provider.selectedSubCategoryIndex]
+                        .currentContext ??
                         context);
                   });
                   return TabWidget(
                     key: provider.subCategoriesKeys[index],
                     label: subCategories[index].name ?? "",
-                    isSelected: index == provider.selectedSubCategory,
-                    onTap: () => provider.onSelectSubCategory(index),
+                    isSelected: index == provider.selectedSubCategoryIndex,
+                    onTap: () => provider.onSelectSubCategory(
+                        index, subCategories[index].id),
                   );
                 },
               )

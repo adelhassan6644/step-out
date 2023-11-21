@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:stepOut/app/core/utils/app_storage_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,6 +21,14 @@ class SearchRepo {
     return sharedPreferences.containsKey(AppStorageKey.isLogin);
   }
 
+  Future<Position> getCurrentPosition() async {
+    await Geolocator.requestPermission();
+    return await Geolocator.getCurrentPosition(
+      forceAndroidLocationManager: true,
+      desiredAccuracy: LocationAccuracy.high,
+    );
+  }
+
   Future<Either<ServerFailure, Response>> getSearch(body) async {
     try {
       log(body.entries.toString());
@@ -27,6 +36,21 @@ class SearchRepo {
       Response response =
           await dioClient.post(uri: EndPoints.search, data: body);
 
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else {
+        return left(ServerFailure(response.data['message']));
+      }
+    } catch (error) {
+      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+    }
+  }
+
+  Future<Either<ServerFailure, Response>> getServices({int? id}) async {
+    try {
+      Response response = await dioClient.get(
+          uri: EndPoints.services,
+          queryParameters: {if (id != null) "sub_category_id": id});
       if (response.statusCode == 200) {
         return Right(response);
       } else {

@@ -42,6 +42,7 @@ class AuthProvider extends ChangeNotifier {
   Function(String?) get updateMail => mail.sink.add;
   Stream<String?> get mailStream => mail.stream.asBroadcastStream();
 
+  final TextEditingController passwordTEC = TextEditingController();
   final password = BehaviorSubject<String?>();
   Function(String?) get updatePassword => password.sink.add;
   Stream<String?> get passwordStream => password.stream.asBroadcastStream();
@@ -107,9 +108,11 @@ class AuthProvider extends ChangeNotifier {
     updatePhone(null);
     updateMail(null);
     mailTEC.clear();
+    passwordTEC.clear();
     updatePassword(null);
     updateNewPassword(null);
     updateConfirmPassword(null);
+    notifyListeners();
   }
 
   bool _isRememberMe = true;

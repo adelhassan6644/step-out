@@ -30,7 +30,7 @@ class CustomShimmerText extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomShimmer(
       child: Container(
-        height: 10,
+        height: 14,
         width: width,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5), color: Colors.white),

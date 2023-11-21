@@ -99,6 +99,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                         builder: (context, snapshot) {
                           return CustomTextField(
                             onChanged: provider.updatePassword,
+                            controller: provider.passwordTEC,
                             keyboardAction: TextInputAction.done,
                             label: getTranslated("password", context),
                             hint: getTranslated("enter_your_password", context),

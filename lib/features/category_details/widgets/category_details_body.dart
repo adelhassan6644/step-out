@@ -12,9 +12,7 @@ import '../provider/category_details_provider.dart';
 import '../../../main_widgets/item_card.dart';
 
 class CategoryDetailsBody extends StatelessWidget {
-  const CategoryDetailsBody(
-      {super.key, required this.id, required this.controller});
-  final int id;
+  const CategoryDetailsBody({super.key, required this.controller});
   final ScrollController controller;
 
   @override
@@ -28,13 +26,16 @@ class CategoryDetailsBody extends StatelessWidget {
                       horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
                   data: List.generate(
                     8,
-                    (int index) {
-                      return CustomShimmerContainer(
+                    (int index) => Padding(
+                      padding: EdgeInsets.only(
+                        bottom: Dimensions.PADDING_SIZE_DEFAULT.h,
+                      ),
+                      child: CustomShimmerContainer(
                         height: 200.h,
                         width: context.width,
                         radius: 20,
-                      );
-                    },
+                      ),
+                    ),
                   ),
                 )
               : provider.model != null
@@ -45,7 +46,7 @@ class CategoryDetailsBody extends StatelessWidget {
                   //         provider.model!.data!.places!.isNotEmpty
                   ? RefreshIndicator(
                       onRefresh: () async {
-                        provider.getCategoryDetails(id);
+                        provider.getCategoryDetails();
                       },
                       color: Styles.PRIMARY_COLOR,
                       child: Column(
@@ -72,7 +73,7 @@ class CategoryDetailsBody extends StatelessWidget {
                   : RefreshIndicator(
                       color: Styles.PRIMARY_COLOR,
                       onRefresh: () async {
-                        provider.getCategoryDetails(id);
+                        provider.getCategoryDetails();
                       },
                       child: Column(
                         children: [

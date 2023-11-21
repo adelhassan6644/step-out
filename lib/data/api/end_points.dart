@@ -21,7 +21,9 @@ class EndPoints {
   static const String postFavourite = 'favorite';
   static const String banners = 'banner';
   static const String news = 'news';
-  static getItemDetails(id) => 'favorites/$id';
+  static getItemDetails(id) => 'place/$id';
+  static const String services = 'service';
+  static getCategoryDetails(id) => 'category/$id';
   static const String category = 'category';
   static const String offers = 'offer';
   static const String aboutUs = 'about_us';

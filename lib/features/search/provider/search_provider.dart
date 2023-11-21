@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/app_snack_bar.dart';
+import 'package:stepOut/features/home/models/categories_model.dart';
 import 'package:stepOut/features/item_details/model/item_details_model.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../data/error/api_error_handler.dart';
@@ -16,51 +17,119 @@ class SearchProvider extends ChangeNotifier {
 
   final TextEditingController searchTEC = TextEditingController();
 
-  List<ItemDetailsModel> result= [];
+  List<ItemDetailsModel> result = [];
   int? range;
   onSelectRange(v) {
     range = v;
     notifyListeners();
   }
 
-  int? categoryId;
+  CategoryItem? selectedCategory;
   onSelectCategory(v) {
-    categoryId = v;
+    selectedCategory = v;
+    selectedSubCategory = null;
+    selectedServices.clear();
+    servicesModel?.clear();
+    selectedSubServices.clear();
     notifyListeners();
   }
 
-  int? serviceId;
-  onSelectService(v) {
-    serviceId = v;
+  int? selectedSubCategory;
+  onSelectSubCategory(v) {
+    selectedSubCategory = v;
+    selectedServices.clear();
+    servicesModel?.clear();
+    selectedSubServices.clear();
+    getServices();
     notifyListeners();
   }
 
-  int? subServiceId;
-  onSelectSubService(v) {
-    subServiceId = v;
+  List<int> selectedServices = [];
+  onSelectService(id) {
+    if (selectedServices.contains(id)) {
+      selectedServices.removeWhere((e) => e == id);
+    } else {
+      selectedServices.add(id);
+    }
+    notifyListeners();
+  }
+
+  List<int> selectedSubServices = [];
+  onSelectSubService(id) {
+    if (selectedSubServices.contains(id)) {
+      selectedSubServices.removeWhere((e) => e == id);
+    } else {
+      selectedSubServices.add(id);
+    }
     notifyListeners();
   }
 
   clear() {
     searchTEC.clear();
-    categoryId = null;
-    serviceId = null;
-    subServiceId = null;
+    selectedCategory = null;
+    selectedSubCategory = null;
+    selectedServices.clear();
+    selectedSubServices.clear();
     notifyListeners();
   }
 
+  List<SubCategoryModel>? servicesModel;
+  bool isGetServices = false;
+  getServices() async {
+    try {
+      servicesModel?.clear();
+      isGetServices = true;
+      notifyListeners();
+
+      Either<ServerFailure, Response> response =
+          await repo.getServices(id: selectedSubCategory);
+
+      response.fold(
+        (fail) {
+          CustomSnackBar.showSnackBar(
+              notification: AppNotification(
+                  message: ApiErrorHandler.getMessage(fail),
+                  isFloating: true,
+                  backgroundColor: Styles.IN_ACTIVE,
+                  borderColor: Colors.transparent));
+        },
+        (success) {
+          servicesModel = List<SubCategoryModel>.from(
+            success.data["data"].map(
+              (x) => SubCategoryModel.fromJson(x),
+            ),
+          );
+        },
+      );
+
+      isGetServices = false;
+      notifyListeners();
+    } catch (e) {
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: e.toString(),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Colors.transparent));
+      isGetServices = false;
+      notifyListeners();
+    }
+  }
+
   bool isLoading = false;
-  getResult(v) async {
+  getResult() async {
     try {
       isLoading = true;
       result.clear();
       notifyListeners();
 
       Map<String, dynamic> body = {
+        "keyWords": searchTEC.text.trim(),
         "range": range,
-        "category_id": categoryId,
-        "service_id": serviceId,
-        "sub_service_id": subServiceId,
+        "category_id": selectedCategory?.id,
+        "sub_category_id": selectedSubCategory,
+        "service_id": selectedServices,
+        "sub_service_id": selectedSubServices,
       };
 
       Either<ServerFailure, Response> response = await repo.getSearch(body);

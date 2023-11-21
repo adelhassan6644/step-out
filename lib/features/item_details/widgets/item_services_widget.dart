@@ -40,24 +40,28 @@ class ItemServicesWidget extends StatelessWidget {
                   (index) => Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 6.w, vertical: 4.h),
-                    child: InkWell(
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      splashColor: Colors.transparent,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CustomNetworkImage.circleNewWorkImage(
-                              radius: 30, image: AppStrings.networkImage),
-                          const SizedBox(height: 4),
-                          Text(
-                            provider.services[index],
-                            textAlign: TextAlign.center,
-                            style: AppTextStyles.medium
-                                .copyWith(fontSize: 14, color: Styles.TITLE),
-                          ),
-                        ],
+                    child: SizedBox(
+                      width: 60.w,
+                      child: InkWell(
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            CustomNetworkImage.circleNewWorkImage(
+                                radius: 30, image: AppStrings.networkImage),
+                            const SizedBox(height: 4),
+                            Text(
+                              provider.services[index],
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              style: AppTextStyles.medium
+                                  .copyWith(fontSize: 14, color: Styles.TITLE),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

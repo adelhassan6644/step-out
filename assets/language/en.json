@@ -130,5 +130,8 @@
   "register_success_title": "You're all set",
   "register_success_description": "Your profile has been created",
   "delete": "Delete",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "all": "All",
+  "filter": "Filter",
+  "services": "Services"
 }
