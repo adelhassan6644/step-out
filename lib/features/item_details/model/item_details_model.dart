@@ -1,3 +1,5 @@
+import 'package:stepOut/features/home/models/offers_model.dart';
+
 class ItemDetailsModel {
   String? name;
   String? description;
@@ -25,6 +27,8 @@ class ItemDetailsModel {
   Category? category;
   Category? subCategory;
   List<String>? images;
+  List<String>? tags;
+  List<OfferItem>? offers;
   List<FeedbackModel>? feedbacks;
 
   ItemDetailsModel({
@@ -53,7 +57,9 @@ class ItemDetailsModel {
     this.totalRating,
     this.category,
     this.subCategory,
+    this.tags,
     this.images,
+    this.offers,
     this.feedbacks,
   });
 
@@ -91,6 +97,13 @@ class ItemDetailsModel {
         images: json["images"] == null
             ? []
             : List<String>.from(json["images"]!.map((x) => x["image"])),
+        tags: json["tags"] == null
+            ? []
+            : List<String>.from(json["tags"]!.map((x) => x["image"])),
+        offers: json["offers"] == null
+            ? []
+            : List<OfferItem>.from(
+                json["offers"]!.map((x) => OfferItem.fromJson(x))),
         feedbacks: json["feedbacks"] == null
             ? []
             : List<FeedbackModel>.from(
@@ -123,6 +136,7 @@ class ItemDetailsModel {
         "total_rating": totalRating,
         "category": category?.toJson(),
         "subCategory": subCategory?.toJson(),
+        "tags": tags == null ? [] : List<String>.from(tags!.map((x) => x)),
         "images":
             images == null ? [] : List<String>.from(images!.map((x) => x)),
         "feedbacks": feedbacks == null
