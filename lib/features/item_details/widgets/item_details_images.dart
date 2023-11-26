@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
 import 'package:stepOut/components/animated_widget.dart';
-
-import '../../../app/core/utils/app_strings.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../components/custom_network_image.dart';
 import '../../../components/grid_list_animator.dart';
@@ -23,7 +21,7 @@ class ItemDetailsImages extends StatelessWidget {
             return GridListAnimatorWidget(
               aspectRatio: 1.6,
               items: List.generate(
-                8,
+                provider.model?.images?.length ?? 0,
                 (int index) {
                   return AnimationConfiguration.staggeredGrid(
                     columnCount: 2,
@@ -32,7 +30,8 @@ class ItemDetailsImages extends StatelessWidget {
                     child: ScaleAnimation(
                       child: FadeInAnimation(
                         child: CustomNetworkImage.containerNewWorkImage(
-                            radius: 20, image: AppStrings.networkImage),
+                            radius: 20,
+                            image: provider.model?.images?[index] ?? ""),
                       ),
                     ),
                   );

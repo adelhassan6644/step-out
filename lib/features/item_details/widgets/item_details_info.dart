@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/components/animated_widget.dart';
 import 'package:stepOut/components/shimmer/custom_shimmer.dart';
@@ -7,6 +8,7 @@ import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/svg_images.dart';
 import '../../../components/custom_images.dart';
+import '../provider/item_details_provider.dart';
 import 'item_details_contact_info.dart';
 import 'item_details_location.dart';
 import 'item_details_offers.dart';
@@ -19,44 +21,55 @@ class ItemDetailsInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListAnimator(
-        customPadding: EdgeInsets.only(top: Dimensions.PADDING_SIZE_DEFAULT.h),
-        data: [
-          ///Services
-          const ItemServicesWidget(),
+      child: Consumer<ItemDetailsProvider>(builder: (_, provider, child) {
+        return ListAnimator(
+          customPadding:
+              EdgeInsets.only(top: Dimensions.PADDING_SIZE_DEFAULT.h),
+          data: [
+            ///Services
+            const ItemServicesWidget(),
 
-          ///Divider
-          Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h),
-            child: const Divider(
-              color: Styles.BORDER_COLOR,
+            ///Divider
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h),
+              child: const Divider(
+                color: Styles.BORDER_COLOR,
+              ),
             ),
-          ),
 
-          ///Contact Info
-          const ItemDetailsContactInfo(),
-
-          ///Item Details Location
-          const ItemDetailsLocation(),
-
-          ///Divider
-          Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h),
-            child: const Divider(
-              color: Styles.BORDER_COLOR,
+            ///Contact Info
+            ItemDetailsContactInfo(
+              phone: provider.model?.phone,
+              open: provider.model?.openingTime,
+              close: provider.model?.closingTime,
             ),
-          ),
 
-          ///Item Details Offers
-          const ItemDetailsOffer(),
+            ///Item Details Location
+            ItemDetailsLocation(
+              address: provider.model?.address,
+              lat: provider.model?.lat,
+              long: provider.model?.long,
+            ),
 
-          SizedBox(
-            height: 24.h,
-          )
-        ],
-      ),
+            ///Divider
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h),
+              child: const Divider(
+                color: Styles.BORDER_COLOR,
+              ),
+            ),
+
+            ///Item Details Offers
+            const ItemDetailsOffer(),
+
+            SizedBox(
+              height: 24.h,
+            )
+          ],
+        );
+      }),
     );
   }
 }

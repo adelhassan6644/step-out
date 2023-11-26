@@ -31,7 +31,7 @@ class EndPoints {
   static const String notifications = 'notification/notification';
   static readNotification(id) => 'notification/read';
   static deleteNotification(id) => 'notification/read';
-  static const String sendRate = 'rate/send';
+  static const String sendRate = 'feedback';
 
   /// maps
   static const String GEOCODE_URI = '/maps/api/geocode/';

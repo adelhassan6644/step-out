@@ -25,7 +25,11 @@ class ItemDetailsFeedback extends StatelessWidget {
                     horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
                 data: [
                   SizedBox(height: 16.h),
-                  ...List.generate(5, (index) => const FeedbackCard())
+                  ...List.generate(
+                      provider.model?.feedbacks?.length ?? 0,
+                      (index) => FeedbackCard(
+                            item: provider.model?.feedbacks?[index],
+                          ))
                 ],
               ),
             ),
@@ -34,7 +38,7 @@ class ItemDetailsFeedback extends StatelessWidget {
                   vertical: 24.h,
                   horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
               child: Consumer<RattingProvider>(
-                  builder: (context, provider, child) {
+                  builder: (context, sProvider, child) {
                 return CustomButton(
                   text: getTranslated("rate", context),
                   onTap: () => CustomBottomSheet.show(
@@ -42,12 +46,12 @@ class ItemDetailsFeedback extends StatelessWidget {
                       label: getTranslated("rate", context),
                       list: const SendRateBottomSheet(),
                       onConfirm: () {
-                        if (provider.formKey.currentState!.validate()) {
-                          provider.sendFeedback(1);
+                        if (sProvider.formKey.currentState!.validate()) {
+                          sProvider.sendFeedback(provider.model?.id);
                         }
                       },
-                      onClose: () => provider.clear(),
-                      isLoading: provider.isLoading),
+                      onClose: () => sProvider.clear(),
+                      isLoading: sProvider.isLoading),
                 );
               }),
             ),

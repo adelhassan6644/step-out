@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stepOut/app/core/utils/app_strings.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/components/custom_network_image.dart';
 
@@ -7,9 +6,11 @@ import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/svg_images.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../components/custom_images.dart';
+import '../model/item_details_model.dart';
 
 class FeedbackCard extends StatelessWidget {
-  const FeedbackCard({super.key});
+  const FeedbackCard({super.key, this.item});
+  final FeedbackModel? item;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class FeedbackCard extends StatelessWidget {
           Row(
             children: [
               CustomNetworkImage.circleNewWorkImage(
-                  radius: 25, image: AppStrings.networkImage),
+                  radius: 25, image: item?.image),
               SizedBox(
                 width: 8.w,
               ),
@@ -37,7 +38,7 @@ class FeedbackCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Jon Due",
+                    item?.name ?? "",
                     style: AppTextStyles.medium.copyWith(
                         fontSize: 14,
                         overflow: TextOverflow.ellipsis,
@@ -46,7 +47,7 @@ class FeedbackCard extends StatelessWidget {
                   ),
                   Row(
                     children: List.generate(
-                      5,
+                      item?.rating ?? 0,
                       (index) => customImageIconSVG(
                         height: 14,
                         width: 14,
@@ -63,7 +64,7 @@ class FeedbackCard extends StatelessWidget {
           ),
           SizedBox(height: 12.h),
           Text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
+            item?.comment ?? "",
             maxLines: 3,
             style: AppTextStyles.medium.copyWith(
                 fontSize: 12,

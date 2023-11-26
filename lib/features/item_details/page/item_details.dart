@@ -3,8 +3,6 @@ import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/components/custom_network_image.dart';
 import 'package:provider/provider.dart';
-
-import '../../../app/core/utils/app_strings.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_loading.dart';
@@ -26,7 +24,7 @@ class _ItemDetailsState extends State<ItemDetails> {
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
-      sl<ItemDetailsProvider>().getDetails(widget.id);
+      sl<ItemDetailsProvider>().getDetails(1);
     });
     super.initState();
   }
@@ -39,14 +37,14 @@ class _ItemDetailsState extends State<ItemDetails> {
           appBar: provider.isLoading ? const CustomAppBar() : null,
           body: provider.isLoading
               ? const CustomLoading()
-              : provider.model == null
+              : provider.model != null
                   ? Stack(
                       alignment: Alignment.bottomCenter,
                       children: [
                         Column(
                           children: [
                             CustomNetworkImage.containerNewWorkImage(
-                                image: AppStrings.networkImage,
+                                image: provider.model?.cover ?? "",
                                 imageWidget: const Column(
                                   children: [
                                     CustomAppBar(

@@ -9,31 +9,15 @@ import '../features/maps/models/location_model.dart';
 import '../main_providers/map_provider.dart';
 
 class MapWidget extends StatelessWidget {
-  const MapWidget(
-      {this.startPoint,
-      this.endPoint,
-      this.stopPoints,
-      this.clientName,
-      this.launchMap = true,
-      this.showAddress = true,
-      this.showFullAddress = false,
-      this.gender,
-      Key? key})
-      : super(key: key);
-  final LocationModel? startPoint, endPoint;
-  final int? stopPoints, gender;
-  final String? clientName;
-  final bool launchMap;
-  final bool showFullAddress;
-  final bool showAddress;
+  const MapWidget({this.point, super.key});
+  final LocationModel? point;
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => MapProvider()
         ..setLocation(
-          pickup: startPoint ?? AppStrings.defaultPickUp,
-          dropOff: endPoint ?? AppStrings.defaultDrop,
+          dropOff: point ?? AppStrings.defaultDrop,
         ),
       child: Consumer<MapProvider>(builder: (context, vm, _) {
         if (vm.isLoad) {

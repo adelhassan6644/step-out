@@ -42,9 +42,9 @@ class RattingProvider extends ChangeNotifier {
 
         var body = {
           "client_id": repo.getUserId(),
-          "id": id,
+          "place_id": id,
           "rating": (ratting + 1),
-          "feedback": feedback.value.toString().trim()
+          "comment": feedback.value.toString().trim()
         };
         Either<ServerFailure, Response> response = await repo.sendRatting(body);
         response.fold((fail) {

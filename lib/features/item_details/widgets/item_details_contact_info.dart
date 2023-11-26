@@ -3,11 +3,14 @@ import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
 import 'package:stepOut/components/custom_images.dart';
 
+import '../../../app/core/utils/methods.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
 
 class ItemDetailsContactInfo extends StatelessWidget {
-  const ItemDetailsContactInfo({super.key});
+  const ItemDetailsContactInfo({super.key, this.phone, this.open, this.close});
+
+  final String? phone, open, close;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class ItemDetailsContactInfo extends StatelessWidget {
               SizedBox(width: 8.w),
               Expanded(
                 child: Text(
-                  "123412345",
+                  phone ?? "",
                   style: AppTextStyles.medium.copyWith(
                       fontSize: 14,
                       overflow: TextOverflow.ellipsis,
@@ -45,7 +48,7 @@ class ItemDetailsContactInfo extends StatelessWidget {
                 SizedBox(width: 8.w),
                 Expanded(
                   child: Text(
-                    "8 PM - 5 Am",
+                    "${Methods.convertStringToTime(open, withFormat: true)} - ${Methods.convertStringToTime(close, withFormat: true)}",
                     style: AppTextStyles.medium.copyWith(
                         fontSize: 14,
                         overflow: TextOverflow.ellipsis,

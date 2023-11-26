@@ -6,6 +6,7 @@ import 'package:stepOut/app/core/utils/svg_images.dart';
 import 'package:stepOut/app/core/utils/text_styles.dart';
 import 'package:stepOut/components/custom_images.dart';
 import 'package:stepOut/features/item_details/widgets/item_details_info.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/core/utils/styles.dart';
 import '../../../app/localization/language_constant.dart';
@@ -45,23 +46,34 @@ class ItemDetailsBody extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          customContainerSvgIcon(
-                            radius: 100,
-                            width: 35,
-                            height: 35,
-                            imageName: SvgImages.instagram,
-                            color: Styles.PRIMARY_COLOR,
-                            onTap: () {},
-                          ),
-                          const SizedBox(width: 6),
-                          customContainerSvgIcon(
-                            radius: 100,
-                            width: 35,
-                            height: 35,
-                            imageName: SvgImages.faceBook,
-                            color: Styles.PRIMARY_COLOR,
-                            onTap: () {},
-                          ),
+                          if (provider.model?.instagram != null)
+                            customContainerSvgIcon(
+                              radius: 100,
+                              width: 35,
+                              height: 35,
+                              imageName: SvgImages.instagram,
+                              color: Styles.PRIMARY_COLOR,
+                              onTap: () {
+                                launchUrl(
+                                    Uri.parse(provider.model?.instagram ?? ""),
+                                    mode: LaunchMode.externalApplication);
+                              },
+                            ),
+                          if (provider.model?.facebook != null)
+                            const SizedBox(width: 6),
+                          if (provider.model?.facebook != null)
+                            customContainerSvgIcon(
+                              radius: 100,
+                              width: 35,
+                              height: 35,
+                              imageName: SvgImages.faceBook,
+                              color: Styles.PRIMARY_COLOR,
+                              onTap: () {
+                                launchUrl(
+                                    Uri.parse(provider.model?.facebook ?? ""),
+                                    mode: LaunchMode.externalApplication);
+                              },
+                            ),
                           const SizedBox(width: 6),
                           customContainerSvgIcon(
                             radius: 100,
@@ -79,12 +91,12 @@ class ItemDetailsBody extends StatelessWidget {
                           RichText(
                             text: TextSpan(
                               text:
-                                  ' 4.0 ${getTranslated("ratting", context)} ',
+                                  ' ${provider.model?.rating ?? 0} ${getTranslated("ratting", context)} ',
                               style: AppTextStyles.semiBold
                                   .copyWith(fontSize: 14, color: Styles.TITLE),
                               children: [
                                 TextSpan(
-                                  text: '(142)',
+                                  text: '(${provider.model?.totalRating ?? 0})',
                                   style: AppTextStyles.regular.copyWith(
                                       fontSize: 12, color: Styles.ACCENT_COLOR),
                                 ),
@@ -94,14 +106,17 @@ class ItemDetailsBody extends StatelessWidget {
                         ],
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 8.h,bottom:4.h,),
+                        padding: EdgeInsets.only(
+                          top: 8.h,
+                          bottom: 4.h,
+                        ),
                         child: Text(
-                          "Aroma",
+                          provider.model?.name ?? "",
                           style: AppTextStyles.semiBold.copyWith(fontSize: 18),
                         ),
                       ),
                       Text(
-                        "Cafe` & Restaurant",
+                        provider.model?.description ?? "",
                         style: AppTextStyles.medium.copyWith(fontSize: 14),
                       ),
                     ],
@@ -119,7 +134,9 @@ class ItemDetailsBody extends StatelessWidget {
             ),
           ),
           CustomNetworkImage.circleNewWorkImage(
-              radius: 40, color: Styles.PRIMARY_COLOR),
+              image: provider.model?.logo,
+              radius: 40,
+              color: Styles.PRIMARY_COLOR),
         ],
       );
     });
