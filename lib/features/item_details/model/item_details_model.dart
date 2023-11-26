@@ -1,5 +1,7 @@
 import 'package:stepOut/features/home/models/offers_model.dart';
 
+import '../../home/models/categories_model.dart';
+
 class ItemDetailsModel {
   String? name;
   String? description;
@@ -21,13 +23,11 @@ class ItemDetailsModel {
   String? openingTime;
   int? categoryId;
   int? subCategoryId;
-  dynamic agentId;
   double? rating;
   int? totalRating;
-  Category? category;
-  Category? subCategory;
   List<String>? images;
   List<String>? tags;
+  List<SubCategoryModel>? services;
   List<OfferItem>? offers;
   List<FeedbackModel>? feedbacks;
 
@@ -50,13 +50,9 @@ class ItemDetailsModel {
     this.snapchat,
     this.closingTime,
     this.openingTime,
-    this.categoryId,
-    this.subCategoryId,
-    this.agentId,
     this.rating,
     this.totalRating,
-    this.category,
-    this.subCategory,
+    this.services,
     this.tags,
     this.images,
     this.offers,
@@ -83,23 +79,19 @@ class ItemDetailsModel {
         snapchat: json["snapchat"],
         closingTime: json["closing_time"],
         openingTime: json["opening_time"],
-        categoryId: json["category_id"],
-        subCategoryId: json["sub_category_id"],
-        agentId: json["agent_id"],
         rating: double.parse(json["rating"].toString()),
         totalRating: json["total_rating"],
-        category: json["category"] == null
-            ? null
-            : Category.fromJson(json["category"]),
-        subCategory: json["subCategory"] == null
-            ? null
-            : Category.fromJson(json["subCategory"]),
         images: json["images"] == null
             ? []
-            : List<String>.from(json["images"]!.map((x) => x["image"])),
+            : List<String>.from(json["images"]!
+                .map((x) => (x["image"] != null) ? x["image"] : "")),
         tags: json["tags"] == null
             ? []
-            : List<String>.from(json["tags"]!.map((x) => x["image"])),
+            : List<String>.from(json["tags"]!.map((x) => x)),
+        services: json["services"] == null
+            ? []
+            : List<SubCategoryModel>.from(json["services"]!
+                .map((x) => SubCategoryModel.fromJson(x["service"]))),
         offers: json["offers"] == null
             ? []
             : List<OfferItem>.from(
@@ -131,49 +123,14 @@ class ItemDetailsModel {
         "opening_time": openingTime,
         "category_id": categoryId,
         "sub_category_id": subCategoryId,
-        "agent_id": agentId,
         "rating": rating,
         "total_rating": totalRating,
-        "category": category?.toJson(),
-        "subCategory": subCategory?.toJson(),
         "tags": tags == null ? [] : List<String>.from(tags!.map((x) => x)),
         "images":
             images == null ? [] : List<String>.from(images!.map((x) => x)),
         "feedbacks": feedbacks == null
             ? []
             : List<dynamic>.from(feedbacks!.map((x) => x.toJson())),
-      };
-}
-
-class Category {
-  int? id;
-  dynamic image;
-  String? name;
-  String? description;
-  int? categoryId;
-
-  Category({
-    this.id,
-    this.image,
-    this.name,
-    this.description,
-    this.categoryId,
-  });
-
-  factory Category.fromJson(Map<String, dynamic> json) => Category(
-        id: json["id"],
-        image: json["image"],
-        name: json["name"],
-        description: json["description"],
-        categoryId: json["category_id"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "image": image,
-        "name": name,
-        "description": description,
-        "category_id": categoryId,
       };
 }
 
