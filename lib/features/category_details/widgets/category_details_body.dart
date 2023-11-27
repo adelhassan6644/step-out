@@ -46,7 +46,7 @@ class CategoryDetailsBody extends StatelessWidget {
                   //         provider.model!.data!.places!.isNotEmpty
                   ? RefreshIndicator(
                       onRefresh: () async {
-                        provider.getCategoryDetails();
+                        provider.getPlaces();
                       },
                       color: Styles.PRIMARY_COLOR,
                       child: Column(
@@ -73,7 +73,7 @@ class CategoryDetailsBody extends StatelessWidget {
                   : RefreshIndicator(
                       color: Styles.PRIMARY_COLOR,
                       onRefresh: () async {
-                        provider.getCategoryDetails();
+                        provider.getPlaces();
                       },
                       child: Column(
                         children: [

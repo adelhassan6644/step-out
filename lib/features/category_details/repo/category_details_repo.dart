@@ -22,7 +22,7 @@ class CategoryDetailsRepo {
     );
   }
 
-  Future<Either<ServerFailure, Response>> getCategoryDetails(
+  Future<Either<ServerFailure, Response>> getPlaces(
       {required int categoryId, required Map<String, dynamic> filter}) async {
     try {
       final position = await getCurrentPosition();

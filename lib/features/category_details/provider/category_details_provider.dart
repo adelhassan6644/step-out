@@ -20,7 +20,7 @@ class CategoryDetailsProvider extends ChangeNotifier {
     selectedCategoryId = id;
     selectedServicesId.clear();
     getServices();
-    getCategoryDetails();
+    getPlaces();
     notifyListeners();
   }
 
@@ -53,7 +53,7 @@ class CategoryDetailsProvider extends ChangeNotifier {
       selectedServicesId.clear();
       animatedScrollSubCategories(subCategoriesKeys[i].currentContext!);
       getServices();
-      getCategoryDetails();
+      getPlaces();
     }
     notifyListeners();
   }
@@ -66,12 +66,12 @@ class CategoryDetailsProvider extends ChangeNotifier {
       selectedServicesId.add(id);
     }
     notifyListeners();
-    getCategoryDetails();
+    getPlaces();
   }
 
   CategoryDetailsModel? model;
   bool isLoading = false;
-  getCategoryDetails() async {
+  getPlaces() async {
     try {
       model = null;
       isLoading = true;
@@ -82,22 +82,20 @@ class CategoryDetailsProvider extends ChangeNotifier {
           "sub_category_id": selectedSubCategoryId,
         if (selectedServicesId.isNotEmpty) "service_id": selectedServicesId,
       };
-      Either<ServerFailure, Response> response = await repo.getCategoryDetails(
-          categoryId: selectedCategoryId!, filter: filter);
+      Either<ServerFailure, Response> response =
+          await repo.getPlaces(categoryId: selectedCategoryId!, filter: filter);
       response.fold((fail) {
-        isLoading = false;
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
                 message: ApiErrorHandler.getMessage(fail),
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
-        notifyListeners();
       }, (success) {
         model = CategoryDetailsModel.fromJson(success.data);
-        isLoading = false;
-        notifyListeners();
       });
+      isLoading = false;
+      notifyListeners();
     } catch (e) {
       isLoading = false;
       CustomSnackBar.showSnackBar(
