@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import '../../../app/core/utils/app_strings.dart';
 import '../../../app/core/utils/dimensions.dart';
+import '../../../data/config/di.dart';
 import '../../../main_models/base_model.dart';
 import '../provider/location_provider.dart';
 import '../widget/near_places.dart';
@@ -24,15 +25,6 @@ class _MapPageState extends State<MapPage> {
 
   @override
   void initState() {
-    Provider.of<LocationProvider>(context, listen: false).isGetPlaces = true;
-    if (widget.baseModel?.object != null) {
-      Provider.of<LocationProvider>(context, listen: false).pickAddress =
-          widget.baseModel?.object.address ?? "";
-    } else {
-      Provider.of<LocationProvider>(context, listen: false).pickAddress =
-          AppStrings.defaultAddress;
-    }
-
     Future.delayed(
         const Duration(milliseconds: 100), () => getInitialPosition());
     super.initState();
@@ -48,75 +40,65 @@ class _MapPageState extends State<MapPage> {
       _mapController!.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(target: _initialPosition, zoom: 100),
       ));
-      Provider.of<LocationProvider>(context, listen: false)
-          .getNearPlaces(_initialPosition);
+      sl<LocationProvider>().getNearPlaces(_initialPosition);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Center(child:
-          Consumer<LocationProvider>(builder: (c, locationController, _) {
-        return Stack(alignment: Alignment.bottomCenter, children: [
-          GoogleMap(
-            initialCameraPosition: CameraPosition(
-              bearing: 192,
-              target: LatLng(
-                double.parse(AppStrings.defaultLat),
-                double.parse(AppStrings.defaultLong),
-              ),
-              zoom: 14,
-            ),
-            minMaxZoomPreference: const MinMaxZoomPreference(0, 100),
-            myLocationButtonEnabled: false,
-            onMapCreated: (GoogleMapController mapController) {
-              _mapController = mapController;
-              if (widget.baseModel?.object == null) {
-                locationController.getLocation(false,
-                    mapController: _mapController!);
-              }
-            },
-            scrollGesturesEnabled: true,
-            zoomControlsEnabled: false,
-            onCameraMove: (CameraPosition cameraPosition) {
-              _cameraPosition = cameraPosition;
-            },
-            onCameraIdle: () {
-              locationController.updatePosition(
-                _cameraPosition,
+      body: SafeArea(
+        child: Center(
+          child: Consumer<LocationProvider>(
+            builder: (_, locationController, child) {
+              return Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  GoogleMap(
+                    initialCameraPosition: CameraPosition(
+                      bearing: 192,
+                      target: LatLng(
+                        double.parse(AppStrings.defaultLat),
+                        double.parse(AppStrings.defaultLong),
+                      ),
+                      zoom: 14,
+                    ),
+                    minMaxZoomPreference: const MinMaxZoomPreference(0, 100),
+                    myLocationButtonEnabled: false,
+                    onMapCreated: (GoogleMapController mapController) {
+                      _mapController = mapController;
+                      locationController.getLocation(false,
+                          mapController: _mapController!);
+                    },
+                    scrollGesturesEnabled: true,
+                    zoomControlsEnabled: false,
+                    onCameraMove: (CameraPosition cameraPosition) {
+                      _cameraPosition = cameraPosition;
+                    },
+                    onCameraIdle: () {
+                      locationController.updatePosition(
+                        _cameraPosition,
+                      );
+                    },
+                  ),
+                  Center(
+                      child: !locationController.isLoading
+                          ? const Icon(
+                              Icons.location_on_rounded,
+                              size: 50,
+                              color: Styles.PRIMARY_COLOR,
+                            )
+                          : const CupertinoActivityIndicator()),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 25.h),
+                    child: const NearPlaces(),
+                  )
+                ],
               );
             },
           ),
-          Center(
-              child: !locationController.isLoading
-                  ? const Icon(
-                      Icons.location_on_rounded,
-                      size: 50,
-                      color: Styles.PRIMARY_COLOR,
-                    )
-                  : const CupertinoActivityIndicator()),
-
-          ////  prediction section
-
-          /*   Positioned(
-            top: Dimensions.PADDING_SIZE_LARGE,
-            left: Dimensions.PADDING_SIZE_SMALL,
-            right: Dimensions.PADDING_SIZE_SMALL,
-            child: SearchLocationWidget(
-                mapController: _mapController,
-
-                pickedAddress: locationController.pickAddress,
-                isEnabled: true),
-          ),
-*/
-
-          Padding(
-            padding: EdgeInsets.only(bottom: 25.h),
-            child: const NearPlaces(),
-          )
-        ]);
-      }))),
+        ),
+      ),
     );
   }
 }
