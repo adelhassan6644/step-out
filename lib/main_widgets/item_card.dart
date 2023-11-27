@@ -6,21 +6,20 @@ import 'package:stepOut/components/custom_network_image.dart';
 import 'package:stepOut/features/item_details/model/item_details_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
-
-import '../app/core/utils/app_strings.dart';
 import '../app/core/utils/svg_images.dart';
 import '../app/core/utils/text_styles.dart';
 import '../components/custom_images.dart';
 
 class ItemCard extends StatelessWidget {
-  const ItemCard({super.key, this.width, this.model});
+  const ItemCard({super.key, this.width, this.item});
   final double? width;
-  final ItemDetailsModel? model;
+  final ItemDetailsModel? item;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => CustomNavigator.push(Routes.ITEM_DETAILS, arguments: 0),
+      onTap: () =>
+          CustomNavigator.push(Routes.ITEM_DETAILS, arguments: item?.id),
       focusColor: Colors.transparent,
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
@@ -37,7 +36,7 @@ class ItemCard extends StatelessWidget {
               radius: 20,
               width: context.width,
               height: 100.h,
-              image: AppStrings.networkImage,
+              image: item?.cover ?? "",
             ),
             Padding(
               padding: EdgeInsets.symmetric(
@@ -52,14 +51,14 @@ class ItemCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          "Item Name",
+                          item?.name ?? "Item Name",
                           style: AppTextStyles.semiBold.copyWith(
                               fontSize: 14, color: Styles.ACCENT_COLOR),
                         ),
                       ),
                       SizedBox(width: 16.w),
                       Text(
-                        "4",
+                        "${item?.rating ?? 0}4",
                         style: AppTextStyles.medium.copyWith(
                             fontSize: 14,
                             height: 1.2,
@@ -67,7 +66,7 @@ class ItemCard extends StatelessWidget {
                       ),
                       SizedBox(width: 4.w),
                       ...List.generate(
-                        4,
+                        item?.rating?.ceil() ?? 0,
                         (index) => customImageIconSVG(
                             imageName: SvgImages.fillStar,
                             height: 20,
@@ -80,7 +79,7 @@ class ItemCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 6.0),
                     child: Text(
-                      "description",
+                      item?.description ?? "description",
                       maxLines: 2,
                       style: AppTextStyles.regular.copyWith(
                           fontSize: 14,
@@ -99,7 +98,7 @@ class ItemCard extends StatelessWidget {
                           color: Styles.PRIMARY_COLOR),
                       SizedBox(width: 8.w),
                       Text(
-                        "Location",
+                        item?.address ?? "Location",
                         style: AppTextStyles.medium.copyWith(
                             fontSize: 14, color: Styles.PRIMARY_COLOR),
                       ),
