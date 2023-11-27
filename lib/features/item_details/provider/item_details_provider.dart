@@ -19,18 +19,6 @@ class ItemDetailsProvider extends ChangeNotifier {
 
   List<String> tabs = ["information", "images", "feedback"];
 
-  List<String> services = [
-    "information",
-    "images",
-    "feedback",
-    "information",
-    "images",
-    "feedback",
-    "information",
-    "images",
-    "feedback",
-  ];
-
   ItemDetailsModel? model;
   bool isLoading = false;
   getDetails(id) async {
