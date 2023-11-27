@@ -7,7 +7,7 @@ import '../../../app/core/utils/app_strings.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../main_models/base_model.dart';
 import '../provider/location_provider.dart';
-import '../widget/map_items.dart';
+import '../widget/near_places.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({this.baseModel, Key? key}) : super(key: key);
@@ -49,7 +49,7 @@ class _MapPageState extends State<MapPage> {
         CameraPosition(target: _initialPosition, zoom: 100),
       ));
       Provider.of<LocationProvider>(context, listen: false)
-          .getPlaces(_initialPosition);
+          .getNearPlaces(_initialPosition);
     }
   }
 
@@ -113,7 +113,7 @@ class _MapPageState extends State<MapPage> {
 
           Padding(
             padding: EdgeInsets.only(bottom: 25.h),
-            child: const MapPlaces(),
+            child: const NearPlaces(),
           )
         ]);
       }))),

@@ -101,7 +101,7 @@ class LocationProvider extends ChangeNotifier {
     } else {
       pickPosition = _myPosition!;
     }
-    getPlaces(_myPosition!);
+    getNearPlaces(_myPosition!);
 
     mapController.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
@@ -158,7 +158,7 @@ class LocationProvider extends ChangeNotifier {
           latitude: position.target.latitude,
           longitude: position.target.longitude);
       isLoading = false;
-      getPlaces(position.target);
+      getNearPlaces(position.target);
 
       notifyListeners();
     } catch (e) {
@@ -175,35 +175,37 @@ class LocationProvider extends ChangeNotifier {
 
   List<ItemDetailsModel>? model;
   bool isGetPlaces = false;
-  getPlaces(position) async {
+  getNearPlaces(position) async {
     try {
       model?.clear();
       isGetPlaces = true;
       notifyListeners();
       Either<ServerFailure, Response> response =
-          await locationRepo.getLocationPlaces(position: position);
+          await locationRepo.getNearPlaces(position: position);
       response.fold((fail) {
-        isGetPlaces = false;
         CustomSnackBar.showSnackBar(
             notification: AppNotification(
                 message: ApiErrorHandler.getMessage(fail),
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
-        notifyListeners();
       }, (success) {
-        // model = ItemDetailsModel.fromJson(success.data);
-        isGetPlaces = false;
-        notifyListeners();
+        model = List<ItemDetailsModel>.from(
+          success.data["data"].map(
+            (x) => ItemDetailsModel.fromJson(x),
+          ),
+        );
       });
-    } catch (e) {
       isGetPlaces = false;
+      notifyListeners();
+    } catch (e) {
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
               message: e.toString(),
               isFloating: true,
               backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
+      isGetPlaces = false;
       notifyListeners();
     }
   }

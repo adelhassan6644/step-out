@@ -55,7 +55,8 @@ class HomeOffers extends StatelessWidget {
                                 (index) => InkWell(
                                       onTap: () => CustomNavigator.push(
                                           Routes.ITEM_DETAILS,
-                                          arguments: 0),
+                                          arguments: provider.offersModel
+                                              ?.data?[index].placeId),
                                       child: Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 8.w),

@@ -6,10 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add jks">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/stepOut.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stepOut.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/model/item_details_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/model/item_details_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/provider/item_details_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/provider/item_details_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/item_services_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/item_services_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/api/end_points.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/api/end_points.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/home_offers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/home_offers.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/item_details/page/item_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/page/item_details.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/maps/page/map_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/maps/page/map_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/maps/provider/location_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/maps/provider/location_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/maps/repo/maps_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/maps/repo/maps_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/maps/widget/map_items.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/maps/widget/near_places.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/provider/search_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/provider/search_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/repo/search_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/repo/search_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main_widgets/item_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_widgets/item_card.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

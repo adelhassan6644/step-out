@@ -130,8 +130,8 @@ class SearchProvider extends ChangeNotifier {
       result.clear();
       notifyListeners();
 
-      Map<String, dynamic> body = {
-        "keyWords": searchTEC.text.trim(),
+      Map<String, dynamic> filter = {
+        "name": searchTEC.text.trim(),
         "range": range,
         "category_id": selectedCategory?.id,
         "sub_category_id": selectedSubCategory,
@@ -139,7 +139,7 @@ class SearchProvider extends ChangeNotifier {
         "sub_service_id": selectedSubServices,
       };
 
-      Either<ServerFailure, Response> response = await repo.getSearch(body);
+      Either<ServerFailure, Response> response = await repo.getSearch(filter);
       response.fold((fail) {
         CustomSnackBar.showSnackBar(
             notification: AppNotification(

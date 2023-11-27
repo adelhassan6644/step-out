@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 import '../../../components/shimmer/custom_shimmer.dart';
 import '../provider/location_provider.dart';
 
-class MapPlaces extends StatelessWidget {
-  const MapPlaces({Key? key}) : super(key: key);
+class NearPlaces extends StatelessWidget {
+  const NearPlaces({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +36,7 @@ class MapPlaces extends StatelessWidget {
                   ],
                 ),
               )
-            : provider.model != null &&
-                    provider.model != null &&
-                    provider.model!.isNotEmpty
+            : provider.model != null && provider.model!.isNotEmpty
                 ? SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
@@ -47,12 +45,13 @@ class MapPlaces extends StatelessWidget {
                       children: [
                         SizedBox(width: 10.w),
                         ...List.generate(
-                            5,
+                            provider.model?.length ?? 0,
                             (index) => Padding(
                                   padding:
                                       EdgeInsets.symmetric(horizontal: 8.w),
                                   child: ItemCard(
                                     width: context.width * 0.85,
+                                    model: provider.model?[index],
                                   ),
                                 ))
                       ],

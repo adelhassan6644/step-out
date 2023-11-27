@@ -29,12 +29,19 @@ class SearchRepo {
     );
   }
 
-  Future<Either<ServerFailure, Response>> getSearch(body) async {
+  Future<Either<ServerFailure, Response>> getSearch(filter) async {
     try {
-      log(body.entries.toString());
+      final position = await getCurrentPosition();
+
+      filter.addAll({
+        "lat": position.latitude,
+        "long": position.longitude,
+      });
+
+      log(filter.entries.toString());
 
       Response response =
-          await dioClient.post(uri: EndPoints.search, data: body);
+          await dioClient.post(uri: EndPoints.search, data: filter);
 
       if (response.statusCode == 200) {
         return Right(response);

@@ -32,6 +32,7 @@ class EndPoints {
   static readNotification(id) => 'notification/read';
   static deleteNotification(id) => 'notification/read';
   static const String sendRate = 'feedback';
+  static const String nearPlaces = 'near/places';
 
   /// maps
   static const String GEOCODE_URI = '/maps/api/geocode/';

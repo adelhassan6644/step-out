@@ -34,7 +34,6 @@ class MapsRepo {
     try {
       Response response = await dioClient.get(
           useGoogleUri: true,
-          // uri:  '${EndPoints.GEOCODE_URI}?lat=${latLng.latitude}&lng=${latLng.longitude}');
           uri:
               '${EndPoints.GEOCODE_URI}json?latlng=${latLng.latitude},${latLng.longitude}&key=${AppStrings.googleApiKey}');
 
@@ -48,10 +47,16 @@ class MapsRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> getLocationPlaces(
+  Future<Either<ServerFailure, Response>> getNearPlaces(
       {var position}) async {
     try {
-      Response response = await dioClient.get(uri: "");
+      Response response = await dioClient.post(
+        uri: EndPoints.nearPlaces,
+        queryParameters: {
+          "client_lat": position.latitude,
+          "client_long": position.longitude,
+        },
+      );
       if (response.statusCode == 200) {
         return Right(response);
       } else {

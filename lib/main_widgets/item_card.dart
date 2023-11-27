@@ -3,6 +3,7 @@ import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/components/custom_network_image.dart';
+import 'package:stepOut/features/item_details/model/item_details_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
 
@@ -12,8 +13,9 @@ import '../app/core/utils/text_styles.dart';
 import '../components/custom_images.dart';
 
 class ItemCard extends StatelessWidget {
-  const ItemCard({super.key, this.width});
+  const ItemCard({super.key, this.width, this.model});
   final double? width;
+  final ItemDetailsModel? model;
 
   @override
   Widget build(BuildContext context) {
