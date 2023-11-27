@@ -127,5 +127,4 @@ class Validations {
       return null;
     }
   }
-
 }

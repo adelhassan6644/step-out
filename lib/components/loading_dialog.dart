@@ -45,7 +45,7 @@ loadingDialog() {
         ]),
       );
     },
-    animationType: DialogTransitionType.slideFromRight,
+    animationType: DialogTransitionType.fadeScale,
     curve: Curves.easeInOutBack,
     duration: const Duration(milliseconds: 700),
   );

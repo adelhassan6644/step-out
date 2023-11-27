@@ -8,9 +8,11 @@ import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
 
 class ItemDetailsContactInfo extends StatelessWidget {
-  const ItemDetailsContactInfo({super.key, this.phone, this.open, this.close});
+  const ItemDetailsContactInfo(
+      {super.key, this.phone, this.open, this.close, this.tags});
 
   final String? phone, open, close;
+  final List<String>? tags;
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +68,9 @@ class ItemDetailsContactInfo extends StatelessWidget {
             runAlignment: WrapAlignment.start,
             crossAxisAlignment: WrapCrossAlignment.start,
             children: List.generate(
-                7,
+                tags?.length??0,
                 (index) => Text(
-                      "#SEAMOL",
+                      "#${tags?[index].toString().toUpperCase()??""}",
                       style: AppTextStyles.medium.copyWith(
                           fontSize: 14,
                           overflow: TextOverflow.ellipsis,

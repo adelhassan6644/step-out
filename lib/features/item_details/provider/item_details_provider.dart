@@ -57,4 +57,8 @@ class ItemDetailsProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  updateModel() {
+    notifyListeners();
+  }
 }

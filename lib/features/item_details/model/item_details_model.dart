@@ -80,18 +80,17 @@ class ItemDetailsModel {
         closingTime: json["closing_time"],
         openingTime: json["opening_time"],
         rating: double.parse(json["rating"].toString()),
-        totalRating: json["total_rating"],
+        totalRating: json["ratingCount"],
         images: json["images"] == null
             ? []
-            : List<String>.from(json["images"]!
-                .map((x) => (x["image"] != null) ? x["image"] : "")),
+            : List<String>.from(json["images"]!.map((x) => x)),
         tags: json["tags"] == null
             ? []
             : List<String>.from(json["tags"]!.map((x) => x)),
         services: json["services"] == null
             ? []
-            : List<SubCategoryModel>.from(json["services"]!
-                .map((x) => SubCategoryModel.fromJson(x["service"]))),
+            : List<SubCategoryModel>.from(
+                json["services"]!.map((x) => SubCategoryModel.fromJson(x))),
         offers: json["offers"] == null
             ? []
             : List<OfferItem>.from(
@@ -138,8 +137,6 @@ class FeedbackModel {
   int? id;
   DateTime? createdAt;
   DateTime? updatedAt;
-  int? clientId;
-  int? placeId;
   int? rating;
   String? comment;
   String? name;
@@ -149,8 +146,6 @@ class FeedbackModel {
     this.id,
     this.createdAt,
     this.updatedAt,
-    this.clientId,
-    this.placeId,
     this.rating,
     this.comment,
     this.name,
@@ -165,8 +160,6 @@ class FeedbackModel {
         updatedAt: json["updated_at"] == null
             ? null
             : DateTime.parse(json["updated_at"]),
-        clientId: json["client_id"],
-        placeId: json["place_id"],
         rating: json["rating"],
         comment: json["comment"],
         name: json["name"],
@@ -177,8 +170,6 @@ class FeedbackModel {
         "id": id,
         "created_at": createdAt?.toIso8601String(),
         "updated_at": updatedAt?.toIso8601String(),
-        "client_id": clientId,
-        "place_id": placeId,
         "rating": rating,
         "comment": comment,
         "image": image,

@@ -91,7 +91,7 @@ class ItemDetailsBody extends StatelessWidget {
                           RichText(
                             text: TextSpan(
                               text:
-                                  ' ${provider.model?.rating ?? 0} ${getTranslated("ratting", context)} ',
+                                  ' ${provider.model?.rating?.toStringAsFixed(2) ?? 0} ${getTranslated("ratting", context)} ',
                               style: AppTextStyles.semiBold
                                   .copyWith(fontSize: 14, color: Styles.TITLE),
                               children: [

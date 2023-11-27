@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
+import '../../../app/core/utils/validation.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_bottom_sheet.dart';
@@ -42,16 +44,19 @@ class ItemDetailsFeedback extends StatelessWidget {
                 return CustomButton(
                   text: getTranslated("rate", context),
                   onTap: () => CustomBottomSheet.show(
-                      height: 500.h,
-                      label: getTranslated("rate", context),
-                      list: const SendRateBottomSheet(),
-                      onConfirm: () {
-                        if (sProvider.formKey.currentState!.validate()) {
-                          sProvider.sendFeedback(provider.model?.id);
-                        }
-                      },
-                      onClose: () => sProvider.clear(),
-                      isLoading: sProvider.isLoading),
+                    height: 500.h,
+                    label: getTranslated("rate", context),
+                    list: const SendRateBottomSheet(),
+                    onConfirm: () {
+                      sProvider.formKey.currentState!.validate();
+                      if (Validations.feedBack(
+                              sProvider.feedback.value?.trim()) ==
+                          null) {
+                        sProvider.sendFeedback(provider.model?.id);
+                      }
+                    },
+                    onClose: () => sProvider.clear(),
+                  ),
                 );
               }),
             ),

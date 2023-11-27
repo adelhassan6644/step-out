@@ -2,9 +2,14 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:stepOut/components/loading_dialog.dart';
+import 'package:stepOut/features/item_details/model/item_details_model.dart';
+import 'package:stepOut/features/item_details/provider/item_details_provider.dart';
+import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/localization/language_constant.dart';
+import '../../../data/config/di.dart';
 import '../../../data/error/failures.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../repo/ratting_repo.dart';
@@ -32,12 +37,11 @@ class RattingProvider extends ChangeNotifier {
     updateFeedback(null);
   }
 
-  bool isLoading = false;
-
   sendFeedback(id) async {
     if (ratting != -1) {
       try {
-        isLoading = true;
+        CustomNavigator.pop();
+        loadingDialog();
         notifyListeners();
 
         var body = {
@@ -46,9 +50,17 @@ class RattingProvider extends ChangeNotifier {
           "rating": (ratting + 1),
           "comment": feedback.value.toString().trim()
         };
+        FeedbackModel feedbackModel = FeedbackModel(
+          image: sl<ProfileProvider>().profileModel?.image,
+          name: sl<ProfileProvider>().profileModel?.name,
+          rating: (ratting + 1),
+          comment: feedback.value.toString().trim(),
+          createdAt: DateTime.now(),
+        );
+
         Either<ServerFailure, Response> response = await repo.sendRatting(body);
+
         response.fold((fail) {
-          clear();
           CustomNavigator.pop();
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
@@ -56,11 +68,16 @@ class RattingProvider extends ChangeNotifier {
                   isFloating: true,
                   backgroundColor: Styles.IN_ACTIVE,
                   borderColor: Colors.transparent));
-        }, (response) {
-          CustomNavigator.pop();
           clear();
+        }, (response) {
+          Future.delayed(Duration.zero, () {
+            sl<ItemDetailsProvider>().model?.feedbacks?.add(feedbackModel);
+            sl<ItemDetailsProvider>().updateModel();
+          });
+          clear();
+          CustomNavigator.pop();
         });
-        isLoading = false;
+
         notifyListeners();
       } catch (e) {
         CustomNavigator.pop();
@@ -71,7 +88,6 @@ class RattingProvider extends ChangeNotifier {
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));
-        isLoading = false;
         notifyListeners();
       }
     } else {
