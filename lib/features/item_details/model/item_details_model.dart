@@ -1,6 +1,6 @@
 import 'package:stepOut/features/home/models/offers_model.dart';
 
-import '../../home/models/categories_model.dart';
+import '../../../main_models/service_model.dart';
 
 class ItemDetailsModel {
   String? name;
@@ -27,7 +27,7 @@ class ItemDetailsModel {
   int? totalRating;
   List<String>? images;
   List<String>? tags;
-  List<SubCategoryModel>? services;
+  List<ServiceModel>? services;
   List<OfferItem>? offers;
   List<FeedbackModel>? feedbacks;
 
@@ -90,8 +90,8 @@ class ItemDetailsModel {
             : List<String>.from(json["tags"]!.map((x) => x)),
         services: json["services"] == null
             ? []
-            : List<SubCategoryModel>.from(
-                json["services"]!.map((x) => SubCategoryModel.fromJson(x))),
+            : List<ServiceModel>.from(
+                json["services"]!.map((x) => ServiceModel.fromJson(x))),
         offers: json["offers"] == null
             ? []
             : List<OfferItem>.from(
@@ -131,6 +131,9 @@ class ItemDetailsModel {
         "feedbacks": feedbacks == null
             ? []
             : List<dynamic>.from(feedbacks!.map((x) => x.toJson())),
+        "services": services == null
+            ? []
+            : List<dynamic>.from(services!.map((x) => x.toJson())),
       };
 }
 

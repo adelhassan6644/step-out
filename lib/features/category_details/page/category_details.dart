@@ -25,8 +25,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
-      sl<CategoryDetailsProvider>().onSelectSubCategory(0, -1);
-      sl<CategoryDetailsProvider>().updateCategoryId(widget.item.id);
+      sl<CategoryDetailsProvider>().init(widget.item.id);
       sl<CategoryDetailsProvider>().scroll(controller);
     });
     super.initState();

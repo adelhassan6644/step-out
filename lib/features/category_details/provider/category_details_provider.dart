@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:stepOut/data/error/api_error_handler.dart';
 import 'package:stepOut/features/category_details/repo/category_details_repo.dart';
-import 'package:stepOut/features/home/models/categories_model.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../data/error/failures.dart';
+import '../../../main_models/service_model.dart';
 import '../../item_details/model/item_details_model.dart';
 
 class CategoryDetailsProvider extends ChangeNotifier {
@@ -16,8 +16,11 @@ class CategoryDetailsProvider extends ChangeNotifier {
   TextEditingController searchTEC = TextEditingController();
 
   int? selectedCategoryId;
-  updateCategoryId(id) {
+  init(id) {
     selectedCategoryId = id;
+    selectedSubCategoryId = -1;
+    selectedSubCategoryIndex = 0;
+    animatedScrollSubCategories(subCategoriesKeys[0].currentContext!);
     selectedServicesId.clear();
     getServices();
     getPlaces();
@@ -78,7 +81,6 @@ class CategoryDetailsProvider extends ChangeNotifier {
       notifyListeners();
       Map<String, dynamic> filter = {
         "category_id": selectedCategoryId,
-        "range": 100,
         if (selectedSubCategoryId != -1)
           "sub_category_id": selectedSubCategoryId,
         if (selectedServicesId.isNotEmpty)
@@ -118,11 +120,11 @@ class CategoryDetailsProvider extends ChangeNotifier {
     }
   }
 
-  List<SubCategoryModel>? servicesModel;
+  List<ServiceModel>? services;
   bool isGetServices = false;
   getServices() async {
     try {
-      servicesModel?.clear();
+      services?.clear();
       isGetServices = true;
       notifyListeners();
 
@@ -139,9 +141,9 @@ class CategoryDetailsProvider extends ChangeNotifier {
                   borderColor: Colors.transparent));
         },
         (success) {
-          servicesModel = List<SubCategoryModel>.from(
+          services = List<ServiceModel>.from(
             success.data["data"].map(
-              (x) => SubCategoryModel.fromJson(x),
+              (x) => ServiceModel.fromJson(x),
             ),
           );
         },

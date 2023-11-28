@@ -17,8 +17,8 @@ class ServicesSelectionBar extends StatelessWidget {
       return provider.isGetServices
           ? const _ShimmerLoading()
           : Visibility(
-              visible: provider.servicesModel != null &&
-                  provider.servicesModel!.isNotEmpty,
+              visible: provider.services != null &&
+                  provider.services!.isNotEmpty,
               child: AnimatedCrossFade(
                 crossFadeState: provider.goingDown
                     ? CrossFadeState.showFirst
@@ -33,14 +33,14 @@ class ServicesSelectionBar extends StatelessWidget {
                       children: [
                         SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT.w),
                         ...List.generate(
-                          provider.servicesModel?.length ?? 0,
+                          provider.services?.length ?? 0,
                           (index) => InkWell(
                             focusColor: Colors.transparent,
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             splashColor: Colors.transparent,
                             onTap: () => provider.onSelectService(
-                                provider.servicesModel?[index].id),
+                                provider.services?[index].id),
                             child: Container(
                               margin: EdgeInsets.symmetric(horizontal: 6.w),
                               padding: EdgeInsets.symmetric(
@@ -48,15 +48,15 @@ class ServicesSelectionBar extends StatelessWidget {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
                                   color: provider.selectedServicesId.contains(
-                                          provider.servicesModel?[index].id)
+                                          provider.services?[index].id)
                                       ? Styles.PRIMARY_COLOR
                                       : Styles.PRIMARY_COLOR.withOpacity(0.1)),
                               child: Text(
-                                provider.servicesModel?[index].name ?? "",
+                                provider.services?[index].name ?? "",
                                 style: AppTextStyles.medium.copyWith(
                                     fontSize: 14,
                                     color: provider.selectedServicesId.contains(
-                                            provider.servicesModel?[index].id)
+                                            provider.services?[index].id)
                                         ? Styles.WHITE_COLOR
                                         : Styles.PRIMARY_COLOR),
                               ),
