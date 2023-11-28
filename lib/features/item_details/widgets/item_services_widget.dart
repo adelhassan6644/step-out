@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
+import 'package:stepOut/components/custom_bottom_sheet.dart';
 import 'package:stepOut/components/custom_network_image.dart';
 import 'package:stepOut/features/item_details/provider/item_details_provider.dart';
 
@@ -39,29 +40,83 @@ class ItemServicesWidget extends StatelessWidget {
                   (index) => Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 6.w, vertical: 4.h),
-                    child: SizedBox(
-                      width: 60.w,
-                      child: InkWell(
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        splashColor: Colors.transparent,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            CustomNetworkImage.circleNewWorkImage(
-                                radius: 30,
-                                image: provider.model?.services?[index].image ??
-                                    ""),
-                            const SizedBox(height: 4),
-                            Text(
-                              provider.model?.services?[index].name ?? "",
-                              textAlign: TextAlign.center,
-                              maxLines: 2,
-                              style: AppTextStyles.medium
-                                  .copyWith(fontSize: 14, color: Styles.TITLE),
+                    child: InkWell(
+                      onTap: () {
+                        if ((provider.model?.services?[index].subServices
+                                    ?.length ??
+                                0) >
+                            0) {
+                          CustomBottomSheet.show(
+                            label: provider.model?.services?[index].name ?? "",
+                            list: Wrap(
+                              spacing: 16,
+                              runSpacing: 16,
+                              children: List.generate(
+                                  provider.model?.services?[index].subServices
+                                          ?.length ??
+                                      0,
+                                  (index) => SizedBox(
+                                        width: 60.w,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            CustomNetworkImage
+                                                .circleNewWorkImage(
+                                                    radius: 30,
+                                                    image: provider
+                                                            .model
+                                                            ?.services?[index]
+                                                            .subServices?[index]
+                                                            .image ??
+                                                        ""),
+                                            const SizedBox(height: 4),
+                                            Text(
+                                              provider
+                                                      .model
+                                                      ?.services?[index]
+                                                      .subServices?[index]
+                                                      .name ??
+                                                  "",
+                                              textAlign: TextAlign.center,
+                                              maxLines: 2,
+                                              style: AppTextStyles.medium
+                                                  .copyWith(
+                                                      fontSize: 14,
+                                                      color: Styles.TITLE),
+                                            ),
+                                          ],
+                                        ),
+                                      )),
                             ),
-                          ],
+                          );
+                        }
+                      },
+                      child: SizedBox(
+                        width: 60.w,
+                        child: InkWell(
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          splashColor: Colors.transparent,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              CustomNetworkImage.circleNewWorkImage(
+                                  radius: 30,
+                                  image:
+                                      provider.model?.services?[index].image ??
+                                          ""),
+                              const SizedBox(height: 4),
+                              Text(
+                                provider.model?.services?[index].name ?? "",
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                style: AppTextStyles.medium.copyWith(
+                                    fontSize: 14, color: Styles.TITLE),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

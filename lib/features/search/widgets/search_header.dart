@@ -35,42 +35,7 @@ class _SearchHeaderState extends State<SearchHeader> {
         ),
         child: Row(
           children: [
-            Expanded(
-              child: SearchBarWidget(
-                autofocus: true,
-                controller: provider.searchTEC,
-                suffixWidget: InkWell(
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () {
-                    provider.clearTEC();
-                  },
-                  child: Visibility(
-                    visible: provider.searchTEC.text.isNotEmpty,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: Dimensions.PADDING_SIZE_SMALL.w),
-                      child: const Icon(
-                        Icons.clear,
-                        color: Styles.TITLE,
-                        size: 24,
-                      ),
-                    ),
-                  ),
-                ),
-                onSearch: (v) {
-                  provider.getResult();
-                },
-                onChanged: (v) {
-                  if (timer != null) if (timer!.isActive) timer!.cancel();
-                  timer = Timer(const Duration(milliseconds: 400), () {
-                    provider.getResult();
-                  });
-                },
-              ),
-            ),
+            const Expanded(child: SearchBarWidget()),
             SizedBox(width: 8.w),
             customContainerSvgIcon(
               height: 45,

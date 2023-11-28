@@ -5,24 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add jks">
-      <change afterPath="$PROJECT_DIR$/lib/main_models/service_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/.filecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/app.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/debug_ios_bundle_flutter_assets.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/debug_ios_bundle_flutter_assets.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/flutter_assets.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/core/utils/app_strings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/core/utils/app_strings.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/category_details/model/category_details_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/category_details/page/category_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/category_details/page/category_details.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/category_details/provider/category_details_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/category_details/provider/category_details_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/category_details/widgets/services_selction_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/category_details/widgets/services_selction_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/model/item_details_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/model/item_details_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_models/car_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_models/weak_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_providers/schedule_provider.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/item_services_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/item_services_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/widgets/search_bar_widgtet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/widgets/search_bar_widgtet.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/widgets/search_header.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/widgets/search_header.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,13 +122,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688516389160</updated>
-    </task>
-    <task id="LOCAL-00061" summary="add AppCenter">
-      <created>1699877278114</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1699877278114</updated>
     </task>
     <task id="LOCAL-00062" summary="add AppCenter">
       <created>1699877339481</created>
@@ -480,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701198417086</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="add jks">
+      <created>1701199454420</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1701199454420</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
