@@ -58,7 +58,7 @@ class ItemCard extends StatelessWidget {
                       ),
                       SizedBox(width: 16.w),
                       Text(
-                        "${item?.rating ?? 0}4",
+                        "${item?.rating ?? 0}",
                         style: AppTextStyles.medium.copyWith(
                             fontSize: 14,
                             height: 1.2,
