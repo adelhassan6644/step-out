@@ -127,7 +127,7 @@ class CategoryDetailsProvider extends ChangeNotifier {
       notifyListeners();
 
       Either<ServerFailure, Response> response =
-          await repo.getServices(id: selectedSubCategoryId);
+          await repo.getServices(selectedSubCategoryId);
 
       response.fold(
         (fail) {

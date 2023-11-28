@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stepOut/features/language/provider/localization_provider.dart';
+import '../../app/core/utils/app_storage_keys.dart';
 import '../api/end_points.dart';
 import '../config/di.dart';
 import 'api_clinet.dart';
@@ -30,7 +31,8 @@ class DioClient extends ApiClient {
         'Content-Type': 'application/json; charset=UTF-8',
         "Accept": " application/json",
         'x-api-key': EndPoints.apiKey,
-        "Accept-Language": sl<LocalizationProvider>().locale.languageCode
+        "Accept-Language":
+            sharedPreferences.getString(AppStorageKey.languageCode)
         // if (sharedPreferences.getString(AppStorageKey.apiToken) != null)
         //   'x-api-key': sharedPreferences.getString(AppStorageKey.apiToken)
       };
@@ -48,6 +50,16 @@ class DioClient extends ApiClient {
   //     'x-api-key': token
   //   };
   // }
+
+  ///Update Language in header
+  updateLang(lang) {
+    dio.options.headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+      "Accept": " application/json",
+      'x-api-key': EndPoints.apiKey,
+      "Accept-Language": lang
+    };
+  }
 
   @override
   Future<Response> get({

@@ -4,7 +4,8 @@ import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/localization/language_constant.dart';
 import 'package:stepOut/features/home/provider/home_provider.dart';
 import 'package:stepOut/features/search/provider/search_provider.dart';
-
+import 'package:syncfusion_flutter_sliders/sliders.dart';
+import 'package:intl/intl.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
@@ -19,6 +20,27 @@ class FiltrationBottomSheet extends StatelessWidget {
     return Consumer<SearchProvider>(builder: (_, provider, child) {
       return Column(
         children: [
+          ///Range
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL.w,
+              vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
+            ),
+            child: SfSlider(
+              min: 0.0,
+              max: 100.0,
+              value: provider.range ?? 0,
+              interval: 20,
+              showTicks: true,
+              showLabels: true,
+              enableTooltip: true,
+              numberFormat:
+                  NumberFormat("#.## ${getTranslated("km", context)}"),
+              minorTicksPerInterval: 1,
+              onChanged: provider.onSelectRange,
+            ),
+          ),
+
           ///Categories
           Consumer<HomeProvider>(builder: (_, categoryProvider, child) {
             return Padding(

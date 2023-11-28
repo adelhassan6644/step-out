@@ -74,6 +74,7 @@ dependencies:
   rxdart: ^0.26.0
   scroll_to_index: ^3.0.1
   should_rebuild: ^1.0.1
+  syncfusion_flutter_sliders: ^21.2.10
 
 
 

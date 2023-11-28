@@ -16,6 +16,7 @@ import '../../features/item_details/provider/send_rate_provider.dart';
 import '../../features/item_details/repo/item_details_repo.dart';
 import '../../features/item_details/repo/ratting_repo.dart';
 import '../../features/language/provider/localization_provider.dart';
+import '../../features/language/repo/localization_repo.dart';
 import '../../features/maps/repo/maps_repo.dart';
 import '../../features/news/provider/news_provider.dart';
 import '../../features/news/repo/news_repo.dart';
@@ -49,6 +50,8 @@ Future<void> init() async {
       ));
 
   // Repository
+  sl.registerLazySingleton(() => LocalizationRepo(dioClient: sl()));
+
   sl.registerLazySingleton(() => SplashRepo(sharedPreferences: sl()));
   sl.registerLazySingleton(
       () => AuthRepo(sharedPreferences: sl(), dioClient: sl()));
@@ -76,7 +79,8 @@ Future<void> init() async {
       () => SearchRepo(sharedPreferences: sl(), dioClient: sl()));
 
   //provider
-  sl.registerLazySingleton(() => LocalizationProvider(sharedPreferences: sl()));
+  sl.registerLazySingleton(
+      () => LocalizationProvider(sharedPreferences: sl(), repo: sl()));
   sl.registerLazySingleton(() => ThemeProvider(sharedPreferences: sl()));
   sl.registerLazySingleton(() => MainPageProvider());
   sl.registerLazySingleton(() => SplashProvider(splashRepo: sl()));

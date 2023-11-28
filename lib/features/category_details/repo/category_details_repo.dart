@@ -32,8 +32,8 @@ class CategoryDetailsRepo {
         "long": position.longitude,
       });
 
-      Response response =
-          await dioClient.post(uri: EndPoints.searchPlaces, queryParameters: filter);
+      Response response = await dioClient.post(
+          uri: EndPoints.searchPlaces, queryParameters: filter);
       if (response.statusCode == 200) {
         return Right(response);
       } else {
@@ -44,11 +44,11 @@ class CategoryDetailsRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> getServices({int? id}) async {
+  Future<Either<ServerFailure, Response>> getServices(int? id) async {
     try {
       Response response = await dioClient.get(
           uri: EndPoints.services,
-          queryParameters: {if (id != null) "sub_category_id": id});
+          queryParameters: {if (id != -1) "sub_category_id": id});
       if (response.statusCode == 200) {
         return Right(response);
       } else {

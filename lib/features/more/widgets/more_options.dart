@@ -40,8 +40,7 @@ class MoreOptions extends StatelessWidget {
                   CustomNavigator.pop();
                   provider.setLanguage(
                     Locale(
-                      AppStorageKey
-                          .languages[provider.selectIndex].languageCode!,
+                      AppStorageKey.languages[provider.selectIndex].languageCode!,
                       AppStorageKey.languages[provider.selectIndex].countryCode,
                     ),
                   );

@@ -23,7 +23,7 @@ class SearchProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  int? range;
+  double? range;
   onSelectRange(v) {
     range = v;
     notifyListeners();

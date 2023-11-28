@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../app/core/utils/app_storage_keys.dart';
 import '../model/language_model.dart';
+import '../repo/localization_repo.dart';
 
 class LocalizationProvider extends ChangeNotifier {
   final SharedPreferences sharedPreferences;
+  final LocalizationRepo repo;
 
-  LocalizationProvider({required this.sharedPreferences}) {
+  LocalizationProvider({required this.sharedPreferences, required this.repo}) {
     _loadCurrentLanguage();
     initializeAllLanguages();
   }
@@ -36,11 +38,12 @@ class LocalizationProvider extends ChangeNotifier {
     _locale = locale;
     if (_locale.languageCode == 'ar') {
       _isLtr = false;
-    }
-    else {
+    } else {
       _isLtr = true;
     }
+    repo.updateLanguage(_locale.languageCode);
     _saveLanguage(_locale);
+
     notifyListeners();
   }
 
@@ -58,7 +61,8 @@ class LocalizationProvider extends ChangeNotifier {
   }
 
   _saveLanguage(Locale locale) async {
-    sharedPreferences.setString(AppStorageKey.languageCode, locale.languageCode);
+    sharedPreferences.setString(
+        AppStorageKey.languageCode, locale.languageCode);
     sharedPreferences.setString(AppStorageKey.countryCode, locale.countryCode!);
   }
 }
