@@ -47,7 +47,7 @@ class _SearchHeaderState extends State<SearchHeader> {
                 height: context.height * 0.8,
                 withPadding: false,
                 list: const FiltrationBottomSheet(),
-                onDismiss: () => provider.clear(),
+                onDismiss: () => provider.clearFilter(),
                 label: getTranslated("filter", context),
                 onConfirm: () {
                   CustomNavigator.pop();

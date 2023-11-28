@@ -17,6 +17,28 @@ class SearchProvider extends ChangeNotifier {
 
   final TextEditingController searchTEC = TextEditingController();
 
+  final FocusNode searchNode = FocusNode();
+  bool focusOnSearch = false;
+  hasFocus() {
+    searchNode.addListener(() {
+      focusOnSearch = searchNode.hasFocus;
+      notifyListeners();
+    });
+  }
+
+  init() {
+    hasFocus();
+    searchTEC.clear();
+    range = 100;
+    selectedCategory = null;
+    selectedSubCategory = null;
+    selectedServices.clear();
+    selectedSubServices.clear();
+    servicesModel?.clear();
+    result.clear();
+    notifyListeners();
+  }
+
   clearTEC() {
     searchTEC.clear();
     result.clear();
@@ -78,7 +100,8 @@ class SearchProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  clear() {
+  clearFilter() {
+    range = 100;
     selectedCategory = null;
     selectedSubCategory = null;
     selectedServices.clear();
@@ -87,6 +110,7 @@ class SearchProvider extends ChangeNotifier {
     getResult();
     notifyListeners();
   }
+
 
   List<SubCategoryModel>? servicesModel;
   bool isGetServices = false;

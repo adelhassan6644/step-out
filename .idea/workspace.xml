@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add jks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/item_services_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/item_services_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/page/search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/page/search.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/provider/search_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/provider/search_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/search/widgets/search_bar_widgtet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/widgets/search_bar_widgtet.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/search/widgets/search_header.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/widgets/search_header.dart" afterDir="false" />
     </list>
@@ -122,13 +123,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688516389160</updated>
-    </task>
-    <task id="LOCAL-00062" summary="add AppCenter">
-      <created>1699877339481</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1699877339481</updated>
     </task>
     <task id="LOCAL-00063" summary="add AppCenter">
       <created>1699884177164</created>
@@ -466,7 +460,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701199454420</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="add jks">
+      <created>1701200928651</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1701200928651</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

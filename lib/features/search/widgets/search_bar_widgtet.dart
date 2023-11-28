@@ -21,16 +21,6 @@ class SearchBarWidget extends StatefulWidget {
 
 class _SearchBarWidgetState extends State<SearchBarWidget> {
   Timer? timer;
-  final FocusNode searchNode = FocusNode();
-  bool focusOnSearch = false;
-
-  @override
-  void initState() {
-    searchNode.addListener(() {
-      focusOnSearch = searchNode.hasFocus;
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,15 +47,15 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
               FocusScope.of(context).requestFocus(FocusNode());
             },
             textInputAction: TextInputAction.search,
-            autofocus: focusOnSearch,
-            focusNode: searchNode,
+            autofocus: provider.focusOnSearch,
+            focusNode: provider.searchNode,
             decoration: InputDecoration(
                 prefixIcon: Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: Dimensions.PADDING_SIZE_SMALL.w),
                   child: customImageIconSVG(
                       imageName: SvgImages.search,
-                      color: focusOnSearch
+                      color: provider.focusOnSearch
                           ? Styles.PRIMARY_COLOR
                           : Styles.HINT_COLOR),
                 ),
@@ -113,7 +103,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                 ),
                 hintStyle: AppTextStyles.regular.copyWith(
                     fontSize: 14,
-                    color: focusOnSearch
+                    color: provider.focusOnSearch
                         ? Styles.PRIMARY_COLOR
                         : Styles.HINT_COLOR),
                 contentPadding: EdgeInsets.symmetric(
