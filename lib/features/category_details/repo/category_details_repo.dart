@@ -32,9 +32,8 @@ class CategoryDetailsRepo {
         "long": position.longitude,
       });
 
-      Response response = await dioClient.get(
-          uri: EndPoints.getCategoryDetails(categoryId),
-          queryParameters: filter);
+      Response response =
+          await dioClient.post(uri: EndPoints.searchPlaces, queryParameters: filter);
       if (response.statusCode == 200) {
         return Right(response);
       } else {

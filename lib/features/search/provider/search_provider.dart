@@ -132,11 +132,11 @@ class SearchProvider extends ChangeNotifier {
 
       Map<String, dynamic> filter = {
         "name": searchTEC.text.trim(),
-        "range": range,
+        "range": range ?? 100,
         "category_id": selectedCategory?.id,
         "sub_category_id": selectedSubCategory,
-        "service_id": selectedServices,
-        "sub_service_id": selectedSubServices,
+        "service_ids": selectedServices,
+        "sub_service_ids": selectedSubServices,
       };
 
       Either<ServerFailure, Response> response = await repo.getSearch(filter);

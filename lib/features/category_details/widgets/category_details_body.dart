@@ -38,12 +38,7 @@ class CategoryDetailsBody extends StatelessWidget {
                     ),
                   ),
                 )
-              : provider.model != null
-                  // .&&
-                  //         provider.model!.data != null &&
-                  //         provider.model!.data!.places != null &&
-                  //         provider.model!.data!.places != null &&
-                  //         provider.model!.data!.places!.isNotEmpty
+              : provider.model != null && provider.model!.isNotEmpty
                   ? RefreshIndicator(
                       onRefresh: () async {
                         provider.getPlaces();
@@ -57,12 +52,12 @@ class CategoryDetailsBody extends StatelessWidget {
                                   horizontal:
                                       Dimensions.PADDING_SIZE_DEFAULT.w),
                               data: List.generate(
-                                8,
+                                provider.model?.length ?? 0,
                                 (int index) => Padding(
                                   padding: EdgeInsets.only(
                                     bottom: Dimensions.PADDING_SIZE_DEFAULT.h,
                                   ),
-                                  child: const ItemCard(),
+                                  child: ItemCard(item: provider.model?[index]),
                                 ),
                               ),
                             ),
@@ -83,14 +78,18 @@ class CategoryDetailsBody extends StatelessWidget {
                                   horizontal:
                                       Dimensions.PADDING_SIZE_DEFAULT.w),
                               data: [
-                                EmptyState(
-                                  imgWidth: 215.w,
-                                  imgHeight: 220.h,
-                                  spaceBtw: 12,
-                                  txt: getTranslated(
-                                      "there_is_no_data", context),
-                                  subText:
-                                      "انتظرنا حتي تكتشف معانا اماكن جديدة",
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: context.height * 0.125),
+                                  child: EmptyState(
+                                    imgWidth: 215.w,
+                                    imgHeight: 220.h,
+                                    spaceBtw: 12,
+                                    txt: getTranslated(
+                                        "there_is_no_data", context),
+                                    subText:
+                                        getTranslated("follow_up", context),
+                                  ),
                                 ),
                               ],
                             ),

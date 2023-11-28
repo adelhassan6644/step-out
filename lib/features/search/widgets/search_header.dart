@@ -29,8 +29,10 @@ class _SearchHeaderState extends State<SearchHeader> {
   Widget build(BuildContext context) {
     return Consumer<SearchProvider>(builder: (_, provider, child) {
       return Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+        padding: EdgeInsets.symmetric(
+          horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+          vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
+        ),
         child: Row(
           children: [
             Expanded(
@@ -87,7 +89,7 @@ class _SearchHeaderState extends State<SearchHeader> {
                   provider.getResult();
                 },
               ),
-            )
+            ),
           ],
         ),
       );

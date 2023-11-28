@@ -79,7 +79,8 @@ class ItemDetailsModel {
         snapchat: json["snapchat"],
         closingTime: json["closing_time"],
         openingTime: json["opening_time"],
-        rating: double.parse(json["rating"].toString()),
+        rating: double.parse(
+            json["rating"] != null ? json["rating"].toString() : "0"),
         totalRating: json["ratingCount"],
         images: json["images"] == null
             ? []

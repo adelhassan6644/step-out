@@ -16,7 +16,6 @@ class EndPoints {
   static getProfile(id) => 'client/$id';
   static deleteAcc(id) => 'client/destroy/$id';
   static updateProfile(id) => 'client/$id';
-  static const String search = 'check/verificationCode';
   static getFavourites(id) => 'favorites/$id';
   static const String postFavourite = 'favorite';
   static const String banners = 'banner';
@@ -25,6 +24,7 @@ class EndPoints {
   static const String services = 'service';
   static getCategoryDetails(id) => 'category/$id';
   static const String category = 'category';
+  static const String searchPlaces = 'place/search';
   static const String offers = 'offer';
   static const String aboutUs = 'about_us';
   static const String setting = 'setting';

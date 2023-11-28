@@ -41,7 +41,7 @@ class SearchRepo {
       log(filter.entries.toString());
 
       Response response =
-          await dioClient.post(uri: EndPoints.search, data: filter);
+          await dioClient.post(uri: EndPoints.searchPlaces, data: filter);
 
       if (response.statusCode == 200) {
         return Right(response);

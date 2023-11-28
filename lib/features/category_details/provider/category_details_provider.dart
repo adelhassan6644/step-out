@@ -8,7 +8,7 @@ import 'package:stepOut/features/home/models/categories_model.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../data/error/failures.dart';
-import '../model/category_details_model.dart';
+import '../../item_details/model/item_details_model.dart';
 
 class CategoryDetailsProvider extends ChangeNotifier {
   CategoryDetailsRepo repo;
@@ -69,31 +69,41 @@ class CategoryDetailsProvider extends ChangeNotifier {
     getPlaces();
   }
 
-  CategoryDetailsModel? model;
+  List<ItemDetailsModel>? model;
   bool isLoading = false;
   getPlaces() async {
     try {
-      model = null;
+      model?.clear();
       isLoading = true;
       notifyListeners();
       Map<String, dynamic> filter = {
         "category_id": selectedCategoryId,
+        "range": 100,
         if (selectedSubCategoryId != -1)
           "sub_category_id": selectedSubCategoryId,
-        if (selectedServicesId.isNotEmpty) "service_id": selectedServicesId,
+        if (selectedServicesId.isNotEmpty)
+          "service_ids": selectedServicesId.toList(),
       };
+
       Either<ServerFailure, Response> response =
           await repo.getPlaces(categoryId: selectedCategoryId!, filter: filter);
-      response.fold((fail) {
-        CustomSnackBar.showSnackBar(
-            notification: AppNotification(
-                message: ApiErrorHandler.getMessage(fail),
-                isFloating: true,
-                backgroundColor: Styles.IN_ACTIVE,
-                borderColor: Colors.transparent));
-      }, (success) {
-        model = CategoryDetailsModel.fromJson(success.data);
-      });
+      response.fold(
+        (fail) {
+          CustomSnackBar.showSnackBar(
+              notification: AppNotification(
+                  message: ApiErrorHandler.getMessage(fail),
+                  isFloating: true,
+                  backgroundColor: Styles.IN_ACTIVE,
+                  borderColor: Colors.transparent));
+        },
+        (success) {
+          model = List<ItemDetailsModel>.from(
+            success.data["data"].map(
+              (x) => ItemDetailsModel.fromJson(x),
+            ),
+          );
+        },
+      );
       isLoading = false;
       notifyListeners();
     } catch (e) {

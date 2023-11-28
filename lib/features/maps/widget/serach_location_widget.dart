@@ -37,49 +37,49 @@ class SearchLocationWidget extends StatelessWidget {
       ),
     );
     return TypeAheadField(
-      textFieldConfiguration: TextFieldConfiguration(
-        controller: _controller,
-        textInputAction: TextInputAction.search,
-        textCapitalization: TextCapitalization.words,
-        keyboardType: TextInputType.streetAddress,
-        decoration: InputDecoration(
-          border: border,
-          disabledBorder: border,
-          focusedBorder: border,
-          enabledBorder: border,
-          alignLabelWithHint: true,
-          prefixIcon: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: Dimensions.PADDING_SIZE_DEFAULT),
-            child: Icon(
-              Icons.location_on,
-              size: 25,
-              color: (isEnabled == null || isEnabled)
-                  ? Theme.of(context).primaryColor
-                  : Theme.of(context).disabledColor,
-            ),
-          ),
-          prefixIconConstraints: BoxConstraints(maxHeight: 30),
-          suffixIcon: Icon(Icons.search,
-              size: 25, color: Theme.of(context).textTheme.bodyText1?.color),
-          isDense: true,
-          filled: true,
-          hintText: "search location",
-          fillColor: Theme.of(context).cardColor,
-          hintStyle: AppTextStyles.regular.copyWith(
-              fontSize: Dimensions.FONT_SIZE_DEFAULT,
-              color: Styles.DISABLED),
-          contentPadding: EdgeInsets.only(
-            bottom: Dimensions.PADDING_SIZE_DEFAULT,
-            top: Dimensions.PADDING_SIZE_DEFAULT,
-            left: Dimensions.PADDING_SIZE_EXTRA_SMALL,
-          ),
-        ),
-        style: AppTextStyles.regular.copyWith(
-          color: Theme.of(context).textTheme.bodyText1?.color,
-          fontSize: Dimensions.FONT_SIZE_LARGE,
-        ),
-      ),
+      // textFieldConfiguration: TextFieldConfiguration(
+      //   controller: _controller,
+      //   textInputAction: TextInputAction.search,
+      //   textCapitalization: TextCapitalization.words,
+      //   keyboardType: TextInputType.streetAddress,
+      //   decoration: InputDecoration(
+      //     border: border,
+      //     disabledBorder: border,
+      //     focusedBorder: border,
+      //     enabledBorder: border,
+      //     alignLabelWithHint: true,
+      //     prefixIcon: Padding(
+      //       padding: const EdgeInsets.symmetric(
+      //           horizontal: Dimensions.PADDING_SIZE_DEFAULT),
+      //       child: Icon(
+      //         Icons.location_on,
+      //         size: 25,
+      //         color: (isEnabled == null || isEnabled)
+      //             ? Theme.of(context).primaryColor
+      //             : Theme.of(context).disabledColor,
+      //       ),
+      //     ),
+      //     prefixIconConstraints: const BoxConstraints(maxHeight: 30),
+      //     suffixIcon: Icon(Icons.search,
+      //         size: 25, color: Theme.of(context).textTheme.bodyText1?.color),
+      //     isDense: true,
+      //     filled: true,
+      //     hintText: "search location",
+      //     fillColor: Theme.of(context).cardColor,
+      //     hintStyle: AppTextStyles.regular.copyWith(
+      //         fontSize: Dimensions.FONT_SIZE_DEFAULT,
+      //         color: Styles.DISABLED),
+      //     contentPadding: const EdgeInsets.only(
+      //       bottom: Dimensions.PADDING_SIZE_DEFAULT,
+      //       top: Dimensions.PADDING_SIZE_DEFAULT,
+      //       left: Dimensions.PADDING_SIZE_EXTRA_SMALL,
+      //     ),
+      //   ),
+      //   style: AppTextStyles.regular.copyWith(
+      //     color: Theme.of(context).textTheme.bodyText1?.color,
+      //     fontSize: Dimensions.FONT_SIZE_LARGE,
+      //   ),
+      // ),
       suggestionsCallback: (pattern) async {
         return await Provider.of<LocationProvider>(context, listen: false)
             .searchLocation(context, pattern);
@@ -100,7 +100,7 @@ class SearchLocationWidget extends StatelessWidget {
               color: Styles.PRIMARY_COLOR,
               size: 25,
             ),
-            SizedBox(
+            const SizedBox(
               width: Dimensions.PADDING_SIZE_DEFAULT,
             ),
             Expanded(
@@ -118,17 +118,17 @@ class SearchLocationWidget extends StatelessWidget {
           ]),
         );
       },
-      onSuggestionSelected: (PredictionModel suggestion) {
-        // if (isPickedUp == null) {
-        //   Get.find<LocationController>().setLocation(suggestion.placeId,
-        //       suggestion.description, mapController);
-        // } else {
-        //   Get.find<ParcelController>().setLocationFromPlace(
-        //       suggestion.placeId, suggestion.description, isPickedUp);
-        // }
-        // Get.back();
-      },
-      hideOnLoading: true,
+      // onSuggestionSelected: (PredictionModel suggestion) {
+      //   // if (isPickedUp == null) {
+      //   //   Get.find<LocationController>().setLocation(suggestion.placeId,
+      //   //       suggestion.description, mapController);
+      //   // } else {
+      //   //   Get.find<ParcelController>().setLocationFromPlace(
+      //   //       suggestion.placeId, suggestion.description, isPickedUp);
+      //   // }
+      //   // Get.back();
+      // },
+      hideOnLoading: true, onSelected: (PredictionModel value) {  },
     );
   }
 }

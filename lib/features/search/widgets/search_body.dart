@@ -28,7 +28,7 @@ class SearchBody extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                  vertical: context.height * 0.2),
+                  vertical: context.height * 0.12),
               child: EmptyState(
                 img: Images.startSearch,
                 imgWidth: context.width * 0.7,
@@ -44,7 +44,7 @@ class SearchBody extends StatelessWidget {
             child: Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                    vertical: context.height * 0.2),
+                    vertical: context.height * 0.12),
                 child: const CustomLoading()),
           ),
 
@@ -69,7 +69,7 @@ class SearchBody extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                  vertical: context.height * 0.2),
+                  vertical: context.height * 0.12),
               child: EmptyState(
                 img: Images.emptySearch,
                 imgWidth: context.width * 0.7,
