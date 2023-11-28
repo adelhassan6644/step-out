@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add jks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/search/page/search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/page/search.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/search/provider/search_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/provider/search_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/search/widgets/search_bar_widgtet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/widgets/search_bar_widgtet.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/search/widgets/search_header.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/widgets/search_header.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/feedback_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/feedback_card.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,20 +120,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688516389160</updated>
-    </task>
-    <task id="LOCAL-00063" summary="add AppCenter">
-      <created>1699884177164</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1699884177164</updated>
-    </task>
-    <task id="LOCAL-00064" summary="add AppCenter">
-      <created>1699884258647</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1699884258647</updated>
     </task>
     <task id="LOCAL-00065" summary="add AppCenter">
       <created>1699884333115</created>
@@ -467,7 +450,21 @@
       <option name="project" value="LOCAL" />
       <updated>1701200928651</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="add jks">
+      <created>1701203117178</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1701203117178</updated>
+    </task>
+    <task id="LOCAL-00113" summary="add jks">
+      <created>1701203970725</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1701203970725</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -509,5 +506,16 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="add jks" />
     <option name="LAST_COMMIT_MESSAGE" value="add jks" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/features/profile/provider/profile_provider.dart</url>
+          <line>182</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
+import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/components/custom_network_image.dart';
 
 import '../../../app/core/utils/styles.dart';
@@ -37,13 +38,29 @@ class FeedbackCard extends StatelessWidget {
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    item?.name ?? "",
-                    style: AppTextStyles.medium.copyWith(
-                        fontSize: 14,
-                        overflow: TextOverflow.ellipsis,
-                        color: Styles.TITLE),
-                    maxLines: 1,
+                  Row(
+                    children: [
+                      Text(
+                        item?.name ?? "",
+                        style: AppTextStyles.medium.copyWith(
+                            fontSize: 14,
+                            overflow: TextOverflow.ellipsis,
+                            color: Styles.TITLE),
+                        maxLines: 1,
+                      ),
+                      SizedBox(width: 12.w),
+                      Expanded(
+                        child: Text(
+                          (item?.createdAt ?? DateTime.now())
+                              .dateFormat(format: "dd/MMM"),
+                          style: AppTextStyles.medium.copyWith(
+                              fontSize: 14,
+                              overflow: TextOverflow.ellipsis,
+                              color: Styles.DETAILS_COLOR),
+                          maxLines: 1,
+                        ),
+                      )
+                    ],
                   ),
                   Row(
                     children: List.generate(
