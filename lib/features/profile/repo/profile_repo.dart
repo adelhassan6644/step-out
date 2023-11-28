@@ -54,7 +54,7 @@ class ProfileRepo {
 
   Future<Either<ServerFailure, Response>> deleteAcc() async {
     try {
-      Response response = await dioClient.get(
+      Response response = await dioClient.post(
         uri: EndPoints.deleteAcc(
             sharedPreferences.getString(AppStorageKey.userId)),
       );

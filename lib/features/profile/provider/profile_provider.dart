@@ -184,13 +184,14 @@ class ProfileProvider extends ChangeNotifier {
     }
   }
 
-  bool isDeleting = false;
   deleteAcc() async {
     try {
-      isDeleting = true;
+      CustomNavigator.pop();
+      loadingDialog();
       notifyListeners();
 
       Either<ServerFailure, Response> response = await profileRepo.deleteAcc();
+      CustomNavigator.pop();
 
       response.fold((fail) {
         showToast(ApiErrorHandler.getMessage(fail));
@@ -204,10 +205,9 @@ class ProfileProvider extends ChangeNotifier {
                 isFloating: true));
         Future.delayed(Duration.zero, () => sl<AuthProvider>().logOut());
       });
-      isDeleting = false;
       notifyListeners();
     } catch (e) {
-      isDeleting = false;
+      CustomNavigator.pop();
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
               message: e.toString(),

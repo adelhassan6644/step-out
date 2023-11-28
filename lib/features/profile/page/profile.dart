@@ -83,7 +83,6 @@ class Profile extends StatelessWidget {
                             children: [
                               Expanded(
                                   child: CustomButton(
-                                      isLoading: provider.isDeleting,
                                       onTap: () => provider.deleteAcc(),
                                       text: getTranslated("remove", context))),
                               SizedBox(width: 16.w),
