@@ -30,22 +30,31 @@ class SearchProvider extends ChangeNotifier {
   }
 
   CategoryItem? selectedCategory;
-  onSelectCategory(v) {
-    selectedCategory = v;
+  onSelectCategory(CategoryItem? v) {
+    if (v?.id == selectedCategory?.id) {
+      selectedCategory = null;
+    } else {
+      selectedCategory = v;
+    }
     selectedSubCategory = null;
     selectedServices.clear();
     servicesModel?.clear();
     selectedSubServices.clear();
+
     notifyListeners();
   }
 
   int? selectedSubCategory;
   onSelectSubCategory(v) {
-    selectedSubCategory = v;
-    selectedServices.clear();
+    if (v == selectedSubCategory) {
+      selectedSubCategory = null;
+    } else {
+      selectedSubCategory = v;
+      getServices();
+    }
     servicesModel?.clear();
+    selectedServices.clear();
     selectedSubServices.clear();
-    getServices();
     notifyListeners();
   }
 
