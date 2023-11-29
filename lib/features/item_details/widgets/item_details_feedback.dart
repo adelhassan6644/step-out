@@ -52,7 +52,10 @@ class ItemDetailsFeedback extends StatelessWidget {
                       if (Validations.feedBack(
                               sProvider.feedback.value?.trim()) ==
                           null) {
-                        sProvider.sendFeedback(provider.model?.id);
+                        sProvider.sendFeedback(
+                          model: provider.model,
+                          onChange: provider.updateModel,
+                        );
                       }
                     },
                     onClose: () => sProvider.clear(),

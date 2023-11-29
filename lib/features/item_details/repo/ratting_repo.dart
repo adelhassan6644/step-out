@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../app/core/utils/app_storage_keys.dart';
 import '../../../data/api/end_points.dart';
@@ -15,8 +16,23 @@ class RattingRepo {
 
   getUserId() => sharedPreferences.getString(AppStorageKey.userId);
 
+  Future<Position> getCurrentPosition() async {
+    await Geolocator.requestPermission();
+    return await Geolocator.getCurrentPosition(
+      forceAndroidLocationManager: true,
+      desiredAccuracy: LocationAccuracy.high,
+    );
+  }
+
   Future<Either<ServerFailure, Response>> sendRatting(body) async {
     try {
+      final position = await getCurrentPosition();
+
+      body.addAll({
+        "lat": position.latitude,
+        "long": position.longitude,
+      });
+
       Response response =
           await dioClient.post(uri: EndPoints.sendRate, data: body);
       if (response.statusCode == 200) {

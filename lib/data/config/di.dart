@@ -91,7 +91,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => AuthProvider(authRepo: sl()));
   sl.registerLazySingleton(() => NewsProvider(repo: sl()));
   sl.registerLazySingleton(() => CategoryDetailsProvider(repo: sl()));
-  sl.registerLazySingleton(() => ItemDetailsProvider(repo: sl()));
+  // sl.registerLazySingleton(() => ItemDetailsProvider(repo: sl()));
   sl.registerLazySingleton(() => RattingProvider(repo: sl()));
   sl.registerLazySingleton(() => HomeProvider(homeRepo: sl()));
   sl.registerLazySingleton(() => ProfileProvider(profileRepo: sl()));

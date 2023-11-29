@@ -48,28 +48,30 @@ class FeedbackCard extends StatelessWidget {
                             color: Styles.TITLE),
                         maxLines: 1,
                       ),
-                      SizedBox(width: 12.w),
-                      Expanded(
-                        child: Text(
-                          (item?.createdAt ?? DateTime.now())
-                              .dateFormat(format: "dd/MMM"),
-                          style: AppTextStyles.medium.copyWith(
-                              fontSize: 14,
-                              overflow: TextOverflow.ellipsis,
-                              color: Styles.DETAILS_COLOR),
-                          maxLines: 1,
-                        ),
-                      )
+                      // SizedBox(width: 12.w),
+                      // Expanded(
+                      //   child: Text(
+                      //     (item?.createdAt ?? DateTime.now())
+                      //         .dateFormat(format: "dd/MMM"),
+                      //     style: AppTextStyles.medium.copyWith(
+                      //         fontSize: 14,
+                      //         overflow: TextOverflow.ellipsis,
+                      //         color: Styles.DETAILS_COLOR),
+                      //     maxLines: 1,
+                      //   ),
+                      // )
                     ],
                   ),
                   Row(
                     children: List.generate(
-                      item?.rating ?? 0,
+                      5,
                       (index) => customImageIconSVG(
                         height: 14,
                         width: 14,
-                        color: 2 < index ? Styles.DETAILS_COLOR : Colors.amber,
-                        imageName: 2 < index
+                        color: (item?.rating?.ceil() ?? 0) < index
+                            ? Styles.DETAILS_COLOR
+                            : Colors.amber,
+                        imageName: (item?.rating?.ceil() ?? 0) < index
                             ? SvgImages.emptyStar
                             : SvgImages.fillStar,
                       ),

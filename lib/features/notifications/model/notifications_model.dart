@@ -84,14 +84,14 @@ class NotificationBody {
   String? image;
   String? message;
   int? status;
-  int? offer_id;
+  int? placeId;
 
   NotificationBody({
     this.title,
     this.message,
     this.image,
     this.status,
-    this.offer_id,
+    this.placeId,
   });
 
   factory NotificationBody.fromJson(Map<String, dynamic> json) =>
@@ -100,13 +100,13 @@ class NotificationBody {
         image: json["image"],
         message: json["message"],
         status: json["status"],
-        offer_id: json["offer_id"],
+        placeId: json["place_id"],
       );
 
   Map<String, dynamic> toJson() => {
         "title": title,
         "message": message,
         "status": status,
-        "reservation_id": offer_id,
+        "place_id": placeId,
       };
 }

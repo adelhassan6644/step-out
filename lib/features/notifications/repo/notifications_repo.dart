@@ -14,13 +14,12 @@ class NotificationsRepo {
 
   NotificationsRepo({required this.dioClient, required this.sharedPreferences});
 
-  bool isLoggedIn() {
-    return sharedPreferences.containsKey(AppStorageKey.isLogin);
-  }
+  String get userId => sharedPreferences.getString(AppStorageKey.userId) ?? "";
 
   Future<Either<ServerFailure, Response>> getNotifications() async {
     try {
-      Response response = await dioClient.get(uri: EndPoints.notifications);
+      Response response =
+          await dioClient.get(uri: EndPoints.getNotifications(userId));
       if (response.statusCode == 200) {
         return Right(response);
       } else {
@@ -34,7 +33,7 @@ class NotificationsRepo {
   Future<Either<ServerFailure, Response>> readNotification(id) async {
     try {
       Response response =
-          await dioClient.post(uri: EndPoints.readNotification(id));
+          await dioClient.post(uri: EndPoints.readNotification(userId, id));
       if (response.statusCode == 200) {
         return Right(response);
       } else {
@@ -48,7 +47,7 @@ class NotificationsRepo {
   Future<Either<ServerFailure, Response>> deleteNotification(id) async {
     try {
       Response response =
-          await dioClient.post(uri: EndPoints.deleteNotification(id));
+          await dioClient.post(uri: EndPoints.deleteNotification(userId, id));
       if (response.statusCode == 200) {
         return Right(response);
       } else {

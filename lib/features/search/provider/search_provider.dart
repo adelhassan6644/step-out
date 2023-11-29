@@ -7,6 +7,7 @@ import 'package:stepOut/features/item_details/model/item_details_model.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
+import '../../../main_models/service_model.dart';
 import '../repo/search_repo.dart';
 
 class SearchProvider extends ChangeNotifier {
@@ -34,7 +35,7 @@ class SearchProvider extends ChangeNotifier {
     selectedSubCategory = null;
     selectedServices.clear();
     selectedSubServices.clear();
-    servicesModel?.clear();
+    services?.clear();
     result.clear();
     notifyListeners();
   }
@@ -60,7 +61,7 @@ class SearchProvider extends ChangeNotifier {
     }
     selectedSubCategory = null;
     selectedServices.clear();
-    servicesModel?.clear();
+    services?.clear();
     selectedSubServices.clear();
 
     notifyListeners();
@@ -72,9 +73,11 @@ class SearchProvider extends ChangeNotifier {
       selectedSubCategory = null;
     } else {
       selectedSubCategory = v;
-      getServices();
+      if (v != -1) {
+        getServices(v);
+      }
     }
-    servicesModel?.clear();
+    services?.clear();
     selectedServices.clear();
     selectedSubServices.clear();
     notifyListeners();
@@ -106,22 +109,20 @@ class SearchProvider extends ChangeNotifier {
     selectedSubCategory = null;
     selectedServices.clear();
     selectedSubServices.clear();
-    servicesModel?.clear();
+    services?.clear();
     getResult();
     notifyListeners();
   }
 
-
-  List<SubCategoryModel>? servicesModel;
+  List<ServiceModel>? services;
   bool isGetServices = false;
-  getServices() async {
+  getServices(id) async {
     try {
-      servicesModel?.clear();
+      services?.clear();
       isGetServices = true;
       notifyListeners();
 
-      Either<ServerFailure, Response> response =
-          await repo.getServices(id: selectedSubCategory);
+      Either<ServerFailure, Response> response = await repo.getServices(id);
 
       response.fold(
         (fail) {
@@ -133,9 +134,9 @@ class SearchProvider extends ChangeNotifier {
                   borderColor: Colors.transparent));
         },
         (success) {
-          servicesModel = List<SubCategoryModel>.from(
+          services = List<ServiceModel>.from(
             success.data["data"].map(
-              (x) => SubCategoryModel.fromJson(x),
+              (x) => ServiceModel.fromJson(x),
             ),
           );
         },

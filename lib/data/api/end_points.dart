@@ -21,7 +21,7 @@ class EndPoints {
   static const String banners = 'banner';
   static const String news = 'news';
   static getItemDetails(id) => 'place/$id';
-  static const String services = 'service';
+  static getServices(id) => 'subcategory/services/$id';
   static getCategoryDetails(id) => 'category/$id';
   static const String category = 'category';
   static const String searchPlaces = 'place/search';
@@ -30,9 +30,12 @@ class EndPoints {
   static const String offers = 'offer';
   static const String aboutUs = 'about_us';
   static const String setting = 'setting';
-  static const String notifications = 'notification/notification';
-  static readNotification(id) => 'notification/read';
-  static deleteNotification(id) => 'notification/read';
+
+  ///Notification
+  static getNotifications(id) => 'notification/$id';
+  static readNotification(userId, id) => 'notification/read/$userId/$id';
+  static deleteNotification(userId, id) => 'notification/delete/$userId/$id';
+
   static const String sendRate = 'feedback';
   static const String nearPlaces = 'near/places';
 

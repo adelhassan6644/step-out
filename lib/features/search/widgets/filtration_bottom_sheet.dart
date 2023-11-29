@@ -196,8 +196,8 @@ class FiltrationBottomSheet extends StatelessWidget {
             children: [
               Visibility(
                 visible: provider.isGetServices ||
-                    (provider.servicesModel != null &&
-                        provider.servicesModel!.isNotEmpty),
+                    (provider.services != null &&
+                        provider.services!.isNotEmpty),
                 child: Padding(
                   padding: EdgeInsets.only(
                       left: Dimensions.PADDING_SIZE_DEFAULT.w,
@@ -213,8 +213,8 @@ class FiltrationBottomSheet extends StatelessWidget {
               provider.isGetServices
                   ? const _ShimmerLoading()
                   : Visibility(
-                      visible: (provider.servicesModel != null &&
-                          provider.servicesModel!.isNotEmpty),
+                      visible: (provider.services != null &&
+                          provider.services!.isNotEmpty),
                       child: Padding(
                         padding: EdgeInsets.only(bottom: 12.h),
                         child: SingleChildScrollView(
@@ -225,7 +225,7 @@ class FiltrationBottomSheet extends StatelessWidget {
                               SizedBox(
                                   width: Dimensions.PADDING_SIZE_DEFAULT.w),
                               ...List.generate(
-                                provider.servicesModel?.length ?? 0,
+                                provider.services?.length ?? 0,
                                 (index) => Padding(
                                   padding: EdgeInsets.symmetric(
                                       horizontal: 6.w, vertical: 4.h),
@@ -237,7 +237,7 @@ class FiltrationBottomSheet extends StatelessWidget {
                                       highlightColor: Colors.transparent,
                                       splashColor: Colors.transparent,
                                       onTap: () => provider.onSelectService(
-                                          provider.servicesModel?[index].id),
+                                          provider.services?[index].id),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
@@ -245,10 +245,10 @@ class FiltrationBottomSheet extends StatelessWidget {
                                           CustomNetworkImage.circleNewWorkImage(
                                               radius: 30,
                                               image: provider
-                                                  .servicesModel?[index].image),
+                                                  .services?[index].image),
                                           const SizedBox(height: 4),
                                           Text(
-                                            provider.servicesModel?[index]
+                                            provider.services?[index]
                                                     .name ??
                                                 "",
                                             textAlign: TextAlign.center,

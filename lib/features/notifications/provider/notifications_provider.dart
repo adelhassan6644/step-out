@@ -29,8 +29,6 @@ class NotificationsProvider extends ChangeNotifier {
     });
   }
 
-  bool get isLogin => repo.isLoggedIn();
-
   NotificationsModel? model;
   bool isLoading = false;
   getNotifications() async {

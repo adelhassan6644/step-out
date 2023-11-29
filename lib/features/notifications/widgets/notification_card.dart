@@ -30,7 +30,7 @@ class _NotificationCardState extends State<NotificationCard> {
     return InkWell(
       onTap: () {
         CustomNavigator.push(Routes.ITEM_DETAILS,
-            arguments: widget.notification?.notificationBody?.offer_id);
+            arguments: widget.notification?.notificationBody?.placeId);
         if (widget.notification?.isRead != true) {
           sl<NotificationsProvider>()
               .readNotification(widget.notification?.id ?? 0);

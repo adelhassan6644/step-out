@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add jks">
-      <change afterPath="$PROJECT_DIR$/lib/features/hashtag_places/page/hashtag_places.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/features/hashtag_places/provider/hashtag_places_provider.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/features/hashtag_places/repo/hashtag_places_repo.dart" afterDir="false" />
+    <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add tag places">
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/.filecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/app.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/debug_ios_bundle_flutter_assets.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/debug_ios_bundle_flutter_assets.stamp" afterDir="false" />
@@ -21,14 +18,22 @@
       <change beforePath="$PROJECT_DIR$/lib/data/config/provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/config/provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/category_details/provider/category_details_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/category_details/provider/category_details_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/category_details/repo/category_details_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/category_details/repo/category_details_repo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/category_details/widgets/services_selction_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/category_details/widgets/services_selction_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/home_banners.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/home_banners.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/home_categories.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/home_categories.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/home_offers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/home_offers.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/model/item_details_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/model/item_details_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_contact_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_contact_info.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/navigation/custom_navigation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/navigation/custom_navigation.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/navigation/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/navigation/routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/hashtag_places/repo/hashtag_places_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/hashtag_places/repo/hashtag_places_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/item_details/page/item_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/page/item_details.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/item_details/provider/item_details_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/provider/item_details_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/item_details/provider/send_rate_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/provider/send_rate_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/item_details/repo/ratting_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/repo/ratting_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/feedback_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/feedback_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_feedback.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_feedback.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/send_rate_bottom_sheet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/send_rate_bottom_sheet.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/notifications/model/notifications_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/notifications/model/notifications_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/notifications/provider/notifications_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/notifications/provider/notifications_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/notifications/repo/notifications_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/notifications/repo/notifications_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/notifications/widgets/notification_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/notifications/widgets/notification_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/provider/search_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/provider/search_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/repo/search_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/repo/search_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/search/widgets/filtration_bottom_sheet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/search/widgets/filtration_bottom_sheet.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main_widgets/item_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_widgets/item_card.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +72,8 @@
     <setting file="file://$PROJECT_DIR$/lib/components/empty_widget.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/features/home/page/home.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/features/home/provider/home_provider.dart" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/lib/features/notifications/provider/notifications_provider.dart" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/features/item_details/widgets/item_details_feedback.dart" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/features/item_details/widgets/send_rate_bottom_sheet.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/helpers/location_helper.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/main.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pubspec.yaml" root0="FORCE_HIGHLIGHTING" />
@@ -142,13 +148,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688516389160</updated>
-    </task>
-    <task id="LOCAL-00066" summary="add AppCenter">
-      <created>1699884807864</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1699884807864</updated>
     </task>
     <task id="LOCAL-00067" summary="add AppCenter">
       <created>1699885030395</created>
@@ -486,7 +485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701204586942</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="add tag places">
+      <created>1701289847012</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1701289847012</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -527,7 +533,8 @@
     <MESSAGE value="add AppCenter" />
     <MESSAGE value="first commit" />
     <MESSAGE value="add jks" />
-    <option name="LAST_COMMIT_MESSAGE" value="add jks" />
+    <MESSAGE value="add tag places" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tag places" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

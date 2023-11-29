@@ -37,7 +37,9 @@ class RattingProvider extends ChangeNotifier {
     updateFeedback(null);
   }
 
-  sendFeedback(id) async {
+  sendFeedback(
+      {ItemDetailsModel? model,
+      required Function(ItemDetailsModel) onChange}) async {
     if (ratting != -1) {
       try {
         CustomNavigator.pop();
@@ -46,7 +48,7 @@ class RattingProvider extends ChangeNotifier {
 
         var body = {
           "client_id": repo.getUserId(),
-          "place_id": id,
+          "place_id": model?.id,
           "rating": (ratting + 1),
           "comment": feedback.value.toString().trim()
         };
@@ -71,8 +73,8 @@ class RattingProvider extends ChangeNotifier {
           clear();
         }, (response) {
           Future.delayed(Duration.zero, () {
-            sl<ItemDetailsProvider>().model?.feedbacks?.add(feedbackModel);
-            sl<ItemDetailsProvider>().updateModel();
+            model?.feedbacks?.add(feedbackModel);
+            onChange(model!);
           });
           clear();
           CustomNavigator.pop();

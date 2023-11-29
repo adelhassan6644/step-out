@@ -35,7 +35,7 @@ abstract class ProviderList {
     ChangeNotifierProvider(create: (_) => di.sl<HomeProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<MapProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<CategoryDetailsProvider>()),
-    ChangeNotifierProvider(create: (_) => di.sl<ItemDetailsProvider>()),
+    // ChangeNotifierProvider(create: (_) => di.sl<ItemDetailsProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<RattingProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<CalenderProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<LocationProvider>()),
