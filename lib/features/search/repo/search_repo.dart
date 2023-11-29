@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:geolocator/geolocator.dart';
@@ -37,8 +35,6 @@ class SearchRepo {
         "lat": position.latitude,
         "long": position.longitude,
       });
-
-      log(filter.entries.toString());
 
       Response response =
           await dioClient.post(uri: EndPoints.searchPlaces, data: filter);

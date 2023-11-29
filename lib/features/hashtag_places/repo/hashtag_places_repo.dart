@@ -26,8 +26,8 @@ class HashtagPlacesRepo {
     try {
       final position = await getCurrentPosition();
 
-      Response response = await dioClient
-          .post(uri: EndPoints.getTagPlaces(tagId), queryParameters: {
+      Response response =
+          await dioClient.post(uri: EndPoints.getTagPlaces(tagId), data: {
         "lat": position.latitude,
         "long": position.longitude,
       });
