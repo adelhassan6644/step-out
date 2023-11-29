@@ -23,67 +23,73 @@ class HomeCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(builder: (_, provider, child) {
-      return Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-            vertical: Dimensions.PADDING_SIZE_SMALL.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              getTranslated("categories", context),
-              style: AppTextStyles.semiBold
-                  .copyWith(fontSize: 22, color: Styles.HEADER),
-            ),
-            provider.isGetCategories
-                ? GridListAnimatorWidget(
-                    aspectRatio: 0.78,
-                    columnCount: 3,
-                    items: List.generate(
-                      9,
-                      (int index) {
-                        return AnimationConfiguration.staggeredGrid(
-                            columnCount: 3,
-                            position: index,
-                            duration: const Duration(milliseconds: 375),
-                            child: const ScaleAnimation(
-                                child: FadeInAnimation(
-                                    child: _CategoryCardShimmer())));
-                      },
-                    ),
-                  )
-                : provider.categoriesModel != null &&
-                        provider.categoriesModel!.data != null &&
-                        provider.categoriesModel!.data!.isNotEmpty
-                    ? GridListAnimatorWidget(
-                        aspectRatio: 0.78,
-                        columnCount: 3,
-                        items: List.generate(
-                          provider.categoriesModel?.data?.length ?? 5,
-                          (int index) {
-                            return AnimationConfiguration.staggeredGrid(
+      return Visibility(
+        visible: provider.isGetCategories ||
+            (provider.categoriesModel != null &&
+                provider.categoriesModel!.data != null &&
+                provider.categoriesModel!.data!.isNotEmpty),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+              vertical: Dimensions.PADDING_SIZE_SMALL.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                getTranslated("categories", context),
+                style: AppTextStyles.semiBold
+                    .copyWith(fontSize: 22, color: Styles.HEADER),
+              ),
+              provider.isGetCategories
+                  ? GridListAnimatorWidget(
+                      aspectRatio: 0.78,
+                      columnCount: 3,
+                      items: List.generate(
+                        9,
+                        (int index) {
+                          return AnimationConfiguration.staggeredGrid(
                               columnCount: 3,
                               position: index,
                               duration: const Duration(milliseconds: 375),
-                              child: ScaleAnimation(
-                                child: FadeInAnimation(
-                                  child: _CategoryCard(
-                                    item:
-                                        provider.categoriesModel?.data?[index],
+                              child: const ScaleAnimation(
+                                  child: FadeInAnimation(
+                                      child: _CategoryCardShimmer())));
+                        },
+                      ),
+                    )
+                  : provider.categoriesModel != null &&
+                          provider.categoriesModel!.data != null &&
+                          provider.categoriesModel!.data!.isNotEmpty
+                      ? GridListAnimatorWidget(
+                          aspectRatio: 0.78,
+                          columnCount: 3,
+                          items: List.generate(
+                            provider.categoriesModel?.data?.length ?? 5,
+                            (int index) {
+                              return AnimationConfiguration.staggeredGrid(
+                                columnCount: 3,
+                                position: index,
+                                duration: const Duration(milliseconds: 375),
+                                child: ScaleAnimation(
+                                  child: FadeInAnimation(
+                                    child: _CategoryCard(
+                                      item: provider
+                                          .categoriesModel?.data?[index],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
+                              );
+                            },
+                          ),
+                        )
+                      : EmptyState(
+                          imgWidth: 215.w,
+                          imgHeight: 220.h,
+                          spaceBtw: 12,
+                          txt: getTranslated("there_is_no_data", context),
                         ),
-                      )
-                    : EmptyState(
-                        imgWidth: 215.w,
-                        imgHeight: 220.h,
-                        spaceBtw: 12,
-                        txt: getTranslated("there_is_no_data", context),
-                      ),
-          ],
+            ],
+          ),
         ),
       );
     });

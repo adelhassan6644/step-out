@@ -25,6 +25,8 @@ class EndPoints {
   static getCategoryDetails(id) => 'category/$id';
   static const String category = 'category';
   static const String searchPlaces = 'place/search';
+  static getTagPlaces(id) => 'tag/places/$id';
+
   static const String offers = 'offer';
   static const String aboutUs = 'about_us';
   static const String setting = 'setting';

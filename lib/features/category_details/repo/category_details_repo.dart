@@ -47,8 +47,7 @@ class CategoryDetailsRepo {
   Future<Either<ServerFailure, Response>> getServices(int? id) async {
     try {
       Response response = await dioClient.get(
-          uri: EndPoints.services,
-          queryParameters: {if (id != -1) "sub_category_id": id});
+          uri: EndPoints.services, queryParameters: {"sub_category_id": id});
       if (response.statusCode == 200) {
         return Right(response);
       } else {

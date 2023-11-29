@@ -20,67 +20,76 @@ class HomeOffers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(builder: (context, provider, child) {
-      return Padding(
-        padding:
-            EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_SMALL.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+      return Visibility(
+        visible: provider.isGetOffers ||
+            (provider.offersModel != null &&
+                provider.offersModel?.data != null &&
+                provider.offersModel!.data!.isNotEmpty),
+        child: Padding(
+          padding:
+              EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_SMALL.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                ),
+                child: Text(
+                  getTranslated("offers", context),
+                  style: AppTextStyles.semiBold
+                      .copyWith(fontSize: 22, color: Styles.HEADER),
+                ),
               ),
-              child: Text(
-                getTranslated("offers", context),
-                style: AppTextStyles.semiBold
-                    .copyWith(fontSize: 22, color: Styles.HEADER),
+              SizedBox(
+                height: 12.h,
               ),
-            ),
-            SizedBox(
-              height: 12.h,
-            ),
-            provider.isGetOffers
-                ? const _OfferShimmer()
-                : provider.offersModel != null &&
-                        provider.offersModel?.data != null &&
-                        provider.offersModel!.data!.isNotEmpty
-                    ? SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT.w),
-                            ...List.generate(
-                                provider.offersModel?.data?.length ?? 0,
-                                (index) => InkWell(
-                                      onTap: () => CustomNavigator.push(
-                                          Routes.ITEM_DETAILS,
-                                          arguments: provider.offersModel
-                                              ?.data?[index].placeId),
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 8.w),
-                                        child: CustomNetworkImage
-                                            .containerNewWorkImage(
-                                                image: provider.offersModel
-                                                        ?.data?[index].image ??
-                                                    AppStrings.networkImage,
-                                                height: 140.h,
-                                                width: context.width * 0.7,
-                                                fit: BoxFit.cover,
-                                                radius: 20,
-                                                borderColor:
-                                                    Styles.PRIMARY_COLOR),
-                                      ),
-                                    ))
-                          ],
+              provider.isGetOffers
+                  ? const _OfferShimmer()
+                  : provider.offersModel != null &&
+                          provider.offersModel?.data != null &&
+                          provider.offersModel!.data!.isNotEmpty
+                      ? SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                  width: Dimensions.PADDING_SIZE_DEFAULT.w),
+                              ...List.generate(
+                                  provider.offersModel?.data?.length ?? 0,
+                                  (index) => InkWell(
+                                        onTap: () => CustomNavigator.push(
+                                            Routes.ITEM_DETAILS,
+                                            arguments: provider.offersModel
+                                                ?.data?[index].placeId),
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 8.w),
+                                          child: CustomNetworkImage
+                                              .containerNewWorkImage(
+                                                  image: provider
+                                                          .offersModel
+                                                          ?.data?[index]
+                                                          .image ??
+                                                      AppStrings.networkImage,
+                                                  height: 140.h,
+                                                  width: context.width * 0.7,
+                                                  fit: BoxFit.cover,
+                                                  radius: 20,
+                                                  borderColor:
+                                                      Styles.PRIMARY_COLOR),
+                                        ),
+                                      ))
+                            ],
+                          ),
+                        )
+                      : EmptyState(
+                          emptyHeight: 140.h,
+                          withImage: false,
                         ),
-                      )
-                    : EmptyState(
-                        emptyHeight: 140.h,
-                        withImage: false,
-                      ),
-          ],
+            ],
+          ),
         ),
       );
     });

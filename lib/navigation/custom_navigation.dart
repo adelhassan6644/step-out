@@ -1,6 +1,7 @@
 import 'package:stepOut/features/auth/pages/change_password.dart';
 import 'package:stepOut/features/auth/pages/reset_password.dart';
 import 'package:stepOut/features/category_details/page/category_details.dart';
+import 'package:stepOut/features/hashtag_places/page/hashtag_places.dart';
 import 'package:stepOut/features/home/models/categories_model.dart';
 import 'package:stepOut/features/item_details/page/item_details.dart';
 import 'package:stepOut/features/notifications/page/notifications.dart';
@@ -90,6 +91,10 @@ abstract class CustomNavigator {
 
       case Routes.SEARCH:
         return _pageRoute(const Search());
+
+      case Routes.HASHTAG_PLACES:
+        return _pageRoute(
+            HashtagPlaces(item: settings.arguments as SubCategoryModel));
 
       case Routes.SUCCESS_PAGE:
         return _pageRoute(

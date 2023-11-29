@@ -22,7 +22,6 @@ class CategoryDetailsProvider extends ChangeNotifier {
     selectedSubCategoryIndex = 0;
     animatedScrollSubCategories(subCategoriesKeys[0].currentContext!);
     selectedServicesId.clear();
-    getServices();
     getPlaces();
     notifyListeners();
   }
@@ -55,7 +54,7 @@ class CategoryDetailsProvider extends ChangeNotifier {
       selectedSubCategoryIndex = i;
       selectedServicesId.clear();
       animatedScrollSubCategories(subCategoriesKeys[i].currentContext!);
-      getServices();
+      getServices(id);
       getPlaces();
     }
     notifyListeners();
@@ -122,14 +121,13 @@ class CategoryDetailsProvider extends ChangeNotifier {
 
   List<ServiceModel>? services;
   bool isGetServices = false;
-  getServices() async {
+  getServices(id) async {
     try {
       services?.clear();
       isGetServices = true;
       notifyListeners();
 
-      Either<ServerFailure, Response> response =
-          await repo.getServices(selectedSubCategoryId);
+      Either<ServerFailure, Response> response = await repo.getServices(id);
 
       response.fold(
         (fail) {

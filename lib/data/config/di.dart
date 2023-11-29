@@ -10,6 +10,8 @@ import '../../features/category_details/provider/category_details_provider.dart'
 import '../../features/category_details/repo/category_details_repo.dart';
 import '../../features/contact_with_us/provider/contact_provider.dart';
 import '../../features/contact_with_us/repo/contact_repo.dart';
+import '../../features/hashtag_places/provider/hashtag_places_provider.dart';
+import '../../features/hashtag_places/repo/hashtag_places_repo.dart';
 import '../../features/home/provider/home_provider.dart';
 import '../../features/item_details/provider/item_details_provider.dart';
 import '../../features/item_details/provider/send_rate_provider.dart';
@@ -77,6 +79,8 @@ Future<void> init() async {
       () => NotificationsRepo(sharedPreferences: sl(), dioClient: sl()));
   sl.registerLazySingleton(
       () => SearchRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(
+      () => HashtagPlacesRepo(sharedPreferences: sl(), dioClient: sl()));
 
   //provider
   sl.registerLazySingleton(
@@ -97,6 +101,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => SettingProvider(repo: sl()));
   sl.registerLazySingleton(() => ContactProvider(contactRepo: sl()));
   sl.registerLazySingleton(() => SearchProvider(repo: sl()));
+  sl.registerLazySingleton(() => HashtagPlacesProvider(repo: sl()));
 
   // External
   final sharedPreferences = await SharedPreferences.getInstance();

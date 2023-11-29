@@ -5,8 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="add jks">
+      <change afterPath="$PROJECT_DIR$/lib/features/hashtag_places/page/hashtag_places.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features/hashtag_places/provider/hashtag_places_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features/hashtag_places/repo/hashtag_places_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/.filecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/app.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/debug_ios_bundle_flutter_assets.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/debug_ios_bundle_flutter_assets.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/flutter_assets.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/feedback_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/feedback_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/api/end_points.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/api/end_points.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/config/di.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/config/di.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/config/provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/config/provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/category_details/provider/category_details_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/category_details/provider/category_details_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/category_details/repo/category_details_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/category_details/repo/category_details_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/category_details/widgets/services_selction_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/category_details/widgets/services_selction_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/home_banners.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/home_banners.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/home_categories.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/home_categories.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/home_offers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/home_offers.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/item_details/model/item_details_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/model/item_details_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_contact_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_contact_info.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/navigation/custom_navigation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/navigation/custom_navigation.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/navigation/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/navigation/routes.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

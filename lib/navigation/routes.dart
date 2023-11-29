@@ -21,4 +21,5 @@ class Routes {
   static const NOTIFICATIONS = "NOTIFICATIONS";
   static const SEARCH = "SEARCH";
   static const SUCCESS_PAGE = "SUCCESS_PAGE";
+  static const HASHTAG_PLACES = "HASHTAG_PLACES";
 }

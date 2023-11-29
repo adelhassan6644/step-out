@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
 import 'package:stepOut/components/custom_images.dart';
+import 'package:stepOut/features/home/models/categories_model.dart';
+import 'package:stepOut/navigation/custom_navigation.dart';
+import 'package:stepOut/navigation/routes.dart';
 
 import '../../../app/core/utils/methods.dart';
 import '../../../app/core/utils/styles.dart';
@@ -12,7 +15,7 @@ class ItemDetailsContactInfo extends StatelessWidget {
       {super.key, this.phone, this.open, this.close, this.tags});
 
   final String? phone, open, close;
-  final List<String>? tags;
+  final List<SubCategoryModel>? tags;
 
   @override
   Widget build(BuildContext context) {
@@ -68,13 +71,17 @@ class ItemDetailsContactInfo extends StatelessWidget {
             runAlignment: WrapAlignment.start,
             crossAxisAlignment: WrapCrossAlignment.start,
             children: List.generate(
-                tags?.length??0,
-                (index) => Text(
-                      "#${tags?[index].toString().toUpperCase()??""}",
-                      style: AppTextStyles.medium.copyWith(
-                          fontSize: 14,
-                          overflow: TextOverflow.ellipsis,
-                          color: Styles.PRIMARY_COLOR),
+                tags?.length ?? 0,
+                (index) => InkWell(
+                      onTap: () => CustomNavigator.push(Routes.HASHTAG_PLACES,
+                          arguments: tags?[index]),
+                      child: Text(
+                        "#${tags?[index].name.toString().toUpperCase() ?? ""}",
+                        style: AppTextStyles.medium.copyWith(
+                            fontSize: 14,
+                            overflow: TextOverflow.ellipsis,
+                            color: Styles.PRIMARY_COLOR),
+                      ),
                     )),
           )
         ],

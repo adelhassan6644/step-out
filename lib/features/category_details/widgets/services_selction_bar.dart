@@ -17,8 +17,8 @@ class ServicesSelectionBar extends StatelessWidget {
       return provider.isGetServices
           ? const _ShimmerLoading()
           : Visibility(
-              visible: provider.services != null &&
-                  provider.services!.isNotEmpty,
+              visible:
+                  provider.services != null && provider.services!.isNotEmpty,
               child: AnimatedCrossFade(
                 crossFadeState: provider.goingDown
                     ? CrossFadeState.showFirst
@@ -39,8 +39,8 @@ class ServicesSelectionBar extends StatelessWidget {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             splashColor: Colors.transparent,
-                            onTap: () => provider.onSelectService(
-                                provider.services?[index].id),
+                            onTap: () => provider
+                                .onSelectService(provider.services?[index].id),
                             child: Container(
                               margin: EdgeInsets.symmetric(horizontal: 6.w),
                               padding: EdgeInsets.symmetric(
