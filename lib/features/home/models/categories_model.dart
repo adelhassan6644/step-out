@@ -1,4 +1,5 @@
 import 'package:stepOut/app/localization/language_constant.dart';
+import 'package:stepOut/main_models/service_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
 
 class CategoriesModel {
@@ -77,9 +78,16 @@ class SubCategoryModel {
   int? categoryId;
   String? name;
   String? description;
+  List<ServiceModel>? services;
 
-  SubCategoryModel(
-      {this.id, this.image, this.categoryId, this.name, this.description});
+  SubCategoryModel({
+    this.id,
+    this.image,
+    this.categoryId,
+    this.name,
+    this.description,
+    this.services,
+  });
 
   SubCategoryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -87,6 +95,12 @@ class SubCategoryModel {
     categoryId = json['category_id'];
     name = json['name'];
     description = json['description'];
+    if (json['services'] != null) {
+      services = [];
+      json['services'].forEach((v) {
+        services!.add(ServiceModel.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -96,6 +110,9 @@ class SubCategoryModel {
     data['category_id'] = categoryId;
     data['name'] = name;
     data['description'] = description;
+    if (services != null) {
+      data['services'] = services!.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }
