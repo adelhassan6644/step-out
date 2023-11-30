@@ -81,7 +81,7 @@ class ItemDetailsBody extends StatelessWidget {
                             height: 35,
                             imageName: SvgImages.export,
                             color: Styles.PRIMARY_COLOR,
-                            onTap: () {},
+                            onTap: () => provider.sharePlace(),
                           ),
                           const Expanded(child: SizedBox()),
                           customImageIconSVG(

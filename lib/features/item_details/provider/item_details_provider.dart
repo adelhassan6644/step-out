@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../app/core/utils/app_snack_bar.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../data/error/failures.dart';
@@ -56,6 +58,28 @@ class ItemDetailsProvider extends ChangeNotifier {
               borderColor: Colors.transparent));
       notifyListeners();
     }
+  }
+
+  sharePlace() async {
+    String link = "https://livealhmdanh.page.link/${model?.id}";
+    final dynamicLinkParams = DynamicLinkParameters(
+      link: Uri.parse(link),
+      uriPrefix: "https://livealhmdanh.page.link",
+      androidParameters: const AndroidParameters(
+        packageName: "com.softwareCloud.live",
+      ),
+      iosParameters: const IOSParameters(
+        bundleId: "com.softwareCloud.live",
+        appStoreId: "6451453145",
+      ),
+    );
+    final dynamicLink = await FirebaseDynamicLinks.instance.buildLink(
+      dynamicLinkParams,
+    );
+    String shareLink = Uri.decodeFull(
+      Uri.decodeComponent(dynamicLink.toString()),
+    );
+    await Share.share(shareLink);
   }
 
   updateModel(v) {
