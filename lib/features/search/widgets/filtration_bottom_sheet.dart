@@ -19,6 +19,7 @@ class FiltrationBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<SearchProvider>(builder: (_, provider, child) {
       return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ///Range
           Padding(
@@ -248,8 +249,7 @@ class FiltrationBottomSheet extends StatelessWidget {
                                                   .services?[index].image),
                                           const SizedBox(height: 4),
                                           Text(
-                                            provider.services?[index]
-                                                    .name ??
+                                            provider.services?[index].name ??
                                                 "",
                                             textAlign: TextAlign.center,
                                             maxLines: 2,

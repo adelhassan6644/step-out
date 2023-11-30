@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/images.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
@@ -7,6 +8,7 @@ import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
 
 import '../../../components/custom_images.dart';
+import '../../../main_page/provider/main_page_provider.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({Key? key}) : super(key: key);
@@ -31,11 +33,13 @@ class HomeHeader extends StatelessWidget {
           const Expanded(child: SizedBox()),
           customImageIcon(imageName: Images.homeLogo, width: 100),
           const Expanded(child: SizedBox()),
-          customImageIconSVG(
-              onTap: () => CustomNavigator.push(Routes.NOTIFICATIONS),
-              imageName: SvgImages.notification,
-              width: 24,
-              height: 24),
+          Consumer<MainPageProvider>(builder: (_, provider, child) {
+            return customImageIconSVG(
+                onTap: () => provider.updateDashboardIndex(2),
+                imageName: SvgImages.notification,
+                width: 24,
+                height: 24);
+          }),
         ],
       ),
     );
