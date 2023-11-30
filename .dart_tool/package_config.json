@@ -986,6 +986,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "share_plus",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/share_plus-7.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "share_plus_platform_interface",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/share_plus_platform_interface-3.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "shared_preferences",
       "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/shared_preferences-2.2.2",
       "packageUri": "lib/",
@@ -1340,7 +1352,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-11-28T18:10:56.718603Z",
+  "generated": "2023-11-30T17:45:33.003541Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }
