@@ -55,7 +55,7 @@ class ItemServicesWidget extends StatelessWidget {
                                   provider.model?.services?[index].subServices
                                           ?.length ??
                                       0,
-                                  (index) => SizedBox(
+                                  (i) => SizedBox(
                                         width: 60.w,
                                         child: Column(
                                           crossAxisAlignment:
@@ -67,16 +67,13 @@ class ItemServicesWidget extends StatelessWidget {
                                                     image: provider
                                                             .model
                                                             ?.services?[index]
-                                                            .subServices?[index]
+                                                            .subServices?[i]
                                                             .image ??
                                                         ""),
                                             const SizedBox(height: 4),
                                             Text(
-                                              provider
-                                                      .model
-                                                      ?.services?[index]
-                                                      .subServices?[index]
-                                                      .name ??
+                                              provider.model?.services?[index]
+                                                      .subServices?[i].name ??
                                                   "",
                                               textAlign: TextAlign.center,
                                               maxLines: 2,

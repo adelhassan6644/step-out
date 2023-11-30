@@ -32,7 +32,7 @@ class DioClient extends ApiClient {
         "Accept": " application/json",
         'x-api-key': EndPoints.apiKey,
         "Accept-Language":
-            sharedPreferences.getString(AppStorageKey.languageCode)
+            sharedPreferences.getString(AppStorageKey.languageCode)??"ar"
         // if (sharedPreferences.getString(AppStorageKey.apiToken) != null)
         //   'x-api-key': sharedPreferences.getString(AppStorageKey.apiToken)
       };
