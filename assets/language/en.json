@@ -135,5 +135,8 @@
   "filter": "Filter",
   "services": "Services",
   "follow_up": "Follow up to discover new places with us",
-  "km": "km"
+  "km": "km",
+  "show_more": "Show more",
+  "show_less": "Show less"
+
 }
