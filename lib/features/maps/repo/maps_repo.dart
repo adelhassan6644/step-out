@@ -47,12 +47,11 @@ class MapsRepo {
     }
   }
 
-  Future<Either<ServerFailure, Response>> getNearPlaces(
-      {var position}) async {
+  Future<Either<ServerFailure, Response>> getNearPlaces({var position}) async {
     try {
       Response response = await dioClient.post(
         uri: EndPoints.nearPlaces,
-        queryParameters: {
+        data: {
           "client_lat": position.latitude,
           "client_long": position.longitude,
         },

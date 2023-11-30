@@ -50,6 +50,7 @@ class NearPlaces extends StatelessWidget {
                                   padding:
                                       EdgeInsets.symmetric(horizontal: 8.w),
                                   child: ItemCard(
+                                    height: 215.h,
                                     width: context.width * 0.85,
                                     item: provider.model?[index],
                                   ),

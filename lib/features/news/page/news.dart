@@ -73,12 +73,22 @@ class _NewsState extends State<News> {
                                         horizontal:
                                             Dimensions.PADDING_SIZE_DEFAULT.w,
                                       ),
-                                      data: List.generate(
+                                      data: [
+                                        SizedBox(
+                                          height:
+                                              Dimensions.PADDING_SIZE_DEFAULT.h,
+                                        ),
+                                        ...List.generate(
                                           provider.model?.data?.length ?? 0,
                                           (i) => NewsCard(
-                                                newsItem:
-                                                    provider.model?.data?[i],
-                                              )),
+                                            newsItem: provider.model?.data?[i],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              Dimensions.PADDING_SIZE_DEFAULT.h,
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ],
@@ -93,21 +103,20 @@ class _NewsState extends State<News> {
                                 children: [
                                   Expanded(
                                     child: ListAnimator(
-                                      customPadding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            Dimensions.PADDING_SIZE_DEFAULT.w,
-                                      ),
-                                      data: [
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: context.height * 0.25),
-                                          child: EmptyState(
-                                            imgWidth: 215.w,
-                                            imgHeight: 220.h,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                        customPadding: EdgeInsets.symmetric(
+                                            horizontal: Dimensions
+                                                .PADDING_SIZE_DEFAULT.w),
+                                        data: [
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                vertical:
+                                                    context.height * 0.17),
+                                            child: const EmptyState(
+                                              imgHeight: 220,
+                                              imgWidth: 220,
+                                            ),
+                                          )
+                                        ]),
                                   ),
                                 ],
                               ),

@@ -58,76 +58,78 @@ class _NotificationsState extends State<Notifications> {
             ),
             Expanded(
               child: Consumer<NotificationsProvider>(
-                  builder: (_, provider, child) {
-                return provider.isLoading
-                    ? const CustomLoading()
-                    : provider.model != null &&
-                            provider.model?.data != null &&
-                            provider.model!.data!.isNotEmpty
-                        ? RefreshIndicator(
-                            color: Styles.PRIMARY_COLOR,
-                            onRefresh: () async {
-                              provider.getNotifications();
-                            },
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  child: ListAnimator(
-                                      data: List.generate(
-                                          provider.model?.data?.length ?? 5,
-                                          (index) => Dismissible(
-                                                background: Row(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    CustomButton(
-                                                      width: 100.w,
-                                                      height: 30.h,
-                                                      text: getTranslated(
-                                                          "delete", context),
-                                                      svgIcon: SvgImages.trash,
-                                                      iconSize: 12,
-                                                      iconColor:
-                                                          Styles.IN_ACTIVE,
-                                                      textColor:
-                                                          Styles.IN_ACTIVE,
-                                                      backgroundColor: Styles
-                                                          .IN_ACTIVE
-                                                          .withOpacity(0.12),
-                                                    ),
-                                                  ],
-                                                ),
-                                                key: ValueKey(index),
-                                                confirmDismiss:
-                                                    (DismissDirection
-                                                        direction) async {
-                                                  provider.deleteNotification(
-                                                      provider
-                                                              .model
-                                                              ?.data?[index]
-                                                              .id ??
-                                                          0);
-                                                  return false;
-                                                },
-                                                child: NotificationCard(
-                                                  withBorder: index != 9,
-                                                  notification: provider
-                                                      .model?.data?[index],
-                                                ),
-                                              ))),
-                                ),
-                              ],
-                            ),
-                          )
-                        : RefreshIndicator(
-                            color: Styles.PRIMARY_COLOR,
-                            onRefresh: () async {
-                              provider.getNotifications();
-                            },
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  child: ListAnimator(
+                builder: (_, provider, child) {
+                  return provider.isLoading
+                      ? const CustomLoading()
+                      : provider.model != null &&
+                              provider.model?.data != null &&
+                              provider.model!.data!.isNotEmpty
+                          ? RefreshIndicator(
+                              color: Styles.PRIMARY_COLOR,
+                              onRefresh: () async {
+                                provider.getNotifications();
+                              },
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    child: ListAnimator(
+                                        data: List.generate(
+                                            provider.model?.data?.length ?? 5,
+                                            (index) => Dismissible(
+                                                  background: Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      CustomButton(
+                                                        width: 100.w,
+                                                        height: 30.h,
+                                                        text: getTranslated(
+                                                            "delete", context),
+                                                        svgIcon:
+                                                            SvgImages.trash,
+                                                        iconSize: 12,
+                                                        iconColor:
+                                                            Styles.IN_ACTIVE,
+                                                        textColor:
+                                                            Styles.IN_ACTIVE,
+                                                        backgroundColor: Styles
+                                                            .IN_ACTIVE
+                                                            .withOpacity(0.12),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  key: ValueKey(index),
+                                                  confirmDismiss:
+                                                      (DismissDirection
+                                                          direction) async {
+                                                    provider.deleteNotification(
+                                                        provider
+                                                                .model
+                                                                ?.data?[index]
+                                                                .id ??
+                                                            0);
+                                                    return false;
+                                                  },
+                                                  child: NotificationCard(
+                                                    withBorder: index != 9,
+                                                    notification: provider
+                                                        .model?.data?[index],
+                                                  ),
+                                                ))),
+                                  ),
+                                ],
+                              ),
+                            )
+                          : RefreshIndicator(
+                              color: Styles.PRIMARY_COLOR,
+                              onRefresh: () async {
+                                provider.getNotifications();
+                              },
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    child: ListAnimator(
                                       customPadding: EdgeInsets.symmetric(
                                           horizontal: Dimensions
                                               .PADDING_SIZE_DEFAULT.w),
@@ -143,12 +145,14 @@ class _NotificationsState extends State<Notifications> {
                                             spaceBtw: 50,
                                           ),
                                         )
-                                      ]),
-                                ),
-                              ],
-                            ),
-                          );
-              },),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                },
+              ),
             )
           ],
         ),

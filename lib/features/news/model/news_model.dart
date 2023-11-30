@@ -55,7 +55,7 @@ class NewsItem {
         id: json["id"],
         author: json["author"],
         image: json["image"],
-        url: json["url"],
+        url: json["link"],
         address: json["address"],
         status: json["status"],
         title: json["title"],
