@@ -4,10 +4,11 @@ import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
 import 'package:stepOut/app/core/utils/text_styles.dart';
+import 'package:stepOut/app/localization/language_constant.dart';
 import 'package:stepOut/components/custom_images.dart';
 import 'package:stepOut/components/custom_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:readmore/readmore.dart';
 import '../model/news_model.dart';
 
 class NewsCard extends StatelessWidget {
@@ -46,13 +47,22 @@ class NewsCard extends StatelessWidget {
 
                 /// content
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Text(
-                    newsItem?.content ?? "",
-                    style: AppTextStyles.medium
-                        .copyWith(fontSize: 14, color: Styles.DETAILS_COLOR),
-                  ),
-                ),
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: ReadMoreText(
+                      newsItem?.content ?? "",
+                      style: AppTextStyles.medium
+                          .copyWith(fontSize: 14, color: Styles.DETAILS_COLOR),
+                      trimLines: 3,
+                      colorClickableText: Colors.pink,
+                      trimMode: TrimMode.Line,
+                      trimCollapsedText: getTranslated("show_more", context),
+                      trimExpandedText: getTranslated("show_less", context),
+                      textAlign: TextAlign.start,
+                      moreStyle: AppTextStyles.semiBold
+                          .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
+                      lessStyle: AppTextStyles.semiBold
+                          .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
+                    )),
 
                 /// Location
                 GestureDetector(
