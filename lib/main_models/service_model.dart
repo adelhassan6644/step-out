@@ -13,9 +13,9 @@ class ServiceModel {
     image = json['image'];
     name = json['name'];
     description = json['description'];
-    if (json['subservices'] != null) {
+    if (json['subServices'] != null) {
       subServices = [];
-      json['subservices'].forEach((v) {
+      json['subServices'].forEach((v) {
         subServices!.add(SubServiceModel.fromJson(v));
       });
     }
@@ -28,7 +28,7 @@ class ServiceModel {
     data['name'] = name;
     data['description'] = description;
     if (subServices != null) {
-      data['subservices'] = subServices!.map((v) => v.toJson()).toList();
+      data['subServices'] = subServices!.map((v) => v.toJson()).toList();
     }
     return data;
   }
