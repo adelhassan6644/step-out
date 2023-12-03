@@ -15,10 +15,7 @@ class MapWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => MapProvider()
-        ..setLocation(
-          dropOff: point ?? AppStrings.defaultDrop,
-        ),
+      create: (_) => MapProvider(),
       child: Consumer<MapProvider>(builder: (context, vm, _) {
         if (vm.isLoad) {
           return const MapWidgetShimmer();
@@ -27,20 +24,25 @@ class MapWidget extends StatelessWidget {
             children: [
               SizedBox(
                 width: context.width,
-                height: 120.h,
+                height: 150.h,
                 child: GoogleMap(
                   initialCameraPosition: vm.mapCameraPosition,
-                  onMapCreated: vm.onMapCreated,
+                  onMapCreated: (c) =>
+                      vm.onMapCreated(c, point ?? AppStrings.defaultDrop),
                   padding: vm.googleMapPadding,
-                  zoomGesturesEnabled: false,
-                  zoomControlsEnabled: false,
+                  scrollGesturesEnabled: false,
                   myLocationButtonEnabled: false,
                   myLocationEnabled: false,
+                  zoomControlsEnabled: false,
                   markers: vm.gMapMarkers,
-                  mapToolbarEnabled: false,
-                  // polylines: vm.gMapPolyLines,
-                  scrollGesturesEnabled: false,
+                  mapToolbarEnabled: true,
                   tiltGesturesEnabled: false,
+                  onCameraMove: (position) async {
+                    vm.target = position.target;
+                  },
+                  onCameraIdle: () async {
+                    vm.setLocation();
+                  },
                 ),
               ),
             ],

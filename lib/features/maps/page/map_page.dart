@@ -63,6 +63,7 @@ class _MapPageState extends State<MapPage> {
                       ),
                       zoom: 14,
                     ),
+                    myLocationEnabled: true,
                     minMaxZoomPreference: const MinMaxZoomPreference(0, 100),
                     myLocationButtonEnabled: false,
                     onMapCreated: (GoogleMapController mapController) {
