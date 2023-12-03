@@ -24,40 +24,29 @@ class ItemDetailsProvider extends ChangeNotifier {
   ItemDetailsModel? model;
   bool isLoading = false;
   getDetails(id) async {
-    try {
-      model = null;
-      selectedTab = 0;
-      isLoading = true;
-      notifyListeners();
-      Either<ServerFailure, Response> response = await repo.getDetails(id);
-      response.fold((fail) {
-        isLoading = false;
-        CustomSnackBar.showSnackBar(
-            notification: AppNotification(
-                message: fail.error,
-                isFloating: true,
-                backgroundColor: Styles.IN_ACTIVE,
-                borderColor: Colors.transparent));
-        notifyListeners();
-      }, (success) {
-        if (success.data["data"] != null) {
-          model = ItemDetailsModel.fromJson(success.data["data"]);
-        } else {
-          model = null;
-        }
-        isLoading = false;
-        notifyListeners();
-      });
-    } catch (e) {
+    model = null;
+    selectedTab = 0;
+    isLoading = true;
+    notifyListeners();
+    Either<ServerFailure, Response> response = await repo.getDetails(id);
+    response.fold((fail) {
       isLoading = false;
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
-              message: e.toString(),
+              message: fail.error,
               isFloating: true,
               backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
       notifyListeners();
-    }
+    }, (success) {
+      if (success.data["data"] != null) {
+        model = ItemDetailsModel.fromJson(success.data["data"]);
+      } else {
+        model = null;
+      }
+      isLoading = false;
+      notifyListeners();
+    });
   }
 
   sharePlace() async {
