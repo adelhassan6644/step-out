@@ -98,10 +98,15 @@ class ItemCard extends StatelessWidget {
                           height: 20,
                           color: Styles.PRIMARY_COLOR),
                       SizedBox(width: 8.w),
-                      Text(
-                        item?.address ?? "Location",
-                        style: AppTextStyles.medium.copyWith(
-                            fontSize: 14, color: Styles.PRIMARY_COLOR),
+                      Expanded(
+                        child: Text(
+                          item?.address ?? "Location",
+                          maxLines: 1,
+                          style: AppTextStyles.medium.copyWith(
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: 14,
+                              color: Styles.PRIMARY_COLOR),
+                        ),
                       ),
                     ],
                   ),

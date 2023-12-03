@@ -417,7 +417,7 @@ class AuthProvider extends ChangeNotifier {
 
   logOut() async {
     CustomNavigator.push(Routes.SPLASH, clean: true);
-    await authRepo.clearSharedData();
+    await authRepo.logOut();
     clear();
     sl<ProfileProvider>().clear();
     sl<MainPageProvider>().updateDashboardIndex(0);

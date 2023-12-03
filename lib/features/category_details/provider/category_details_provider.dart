@@ -90,7 +90,7 @@ class CategoryDetailsProvider extends ChangeNotifier {
       };
 
       Either<ServerFailure, Response> response =
-          await repo.getPlaces(categoryId: selectedCategoryId!, filter: filter);
+          await repo.getPlaces(filter: filter);
       response.fold(
         (fail) {
           CustomSnackBar.showSnackBar(
