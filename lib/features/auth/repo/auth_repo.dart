@@ -19,6 +19,8 @@ class AuthRepo {
     return sharedPreferences.containsKey(AppStorageKey.isLogin);
   }
 
+  String? get userId => sharedPreferences.getString(AppStorageKey.userId);
+
   setLoggedIn() {
     sharedPreferences.setBool(AppStorageKey.isLogin, true);
   }
@@ -63,6 +65,14 @@ class AuthRepo {
     return deviceToken;
   }
 
+  Future subscribeToTopic(id) async {
+    await FirebaseMessaging.instance.subscribeToTopic(id);
+  }
+
+  Future unSubscribeToTopic() async {
+    await FirebaseMessaging.instance.subscribeToTopic(userId!);
+  }
+
   Future<Either<ServerFailure, Response>> logIn(
       {required String mail, required String password}) async {
     try {
@@ -73,6 +83,7 @@ class AuthRepo {
       });
 
       if (response.statusCode == 200) {
+        subscribeToTopic(response.data['data']["id"]);
         // dioClient.updateHeader(token: response.data['data']["api_token"]);
         return Right(response);
       } else {
@@ -105,13 +116,11 @@ class AuthRepo {
   Future<Either<ServerFailure, Response>> change(
       {required String oldPassword, required String password}) async {
     try {
-      Response response = await dioClient.post(
-          uri: EndPoints.changePassword(
-              sharedPreferences.getString(AppStorageKey.userId)),
-          data: {
-            "oldPassword": oldPassword,
-            "newPassword": password,
-          });
+      Response response =
+          await dioClient.post(uri: EndPoints.changePassword(userId), data: {
+        "oldPassword": oldPassword,
+        "newPassword": password,
+      });
 
       if (response.statusCode == 200) {
         return Right(response);
@@ -177,6 +186,9 @@ class AuthRepo {
           });
 
       if (response.statusCode == 200) {
+        if (fromRegister) {
+          await subscribeToTopic(userId);
+        }
         return Right(response);
       } else {
         return left(ServerFailure(response.data['message']));
@@ -210,7 +222,8 @@ class AuthRepo {
     }
   }
 
-  Future<bool> clearSharedData() async {
+  Future<bool> logOut() async {
+    await unSubscribeToTopic();
     await sharedPreferences.remove(AppStorageKey.userId);
     await sharedPreferences.remove(AppStorageKey.isLogin);
     return true;
