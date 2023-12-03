@@ -9,13 +9,14 @@ import 'package:stepOut/navigation/routes.dart';
 import '../../../app/core/utils/methods.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
+import '../model/item_details_model.dart';
 
 class ItemDetailsContactInfo extends StatelessWidget {
-  const ItemDetailsContactInfo(
-      {super.key, this.phone, this.open, this.close, this.tags});
+  const ItemDetailsContactInfo({super.key, this.phone, this.tags, this.times});
 
-  final String? phone, open, close;
+  final String? phone;
   final List<SubCategoryModel>? tags;
+  final List<TimeModel>? times;
 
   @override
   Widget build(BuildContext context) {
@@ -46,19 +47,26 @@ class ItemDetailsContactInfo extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 12.h),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 customImageIconSVG(
                     imageName: SvgImages.clock, width: 20, height: 20),
                 SizedBox(width: 8.w),
                 Expanded(
-                  child: Text(
-                    "${Methods.convertStringToTime(open, withFormat: true)} - ${Methods.convertStringToTime(close, withFormat: true)}",
-                    style: AppTextStyles.medium.copyWith(
-                        fontSize: 14,
-                        overflow: TextOverflow.ellipsis,
-                        color: Styles.TITLE),
-                    maxLines: 1,
+                  child: Wrap(
+                    runSpacing: 4,
+                    spacing: 8,
+                    children: List.generate(
+                        times?.length ?? 0,
+                        (index) => Text(
+                              "(${Methods.convertStringToTime(times?[index].openingTime, withFormat: true)} - ${Methods.convertStringToTime(times?[index].closingTime, withFormat: true)})",
+                              style: AppTextStyles.medium.copyWith(
+                                  fontSize: 14,
+                                  overflow: TextOverflow.ellipsis,
+                                  color: Styles.TITLE),
+                              maxLines: 1,
+                            )),
                   ),
                 ),
               ],
