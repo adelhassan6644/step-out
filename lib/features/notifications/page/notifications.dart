@@ -54,12 +54,9 @@ class _NotificationsState extends State<Notifications> {
                   style: AppTextStyles.semiBold
                       .copyWith(fontSize: 24, color: Styles.HEADER)),
             ),
-            Padding(
-              padding:
-                  EdgeInsets.only(bottom: Dimensions.PADDING_SIZE_DEFAULT.h),
-              child: const Divider(
-                color: Styles.BORDER_COLOR,
-              ),
+            const Divider(
+              color: Styles.BORDER_COLOR,
+              height: 1,
             ),
             Consumer<ProfileProvider>(
                 builder: (_, provider, child) => !provider.isLogin

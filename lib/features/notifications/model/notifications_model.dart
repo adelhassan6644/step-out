@@ -100,7 +100,9 @@ class NotificationBody {
         image: json["image"],
         message: json["message"],
         status: json["status"],
-        placeId: json["place_id"],
+        placeId: json["place_id"] != null
+            ? int.parse(json["place_id"].toString())
+            : null,
       );
 
   Map<String, dynamic> toJson() => {

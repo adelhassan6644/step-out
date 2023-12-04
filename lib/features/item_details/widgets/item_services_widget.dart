@@ -93,7 +93,7 @@ class ItemServicesWidget extends StatelessWidget {
                           }
                         },
                         child: SizedBox(
-                          width: 60.w,
+                          width: 65.w,
                           child: InkWell(
                             focusColor: Colors.transparent,
                             hoverColor: Colors.transparent,
@@ -125,12 +125,9 @@ class ItemServicesWidget extends StatelessWidget {
                           .then(delay: 200.ms) // baseline=800ms
                           .slide()
                           .scale(duration: 400.ms)
-                          .then(delay: 200.ms),
-                    )
-                        .animate(
-                          onComplete: (c) => c.repeat(),
-                        )
-                        .shimmer(duration: 1000.ms),
+                          .then(delay: 200.ms)
+                          .shimmer(duration: 500.ms),
+                    ),
                   ),
                 )
               ],
