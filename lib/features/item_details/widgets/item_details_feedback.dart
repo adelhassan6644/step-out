@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/components/empty_widget.dart';
+import 'package:stepOut/navigation/custom_navigation.dart';
+import 'package:stepOut/navigation/routes.dart';
 import '../../../app/core/utils/validation.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
@@ -59,24 +61,32 @@ class ItemDetailsFeedback extends StatelessWidget {
               child: Consumer<RattingProvider>(
                   builder: (context, sProvider, child) {
                 return CustomButton(
-                  text: getTranslated("rate", context),
-                  onTap: () => CustomBottomSheet.show(
-                    height: 500.h,
-                    label: getTranslated("rate", context),
-                    list: const SendRateBottomSheet(),
-                    onConfirm: () {
-                      sProvider.formKey.currentState!.validate();
-                      if (Validations.feedBack(
-                              sProvider.feedback.value?.trim()) ==
-                          null) {
-                        sProvider.sendFeedback(
-                          model: provider.model,
-                          onChange: provider.updateModel,
-                        );
-                      }
-                    },
-                    onClose: () => sProvider.clear(),
-                  ),
+                  text: getTranslated(
+                      sProvider.isLogin ? "rate" : "login_before_rate",
+                      context),
+                  onTap: () {
+                    if (sProvider.isLogin) {
+                      CustomBottomSheet.show(
+                        height: 500.h,
+                        label: getTranslated("rate", context),
+                        list: const SendRateBottomSheet(),
+                        onConfirm: () {
+                          sProvider.formKey.currentState!.validate();
+                          if (Validations.feedBack(
+                                  sProvider.feedback.value?.trim()) ==
+                              null) {
+                            sProvider.sendFeedback(
+                              model: provider.model,
+                              onChange: provider.updateModel,
+                            );
+                          }
+                        },
+                        onClose: () => sProvider.clear(),
+                      );
+                    } else {
+                      CustomNavigator.push(Routes.LOGIN, arguments: true);
+                    }
+                  },
                 );
               }),
             ),

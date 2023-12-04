@@ -141,7 +141,6 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                             check: provider.isRememberMe,
                             onChange: (v) => provider.onRememberMe(v),
                           ),
-                          const Expanded(child: SizedBox()),
                           InkWell(
                             onTap: () {
                               provider.clear();
@@ -196,7 +195,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                         InkWell(
                           onTap: () {
                             provider.clear();
-                            CustomNavigator.push(Routes.REGISTER, clean: true);
+                            CustomNavigator.push(Routes.REGISTER);
                           },
                           child: Text(
                             " ${getTranslated("signup", context)}",

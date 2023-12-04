@@ -143,5 +143,6 @@
   "there_is_no_feedbacks": "لا يوجد تقيمات الان",
   "give_us_your_feedback": "شاركنا بتقييمك حول هذا المكان",
   "connected": "متصل بالإنترنت",
-  "no_connection": "غير متصل بالإنترنت"
+  "no_connection": "غير متصل بالإنترنت",
+  "login_before_rate": "سجل قبل التقييم"
 }
