@@ -11,8 +11,8 @@ import '../app/core/utils/text_styles.dart';
 import '../components/custom_images.dart';
 
 class ItemCard extends StatelessWidget {
-  const ItemCard({super.key, this.width, this.item, this.height});
-  final double? width, height;
+  const ItemCard({super.key, this.width, this.item});
+  final double? width;
   final ItemDetailsModel? item;
 
   @override
@@ -26,11 +26,11 @@ class ItemCard extends StatelessWidget {
       splashColor: Colors.transparent,
       child: Container(
         width: width ?? context.width,
-        height: height,
         decoration: BoxDecoration(
             color: Styles.SMOKED_WHITE_COLOR,
             borderRadius: BorderRadius.circular(20)),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             CustomNetworkImage.containerNewWorkImage(
               edges: true,
@@ -67,7 +67,9 @@ class ItemCard extends StatelessWidget {
                       ),
                       SizedBox(width: 4.w),
                       ...List.generate(
-                        item?.rating?.ceil() ?? 0,
+                        item?.rating?.ceil() != 0
+                            ? item?.rating?.ceil() ?? 0
+                            : 1,
                         (index) => customImageIconSVG(
                             imageName: SvgImages.fillStar,
                             height: 20,
@@ -81,7 +83,7 @@ class ItemCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 6.0),
                     child: Text(
                       item?.description ?? "description",
-                      maxLines: 2,
+                      maxLines: 1,
                       style: AppTextStyles.regular.copyWith(
                           fontSize: 14,
                           overflow: TextOverflow.ellipsis,

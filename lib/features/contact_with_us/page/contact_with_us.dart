@@ -76,33 +76,52 @@ class ContactWithUs extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ///E-mail
-                            Text(
-                              getTranslated("mail", context),
-                              style: AppTextStyles.regular.copyWith(
-                                  fontSize: 14, color: Styles.HINT_COLOR),
+                            InkWell(
+                              onTap: () => launch(
+                                  "mailto:${provider.model?.data?.email ?? "StepOut@gmail.com"}"),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    getTranslated("mail", context),
+                                    style: AppTextStyles.regular.copyWith(
+                                        fontSize: 14, color: Styles.HINT_COLOR),
+                                  ),
+                                  Text(
+                                    provider.model?.data?.email ??
+                                        "StepOut@gmail.com",
+                                    style: AppTextStyles.medium.copyWith(
+                                        fontSize: 14, color: Styles.TITLE),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text(
-                              provider.model?.data?.email ??
-                                  "StepOut@gmail.com",
-                              style: AppTextStyles.medium
-                                  .copyWith(fontSize: 14, color: Styles.TITLE),
-                            ),
+
                             Divider(
                               color: Styles.BORDER_COLOR,
                               height: 24.h,
                             ),
 
                             ///Phone
-                            Text(
-                              getTranslated("phone", context),
-                              style: AppTextStyles.regular.copyWith(
-                                  fontSize: 14, color: Styles.HINT_COLOR),
-                            ),
-                            Text(
-                              provider.model?.data?.phone ?? "12345",
-                              style: AppTextStyles.medium
-                                  .copyWith(fontSize: 14, color: Styles.TITLE),
-                            ),
+                            InkWell(
+                              onTap: () => launch(
+                                  "tel://${provider.model?.data?.phone}"),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    getTranslated("phone", context),
+                                    style: AppTextStyles.regular.copyWith(
+                                        fontSize: 14, color: Styles.HINT_COLOR),
+                                  ),
+                                  Text(
+                                    provider.model?.data?.phone ?? "12344565",
+                                    style: AppTextStyles.medium.copyWith(
+                                        fontSize: 14, color: Styles.TITLE),
+                                  ),
+                                ],
+                              ),
+                            )
                           ],
                         ),
                       )

@@ -2,7 +2,6 @@ import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../app/core/utils/images.dart';
-import '../app/core/utils/styles.dart';
 import '../data/api/end_points.dart';
 
 class CustomNetworkImage {
@@ -25,7 +24,6 @@ class CustomNetworkImage {
       double? width,
       BoxFit? fit,
       Color? borderColor,
-      isPlaceHolder = true,
       double? widthOfShimmer,
       Widget? imageWidget,
       bool edges = false}) {
@@ -55,23 +53,21 @@ class CustomNetworkImage {
         child: imageWidget,
       ),
       placeholder: (context, url) {
-        return isPlaceHolder
-            ? Container(
-                width: width ?? 40,
-                height: height ?? 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(radius ?? 15.w),
-                  image: DecorationImage(
-                    fit: fit ?? BoxFit.cover,
-                    image: Image.asset(
-                      defaultImage ?? Images.logo,
-                      fit: fit ?? BoxFit.cover,
-                    ).image,
-                  ),
-                ),
-                child: imageWidget,
-              )
-            : Container();
+        return Container(
+          width: width ?? 40,
+          height: height ?? 40,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(radius ?? 15.w),
+            image: DecorationImage(
+              fit: fit ?? BoxFit.cover,
+              image: Image.asset(
+                defaultImage ?? Images.logo,
+                fit: fit ?? BoxFit.cover,
+              ).image,
+            ),
+          ),
+          child: imageWidget,
+        );
       },
       imageBuilder: (context, provider) {
         return Container(
@@ -79,7 +75,7 @@ class CustomNetworkImage {
           height: height ?? 40,
           padding: padding,
           decoration: BoxDecoration(
-            border: Border.all(color:borderColor?? Colors.transparent),
+            border: Border.all(color: borderColor ?? Colors.transparent),
             borderRadius: edges
                 ? BorderRadius.only(
                     topRight: Radius.circular(radius ?? 10),

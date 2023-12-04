@@ -7,6 +7,7 @@ import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../app/localization/language_constant.dart';
+import '../../../components/image_pop_up_viewer.dart';
 
 class ItemDetailsOffer extends StatelessWidget {
   const ItemDetailsOffer({super.key, this.offers});
@@ -42,11 +43,27 @@ class ItemDetailsOffer extends StatelessWidget {
                 (index) => Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL.w),
-                  child: CustomNetworkImage.containerNewWorkImage(
-                      height: 100.h,
-                      width: context.width * 0.7,
-                      radius: 20,
-                      image: offers?[index].image ?? ""),
+                  child: InkWell(
+                    onTap: () {
+                      Future.delayed(
+                          Duration.zero,
+                          () => showDialog(
+                              context: context,
+                              barrierColor: Colors.black.withOpacity(0.75),
+                              builder: (context) {
+                                return ImagePopUpViewer(
+                                  image: offers?[index].image ?? "",
+                                  isFromInternet: true,
+                                  title: "",
+                                );
+                              }));
+                    },
+                    child: CustomNetworkImage.containerNewWorkImage(
+                        height: 100.h,
+                        width: context.width * 0.7,
+                        radius: 20,
+                        image: offers?[index].image ?? ""),
+                  ),
                 ),
               )
             ],

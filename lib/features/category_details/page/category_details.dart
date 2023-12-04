@@ -44,6 +44,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
         actionWidth: 25,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CategoryDetailsHeader(subCategories: widget.item.subCategories ?? []),
           CategoryDetailsBody(controller: controller),

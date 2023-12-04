@@ -17,6 +17,8 @@ class SubcategorySelectionBar extends StatelessWidget {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ...List.generate(
                 subCategories.length,

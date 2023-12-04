@@ -54,6 +54,7 @@ class CategoryDetailsProvider extends ChangeNotifier {
       selectedSubCategoryId = id;
       selectedSubCategoryIndex = i;
       selectedServicesId.clear();
+      services?.clear();
       animatedScrollSubCategories(subCategoriesKeys[i].currentContext!);
       if (i != 0) {
         getServices(id);

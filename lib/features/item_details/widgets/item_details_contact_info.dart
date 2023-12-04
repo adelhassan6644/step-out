@@ -5,6 +5,7 @@ import 'package:stepOut/components/custom_images.dart';
 import 'package:stepOut/features/home/models/categories_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/core/utils/methods.dart';
 import '../../../app/core/utils/styles.dart';
@@ -33,13 +34,16 @@ class ItemDetailsContactInfo extends StatelessWidget {
                   imageName: SvgImages.call, width: 20, height: 20),
               SizedBox(width: 8.w),
               Expanded(
-                child: Text(
-                  phone ?? "",
-                  style: AppTextStyles.medium.copyWith(
-                      fontSize: 14,
-                      overflow: TextOverflow.ellipsis,
-                      color: Styles.TITLE),
-                  maxLines: 1,
+                child: InkWell(
+                  onTap: () => launch("tel://$phone"),
+                  child: Text(
+                    phone ?? "",
+                    style: AppTextStyles.medium.copyWith(
+                        fontSize: 14,
+                        overflow: TextOverflow.ellipsis,
+                        color: Styles.TITLE),
+                    maxLines: 1,
+                  ),
                 ),
               ),
             ],

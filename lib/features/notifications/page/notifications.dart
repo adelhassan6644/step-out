@@ -140,9 +140,6 @@ class _NotificationsState extends State<Notifications> {
                                           child: EmptyState(
                                             txt: getTranslated(
                                                 "no_notifications", context),
-                                            imgHeight: 250,
-                                            imgWidth: 250,
-                                            spaceBtw: 50,
                                           ),
                                         )
                                       ],

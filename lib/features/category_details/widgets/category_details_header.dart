@@ -14,7 +14,7 @@ class CategoryDetailsHeader extends StatelessWidget {
     return Consumer<CategoryDetailsProvider>(builder: (_, provider, child) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SubcategorySelectionBar(subCategories: subCategories),
           const ServicesSelectionBar(),
