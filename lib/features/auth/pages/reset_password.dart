@@ -68,7 +68,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                 children: [
                   const CustomAppBar(
                     withSafeArea: false,
-                    withPadding: false,
+                    withHPadding: false,
                     backColor: Styles.WHITE_COLOR,
                   ),
                   const Expanded(child: SizedBox()),

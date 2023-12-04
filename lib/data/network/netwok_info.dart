@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:stepOut/app/core/utils/app_snack_bar.dart';
+import 'package:stepOut/app/core/utils/text_styles.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-
 import '../../app/localization/language_constant.dart';
 
 class NetworkInfo {
@@ -39,7 +39,9 @@ class NetworkInfo {
         //     ]));
         ScaffoldMessenger.of(CustomNavigator.navigatorState.currentContext!)
             .showSnackBar(SnackBar(
-          backgroundColor: isNotConnected ? Colors.red : Colors.green,
+          backgroundColor: isNotConnected
+              ? Colors.red.withOpacity(0.85)
+              : Colors.green.withOpacity(0.85),
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
@@ -47,10 +49,23 @@ class NetworkInfo {
           margin: const EdgeInsets.all(24),
           duration: Duration(seconds: isNotConnected ? 6000 : 3),
           onVisible: !isNotConnected ? onVisible : null,
-          content: Text(
-            getTranslated(!isNotConnected ? "connected" : "no_connection",
-                CustomNavigator.navigatorState.currentContext!),
-            textAlign: TextAlign.center,
+          content: Row(
+            children: [
+              Icon(
+                isNotConnected ? Icons.wifi_off : Icons.wifi,
+                color: Colors.white,
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              Text(
+                getTranslated(!isNotConnected ? "connected" : "no_connection",
+                    CustomNavigator.navigatorState.currentContext!),
+                style: AppTextStyles.medium
+                    .copyWith(color: Colors.white, fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
         ));
       }

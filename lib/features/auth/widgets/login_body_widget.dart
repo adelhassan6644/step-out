@@ -179,7 +179,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                                     }
                                   }
                                 },
-                                isLoading: provider.isLogin);
+                                isLoading: provider.isLoginLoading);
                           }),
                     ),
                     Row(
@@ -211,10 +211,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                       ],
                     ),
                     InkWell(
-                      onTap: () {
-                        provider.clear();
-                        CustomNavigator.push(Routes.DASHBOARD, clean: true);
-                      },
+                      onTap: () => provider.logInAsAGuest(),
                       child: Padding(
                         padding: EdgeInsets.only(top: 12.h),
                         child: Text(

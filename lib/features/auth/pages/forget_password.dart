@@ -63,7 +63,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 children: [
                   const CustomAppBar(
                     withSafeArea: false,
-                    withPadding: false,
+                    withHPadding: false,
                     backColor: Styles.WHITE_COLOR,
                   ),
                   const Expanded(child: SizedBox()),

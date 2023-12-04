@@ -28,6 +28,8 @@ class AuthProvider extends ChangeNotifier {
         text: kDebugMode ? "adel@gmail.com" : authRepo.getMail());
   }
 
+  bool get isLogin => authRepo.isLoggedIn();
+
   final TextEditingController codeTEC = TextEditingController();
 
   final name = BehaviorSubject<String?>();
@@ -130,11 +132,11 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool _isLogin = false;
-  bool get isLogin => _isLogin;
+  bool _isLoginLoading = false;
+  bool get isLoginLoading => _isLoginLoading;
   logIn() async {
     try {
-      _isLogin = true;
+      _isLoginLoading = true;
       notifyListeners();
       Either<ServerFailure, Response> response = await authRepo.logIn(
           mail: mail.value!.trim(), password: password.value!.trim());
@@ -170,7 +172,7 @@ class AuthProvider extends ChangeNotifier {
           CustomNavigator.push(Routes.VERIFICATION, arguments: true);
         }
       });
-      _isLogin = false;
+      _isLoginLoading = false;
       notifyListeners();
     } catch (e) {
       CustomSnackBar.showSnackBar(
@@ -179,7 +181,7 @@ class AuthProvider extends ChangeNotifier {
               isFloating: true,
               backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
-      _isLogin = false;
+      _isLoginLoading = false;
       notifyListeners();
     }
   }
@@ -429,5 +431,11 @@ class AuthProvider extends ChangeNotifier {
             backgroundColor: Styles.ACTIVE,
             borderColor: Colors.transparent));
     notifyListeners();
+  }
+
+  logInAsAGuest() async {
+    clear();
+    sl<MainPageProvider>().updateDashboardIndex(0);
+    CustomNavigator.push(Routes.DASHBOARD, clean: true);
   }
 }

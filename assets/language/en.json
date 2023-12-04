@@ -139,6 +139,9 @@
   "show_more": "Show more",
   "show_less": "Show less",
   "there_is_no_feedbacks": "There's no feedbacks now",
-  "give_us_your_feedback": "Give us your feedback about this place"
+  "give_us_your_feedback": "Give us your feedback about this place",
+  "login_as_a_guest": "Login as a guest",
+  "connected": "Connected",
+  "no_connection": "No Internet Connection"
 
 }

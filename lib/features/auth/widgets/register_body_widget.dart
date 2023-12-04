@@ -320,10 +320,7 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                       ],
                     ),
                     InkWell(
-                      onTap: () {
-                        CustomNavigator.push(Routes.DASHBOARD, clean: true);
-                        provider.clear();
-                      },
+                      onTap: () => provider.logInAsAGuest(),
                       child: Padding(
                         padding: EdgeInsets.only(top: 12.h),
                         child: Text(

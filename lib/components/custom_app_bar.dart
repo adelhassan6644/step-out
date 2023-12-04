@@ -12,7 +12,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final Widget? actionChild;
   final bool withBack;
-  final bool withPadding;
+  final bool withHPadding;
+  final bool withVPadding;
   final double? height;
   final bool withSafeArea;
   final Color? backColor;
@@ -23,7 +24,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.title,
       this.height,
       this.backColor,
-      this.withPadding = true,
+      this.withHPadding = true,
+      this.withVPadding = true,
       this.withBack = true,
       this.withSafeArea = true,
       this.actionWidth,
@@ -36,8 +38,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       top: withSafeArea,
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: withPadding ? Dimensions.PADDING_SIZE_DEFAULT.w : 0,
-          vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL.h
+          horizontal: withHPadding ? Dimensions.PADDING_SIZE_DEFAULT.w : 0,
+          vertical: withVPadding ? Dimensions.PADDING_SIZE_EXTRA_SMALL.h : 0,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,

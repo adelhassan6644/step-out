@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
+import 'package:stepOut/components/custom_app_bar.dart';
 import 'package:stepOut/components/custom_images.dart';
 
 import '../../../app/core/utils/styles.dart';
@@ -23,9 +24,13 @@ class Login extends StatelessWidget {
           Container(
             height: context.toPadding + 180.h,
             width: context.width,
-            padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+            padding: EdgeInsets.only(
+                left: Dimensions.PADDING_SIZE_DEFAULT.w,
+                right: Dimensions.PADDING_SIZE_DEFAULT.w,
+                top: fromMain
+                    ? context.toPadding
+                    : (context.toPadding + Dimensions.PADDING_SIZE_DEFAULT.h),
+                bottom: Dimensions.PADDING_SIZE_DEFAULT.h),
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: ExactAssetImage(Images.authBG),
@@ -36,9 +41,13 @@ class Login extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SizedBox(
-                  height: context.toPadding + Dimensions.PADDING_SIZE_DEFAULT.h,
-                ),
+                if (fromMain)
+                  const CustomAppBar(
+                    withHPadding: false,
+                    withSafeArea: false,
+                    backColor: Styles.WHITE_COLOR,
+                  ),
+                const Expanded(child: SizedBox()),
                 Row(
                   children: [
                     Text(

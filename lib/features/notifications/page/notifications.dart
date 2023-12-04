@@ -12,6 +12,7 @@ import '../../../components/animated_widget.dart';
 import '../../../components/custom_button.dart';
 import '../../../components/empty_widget.dart';
 import '../../../data/config/di.dart';
+import '../../profile/provider/profile_provider.dart';
 import '../provider/notifications_provider.dart';
 import '../widgets/notification_card.dart';
 
@@ -25,8 +26,11 @@ class Notifications extends StatefulWidget {
 class _NotificationsState extends State<Notifications> {
   @override
   void initState() {
-    Future.delayed(
-        Duration.zero, () => sl<NotificationsProvider>().getNotifications());
+    Future.delayed(Duration.zero, () {
+      if (sl<ProfileProvider>().isLogin) {
+        sl<NotificationsProvider>().getNotifications();
+      }
+    });
     super.initState();
   }
 

@@ -7,6 +7,7 @@ import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_bottom_sheet.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../../navigation/routes.dart';
+import '../../auth/provider/auth_provider.dart';
 import '../../language/page/language_bottom_sheet.dart';
 import 'logout_button.dart';
 import 'more_button.dart';
@@ -18,11 +19,16 @@ class MoreOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        MoreButton(
-          title: getTranslated("profile", context),
-          icon: SvgImages.userIcon,
-          onTap: () => CustomNavigator.push(Routes.PROFILE),
-        ),
+        Consumer<AuthProvider>(builder: (_, provider, child) {
+          return Visibility(
+            visible: provider.isLogin,
+            child: MoreButton(
+              title: getTranslated("profile", context),
+              icon: SvgImages.userIcon,
+              onTap: () => CustomNavigator.push(Routes.PROFILE),
+            ),
+          );
+        }),
         MoreButton(
           title: getTranslated("news", context),
           icon: SvgImages.newsIcon,
@@ -40,7 +46,8 @@ class MoreOptions extends StatelessWidget {
                   CustomNavigator.pop();
                   provider.setLanguage(
                     Locale(
-                      AppStorageKey.languages[provider.selectIndex].languageCode!,
+                      AppStorageKey
+                          .languages[provider.selectIndex].languageCode!,
                       AppStorageKey.languages[provider.selectIndex].countryCode,
                     ),
                   );

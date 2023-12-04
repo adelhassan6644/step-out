@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
-import 'package:stepOut/features/profile/provider/profile_provider.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +9,6 @@ import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_images.dart';
-import '../../../data/config/di.dart';
 import '../../auth/provider/auth_provider.dart';
 
 class LogoutButton extends StatelessWidget {
@@ -18,11 +16,11 @@ class LogoutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ProfileProvider>(builder: (_, provider, child) {
+    return Consumer<AuthProvider>(builder: (_, provider, child) {
       return InkWell(
         onTap: () {
           if (provider.isLogin) {
-            sl<AuthProvider>().logOut();
+            provider.logOut();
           } else {
             CustomNavigator.push(Routes.LOGIN, arguments: true);
           }

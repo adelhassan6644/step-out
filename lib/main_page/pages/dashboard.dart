@@ -31,7 +31,9 @@ class _DashBoardState extends State<DashBoard> {
       sl<HomeProvider>().getBanners();
       sl<HomeProvider>().getCategories();
       sl<HomeProvider>().getOffers();
-      sl<ProfileProvider>().getProfile();
+      if (sl<ProfileProvider>().isLogin) {
+        sl<ProfileProvider>().getProfile();
+      }
     });
   }
 
