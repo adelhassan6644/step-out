@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="update ios">
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/.filecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/app.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/debug_ios_bundle_flutter_assets.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/debug_ios_bundle_flutter_assets.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/flutter_assets.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/f413d57e24f494474bd2ad9166346dd5/kernel_snapshot.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/dio/api_clinet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/dio/api_client.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/dio/dio_client.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/dio/dio_client.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_location.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_location.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/item_services_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/item_services_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/language/provider/localization_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/language/provider/localization_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/notifications/model/notifications_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/notifications/model/notifications_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/notifications/page/notifications.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/notifications/page/notifications.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/notifications/widgets/notification_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/notifications/widgets/notification_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/language/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/ar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/en.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,20 +122,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688516389160</updated>
-    </task>
-    <task id="LOCAL-00087" summary="add jks">
-      <created>1700183212707</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1700183212707</updated>
-    </task>
-    <task id="LOCAL-00088" summary="add jks">
-      <created>1700316596582</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1700316596583</updated>
     </task>
     <task id="LOCAL-00089" summary="add jks">
       <created>1700317792438</created>
@@ -480,7 +452,21 @@
       <option name="project" value="LOCAL" />
       <updated>1701721379680</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="update ios">
+      <created>1701727193206</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1701727193206</updated>
+    </task>
+    <task id="LOCAL-00137" summary="update ios">
+      <created>1701727400125</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1701727400125</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
