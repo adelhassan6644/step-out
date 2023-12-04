@@ -47,7 +47,7 @@ class NetworkInfo {
               borderRadius: BorderRadius.circular(15),
               side: const BorderSide(width: 1, color: Colors.transparent)),
           margin: const EdgeInsets.all(24),
-          duration: Duration(seconds: isNotConnected ? 6000 : 3),
+          duration: Duration(seconds: isNotConnected ? 6000 : 2),
           onVisible: !isNotConnected ? onVisible : null,
           content: Row(
             children: [
