@@ -46,6 +46,7 @@ class ItemDetailsInfo extends StatelessWidget {
               address: provider.model?.address,
               lat: provider.model?.lat,
               long: provider.model?.long,
+              itemName: provider.model?.name,
             ),
 
             ///Divider

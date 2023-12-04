@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../app/core/utils/images.dart';
 import '../data/api/end_points.dart';
+import 'lottie_file.dart';
 
 class CustomNetworkImage {
   static CustomNetworkImage? _instance;
@@ -52,23 +53,29 @@ class CustomNetworkImage {
         padding: padding,
         child: imageWidget,
       ),
-      placeholder: (context, url) {
-        return Container(
-          width: width ?? 40,
-          height: height ?? 40,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(radius ?? 15.w),
-            image: DecorationImage(
-              fit: fit ?? BoxFit.cover,
-              image: Image.asset(
-                defaultImage ?? Images.logo,
-                fit: fit ?? BoxFit.cover,
-              ).image,
-            ),
-          ),
-          child: imageWidget,
-        );
-      },
+      // placeholder: (context, url) {
+      //   return Container(
+      //     width: width ?? 40,
+      //     height: height ?? 40,
+      //     decoration: BoxDecoration(
+      //       borderRadius: BorderRadius.circular(radius ?? 15.w),
+      //       image: DecorationImage(
+      //         fit: fit ?? BoxFit.cover,
+      //         image: Image.asset(
+      //           defaultImage ?? Images.logo,
+      //           fit: fit ?? BoxFit.cover,
+      //         ).image,
+      //       ),
+      //     ),
+      //     child: imageWidget,
+      //   );
+      // },
+      placeholder: (context, url) => ClipRRect(
+          borderRadius: BorderRadius.circular(radius ?? 10),
+          child: defaultImage == null
+              ? LottieFile.asset("image_loading", height: height)
+              : Image.asset(defaultImage,
+                  fit: fit, width: width, height: height)),
       imageBuilder: (context, provider) {
         return Container(
           width: width ?? 40,
@@ -119,19 +126,33 @@ class CustomNetworkImage {
       ),
       fadeInDuration: const Duration(seconds: 1),
       fadeOutDuration: const Duration(seconds: 2),
-      placeholder: (context, url) => Container(
-        height: radius! * 2,
-        width: radius * 2,
-        padding: const EdgeInsets.all(0),
-        decoration: BoxDecoration(
-            border: color != null ? Border.all(color: color, width: 1) : null,
-            shape: BoxShape.circle),
-        child: CircleAvatar(
-          radius: radius,
-          backgroundColor: backGroundColor ?? Colors.white,
-          child: Image.asset(Images.logo),
-        ),
-      ),
+      // placeholder: (context, url) {
+      //   return Container(
+      //     width: width ?? 40,
+      //     height: height ?? 40,
+      //     decoration: BoxDecoration(
+      //       borderRadius: BorderRadius.circular(radius ?? 15.w),
+      //       image: DecorationImage(
+      //         fit: fit ?? BoxFit.cover,
+      //         image: Image.asset(
+      //           defaultImage ?? Images.logo,
+      //           fit: fit ?? BoxFit.cover,
+      //         ).image,
+      //       ),
+      //     ),
+      //     child: imageWidget,
+      //   );
+      // },
+      placeholder: (context, url) => ClipRRect(
+          borderRadius: BorderRadius.circular(radius!),
+          child: defaultImage == null
+              ? LottieFile.asset("image_loading", height: (radius * 2))
+              : Image.asset(
+                  defaultImage,
+                  fit: BoxFit.cover,
+                  height: radius * 2,
+                  width: radius * 2,
+                )),
       imageBuilder: (context, provider) {
         return Container(
           height: radius! * 2,
@@ -163,15 +184,27 @@ class CustomNetworkImage {
                   fit: BoxFit.cover,
                   image:
                       Image.asset(defaultImage ?? "assets/logo.png").image))),
-      placeholder: (context, url) => Container(
-          height: height ?? 40,
-          width: width ?? 40,
-          decoration: const BoxDecoration(
-              // image: DecorationImage(
-              //     fit: BoxFit.cover,
-              //     image: Image.asset(defaultImage ?? "assets/images/logo.png")
-              //         .image)
-              )),
+      // placeholder: (context, url) {
+      //   return Container(
+      //     width: width ?? 40,
+      //     height: height ?? 40,
+      //     decoration: BoxDecoration(
+      //       borderRadius: BorderRadius.circular(radius ?? 15.w),
+      //       image: DecorationImage(
+      //         fit: fit ?? BoxFit.cover,
+      //         image: Image.asset(
+      //           defaultImage ?? Images.logo,
+      //           fit: fit ?? BoxFit.cover,
+      //         ).image,
+      //       ),
+      //     ),
+      //     child: imageWidget,
+      //   );
+      // },
+      placeholder: (context, url) => defaultImage == null
+          ? LottieFile.asset("image_loading", height: height)
+          : Image.asset(defaultImage,
+              fit: BoxFit.cover, width: width, height: height),
       imageBuilder: (context, provider) {
         return Container(
             height: height ?? 40,

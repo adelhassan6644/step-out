@@ -145,6 +145,7 @@
   "login_as_a_guest": "Login as a guest",
   "connected": "Connected",
   "no_connection": "No Internet Connection",
-  "login_before_rate": "Login before rate"
+  "login_before_rate": "Login before rate",
+  "select_map": "Select Map"
 
 }

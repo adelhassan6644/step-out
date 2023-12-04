@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
+import 'package:stepOut/app/localization/language_constant.dart';
+import 'package:stepOut/components/custom_bottom_sheet.dart';
 import 'package:stepOut/features/maps/models/location_model.dart';
-import 'package:url_launcher/url_launcher.dart';
-
+import 'package:stepOut/navigation/custom_navigation.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/svg_images.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../components/custom_images.dart';
 import '../../../main_widgets/map_widget.dart';
+import '../../../components/open_map_options.dart';
 
 class ItemDetailsLocation extends StatelessWidget {
-  const ItemDetailsLocation({super.key, this.lat, this.long, this.address});
+  const ItemDetailsLocation(
+      {super.key, this.lat, this.long, this.address, this.itemName});
   final dynamic lat, long;
-  final String? address;
+  final String? address, itemName;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +34,22 @@ class ItemDetailsLocation extends StatelessWidget {
               horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
           child: InkWell(
             onTap: () async {
-              await launch(
-                  'https://www.google.com/maps/search/?api=1&query=$lat,$long');
+              final List<AvailableMap> availableMaps =
+                  await MapLauncher.installedMaps;
+              CustomBottomSheet.show(
+                height: 450.h,
+                list: OpenMapOption(
+                  maps: availableMaps,
+                  onMapTap: (map) {
+                    CustomNavigator.pop();
+                    map.showMarker(
+                      coords: Coords(double.parse(lat!), double.parse(long!)),
+                      title: itemName ?? "",
+                    );
+                  },
+                ),
+                label: getTranslated("select_map", context),
+              );
             },
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,

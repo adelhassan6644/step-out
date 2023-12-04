@@ -31,7 +31,7 @@ class ItemDetailsImages extends StatelessWidget {
                     child: ScaleAnimation(
                       child: FadeInAnimation(
                         child: InkWell(
-                          onTap: () {
+                          onTap: () async {
                             Future.delayed(
                                 Duration.zero,
                                 () => showDialog(

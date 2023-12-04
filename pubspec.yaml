@@ -76,6 +76,7 @@ dependencies:
   should_rebuild: ^1.0.1
   syncfusion_flutter_sliders: ^21.2.10
   share_plus: ^7.2.1
+  lottie: ^2.7.0
 
 
 
@@ -92,6 +93,7 @@ flutter:
     - assets/fonts/
     - assets/svgs/
     - assets/images/
+    - assets/json/
     - assets/language/
 
   fonts:
