@@ -35,7 +35,8 @@ class ItemDetailsContactInfo extends StatelessWidget {
               SizedBox(width: 8.w),
               Expanded(
                 child: InkWell(
-                  onTap: () => launch("tel://$phone"),
+                  onTap: () => launchUrl(Uri.parse("tel://$phone"),
+                      mode: LaunchMode.externalApplication),
                   child: Text(
                     phone ?? "",
                     style: AppTextStyles.medium.copyWith(

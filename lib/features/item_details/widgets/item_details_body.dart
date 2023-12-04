@@ -87,8 +87,10 @@ class ItemDetailsBody extends StatelessWidget {
                               color: Styles.PRIMARY_COLOR,
                               onTap: () {
                                 launchUrl(
-                                    Uri.parse(provider.model?.whatsapp ?? ""),
-                                    mode: LaunchMode.externalApplication);
+                                  Uri.parse(
+                                    'whatsapp://send?phone=${provider.model?.whatsapp}',
+                                  ),
+                                );
                               },
                             ),
                           // customContainerSvgIcon(

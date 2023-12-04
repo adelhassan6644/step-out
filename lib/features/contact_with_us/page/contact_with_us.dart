@@ -77,8 +77,10 @@ class ContactWithUs extends StatelessWidget {
                           children: [
                             ///E-mail
                             InkWell(
-                              onTap: () => launch(
-                                  "mailto:${provider.model?.data?.email ?? "StepOut@gmail.com"}"),
+                              onTap: () => launchUrl(
+                                  Uri.parse(
+                                      "mailto:${provider.model?.data?.email ?? "StepOut@gmail.com"}"),
+                                  mode: LaunchMode.externalApplication),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -104,8 +106,10 @@ class ContactWithUs extends StatelessWidget {
 
                             ///Phone
                             InkWell(
-                              onTap: () => launch(
-                                  "tel://${provider.model?.data?.phone}"),
+                              onTap: () => launchUrl(
+                                  Uri.parse(
+                                      "tel://${provider.model?.data?.phone}"),
+                                  mode: LaunchMode.externalApplication),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -210,8 +214,11 @@ class ContactWithUs extends StatelessWidget {
                           width: 40,
                           radius: 100,
                           onTap: () async {
-                            await launch(
-                                "whatsapp://send?phone=${provider.model?.data?.whatsApp}");
+                            launchUrl(
+                              Uri.parse(
+                                'whatsapp://send?phone=${provider.model?.data?.whatsApp}',
+                              ),
+                            );
                           }),
 
                     ///SnapChat
