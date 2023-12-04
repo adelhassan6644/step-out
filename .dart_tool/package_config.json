@@ -764,6 +764,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "lottie",
+      "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/lottie-2.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
       "name": "map_launcher",
       "rootUri": "file:///Users/user/.pub-cache/hosted/pub.dev/map_launcher-2.5.0+1",
       "packageUri": "lib/",
@@ -1352,7 +1358,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-11-30T17:45:33.003541Z",
+  "generated": "2023-12-04T20:17:22.952357Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }
