@@ -113,7 +113,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                     nextPage();
                   });
                 } else {
-                  CustomNavigator.push(Routes.LOGIN, clean: true);
+                  CustomNavigator.push(Routes.DASHBOARD, clean: true);
                 }
               },
             ),
