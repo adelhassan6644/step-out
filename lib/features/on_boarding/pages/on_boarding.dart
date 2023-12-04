@@ -22,7 +22,8 @@ class OnBoarding extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               InkWell(
-                onTap: () => CustomNavigator.push(Routes.LOGIN, clean: true),
+                onTap: () =>
+                    CustomNavigator.push(Routes.DASHBOARD, clean: true),
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                       vertical: Dimensions.PADDING_SIZE_SMALL.h),
