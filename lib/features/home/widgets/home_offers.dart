@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stepOut/app/core/utils/app_strings.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/components/shimmer/custom_shimmer.dart';
@@ -72,7 +71,7 @@ class HomeOffers extends StatelessWidget {
                                                           .offersModel
                                                           ?.data?[index]
                                                           .image ??
-                                                      AppStrings.networkImage,
+                                                      "",
                                                   height: 140.h,
                                                   width: context.width * 0.7,
                                                   fit: BoxFit.cover,
