@@ -117,7 +117,7 @@ class ItemCard extends StatelessWidget {
                     ],
                   ),
 
-                  SizedBox(height: 6.h),
+                  SizedBox(height: 6),
 
                   /// Distance
                   Consumer<LocationProvider>(builder: (_, provider, child) {
