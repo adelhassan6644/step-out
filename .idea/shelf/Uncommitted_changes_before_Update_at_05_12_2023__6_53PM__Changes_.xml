@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_05_12_2023,_6_53 PM_[Changes]" date="1701795233095" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_12_2023,_6_53 PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 05/12/2023, 6:53 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="build/449a6784a19b909393d7dd6b7f8f3f1d/_composite.stamp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/449a6784a19b909393d7dd6b7f8f3f1d/gen_localizations.stamp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/449a6784a19b909393d7dd6b7f8f3f1d/gen_dart_plugin_registrant.stamp" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+</changelist>
