@@ -167,8 +167,9 @@ class SearchProvider extends ChangeNotifier {
       Map<String, dynamic> filter = {
         if (searchTEC.text.trim().isNotEmpty) "name": searchTEC.text.trim(),
         "range": (range ?? 50) * 1000,
-        "category_id": selectedCategory?.id,
-        if (selectedSubCategory != -1) "sub_category_id": selectedSubCategory,
+        if (selectedCategory != null) "category_id": selectedCategory?.id,
+        if (selectedSubCategory != -1 && selectedSubCategory != null)
+          "sub_category_id": selectedSubCategory,
         if (selectedServices.isNotEmpty) "service_ids": selectedServices,
         if (selectedSubServices.isNotEmpty)
           "sub_service_ids": selectedSubServices,

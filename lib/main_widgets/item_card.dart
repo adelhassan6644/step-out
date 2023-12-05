@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
+import 'package:stepOut/app/core/utils/methods.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
+import 'package:stepOut/app/localization/language_constant.dart';
 import 'package:stepOut/components/custom_network_image.dart';
 import 'package:stepOut/features/item_details/model/item_details_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
@@ -9,6 +12,7 @@ import 'package:stepOut/navigation/routes.dart';
 import '../app/core/utils/svg_images.dart';
 import '../app/core/utils/text_styles.dart';
 import '../components/custom_images.dart';
+import '../features/maps/provider/location_provider.dart';
 
 class ItemCard extends StatelessWidget {
   const ItemCard({super.key, this.width, this.item});
@@ -112,6 +116,31 @@ class ItemCard extends StatelessWidget {
                       ),
                     ],
                   ),
+
+                  SizedBox(height: 6.h),
+
+                  /// Distance
+                  Consumer<LocationProvider>(builder: (_, provider, child) {
+                    return Row(
+                      children: [
+                        customImageIconSVG(
+                            imageName: SvgImages.location,
+                            width: 20,
+                            height: 20,
+                            color: Styles.DETAILS_COLOR),
+                        SizedBox(width: 8.w),
+                        Expanded(
+                          child: Text(
+                            "${getTranslated("away_from_you", context)} ${Methods.calcDistance(lat1: provider.currentLocation?.latitude, long1: provider.currentLocation?.longitude, lat2: item?.lat, long2: item?.long)} ${getTranslated("km", context)}",
+                            style: AppTextStyles.medium.copyWith(
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 12,
+                                color: Styles.DETAILS_COLOR),
+                          ),
+                        ),
+                      ],
+                    );
+                  }),
                 ],
               ),
             ),

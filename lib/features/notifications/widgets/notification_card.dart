@@ -91,7 +91,7 @@ class _NotificationCardState extends State<NotificationCard> {
                     child: ReadMoreText(
                       widget.notification?.notificationBody?.message ?? " ",
                       style: AppTextStyles.medium
-                          .copyWith(fontSize: 14, color: Styles.TITLE),
+                          .copyWith(fontSize: 12, color: Styles.TITLE),
                       trimLines: 2,
                       colorClickableText: Colors.pink,
                       trimMode: TrimMode.Line,

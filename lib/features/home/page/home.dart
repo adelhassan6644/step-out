@@ -8,27 +8,10 @@ import '../widgets/home_header.dart';
 import '../widgets/home_offers.dart';
 import '../widgets/home_banners.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
-  @override
-  void initState() {
-    Future.delayed(Duration.zero, () {
-      sl<HomeProvider>().getBanners();
-      sl<HomeProvider>().getCategories();
-      sl<HomeProvider>().getOffers();
-    });
-    super.initState();
-  }
-
+class Home extends StatelessWidget {
+  const Home({super.key});
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return SafeArea(
       top: true,
       child: Column(
@@ -55,7 +38,4 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }

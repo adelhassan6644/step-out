@@ -10,8 +10,8 @@ class ItemDetailsModel {
   String? cover;
   String? logo;
   String? address;
-  dynamic lat;
-  dynamic long;
+  String? lat;
+  String? long;
   String? status;
   String? phone;
   String? facebook;
@@ -66,8 +66,8 @@ class ItemDetailsModel {
         cover: json["cover"],
         logo: json["logo"],
         address: json["address"],
-        lat: json["lat"],
-        long: json["long"],
+        lat: json["lat"] != null ? json["lat"].toString() : null,
+        long: json["long"] != null ? json["long"].toString() : null,
         status: json["status"],
         phone: json["phone"],
         facebook: json["facebook"],

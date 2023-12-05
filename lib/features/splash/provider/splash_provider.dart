@@ -4,6 +4,7 @@ import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:stepOut/navigation/routes.dart';
 import '../../../data/config/di.dart';
 import '../../../helpers/permissions.dart';
+import '../../maps/provider/location_provider.dart';
 import '../repo/splash_repo.dart';
 
 class SplashProvider extends ChangeNotifier {
@@ -13,6 +14,7 @@ class SplashProvider extends ChangeNotifier {
   startTheApp() {
     Future.delayed(const Duration(milliseconds: 4500), () async {
       sl<SettingProvider>().getSetting();
+      sl<LocationProvider>().getCurrentLocation();
 
       ///Ask Notification Permission
       await PermissionHandler.checkNotificationsPermission();

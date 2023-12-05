@@ -146,5 +146,6 @@
   "no_connection": "غير متصل بالإنترنت",
   "login_before_rate": "سجل قبل التقييم",
   "select_map": "اختر خريطة",
-  "notification_deleted_successfully": "تم حذف الاشعار بنجاح"
+  "notification_deleted_successfully": "تم حذف الاشعار بنجاح",
+  "away_from_you": "يبعد عنك "
 }
