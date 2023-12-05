@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stepOut/features/language/provider/localization_provider.dart';
+import 'package:stepOut/features/more/widgets/turn_button.dart';
+import 'package:stepOut/features/notifications/provider/notifications_provider.dart';
 import '../../../app/core/utils/app_storage_keys.dart';
 import '../../../app/core/utils/svg_images.dart';
 import '../../../app/localization/language_constant.dart';
@@ -26,6 +28,18 @@ class MoreOptions extends StatelessWidget {
               title: getTranslated("profile", context),
               icon: SvgImages.userIcon,
               onTap: () => CustomNavigator.push(Routes.PROFILE),
+            ),
+          );
+        }),
+        Consumer<NotificationsProvider>(
+            builder: (_, notificationProvider, child) {
+          return Visibility(
+            visible: notificationProvider.isLogin,
+            child: TurnButton(
+              title: getTranslated("notifications", context),
+              icon: SvgImages.notification,
+              onTap: () => notificationProvider.switchNotification(),
+              bing: notificationProvider.isTurnOn,
             ),
           );
         }),

@@ -16,6 +16,17 @@ class NotificationsProvider extends ChangeNotifier {
   NotificationsRepo repo;
   NotificationsProvider({required this.repo});
 
+  bool get isLogin => repo.isLogin;
+  bool get isTurnOn => repo.isTurnOn;
+
+  switchNotification() async {
+    loadingDialog();
+    notifyListeners();
+    await repo.switchNotification();
+    CustomNavigator.pop();
+    notifyListeners();
+  }
+
   bool goingDown = false;
   scroll(controller) {
     controller.addListener(() {

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../app/core/utils/app_storage_keys.dart';
@@ -15,6 +16,24 @@ class NotificationsRepo {
   NotificationsRepo({required this.dioClient, required this.sharedPreferences});
 
   String get userId => sharedPreferences.getString(AppStorageKey.userId) ?? "";
+
+  bool get isLogin => sharedPreferences.containsKey(AppStorageKey.isLogin);
+
+  bool get isTurnOn => sharedPreferences.containsKey(AppStorageKey.isSubscribe);
+
+  Future switchNotification() async {
+    if (isTurnOn) {
+      await FirebaseMessaging.instance
+          .unsubscribeFromTopic(userId)
+          .then((v) async {
+        await sharedPreferences.remove(AppStorageKey.isSubscribe);
+      });
+    } else {
+      await FirebaseMessaging.instance.subscribeToTopic(userId).then((v) async {
+        await sharedPreferences.setBool(AppStorageKey.isSubscribe, true);
+      });
+    }
+  }
 
   Future<Either<ServerFailure, Response>> getNotifications() async {
     try {

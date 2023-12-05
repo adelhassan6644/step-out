@@ -159,7 +159,8 @@ class AuthProvider extends ChangeNotifier {
         authRepo.saveUserId(success.data['data']["id"]);
         if (success.data['data']["email_verified_at"] != null) {
           authRepo.setLoggedIn();
-          CustomNavigator.push(Routes.DASHBOARD, clean: true, arguments: 0);
+          CustomNavigator.push(Routes.DASHBOARD, clean: true);
+          sl<MainPageProvider>().updateDashboardIndex(0);
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: getTranslated("logged_in_successfully",
@@ -444,7 +445,7 @@ class AuthProvider extends ChangeNotifier {
               backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
     }
-    isLogOut = true;
+    isLogOut = false;
     notifyListeners();
   }
 

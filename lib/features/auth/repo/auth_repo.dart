@@ -67,10 +67,12 @@ class AuthRepo {
 
   Future subscribeToTopic(id) async {
     await FirebaseMessaging.instance.subscribeToTopic("$id");
+    await sharedPreferences.setBool(AppStorageKey.isSubscribe, true);
   }
 
   Future unSubscribeToTopic() async {
     await FirebaseMessaging.instance.subscribeToTopic("$userId");
+    await sharedPreferences.remove(AppStorageKey.isSubscribe);
   }
 
   Future<Either<ServerFailure, Response>> logIn(
