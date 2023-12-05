@@ -70,7 +70,7 @@ class AuthRepo {
   }
 
   Future unSubscribeToTopic() async {
-    await FirebaseMessaging.instance.subscribeToTopic(userId!);
+    await FirebaseMessaging.instance.subscribeToTopic("$userId");
   }
 
   Future<Either<ServerFailure, Response>> logIn(
