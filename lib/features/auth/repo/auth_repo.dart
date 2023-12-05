@@ -66,7 +66,7 @@ class AuthRepo {
   }
 
   Future subscribeToTopic(id) async {
-    await FirebaseMessaging.instance.subscribeToTopic(id);
+    await FirebaseMessaging.instance.subscribeToTopic("$id");
   }
 
   Future unSubscribeToTopic() async {
