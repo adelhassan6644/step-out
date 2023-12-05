@@ -67,17 +67,14 @@ class HomeOffers extends StatelessWidget {
                                               horizontal: 8.w),
                                           child: CustomNetworkImage
                                               .containerNewWorkImage(
-                                                  image: provider
-                                                          .offersModel
-                                                          ?.data?[index]
-                                                          .image ??
-                                                      "",
-                                                  height: 140.h,
-                                                  width: context.width * 0.7,
-                                                  fit: BoxFit.cover,
-                                                  radius: 20,
-                                                  borderColor:
-                                                      Styles.PRIMARY_COLOR),
+                                            image: provider.offersModel
+                                                    ?.data?[index].image ??
+                                                "",
+                                            height: 140.h,
+                                            width: context.width * 0.7,
+                                            fit: BoxFit.cover,
+                                            radius: 20,
+                                          ),
                                         ),
                                       ))
                             ],

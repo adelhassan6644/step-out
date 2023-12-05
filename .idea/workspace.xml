@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="update ios">
-      <change beforePath="$PROJECT_DIR$/assets/language/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/ar.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/widgets/home_offers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/widgets/home_offers.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,27 +121,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1688516389160</updated>
-    </task>
-    <task id="LOCAL-00089" summary="add jks">
-      <created>1700317792438</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1700317792438</updated>
-    </task>
-    <task id="LOCAL-00090" summary="add jks">
-      <created>1700317917088</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1700317917088</updated>
-    </task>
-    <task id="LOCAL-00091" summary="add jks">
-      <created>1700345836313</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1700345836314</updated>
     </task>
     <task id="LOCAL-00092" summary="add jks">
       <created>1700571113241</created>
@@ -466,7 +444,28 @@
       <option name="project" value="LOCAL" />
       <updated>1701727400125</updated>
     </task>
-    <option name="localTasksCounter" value="138" />
+    <task id="LOCAL-00138" summary="update ios">
+      <created>1701802720937</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1701802720937</updated>
+    </task>
+    <task id="LOCAL-00139" summary="update ios">
+      <created>1701802763172</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1701802763172</updated>
+    </task>
+    <task id="LOCAL-00140" summary="update ios">
+      <created>1701802801683</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1701802801683</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
