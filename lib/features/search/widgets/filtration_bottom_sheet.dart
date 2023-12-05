@@ -29,9 +29,9 @@ class FiltrationBottomSheet extends StatelessWidget {
             ),
             child: SfSlider(
               min: 0.0,
-              max: 100.0,
+              max: 50.0,
               value: provider.range ?? 0,
-              interval: 20,
+              interval: 10,
               showTicks: true,
               showLabels: true,
               enableTooltip: true,

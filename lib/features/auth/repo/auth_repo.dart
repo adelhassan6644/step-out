@@ -23,6 +23,7 @@ class AuthRepo {
 
   setLoggedIn() {
     sharedPreferences.setBool(AppStorageKey.isLogin, true);
+    subscribeToTopic();
   }
 
   saveUserId(id) {
@@ -65,14 +66,20 @@ class AuthRepo {
     return deviceToken;
   }
 
-  Future subscribeToTopic(id) async {
-    await FirebaseMessaging.instance.subscribeToTopic("$id");
-    await sharedPreferences.setBool(AppStorageKey.isSubscribe, true);
+  Future subscribeToTopic() async {
+    await FirebaseMessaging.instance
+        .subscribeToTopic("$userId")
+        .then((v) async {
+      await sharedPreferences.setBool(AppStorageKey.isSubscribe, true);
+    });
   }
 
   Future unSubscribeToTopic() async {
-    await FirebaseMessaging.instance.subscribeToTopic("$userId");
-    await sharedPreferences.remove(AppStorageKey.isSubscribe);
+    await FirebaseMessaging.instance
+        .unsubscribeFromTopic("$userId")
+        .then((v) async {
+      await sharedPreferences.remove(AppStorageKey.isSubscribe);
+    });
   }
 
   Future<Either<ServerFailure, Response>> logIn(
@@ -85,7 +92,6 @@ class AuthRepo {
       });
 
       if (response.statusCode == 200) {
-        subscribeToTopic(response.data['data']["id"]);
         // dioClient.updateHeader(token: response.data['data']["api_token"]);
         return Right(response);
       } else {
@@ -188,9 +194,6 @@ class AuthRepo {
           });
 
       if (response.statusCode == 200) {
-        if (fromRegister) {
-          await subscribeToTopic(userId);
-        }
         return Right(response);
       } else {
         return left(ServerFailure(response.data['message']));
@@ -225,9 +228,14 @@ class AuthRepo {
   }
 
   Future<bool> logOut() async {
-    unSubscribeToTopic();
-    await sharedPreferences.remove(AppStorageKey.userId);
-    await sharedPreferences.remove(AppStorageKey.isLogin);
-    return true;
+    await unSubscribeToTopic();
+
+    if (sharedPreferences.containsKey(AppStorageKey.isSubscribe)) {
+      return false;
+    } else {
+      await sharedPreferences.remove(AppStorageKey.userId);
+      await sharedPreferences.remove(AppStorageKey.isLogin);
+      return true;
+    }
   }
 }

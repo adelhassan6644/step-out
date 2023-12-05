@@ -30,7 +30,7 @@ class SearchProvider extends ChangeNotifier {
   init() {
     hasFocus();
     searchTEC.clear();
-    range = 100;
+    range = 50;
     selectedCategory = null;
     selectedSubCategory = null;
     selectedServices.clear();
@@ -104,7 +104,7 @@ class SearchProvider extends ChangeNotifier {
   }
 
   clearFilter() {
-    range = 100;
+    range = 50;
     selectedCategory = null;
     selectedSubCategory = null;
     selectedServices.clear();
@@ -165,12 +165,13 @@ class SearchProvider extends ChangeNotifier {
       notifyListeners();
 
       Map<String, dynamic> filter = {
-        "name": searchTEC.text.trim(),
-        "range": range ?? 100,
+        if (searchTEC.text.trim().isNotEmpty) "name": searchTEC.text.trim(),
+        "range": (range ?? 50) * 1000,
         "category_id": selectedCategory?.id,
-        "sub_category_id": selectedSubCategory,
-        "service_ids": selectedServices,
-        "sub_service_ids": selectedSubServices,
+        if (selectedSubCategory != -1) "sub_category_id": selectedSubCategory,
+        if (selectedServices.isNotEmpty) "service_ids": selectedServices,
+        if (selectedSubServices.isNotEmpty)
+          "sub_service_ids": selectedSubServices,
       };
 
       Either<ServerFailure, Response> response = await repo.getSearch(filter);

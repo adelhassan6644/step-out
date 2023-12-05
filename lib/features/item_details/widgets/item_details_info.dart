@@ -20,7 +20,7 @@ class ItemDetailsInfo extends StatelessWidget {
       child: Consumer<ItemDetailsProvider>(builder: (_, provider, child) {
         return ListAnimator(
           customPadding:
-          EdgeInsets.only(top: Dimensions.PADDING_SIZE_DEFAULT.h),
+              EdgeInsets.only(top: Dimensions.PADDING_SIZE_DEFAULT.h),
           data: [
             ///Services
             const ItemServicesWidget(),
@@ -61,9 +61,7 @@ class ItemDetailsInfo extends StatelessWidget {
             ///Item Details Offers
             ItemDetailsOffer(offers: provider.model?.offers),
 
-            SizedBox(
-              height: 24.h,
-            )
+            SizedBox(height: 36.h)
           ],
         );
       }),

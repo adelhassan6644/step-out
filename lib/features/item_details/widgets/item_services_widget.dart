@@ -58,7 +58,7 @@ class ItemServicesWidget extends StatelessWidget {
                                           ?.length ??
                                       0,
                                   (i) => SizedBox(
-                                        width: 60.w,
+                                        width: 70.w,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
@@ -92,7 +92,7 @@ class ItemServicesWidget extends StatelessWidget {
                         }
                       },
                       child: SizedBox(
-                        width: 65.w,
+                        width: 70.w,
                         child: InkWell(
                           focusColor: Colors.transparent,
                           hoverColor: Colors.transparent,

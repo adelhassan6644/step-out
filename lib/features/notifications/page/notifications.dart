@@ -87,17 +87,20 @@ class _NotificationsState extends State<Notifications> {
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
                                                                       .center,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .end,
                                                               children: [
                                                                 CustomButton(
-                                                                  width: 100.w,
-                                                                  height: 30.h,
+                                                                  width: 120.w,
+                                                                  height: 35.h,
                                                                   text: getTranslated(
                                                                       "delete",
                                                                       context),
                                                                   svgIcon:
                                                                       SvgImages
                                                                           .trash,
-                                                                  iconSize: 12,
+                                                                  iconSize: 18,
                                                                   iconColor: Styles
                                                                       .IN_ACTIVE,
                                                                   textColor: Styles
@@ -107,8 +110,16 @@ class _NotificationsState extends State<Notifications> {
                                                                       .withOpacity(
                                                                           0.12),
                                                                 ),
+                                                                SizedBox(
+                                                                  width: Dimensions
+                                                                      .PADDING_SIZE_DEFAULT
+                                                                      .w,
+                                                                )
                                                               ],
                                                             ),
+                                                            direction:
+                                                                DismissDirection
+                                                                    .endToStart,
                                                             key:
                                                                 ValueKey(index),
                                                             confirmDismiss:
