@@ -51,6 +51,7 @@ class ItemCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  ///Name
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -88,10 +89,10 @@ class ItemCard extends StatelessWidget {
                     child: Text(
                       item?.description ?? "description",
                       maxLines: 1,
-                      style: AppTextStyles.regular.copyWith(
+                      style: AppTextStyles.medium.copyWith(
                           fontSize: 14,
                           overflow: TextOverflow.ellipsis,
-                          color: Styles.DETAILS_COLOR),
+                          color: Styles.TITLE),
                     ),
                   ),
 
@@ -117,25 +118,24 @@ class ItemCard extends StatelessWidget {
                     ],
                   ),
 
-                  SizedBox(height: 6),
-
                   /// Distance
+                  const SizedBox(height: 6),
                   Consumer<LocationProvider>(builder: (_, provider, child) {
                     return Row(
                       children: [
                         customImageIconSVG(
-                            imageName: SvgImages.location,
+                            imageName: SvgImages.distance,
                             width: 20,
                             height: 20,
-                            color: Styles.DETAILS_COLOR),
+                            color: Styles.SUBTITLE),
                         SizedBox(width: 8.w),
                         Expanded(
                           child: Text(
                             "${getTranslated("away_from_you", context)} ${Methods.calcDistance(lat1: provider.currentLocation?.latitude, long1: provider.currentLocation?.longitude, lat2: item?.lat, long2: item?.long)} ${getTranslated("km", context)}",
-                            style: AppTextStyles.medium.copyWith(
+                            style: AppTextStyles.regular.copyWith(
                                 overflow: TextOverflow.ellipsis,
                                 fontSize: 12,
-                                color: Styles.DETAILS_COLOR),
+                                color: Styles.SUBTITLE),
                           ),
                         ),
                       ],

@@ -185,19 +185,25 @@ class ItemDetailsBody extends StatelessWidget {
                       SizedBox(
                         height: 8.h,
                       ),
-                      ReadMoreText(
-                        provider.model?.description ?? "",
-                        style: AppTextStyles.medium.copyWith(fontSize: 14),
-                        trimLines: 2,
-                        colorClickableText: Colors.pink,
-                        trimMode: TrimMode.Line,
-                        trimCollapsedText: getTranslated("show_more", context),
-                        trimExpandedText: getTranslated("show_less", context),
-                        textAlign: TextAlign.start,
-                        moreStyle: AppTextStyles.semiBold.copyWith(
-                            fontSize: 14, color: Styles.PRIMARY_COLOR),
-                        lessStyle: AppTextStyles.semiBold.copyWith(
-                            fontSize: 14, color: Styles.PRIMARY_COLOR),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: ReadMoreText(
+                          provider.model?.description ?? "",
+                          style:
+                          AppTextStyles.medium.copyWith(fontSize: 14),
+                          trimLines: 2,
+                          colorClickableText: Colors.pink,
+                          trimMode: TrimMode.Line,
+                          trimCollapsedText:
+                          getTranslated("show_more", context),
+                          trimExpandedText:
+                          getTranslated("show_less", context),
+                          textAlign: TextAlign.start,
+                          moreStyle: AppTextStyles.semiBold.copyWith(
+                              fontSize: 14, color: Styles.PRIMARY_COLOR),
+                          lessStyle: AppTextStyles.semiBold.copyWith(
+                              fontSize: 14, color: Styles.PRIMARY_COLOR),
+                        ),
                       ),
                     ],
                   ),

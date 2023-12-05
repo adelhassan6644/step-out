@@ -52,7 +52,7 @@ class NewsCard extends StatelessWidget {
                   child: ReadMoreText(
                     newsItem?.content ?? "",
                     style: AppTextStyles.medium
-                        .copyWith(fontSize: 14, color: Styles.DETAILS_COLOR),
+                        .copyWith(fontSize: 14, color: Styles.TITLE),
                     trimLines: 3,
                     colorClickableText: Colors.pink,
                     trimMode: TrimMode.Line,
@@ -82,7 +82,7 @@ class NewsCard extends StatelessWidget {
                       SizedBox(width: 8.w),
                       Text(
                         newsItem?.address ?? "",
-                        style: AppTextStyles.semiBold.copyWith(
+                        style: AppTextStyles.medium.copyWith(
                             fontSize: 14, color: Styles.DETAILS_COLOR),
                       ),
                     ],
@@ -102,6 +102,7 @@ class NewsCard extends StatelessWidget {
                           fontSize: 14,
                           overflow: TextOverflow.ellipsis,
                           decoration: TextDecoration.underline,
+                          decorationColor: Colors.blueAccent,
                           color: Colors.blueAccent),
                     ),
                   ),

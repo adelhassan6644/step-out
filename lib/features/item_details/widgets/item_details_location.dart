@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:map_launcher/map_launcher.dart';
+import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/localization/language_constant.dart';
 import 'package:stepOut/components/custom_bottom_sheet.dart';
 import 'package:stepOut/features/maps/models/location_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
+import '../../../app/core/utils/methods.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/svg_images.dart';
 import '../../../app/core/utils/text_styles.dart';
 import '../../../components/custom_images.dart';
 import '../../../main_widgets/map_widget.dart';
 import '../../../components/open_map_options.dart';
+import '../../maps/provider/location_provider.dart';
 
 class ItemDetailsLocation extends StatelessWidget {
   const ItemDetailsLocation(
@@ -49,6 +52,7 @@ class ItemDetailsLocation extends StatelessWidget {
                 point: LocationModel(latitude: lat, longitude: long),
               ),
             ),
+
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
@@ -56,7 +60,11 @@ class ItemDetailsLocation extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   customImageIconSVG(
-                      imageName: SvgImages.location, width: 20, height: 20),
+                    imageName: SvgImages.location,
+                    width: 20,
+                    height: 20,
+                    color: Styles.TITLE,
+                  ),
                   SizedBox(width: 8.w),
                   Expanded(
                     child: Text(
@@ -70,6 +78,34 @@ class ItemDetailsLocation extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            SizedBox(height: 6.h),
+
+            /// Distance
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+              child: Consumer<LocationProvider>(builder: (_, provider, child) {
+                return Row(
+                  children: [
+                    customImageIconSVG(
+                        imageName: SvgImages.distance,
+                        width: 20,
+                        height: 20,
+                        color: Styles.SUBTITLE),
+                    SizedBox(width: 8.w),
+                    Expanded(
+                      child: Text(
+                        "${getTranslated("away_from_you", context)} ${Methods.calcDistance(lat1: provider.currentLocation?.latitude, long1: provider.currentLocation?.longitude, lat2: lat, long2: long)} ${getTranslated("km", context)}",
+                        style: AppTextStyles.regular.copyWith(
+                            overflow: TextOverflow.ellipsis,
+                            fontSize: 12,
+                            color: Styles.SUBTITLE),
+                      ),
+                    ),
+                  ],
+                );
+              }),
             ),
           ],
         ),
