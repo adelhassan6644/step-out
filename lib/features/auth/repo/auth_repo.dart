@@ -223,7 +223,7 @@ class AuthRepo {
   }
 
   Future<bool> logOut() async {
-    await unSubscribeToTopic();
+    unSubscribeToTopic();
     await sharedPreferences.remove(AppStorageKey.userId);
     await sharedPreferences.remove(AppStorageKey.isLogin);
     return true;

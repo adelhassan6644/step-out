@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
@@ -11,8 +12,8 @@ import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_images.dart';
 import '../../auth/provider/auth_provider.dart';
 
-class LogoutButton extends StatelessWidget {
-  const LogoutButton({super.key});
+class LogOutButton extends StatelessWidget {
+  const LogOutButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,18 +47,23 @@ class LogoutButton extends StatelessWidget {
               const SizedBox(
                 width: 16,
               ),
-              Expanded(
-                child: Text(
-                    getTranslated(
-                        provider.isLogin ? "logout" : "login", context),
-                    maxLines: 1,
-                    style: AppTextStyles.medium.copyWith(
-                        fontSize: 18,
-                        overflow: TextOverflow.ellipsis,
-                        color: provider.isLogin
-                            ? Styles.ERORR_COLOR
-                            : Styles.ACTIVE)),
-              ),
+              provider.isLogOut
+                  ? const SpinKitThreeBounce(
+                      color: Styles.ERORR_COLOR,
+                      size: 25,
+                    )
+                  : Expanded(
+                      child: Text(
+                          getTranslated(
+                              provider.isLogin ? "logout" : "login", context),
+                          maxLines: 1,
+                          style: AppTextStyles.medium.copyWith(
+                              fontSize: 18,
+                              overflow: TextOverflow.ellipsis,
+                              color: provider.isLogin
+                                  ? Styles.ERORR_COLOR
+                                  : Styles.ACTIVE)),
+                    ),
             ],
           ),
         ),

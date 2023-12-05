@@ -417,19 +417,34 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
+  bool isLogOut = false;
+
   logOut() async {
-    CustomNavigator.push(Routes.SPLASH, clean: true);
-    await authRepo.logOut();
-    clear();
-    sl<ProfileProvider>().clear();
-    sl<MainPageProvider>().updateDashboardIndex(0);
-    CustomSnackBar.showSnackBar(
-        notification: AppNotification(
-            message: getTranslated("your_logged_out_successfully",
-                CustomNavigator.navigatorState.currentContext!),
-            isFloating: true,
-            backgroundColor: Styles.ACTIVE,
-            borderColor: Colors.transparent));
+    isLogOut = true;
+    notifyListeners();
+
+    if (await authRepo.logOut()) {
+      CustomNavigator.push(Routes.SPLASH, clean: true);
+
+      sl<ProfileProvider>().clear();
+      sl<MainPageProvider>().updateDashboardIndex(0);
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: getTranslated("your_logged_out_successfully",
+                  CustomNavigator.navigatorState.currentContext!),
+              isFloating: true,
+              backgroundColor: Styles.ACTIVE,
+              borderColor: Colors.transparent));
+    } else {
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: getTranslated("something_went_wrong",
+                  CustomNavigator.navigatorState.currentContext!),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Colors.transparent));
+    }
+    isLogOut = true;
     notifyListeners();
   }
 

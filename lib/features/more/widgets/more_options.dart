@@ -69,7 +69,7 @@ class MoreOptions extends StatelessWidget {
           icon: SvgImages.aboutUs,
           onTap: () => CustomNavigator.push(Routes.ABOUT_US),
         ),
-        const LogoutButton(),
+        const LogOutButton(),
       ],
     );
   }
