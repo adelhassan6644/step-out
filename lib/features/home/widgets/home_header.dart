@@ -25,14 +25,6 @@ class HomeHeader extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          customImageIconSVG(
-              onTap: () => CustomNavigator.push(Routes.SEARCH),
-              imageName: SvgImages.search,
-              width: 24,
-              height: 24),
-          const Expanded(child: SizedBox()),
-          customImageIcon(imageName: Images.homeLogo, width: 100),
-          const Expanded(child: SizedBox()),
           Consumer<MainPageProvider>(builder: (_, provider, child) {
             return customImageIconSVG(
                 onTap: () => provider.updateDashboardIndex(2),
@@ -40,6 +32,14 @@ class HomeHeader extends StatelessWidget {
                 width: 24,
                 height: 24);
           }),
+          const Expanded(child: SizedBox()),
+          customImageIcon(imageName: Images.homeLogo, width: 100),
+          const Expanded(child: SizedBox()),
+          customImageIconSVG(
+              onTap: () => CustomNavigator.push(Routes.SEARCH),
+              imageName: SvgImages.search,
+              width: 24,
+              height: 24),
         ],
       ),
     );

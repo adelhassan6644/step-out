@@ -5,6 +5,10 @@ FlutterLocalNotificationsPlugin? _notificationsPlugin =
 
 localNotification() {
   _notificationsPlugin = FlutterLocalNotificationsPlugin();
+  _notificationsPlugin
+      ?.resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.requestNotificationsPermission();
   if (Platform.isIOS) {
     _notificationsPlugin!
         .resolvePlatformSpecificImplementation<

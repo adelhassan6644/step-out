@@ -30,11 +30,8 @@ class SearchProvider extends ChangeNotifier {
   init() {
     hasFocus();
     searchTEC.clear();
-    range = 50;
     selectedCategory = null;
     selectedSubCategory = null;
-    selectedServices.clear();
-    selectedSubServices.clear();
     services?.clear();
     result.clear();
     notifyListeners();
@@ -60,10 +57,7 @@ class SearchProvider extends ChangeNotifier {
       selectedCategory = v;
     }
     selectedSubCategory = null;
-    selectedServices.clear();
     services?.clear();
-    selectedSubServices.clear();
-
     notifyListeners();
   }
 
@@ -78,37 +72,29 @@ class SearchProvider extends ChangeNotifier {
       }
     }
     services?.clear();
-    selectedServices.clear();
-    selectedSubServices.clear();
     notifyListeners();
   }
 
-  List<int> selectedServices = [];
-  onSelectService(id) {
-    if (selectedServices.contains(id)) {
-      selectedServices.removeWhere((e) => e == id);
-    } else {
-      selectedServices.add(id);
+  onSelectService(i) {
+    services![i].isSelected = !services![i].isSelected!;
+    if (services![i].isSelected == false) {
+      services![i].subServices?.forEach((e) {
+        e.isSelected = false;
+      });
     }
     notifyListeners();
   }
 
-  List<int> selectedSubServices = [];
-  onSelectSubService(id) {
-    if (selectedSubServices.contains(id)) {
-      selectedSubServices.removeWhere((e) => e == id);
-    } else {
-      selectedSubServices.add(id);
-    }
+  onSelectSubService(serviceIndex, subServiceIndex) {
+    services![serviceIndex].subServices![subServiceIndex].isSelected =
+        !services![serviceIndex].subServices![subServiceIndex].isSelected!;
     notifyListeners();
   }
 
   clearFilter() {
-    range = 50;
+    range = null;
     selectedCategory = null;
     selectedSubCategory = null;
-    selectedServices.clear();
-    selectedSubServices.clear();
     services?.clear();
     getResult();
     notifyListeners();
@@ -164,13 +150,33 @@ class SearchProvider extends ChangeNotifier {
       result.clear();
       notifyListeners();
 
+      List<int>? selectedSubServices = [];
+      services?.forEach((e) {
+        if (e.isSelected! &&
+            e.subServices != null &&
+            e.subServices!.isNotEmpty) {
+          e.subServices?.forEach((i) {
+            if (i.isSelected!) {
+              selectedSubServices.add(i.id!);
+            }
+          });
+        }
+      });
+
       Map<String, dynamic> filter = {
         if (searchTEC.text.trim().isNotEmpty) "name": searchTEC.text.trim(),
         if (range != null) "range": (range!) * 1000,
         if (selectedCategory != null) "category_id": selectedCategory?.id,
-        if (selectedSubCategory != -1 && selectedSubCategory != null)"sub_category_id": selectedSubCategory,
-        if (selectedServices.isNotEmpty) "service_ids": selectedServices,
-        if (selectedSubServices.isNotEmpty)"sub_service_ids": selectedSubServices,
+        if (selectedSubCategory != -1 && selectedSubCategory != null)
+          "sub_category_id": selectedSubCategory,
+        if (services != null && services!.any((e) => e.isSelected!))
+          "service_ids": services
+              ?.where((e) => e.isSelected!)
+              .toList()
+              .map((e) => e.id)
+              .toList(),
+        if (selectedSubServices.isNotEmpty)
+          "sub_service_ids": selectedSubServices,
       };
 
       Either<ServerFailure, Response> response = await repo.getSearch(filter);

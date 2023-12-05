@@ -109,7 +109,7 @@ class _NotificationCardState extends State<NotificationCard> {
                       const Expanded(child: SizedBox()),
                       Text(
                           widget.notification?.createdAt
-                                  ?.dateFormat(format: "EEE dd/mm") ??
+                                  ?.dateFormat(format: "EEE dd/mm -hh:mm a") ??
                               "434/ef/f",
                           style: AppTextStyles.regular.copyWith(
                               fontSize: 12, color: Styles.DETAILS_COLOR)),

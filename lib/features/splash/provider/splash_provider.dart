@@ -14,10 +14,11 @@ class SplashProvider extends ChangeNotifier {
   startTheApp() {
     Future.delayed(const Duration(milliseconds: 4500), () async {
       sl<SettingProvider>().getSetting();
-      sl<LocationProvider>().getCurrentLocation();
 
       ///Ask Notification Permission
       await PermissionHandler.checkNotificationsPermission();
+
+      sl<LocationProvider>().getCurrentLocation();
 
       if (splashRepo.isFirstTime()) {
         CustomNavigator.push(Routes.ON_BOARDING, clean: true);

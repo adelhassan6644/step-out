@@ -3,6 +3,7 @@ import 'package:stepOut/components/animated_widget.dart';
 import 'package:stepOut/features/home/provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import '../../../data/config/di.dart';
+import '../../maps/provider/location_provider.dart';
 import '../widgets/home_categories.dart';
 import '../widgets/home_header.dart';
 import '../widgets/home_offers.dart';
@@ -19,6 +20,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
+      sl<LocationProvider>().getCurrentLocation();
       sl<HomeProvider>().getBanners();
       sl<HomeProvider>().getCategories();
       sl<HomeProvider>().getOffers();

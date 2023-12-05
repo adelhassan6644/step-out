@@ -9,7 +9,6 @@ import 'package:intl/intl.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
-import '../../../components/custom_network_image.dart';
 import '../../../components/shimmer/custom_shimmer.dart';
 
 class FiltrationBottomSheet extends StatelessWidget {
@@ -136,54 +135,49 @@ class FiltrationBottomSheet extends StatelessWidget {
                           .copyWith(fontSize: 18, color: Styles.HEADER),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 12.h),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 12.w,
-                          ),
-                          ...List.generate(
-                            provider.selectedCategory?.subCategories?.length ??
-                                0,
-                            (index) => InkWell(
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              splashColor: Colors.transparent,
-                              onTap: () => provider.onSelectSubCategory(provider
-                                  .selectedCategory?.subCategories?[index].id),
-                              child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 6.w),
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 12.w, vertical: 6.h),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 12.w,
+                        ),
+                        ...List.generate(
+                          provider.selectedCategory?.subCategories?.length ?? 0,
+                          (index) => InkWell(
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            splashColor: Colors.transparent,
+                            onTap: () => provider.onSelectSubCategory(provider
+                                .selectedCategory?.subCategories?[index].id),
+                            child: Container(
+                              margin: EdgeInsets.symmetric(horizontal: 6.w),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 12.w, vertical: 6.h),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: provider.selectedSubCategory ==
+                                          provider.selectedCategory
+                                              ?.subCategories?[index].id
+                                      ? Styles.PRIMARY_COLOR
+                                      : Styles.PRIMARY_COLOR.withOpacity(0.1)),
+                              child: Text(
+                                provider.selectedCategory?.subCategories?[index]
+                                        .name ??
+                                    "",
+                                style: AppTextStyles.medium.copyWith(
+                                    fontSize: 16,
                                     color: provider.selectedSubCategory ==
                                             provider.selectedCategory
                                                 ?.subCategories?[index].id
-                                        ? Styles.PRIMARY_COLOR
-                                        : Styles.PRIMARY_COLOR
-                                            .withOpacity(0.1)),
-                                child: Text(
-                                  provider.selectedCategory
-                                          ?.subCategories?[index].name ??
-                                      "",
-                                  style: AppTextStyles.medium.copyWith(
-                                      fontSize: 16,
-                                      color: provider.selectedSubCategory ==
-                                              provider.selectedCategory
-                                                  ?.subCategories?[index].id
-                                          ? Styles.WHITE_COLOR
-                                          : Styles.PRIMARY_COLOR),
-                                ),
+                                        ? Styles.WHITE_COLOR
+                                        : Styles.PRIMARY_COLOR),
                               ),
                             ),
-                          )
-                        ],
-                      ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ],
@@ -217,7 +211,9 @@ class FiltrationBottomSheet extends StatelessWidget {
                       visible: (provider.services != null &&
                           provider.services!.isNotEmpty),
                       child: Padding(
-                        padding: EdgeInsets.only(bottom: 12.h),
+                        padding: EdgeInsets.only(
+                          bottom: Dimensions.PADDING_SIZE_DEFAULT.h,
+                        ),
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
@@ -227,64 +223,35 @@ class FiltrationBottomSheet extends StatelessWidget {
                                   width: Dimensions.PADDING_SIZE_DEFAULT.w),
                               ...List.generate(
                                 provider.services?.length ?? 0,
-                                (index) => Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 6.w, vertical: 4.h),
-                                  child: SizedBox(
-                                    width: 60.w,
-                                    child: InkWell(
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      splashColor: Colors.transparent,
-                                      onTap: () => provider.onSelectService(
-                                          provider.services?[index].id),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          CustomNetworkImage.circleNewWorkImage(
-                                              radius: 30,
-                                              image: provider
-                                                  .services?[index].image),
-                                          const SizedBox(height: 4),
-                                          Text(
-                                            provider.services?[index].name ??
-                                                "",
-                                            textAlign: TextAlign.center,
-                                            maxLines: 2,
-                                            style: AppTextStyles.medium
-                                                .copyWith(
-                                                    fontSize: 14,
-                                                    color: Styles.TITLE),
-                                          ),
-                                        ],
-                                      ),
-                                      // Container(
-                                      //   margin:
-                                      //       EdgeInsets.symmetric(horizontal: 6.w),
-                                      //   padding: EdgeInsets.symmetric(
-                                      //       horizontal: 12.w, vertical: 6.h),
-                                      //   decoration: BoxDecoration(
-                                      //       borderRadius:
-                                      //           BorderRadius.circular(100),
-                                      //       color: provider.selectedServices
-                                      //               .contains(provider
-                                      //                   .servicesModel?[index].id)
-                                      //           ? Styles.PRIMARY_COLOR
-                                      //           : Styles.PRIMARY_COLOR
-                                      //               .withOpacity(0.1)),
-                                      //   child: Text(
-                                      //     provider.servicesModel?[index].name ?? "",
-                                      //     style: AppTextStyles.medium.copyWith(
-                                      //         fontSize: 14,
-                                      //         color: provider.selectedServices
-                                      //                 .contains(provider
-                                      //                     .servicesModel?[index].id)
-                                      //             ? Styles.WHITE_COLOR
-                                      //             : Styles.PRIMARY_COLOR),
-                                      //   ),
-                                      // ),
+                                (index) => InkWell(
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  splashColor: Colors.transparent,
+                                  onTap: () => provider.onSelectService(index),
+                                  child: Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 6.w),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 12.w, vertical: 6.h),
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        color: provider.services?[index]
+                                                    .isSelected ==
+                                                true
+                                            ? Styles.PRIMARY_COLOR
+                                            : Styles.PRIMARY_COLOR
+                                                .withOpacity(0.1)),
+                                    child: Text(
+                                      "${provider.services?[index].name} (${provider.services?[index].subServices?.length})",
+                                      style: AppTextStyles.medium.copyWith(
+                                          fontSize: 14,
+                                          color: provider.services?[index]
+                                                      .isSelected ==
+                                                  true
+                                              ? Styles.WHITE_COLOR
+                                              : Styles.PRIMARY_COLOR),
                                     ),
                                   ),
                                 ),
@@ -295,6 +262,95 @@ class FiltrationBottomSheet extends StatelessWidget {
                       ),
                     )
             ],
+          ),
+
+          ///Sub Service
+          Visibility(
+            visible: provider.services != null &&
+                provider.services!.any((e) =>
+                    e.isSelected! &&
+                    e.subServices != null &&
+                    e.subServices!.isNotEmpty),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: Dimensions.PADDING_SIZE_DEFAULT.w,
+                      right: Dimensions.PADDING_SIZE_DEFAULT.w,
+                      bottom: Dimensions.PADDING_SIZE_EXTRA_SMALL.h),
+                  child: Text(
+                    getTranslated("sub_services", context),
+                    style: AppTextStyles.semiBold
+                        .copyWith(fontSize: 18, color: Styles.HEADER),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    bottom: Dimensions.PADDING_SIZE_DEFAULT.h,
+                  ),
+                  child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT.w),
+                          ...List.generate(
+                            provider.services?.length ?? 0,
+                            (i) => Visibility(
+                              visible: provider.services != null &&
+                                  provider.services![i].isSelected!,
+                              child: Row(
+                                children: List.generate(
+                                  provider.services?[i].subServices?.length ??
+                                      0,
+                                  (v) => InkWell(
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    splashColor: Colors.transparent,
+                                    onTap: () =>
+                                        provider.onSelectSubService(i, v),
+                                    child: Container(
+                                      margin:
+                                          EdgeInsets.symmetric(horizontal: 6.w),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 12.w, vertical: 6.h),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          color: provider
+                                                      .services?[i]
+                                                      .subServices?[v]
+                                                      .isSelected ==
+                                                  true
+                                              ? Styles.PRIMARY_COLOR
+                                              : Styles.PRIMARY_COLOR
+                                                  .withOpacity(0.1)),
+                                      child: Text(
+                                        provider.services?[i].subServices?[v]
+                                                .name ??
+                                            "",
+                                        style: AppTextStyles.medium.copyWith(
+                                            fontSize: 14,
+                                            color: provider
+                                                        .services?[i]
+                                                        .subServices?[v]
+                                                        .isSelected ==
+                                                    true
+                                                ? Styles.WHITE_COLOR
+                                                : Styles.PRIMARY_COLOR),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      )),
+                )
+              ],
+            ),
           )
         ],
       );
@@ -307,35 +363,25 @@ class _ShimmerLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 110,
-      child: Padding(
-        padding: EdgeInsets.only(bottom: 12.h),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT.w),
-              ...List.generate(
-                6,
-                (index) => Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 4.h),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CustomShimmerCircleImage(
-                        diameter: 60,
-                      ),
-                      SizedBox(height: 4),
-                      CustomShimmerText(
-                        width: 100,
-                      )
-                    ],
-                  ),
+    return Padding(
+      padding: EdgeInsets.only(bottom: 12.h),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT.w),
+            ...List.generate(
+              6,
+              (index) => Padding(
+                padding: EdgeInsets.symmetric(horizontal: 6.w),
+                child: const CustomShimmerContainer(
+                  width: 120,
+                  height: 35,
+                  radius: 100,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

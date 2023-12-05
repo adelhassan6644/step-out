@@ -36,16 +36,23 @@ class CategoryItem {
   String? image;
   String? name;
   String? description;
+  bool? isSelect;
   List<SubCategoryModel>? subCategories;
 
   CategoryItem(
-      {this.id, this.image, this.name, this.description, this.subCategories});
+      {this.id,
+      this.image,
+      this.name,
+      this.description,
+      this.isSelect,
+      this.subCategories});
 
   CategoryItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     image = json['image'];
     name = json['name'];
     description = json['description'];
+    isSelect = json['is_select'];
     if (json['subCategories'] != null) {
       subCategories = [
         SubCategoryModel(
@@ -65,6 +72,7 @@ class CategoryItem {
     data['image'] = image;
     data['name'] = name;
     data['description'] = description;
+    data['is_select'] = isSelect;
     if (subCategories != null) {
       data['subCategories'] = subCategories!.map((v) => v.toJson()).toList();
     }
@@ -78,6 +86,7 @@ class SubCategoryModel {
   int? categoryId;
   String? name;
   String? description;
+  bool? isSelect;
   List<ServiceModel>? services;
 
   SubCategoryModel({
@@ -86,6 +95,7 @@ class SubCategoryModel {
     this.categoryId,
     this.name,
     this.description,
+    this.isSelect,
     this.services,
   });
 
@@ -95,6 +105,7 @@ class SubCategoryModel {
     categoryId = json['category_id'];
     name = json['name'];
     description = json['description'];
+    isSelect = json['is_select'];
     if (json['services'] != null) {
       services = [];
       json['services'].forEach((v) {
@@ -110,6 +121,7 @@ class SubCategoryModel {
     data['category_id'] = categoryId;
     data['name'] = name;
     data['description'] = description;
+    data['is_select'] = isSelect;
     if (services != null) {
       data['services'] = services!.map((v) => v.toJson()).toList();
     }

@@ -44,11 +44,13 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                 padding: EdgeInsets.zero,
                 physics: const BouncingScrollPhysics(),
                 children: [
+
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 40.h),
+                    padding: EdgeInsets.symmetric(
+                        vertical: 40.h, horizontal: context.width * 0.1),
                     child: customImageIcon(
                         imageName: Images.onBoarding1,
-                        height: i == 0 ? 220 : 280,
+                        height: 180,
                         width: context.width),
                   ),
 
@@ -70,52 +72,17 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
 
                   ///description
                   Text(
-                    getTranslated("on_boarding_description", context),
+                    getTranslated(
+                        i == 0
+                            ? "on_boarding_description_1"
+                            : "on_boarding_description_2",
+                        context),
                     textAlign: TextAlign.center,
-                    style: AppTextStyles.regular
-                        .copyWith(fontSize: 14, color: Styles.DETAILS_COLOR),
+                    style: AppTextStyles.medium
+                        .copyWith(fontSize: 14, color: Styles.ACCENT_COLOR),
                   ),
                 ],
               ),
-            ),
-          ),
-          Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                  2,
-                  (index) => AnimatedContainer(
-                        width: index == currentIndex ? 10 : 6,
-                        height: index == currentIndex ? 10 : 6,
-                        duration: const Duration(
-                          milliseconds: 500,
-                        ),
-                        margin: EdgeInsets.symmetric(horizontal: 4.w),
-                        decoration: BoxDecoration(
-                          color: index == currentIndex
-                              ? Styles.PRIMARY_COLOR
-                              : Styles.ACCENT_COLOR,
-                          borderRadius: BorderRadius.circular(100.w),
-                        ),
-                      ))),
-
-          ///to login
-          Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 24.h,
-            ),
-            child: CustomButton(
-              text:
-                  getTranslated(currentIndex == 0 ? "next" : "start", context),
-              onTap: () {
-                if (currentIndex == 0) {
-                  setState(() {
-                    nextPage();
-                  });
-                } else {
-                  CustomNavigator.push(Routes.DASHBOARD, clean: true);
-                }
-              },
             ),
           ),
         ],
