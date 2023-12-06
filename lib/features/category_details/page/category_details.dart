@@ -3,6 +3,7 @@ import 'package:stepOut/app/core/utils/styles.dart';
 import 'package:stepOut/features/category_details/provider/category_details_provider.dart';
 import 'package:stepOut/features/category_details/widgets/category_details_body.dart';
 import 'package:stepOut/features/home/models/categories_model.dart';
+import 'package:stepOut/features/maps/provider/location_provider.dart';
 import '../../../app/core/utils/svg_images.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_images.dart';
@@ -25,6 +26,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
   @override
   void initState() {
     Future.delayed(Duration.zero, () async {
+      sl<LocationProvider>().getCurrentLocation();
       sl<CategoryDetailsProvider>().init(widget.item.id);
       sl<CategoryDetailsProvider>().scroll(controller);
     });

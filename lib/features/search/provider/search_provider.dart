@@ -5,9 +5,11 @@ import 'package:stepOut/app/core/utils/app_snack_bar.dart';
 import 'package:stepOut/features/home/models/categories_model.dart';
 import 'package:stepOut/features/item_details/model/item_details_model.dart';
 import '../../../app/core/utils/styles.dart';
+import '../../../data/config/di.dart';
 import '../../../data/error/api_error_handler.dart';
 import '../../../data/error/failures.dart';
 import '../../../main_models/service_model.dart';
+import '../../maps/provider/location_provider.dart';
 import '../repo/search_repo.dart';
 
 class SearchProvider extends ChangeNotifier {
@@ -34,6 +36,7 @@ class SearchProvider extends ChangeNotifier {
     selectedSubCategory = null;
     services?.clear();
     result.clear();
+    sl<LocationProvider>().getCurrentLocation();
     notifyListeners();
   }
 
@@ -150,7 +153,7 @@ class SearchProvider extends ChangeNotifier {
       result.clear();
       notifyListeners();
 
-      List<int>? selectedSubServices = [];
+      List<int> selectedSubServices = [];
       services?.forEach((e) {
         if (e.isSelected! &&
             e.subServices != null &&

@@ -153,74 +153,74 @@ class _CustomTextFieldState extends State<CustomTextField> {
               scrollPadding: EdgeInsets.only(
                   bottom: widget.keyboardPadding ? context.bottom : 0.0),
               decoration: InputDecoration(
-                  enabled: widget.isEnabled,
-                  labelText: widget.label,
-                  hintText: widget.hint ?? '',
-                  alignLabelWithHint:
-                      widget.alignLabelWithHint ?? widget.alignLabel,
-                  disabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  border: InputBorder.none,
-                  errorMaxLines: 2,
-                  labelStyle: const TextStyle(
-                      color: Styles.PRIMARY_COLOR,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600),
-                  floatingLabelStyle: const TextStyle(
-                      color: Styles.PRIMARY_COLOR,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600),
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  hintStyle: const TextStyle(
-                    color: Styles.HINT_COLOR,
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  suffixIcon: widget.isPassword == true
-                      ? IconButton(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: widget.withPadding! ? 16.w : 0,
-                          ),
-                          onPressed: _visibility,
-                          alignment: Alignment.center,
-                          icon: _isHidden
-                              ? customImageIconSVG(
-                                  imageName: SvgImages.hiddenEyeIcon,
-                                  height: 16.55.h,
-                                  width: 19.59.w,
-                                  color: const Color(0xFF8B97A3),
-                                )
-                              : customImageIconSVG(
-                                  imageName: SvgImages.eyeIcon,
-                                  height: 16.55.h,
-                                  width: 19.59.w,
-                                  color: Styles.PRIMARY_COLOR,
-                                ),
-                        )
-                      : Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: widget.withPadding! ? 16.w : 0,
-                          ),
-                          child: widget.suffixIcon != null
-                              ? Icon(
-                                  widget.suffixIcon,
-                                  size: 18,
-                                  color: widget.iconColor ?? Colors.grey[400],
-                                )
-                              : widget.suffixWidget),
-                  prefixIcon: widget.withPadding!
-                      ? Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: widget.withPadding! ? 16.w : 0,
-                          ),
-                          child: widget.prefixIcon,
-                        )
-                      : widget.prefixIcon,
-                  prefixIconConstraints: BoxConstraints(maxHeight: 25.h),
-                  suffixIconConstraints: BoxConstraints(maxHeight: 25.h),
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+                enabled: widget.isEnabled,
+                labelText: widget.label,
+                hintText: widget.hint ?? '',
+                alignLabelWithHint:
+                    widget.alignLabelWithHint ?? widget.alignLabel,
+                disabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                border: InputBorder.none,
+                errorMaxLines: 2,
+                labelStyle: const TextStyle(
+                    color: Styles.PRIMARY_COLOR,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600),
+                floatingLabelStyle: const TextStyle(
+                    color: Styles.PRIMARY_COLOR,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600),
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                hintStyle: const TextStyle(
+                  color: Styles.HINT_COLOR,
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.w500,
+                ),
+                suffixIcon: widget.isPassword == true
+                    ? IconButton(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: widget.withPadding! ? 16.w : 0,
+                        ),
+                        onPressed: _visibility,
+                        alignment: Alignment.center,
+                        icon: _isHidden
+                            ? customImageIconSVG(
+                                imageName: SvgImages.hiddenEyeIcon,
+                                height: 16.55.h,
+                                width: 19.59.w,
+                                color: const Color(0xFF8B97A3),
+                              )
+                            : customImageIconSVG(
+                                imageName: SvgImages.eyeIcon,
+                                height: 16.55.h,
+                                width: 19.59.w,
+                                color: Styles.PRIMARY_COLOR,
+                              ),
+                      )
+                    : Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: widget.withPadding! ? 16.w : 0,
+                        ),
+                        child: widget.suffixIcon != null
+                            ? Icon(
+                                widget.suffixIcon,
+                                size: 18,
+                                color: widget.iconColor ?? Colors.grey[400],
+                              )
+                            : widget.suffixWidget),
+                prefixIcon: widget.withPadding!
+                    ? Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: widget.withPadding! ? 16.w : 0,
+                        ),
+                        child: widget.prefixIcon,
+                      )
+                    : widget.prefixIcon,
+                prefixIconConstraints: BoxConstraints(maxHeight: 25.h),
+                suffixIconConstraints: BoxConstraints(maxHeight: 25.h),
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
               ),
             ),
           ),
