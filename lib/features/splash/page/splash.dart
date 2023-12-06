@@ -43,16 +43,16 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
                 child: const SizedBox()),
             Image.asset(
               Images.splash,
-              width: context.width * 0.6,
-              height: context.height * 0.3,
+              width: context.width * 0.5,
+              height: context.height * 0.2,
             )
                 .animate()
-                .scale(duration: 1000.ms)
-                .then(delay: 500.ms) // baseline=800ms
-                .slide()
-                .scaleXY(duration: 1000.ms)
+                .slideX()
+                .then(delay: 100.ms) // baseline=800ms
+                .shake()
+
                 .then(delay: 200.ms)
-                .shimmer(duration: 1000.ms),
+                .shimmer(duration: 1000.ms,curve: Curves.easeInCirc),
           ],
         ));
   }

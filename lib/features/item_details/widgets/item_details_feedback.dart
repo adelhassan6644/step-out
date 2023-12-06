@@ -36,6 +36,7 @@ class ItemDetailsFeedback extends StatelessWidget {
                             vertical: 40.h,
                           ),
                           child: EmptyState(
+
                             txt:
                                 getTranslated("there_is_no_feedbacks", context),
                             subText:

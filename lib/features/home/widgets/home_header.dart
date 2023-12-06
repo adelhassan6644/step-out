@@ -33,7 +33,12 @@ class HomeHeader extends StatelessWidget {
                 height: 24);
           }),
           const Expanded(child: SizedBox()),
-          customImageIcon(imageName: Images.homeLogo, width: 100),
+          Image.asset(
+            Images.homeLogo,
+            fit: BoxFit.fill,
+            width: 130,
+          ),
+          // customImageIcon(imageName: Images.homeLogo, width: 130,height: 25),
           const Expanded(child: SizedBox()),
           customImageIconSVG(
               onTap: () => CustomNavigator.push(Routes.SEARCH),

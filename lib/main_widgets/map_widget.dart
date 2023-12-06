@@ -9,8 +9,9 @@ import '../features/maps/models/location_model.dart';
 import '../main_providers/map_provider.dart';
 
 class MapWidget extends StatelessWidget {
-  const MapWidget({this.point, super.key});
+  const MapWidget({this.point, super.key, this.onTap});
   final LocationModel? point;
+  final Function(LatLng)? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class MapWidget extends StatelessWidget {
                   initialCameraPosition: vm.mapCameraPosition,
                   onMapCreated: (c) =>
                       vm.onMapCreated(c, point ?? AppStrings.defaultDrop),
+                  onTap: onTap,
                   padding: vm.googleMapPadding,
                   scrollGesturesEnabled: false,
                   myLocationButtonEnabled: false,

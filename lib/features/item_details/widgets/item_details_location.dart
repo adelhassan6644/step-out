@@ -49,6 +49,24 @@ class ItemDetailsLocation extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 12.h),
               child: MapWidget(
+                onTap: (s) async {
+                  final List<AvailableMap> availableMaps =
+                      await MapLauncher.installedMaps;
+                  CustomBottomSheet.show(
+                    height: 450.h,
+                    list: OpenMapOption(
+                      maps: availableMaps,
+                      onMapTap: (map) {
+                        CustomNavigator.pop();
+                        map.showMarker(
+                          coords: Coords(double.parse(lat!), double.parse(long!)),
+                          title: itemName ?? "",
+                        );
+                      },
+                    ),
+                    label: getTranslated("select_map", context),
+                  );
+                },
                 point: LocationModel(latitude: lat, longitude: long),
               ),
             ),

@@ -29,7 +29,9 @@ class GuestMode extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: context.width * 0.25),
             child: customImageIcon(
               imageName: Images.logo,
-              height: context.height * 0.2,
+              fit: BoxFit.cover,
+              height: context.height * 0.18,
+              width: context.width ,
             ),
           ),
           SizedBox(

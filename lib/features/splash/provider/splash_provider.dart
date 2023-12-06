@@ -12,7 +12,7 @@ class SplashProvider extends ChangeNotifier {
   SplashProvider({required this.repo});
 
   startTheApp() {
-    Future.delayed(const Duration(milliseconds: 4500), () async {
+    Future.delayed(const Duration(milliseconds: 1800), () async {
       sl<SettingProvider>().getSetting();
       if (!repo.isLogin) {
         await repo.guestMode();
