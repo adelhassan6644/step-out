@@ -24,68 +24,63 @@ class HomeOffers extends StatelessWidget {
             (provider.offersModel != null &&
                 provider.offersModel?.data != null &&
                 provider.offersModel!.data!.isNotEmpty),
-        child: Padding(
-          padding:
-              EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_SMALL.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                ),
-                child: Text(
-                  getTranslated("offers", context),
-                  style: AppTextStyles.semiBold
-                      .copyWith(fontSize: 22, color: Styles.HEADER),
-                ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
               ),
-              SizedBox(
-                height: 12.h,
+              child: Text(
+                getTranslated("offers", context),
+                style: AppTextStyles.semiBold
+                    .copyWith(fontSize: 22, color: Styles.HEADER),
               ),
-              provider.isGetOffers
-                  ? const _OfferShimmer()
-                  : provider.offersModel != null &&
-                          provider.offersModel?.data != null &&
-                          provider.offersModel!.data!.isNotEmpty
-                      ? SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                  width: Dimensions.PADDING_SIZE_DEFAULT.w),
-                              ...List.generate(
-                                  provider.offersModel?.data?.length ?? 0,
-                                  (index) => InkWell(
-                                        onTap: () => CustomNavigator.push(
-                                            Routes.ITEM_DETAILS,
-                                            arguments: provider.offersModel
-                                                ?.data?[index].placeId),
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 8.w),
-                                          child: CustomNetworkImage
-                                              .containerNewWorkImage(
-                                            image: provider.offersModel
-                                                    ?.data?[index].image ??
-                                                "",
-                                            height: 140.h,
-                                            width: context.width * 0.7,
-                                            fit: BoxFit.cover,
-                                            radius: 20,
-                                          ),
+            ),
+            SizedBox(
+              height: 12.h,
+            ),
+            provider.isGetOffers
+                ? const _OfferShimmer()
+                : provider.offersModel != null &&
+                        provider.offersModel?.data != null &&
+                        provider.offersModel!.data!.isNotEmpty
+                    ? SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT.w),
+                            ...List.generate(
+                                provider.offersModel?.data?.length ?? 0,
+                                (index) => InkWell(
+                                      onTap: () => CustomNavigator.push(
+                                          Routes.ITEM_DETAILS,
+                                          arguments: provider.offersModel
+                                              ?.data?[index].placeId),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 8.w),
+                                        child: CustomNetworkImage
+                                            .containerNewWorkImage(
+                                          image: provider.offersModel
+                                                  ?.data?[index].image ??
+                                              "",
+                                          height: 140.h,
+                                          width: context.width * 0.7,
+                                          fit: BoxFit.cover,
+                                          radius: 20,
                                         ),
-                                      ))
-                            ],
-                          ),
-                        )
-                      : EmptyState(
-                          emptyHeight: 140.h,
-                          withImage: false,
+                                      ),
+                                    ))
+                          ],
                         ),
-            ],
-          ),
+                      )
+                    : EmptyState(
+                        emptyHeight: 140.h,
+                        withImage: false,
+                      ),
+          ],
         ),
       );
     });

@@ -62,6 +62,7 @@ class FiltrationBottomSheet extends StatelessWidget {
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -137,6 +138,7 @@ class FiltrationBottomSheet extends StatelessWidget {
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(),
                     child: Row(
                       children: [
                         SizedBox(
@@ -216,6 +218,7 @@ class FiltrationBottomSheet extends StatelessWidget {
                         ),
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
+                          physics: const BouncingScrollPhysics(),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -291,6 +294,7 @@ class FiltrationBottomSheet extends StatelessWidget {
                   ),
                   child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
                       child: Row(
                         children: [
                           SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT.w),
