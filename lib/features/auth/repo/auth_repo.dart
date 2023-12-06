@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stepOut/app/core/utils/app_strings.dart';
 import '../../../app/core/utils/app_storage_keys.dart';
 import '../../../data/api/end_points.dart';
 import '../../../data/dio/dio_client.dart';
@@ -22,8 +23,9 @@ class AuthRepo {
   String? get userId => sharedPreferences.getString(AppStorageKey.userId);
 
   setLoggedIn() {
-    sharedPreferences.setBool(AppStorageKey.isLogin, true);
+    removeGuestMode();
     subscribeToTopic();
+    sharedPreferences.setBool(AppStorageKey.isLogin, true);
   }
 
   saveUserId(id) {
@@ -215,6 +217,9 @@ class AuthRepo {
               : EndPoints.checkMailForResetPassword,
           data: {"code": code, "email": mail});
       if (response.statusCode == 200) {
+        if (fromRegister) {
+          setLoggedIn();
+        }
         // if(updateHeader) {
         //   dioClient.updateHeader(token: response.data['data']["api_token"]);
         // }
@@ -237,5 +242,9 @@ class AuthRepo {
       await sharedPreferences.remove(AppStorageKey.isLogin);
       return true;
     }
+  }
+
+  removeGuestMode() async {
+    await FirebaseMessaging.instance.subscribeToTopic(AppStrings.guestTopic);
   }
 }

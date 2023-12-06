@@ -8,19 +8,22 @@ import '../../maps/provider/location_provider.dart';
 import '../repo/splash_repo.dart';
 
 class SplashProvider extends ChangeNotifier {
-  final SplashRepo splashRepo;
-  SplashProvider({required this.splashRepo});
+  final SplashRepo repo;
+  SplashProvider({required this.repo});
 
   startTheApp() {
     Future.delayed(const Duration(milliseconds: 4500), () async {
       sl<SettingProvider>().getSetting();
+      if (!repo.isLogin) {
+        await repo.guestMode();
+      }
 
       ///Ask Notification Permission
       await PermissionHandler.checkNotificationsPermission();
 
       sl<LocationProvider>().getCurrentLocation();
 
-      if (splashRepo.isFirstTime()) {
+      if (repo.isFirstTime) {
         CustomNavigator.push(Routes.ON_BOARDING, clean: true);
       }
       // else if (!splashRepo.isLogin()) {
@@ -29,7 +32,7 @@ class SplashProvider extends ChangeNotifier {
       else {
         CustomNavigator.push(Routes.DASHBOARD, clean: true, arguments: 0);
       }
-      splashRepo.setFirstTime();
+      repo.setFirstTime();
     });
   }
 }
