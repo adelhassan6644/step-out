@@ -100,7 +100,7 @@ class NotificationBody {
         image: json["image"],
         message: json["message"],
         status: json["status"],
-        placeId: json["place_id"] != null
+        placeId: json["place_id"].toString() != "null"
             ? int.parse(json["place_id"].toString())
             : null,
       );
