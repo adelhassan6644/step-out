@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
+import 'package:stepOut/app/core/utils/methods.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
+import 'package:stepOut/app/localization/language_constant.dart';
 import 'package:stepOut/components/custom_network_image.dart';
 import 'package:stepOut/features/item_details/model/item_details_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
@@ -9,10 +12,11 @@ import 'package:stepOut/navigation/routes.dart';
 import '../app/core/utils/svg_images.dart';
 import '../app/core/utils/text_styles.dart';
 import '../components/custom_images.dart';
+import '../features/maps/provider/location_provider.dart';
 
 class ItemCard extends StatelessWidget {
-  const ItemCard({super.key, this.width, this.item, this.height});
-  final double? width, height;
+  const ItemCard({super.key, this.width, this.item});
+  final double? width;
   final ItemDetailsModel? item;
 
   @override
@@ -26,11 +30,11 @@ class ItemCard extends StatelessWidget {
       splashColor: Colors.transparent,
       child: Container(
         width: width ?? context.width,
-        height: height,
         decoration: BoxDecoration(
             color: Styles.SMOKED_WHITE_COLOR,
             borderRadius: BorderRadius.circular(20)),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             CustomNetworkImage.containerNewWorkImage(
               edges: true,
@@ -47,6 +51,7 @@ class ItemCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  ///Name
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -67,7 +72,9 @@ class ItemCard extends StatelessWidget {
                       ),
                       SizedBox(width: 4.w),
                       ...List.generate(
-                        item?.rating?.ceil() ?? 0,
+                        item?.rating?.ceil() != 0
+                            ? item?.rating?.ceil() ?? 0
+                            : 1,
                         (index) => customImageIconSVG(
                             imageName: SvgImages.fillStar,
                             height: 20,
@@ -81,11 +88,11 @@ class ItemCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 6.0),
                     child: Text(
                       item?.description ?? "description",
-                      maxLines: 2,
-                      style: AppTextStyles.regular.copyWith(
+                      maxLines: 1,
+                      style: AppTextStyles.medium.copyWith(
                           fontSize: 14,
                           overflow: TextOverflow.ellipsis,
-                          color: Styles.DETAILS_COLOR),
+                          color: Styles.TITLE),
                     ),
                   ),
 
@@ -98,13 +105,42 @@ class ItemCard extends StatelessWidget {
                           height: 20,
                           color: Styles.PRIMARY_COLOR),
                       SizedBox(width: 8.w),
-                      Text(
-                        item?.address ?? "Location",
-                        style: AppTextStyles.medium.copyWith(
-                            fontSize: 14, color: Styles.PRIMARY_COLOR),
+                      Expanded(
+                        child: Text(
+                          item?.address ?? "Location",
+                          maxLines: 1,
+                          style: AppTextStyles.medium.copyWith(
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: 14,
+                              color: Styles.PRIMARY_COLOR),
+                        ),
                       ),
                     ],
                   ),
+
+                  /// Distance
+                  const SizedBox(height: 6),
+                  Consumer<LocationProvider>(builder: (_, provider, child) {
+                    return Row(
+                      children: [
+                        customImageIconSVG(
+                            imageName: SvgImages.distance,
+                            width: 20,
+                            height: 20,
+                            color: Styles.SUBTITLE),
+                        SizedBox(width: 8.w),
+                        Expanded(
+                          child: Text(
+                            "${getTranslated("away_from_you", context)} ${Methods.calcDistance(lat1: provider.currentLocation?.latitude, long1: provider.currentLocation?.longitude, lat2: item?.lat, long2: item?.long)} ${getTranslated("km", context)}",
+                            style: AppTextStyles.regular.copyWith(
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 12,
+                                color: Styles.SUBTITLE),
+                          ),
+                        ),
+                      ],
+                    );
+                  }),
                 ],
               ),
             ),

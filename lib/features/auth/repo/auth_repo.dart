@@ -19,8 +19,11 @@ class AuthRepo {
     return sharedPreferences.containsKey(AppStorageKey.isLogin);
   }
 
+  String? get userId => sharedPreferences.getString(AppStorageKey.userId);
+
   setLoggedIn() {
     sharedPreferences.setBool(AppStorageKey.isLogin, true);
+    subscribeToTopic();
   }
 
   saveUserId(id) {
@@ -61,6 +64,22 @@ class AuthRepo {
       log('--------Device Token---------- $deviceToken');
     }
     return deviceToken;
+  }
+
+  Future subscribeToTopic() async {
+    await FirebaseMessaging.instance
+        .subscribeToTopic("$userId")
+        .then((v) async {
+      await sharedPreferences.setBool(AppStorageKey.isSubscribe, true);
+    });
+  }
+
+  Future unSubscribeToTopic() async {
+    await FirebaseMessaging.instance
+        .unsubscribeFromTopic("$userId")
+        .then((v) async {
+      await sharedPreferences.remove(AppStorageKey.isSubscribe);
+    });
   }
 
   Future<Either<ServerFailure, Response>> logIn(
@@ -105,13 +124,11 @@ class AuthRepo {
   Future<Either<ServerFailure, Response>> change(
       {required String oldPassword, required String password}) async {
     try {
-      Response response = await dioClient.post(
-          uri: EndPoints.changePassword(
-              sharedPreferences.getString(AppStorageKey.userId)),
-          data: {
-            "oldPassword": oldPassword,
-            "newPassword": password,
-          });
+      Response response =
+          await dioClient.post(uri: EndPoints.changePassword(userId), data: {
+        "oldPassword": oldPassword,
+        "newPassword": password,
+      });
 
       if (response.statusCode == 200) {
         return Right(response);
@@ -210,9 +227,15 @@ class AuthRepo {
     }
   }
 
-  Future<bool> clearSharedData() async {
-    await sharedPreferences.remove(AppStorageKey.userId);
-    await sharedPreferences.remove(AppStorageKey.isLogin);
-    return true;
+  Future<bool> logOut() async {
+    await unSubscribeToTopic();
+
+    if (sharedPreferences.containsKey(AppStorageKey.isSubscribe)) {
+      return false;
+    } else {
+      await sharedPreferences.remove(AppStorageKey.userId);
+      await sharedPreferences.remove(AppStorageKey.isLogin);
+      return true;
+    }
   }
 }

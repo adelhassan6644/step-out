@@ -24,7 +24,7 @@ dependencies:
   get_it:
   http:
   firebase_messaging: ^14.7.4
-  provider:
+  provider: ^6.1.1
   flutter_staggered_animations:
   connectivity:
   image_picker:
@@ -47,7 +47,6 @@ dependencies:
   whatsapp_unilink: ^2.1.0
   firebase_dynamic_links: ^5.1.0
   firebase_analytics: ^10.2.1
-  flutter_native_splash: ^2.2.0+1
   syncfusion_flutter_charts: ^21.1.41
   flutter_typeahead:
   geolocator_platform_interface:
@@ -76,6 +75,8 @@ dependencies:
   should_rebuild: ^1.0.1
   syncfusion_flutter_sliders: ^21.2.10
   share_plus: ^7.2.1
+  lottie: ^2.7.0
+  flutter_native_splash: ^2.3.6
 
 
 
@@ -85,6 +86,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+
   uses-material-design: true
 
   assets:
@@ -92,6 +94,7 @@ flutter:
     - assets/fonts/
     - assets/svgs/
     - assets/images/
+    - assets/json/
     - assets/language/
 
   fonts:
@@ -112,13 +115,13 @@ flutter:
 
     - family: ar
       fonts:
-        - asset: assets/fonts/ar/ExpoArabic-Light.ttf
+        - asset: assets/fonts/ar/w300.ttf
           weight: 300
-        - asset: assets/fonts/ar/ExpoArabic-regular.ttf
+        - asset: assets/fonts/ar/w400.ttf
           weight: 400
-        - asset: assets/fonts/ar/ExpoArabic-Medium.ttf
+        - asset: assets/fonts/ar/w500.ttf
           weight: 500
-        - asset: assets/fonts/ar/Expo Arabic SemiBold.ttf
+        - asset: assets/fonts/ar/w600.ttf
           weight: 600
-        - asset: assets/fonts/ar/Expo Arabic Bold.ttf
+        - asset: assets/fonts/ar/w700.ttf
           weight: 700

@@ -44,7 +44,7 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
             Image.asset(
               Images.splash,
               width: context.width * 0.6,
-              height: context.height * 0.6,
+              height: context.height * 0.3,
             )
                 .animate()
                 .scale(duration: 1000.ms)

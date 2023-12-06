@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:readmore/readmore.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
@@ -11,6 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_network_image.dart';
+import '../../../components/image_pop_up_viewer.dart';
 import '../provider/item_details_provider.dart';
 import 'item_details_feedback.dart';
 import 'item_details_images.dart';
@@ -59,7 +61,7 @@ class ItemDetailsBody extends StatelessWidget {
                                     mode: LaunchMode.externalApplication);
                               },
                             ),
-                          if (provider.model?.facebook != null)
+                          if (provider.model?.instagram != null)
                             const SizedBox(width: 6),
                           if (provider.model?.facebook != null)
                             customContainerSvgIcon(
@@ -74,26 +76,99 @@ class ItemDetailsBody extends StatelessWidget {
                                     mode: LaunchMode.externalApplication);
                               },
                             ),
-                          const SizedBox(width: 6),
-                          customContainerSvgIcon(
-                            radius: 100,
-                            width: 35,
-                            height: 35,
-                            imageName: SvgImages.export,
-                            color: Styles.PRIMARY_COLOR,
-                            onTap: () => provider.sharePlace(),
-                          ),
+                          if (provider.model?.facebook != null)
+                            const SizedBox(width: 6),
+                          if (provider.model?.whatsapp != null)
+                            customContainerSvgIcon(
+                              radius: 100,
+                              width: 35,
+                              height: 35,
+                              imageName: SvgImages.whatsApp,
+                              color: Styles.PRIMARY_COLOR,
+                              onTap: () {
+                                launchUrl(
+                                  Uri.parse(
+                                    'whatsapp://send?phone=${provider.model?.whatsapp}',
+                                  ),
+                                );
+                              },
+                            ),
+                          // customContainerSvgIcon(
+                          //   radius: 100,
+                          //   width: 35,
+                          //   height: 35,
+                          //   imageName: SvgImages.export,
+                          //   color: Styles.PRIMARY_COLOR,
+                          //   onTap: () => provider.sharePlace(),
+                          // ),
                           const Expanded(child: SizedBox()),
+                          if (provider.model?.twitter != null)
+                            customContainerSvgIcon(
+                              radius: 100,
+                              width: 35,
+                              height: 35,
+                              imageName: SvgImages.twitter,
+                              color: Styles.PRIMARY_COLOR,
+                              onTap: () {
+                                launchUrl(
+                                    Uri.parse(provider.model?.twitter ?? ""),
+                                    mode: LaunchMode.externalApplication);
+                              },
+                            ),
+                          if (provider.model?.tiktok != null)
+                            const SizedBox(width: 6),
+                          if (provider.model?.tiktok != null)
+                            customContainerSvgIcon(
+                              radius: 100,
+                              width: 35,
+                              height: 35,
+                              imageName: SvgImages.tiktok,
+                              color: Styles.PRIMARY_COLOR,
+                              onTap: () {
+                                launchUrl(
+                                    Uri.parse(provider.model?.tiktok ?? ""),
+                                    mode: LaunchMode.externalApplication);
+                              },
+                            ),
+                          if (provider.model?.snapchat != null)
+                            const SizedBox(width: 6),
+                          if (provider.model?.snapchat != null)
+                            customContainerSvgIcon(
+                              radius: 100,
+                              width: 35,
+                              height: 35,
+                              imageName: SvgImages.snapchat,
+                              color: Styles.PRIMARY_COLOR,
+                              onTap: () {
+                                launchUrl(
+                                    Uri.parse(provider.model?.snapchat ?? ""),
+                                    mode: LaunchMode.externalApplication);
+                              },
+                            ),
+                        ],
+                      ),
+
+                      ///Title
+                      Text(
+                        provider.model?.name ?? "",
+                        style: AppTextStyles.semiBold.copyWith(fontSize: 18),
+                      ),
+
+                      ///Ratting
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
                           customImageIconSVG(
                               imageName: SvgImages.fillStar,
-                              height: 20,
-                              width: 20),
+                              height: 16,
+                              width: 16),
                           RichText(
                             text: TextSpan(
                               text:
                                   ' ${provider.model?.rating?.toStringAsFixed(2) ?? 0} ${getTranslated("ratting", context)} ',
                               style: AppTextStyles.semiBold
-                                  .copyWith(fontSize: 14, color: Styles.TITLE),
+                                  .copyWith(fontSize: 12, color: Styles.TITLE),
                               children: [
                                 TextSpan(
                                   text: '(${provider.model?.totalRating ?? 0})',
@@ -105,19 +180,30 @@ class ItemDetailsBody extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: 8.h,
-                          bottom: 4.h,
-                        ),
-                        child: Text(
-                          provider.model?.name ?? "",
-                          style: AppTextStyles.semiBold.copyWith(fontSize: 18),
-                        ),
+
+                      ///Description
+                      SizedBox(
+                        height: 8.h,
                       ),
-                      Text(
-                        provider.model?.description ?? "",
-                        style: AppTextStyles.medium.copyWith(fontSize: 14),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: ReadMoreText(
+                          provider.model?.description ?? "",
+                          style:
+                          AppTextStyles.medium.copyWith(fontSize: 14),
+                          trimLines: 2,
+                          colorClickableText: Colors.pink,
+                          trimMode: TrimMode.Line,
+                          trimCollapsedText:
+                          getTranslated("show_more", context),
+                          trimExpandedText:
+                          getTranslated("show_less", context),
+                          textAlign: TextAlign.start,
+                          moreStyle: AppTextStyles.semiBold.copyWith(
+                              fontSize: 14, color: Styles.PRIMARY_COLOR),
+                          lessStyle: AppTextStyles.semiBold.copyWith(
+                              fontSize: 14, color: Styles.PRIMARY_COLOR),
+                        ),
                       ),
                     ],
                   ),
@@ -133,10 +219,26 @@ class ItemDetailsBody extends StatelessWidget {
               ],
             ),
           ),
-          CustomNetworkImage.circleNewWorkImage(
-              image: provider.model?.logo,
-              radius: 40,
-              color: Styles.PRIMARY_COLOR),
+          InkWell(
+            onTap: () {
+              Future.delayed(
+                  Duration.zero,
+                  () => showDialog(
+                      context: context,
+                      barrierColor: Colors.black.withOpacity(0.75),
+                      builder: (context) {
+                        return ImagePopUpViewer(
+                          image: provider.model?.logo,
+                          isFromInternet: true,
+                          title: "",
+                        );
+                      }));
+            },
+            child: CustomNetworkImage.circleNewWorkImage(
+                image: provider.model?.logo,
+                radius: 40,
+                color: Styles.PRIMARY_COLOR),
+          ),
         ],
       );
     });

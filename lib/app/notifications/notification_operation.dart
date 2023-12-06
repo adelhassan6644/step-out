@@ -36,7 +36,9 @@ void handlePath(Map dataMap) {
 
 updateUserFunctions({@required notify}) async {
   Future.delayed(Duration.zero, () {
-    sl<NotificationsProvider>().getNotifications();
+    if (sl<NotificationsProvider>().isLogin) {
+      sl<NotificationsProvider>().getNotifications();
+    }
   });
 }
 

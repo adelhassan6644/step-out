@@ -102,7 +102,7 @@ abstract class Methods {
     return (Geolocator.distanceBetween(double.parse(lat1), double.parse(long1),
                 double.parse(lat2), double.parse(long2)) /
             1000)
-        .toStringAsFixed(2);
+        .toStringAsFixed(1);
   }
 }
 

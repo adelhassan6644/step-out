@@ -89,6 +89,7 @@ class Profile extends StatelessWidget {
                               Expanded(
                                   child: CustomButton(
                                       textColor: Styles.PRIMARY_COLOR,
+                                      onTap: () => CustomNavigator.pop(),
                                       backgroundColor:
                                           Styles.PRIMARY_COLOR.withOpacity(0.2),
                                       text: getTranslated("cancel", context))),

@@ -71,4 +71,5 @@ class SvgImages {
   static const String language = 'assets/svgs/language.svg';
   static const String supportCall = 'assets/svgs/support_call.svg';
   static const String filter = 'assets/svgs/filter.svg';
+  static const String distance = 'assets/svgs/distance.svg';
 }

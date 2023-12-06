@@ -28,6 +28,8 @@ class AuthProvider extends ChangeNotifier {
         text: kDebugMode ? "adel@gmail.com" : authRepo.getMail());
   }
 
+  bool get isLogin => authRepo.isLoggedIn();
+
   final TextEditingController codeTEC = TextEditingController();
 
   final name = BehaviorSubject<String?>();
@@ -130,11 +132,11 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool _isLogin = false;
-  bool get isLogin => _isLogin;
+  bool _isLoginLoading = false;
+  bool get isLoginLoading => _isLoginLoading;
   logIn() async {
     try {
-      _isLogin = true;
+      _isLoginLoading = true;
       notifyListeners();
       Either<ServerFailure, Response> response = await authRepo.logIn(
           mail: mail.value!.trim(), password: password.value!.trim());
@@ -157,7 +159,8 @@ class AuthProvider extends ChangeNotifier {
         authRepo.saveUserId(success.data['data']["id"]);
         if (success.data['data']["email_verified_at"] != null) {
           authRepo.setLoggedIn();
-          CustomNavigator.push(Routes.DASHBOARD, clean: true, arguments: 0);
+          CustomNavigator.push(Routes.DASHBOARD, clean: true);
+          sl<MainPageProvider>().updateDashboardIndex(0);
           CustomSnackBar.showSnackBar(
               notification: AppNotification(
                   message: getTranslated("logged_in_successfully",
@@ -170,7 +173,7 @@ class AuthProvider extends ChangeNotifier {
           CustomNavigator.push(Routes.VERIFICATION, arguments: true);
         }
       });
-      _isLogin = false;
+      _isLoginLoading = false;
       notifyListeners();
     } catch (e) {
       CustomSnackBar.showSnackBar(
@@ -179,7 +182,7 @@ class AuthProvider extends ChangeNotifier {
               isFloating: true,
               backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
-      _isLogin = false;
+      _isLoginLoading = false;
       notifyListeners();
     }
   }
@@ -415,19 +418,40 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
+  bool isLogOut = false;
+
   logOut() async {
-    CustomNavigator.push(Routes.SPLASH, clean: true);
-    await authRepo.clearSharedData();
-    clear();
-    sl<ProfileProvider>().clear();
-    sl<MainPageProvider>().updateDashboardIndex(0);
-    CustomSnackBar.showSnackBar(
-        notification: AppNotification(
-            message: getTranslated("your_logged_out_successfully",
-                CustomNavigator.navigatorState.currentContext!),
-            isFloating: true,
-            backgroundColor: Styles.ACTIVE,
-            borderColor: Colors.transparent));
+    isLogOut = true;
     notifyListeners();
+
+    if (await authRepo.logOut()) {
+      CustomNavigator.push(Routes.SPLASH, clean: true);
+
+      sl<ProfileProvider>().clear();
+      sl<MainPageProvider>().updateDashboardIndex(0);
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: getTranslated("your_logged_out_successfully",
+                  CustomNavigator.navigatorState.currentContext!),
+              isFloating: true,
+              backgroundColor: Styles.ACTIVE,
+              borderColor: Colors.transparent));
+    } else {
+      CustomSnackBar.showSnackBar(
+          notification: AppNotification(
+              message: getTranslated("something_went_wrong",
+                  CustomNavigator.navigatorState.currentContext!),
+              isFloating: true,
+              backgroundColor: Styles.IN_ACTIVE,
+              borderColor: Colors.transparent));
+    }
+    isLogOut = false;
+    notifyListeners();
+  }
+
+  logInAsAGuest() async {
+    clear();
+    sl<MainPageProvider>().updateDashboardIndex(0);
+    CustomNavigator.push(Routes.DASHBOARD, clean: true);
   }
 }

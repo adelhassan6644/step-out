@@ -23,9 +23,8 @@ class HomeBanner extends StatelessWidget {
                 provider.bannerModel?.data != null &&
                 provider.bannerModel!.data!.isNotEmpty),
         child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-              vertical: Dimensions.PADDING_SIZE_SMALL.h),
+          padding:
+              EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_SMALL.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -43,7 +42,7 @@ class HomeBanner extends StatelessWidget {
                                 pageSnapping: true,
                                 autoPlay: true,
                                 aspectRatio: 1.0,
-                                viewportFraction: 1.0,
+                                viewportFraction: 0.92,
                                 autoPlayInterval: const Duration(seconds: 5),
                                 autoPlayAnimationDuration:
                                     const Duration(milliseconds: 800),

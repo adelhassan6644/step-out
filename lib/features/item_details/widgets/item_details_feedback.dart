@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
+import 'package:stepOut/components/empty_widget.dart';
+import 'package:stepOut/navigation/custom_navigation.dart';
+import 'package:stepOut/navigation/routes.dart';
 import '../../../app/core/utils/validation.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/animated_widget.dart';
@@ -18,21 +21,37 @@ class ItemDetailsFeedback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Consumer<ItemDetailsProvider>(builder: (context, provider, child) {
+      child: Consumer<ItemDetailsProvider>(builder: (_, provider, child) {
         return Column(
           children: [
             Expanded(
               child: ListAnimator(
                 customPadding: EdgeInsets.symmetric(
                     horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-                data: [
-                  SizedBox(height: 16.h),
-                  ...List.generate(
-                      provider.model?.feedbacks?.length ?? 0,
-                      (index) => FeedbackCard(
-                            item: provider.model?.feedbacks?[index],
-                          ))
-                ],
+                data: provider.model?.feedbacks == null ||
+                        provider.model!.feedbacks!.isEmpty
+                    ? [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 40.h,
+                          ),
+                          child: EmptyState(
+                            txt:
+                                getTranslated("there_is_no_feedbacks", context),
+                            subText:
+                                getTranslated("give_us_your_feedback", context),
+                          ),
+                        )
+                      ]
+                    : List.generate(
+                        provider.model?.feedbacks?.length ?? 0,
+                        (index) => Padding(
+                              padding:
+                                  EdgeInsets.only(top: index == 0 ? 16.h : 0),
+                              child: FeedbackCard(
+                                item: provider.model?.feedbacks?[index],
+                              ),
+                            )),
               ),
             ),
             Padding(
@@ -42,24 +61,32 @@ class ItemDetailsFeedback extends StatelessWidget {
               child: Consumer<RattingProvider>(
                   builder: (context, sProvider, child) {
                 return CustomButton(
-                  text: getTranslated("rate", context),
-                  onTap: () => CustomBottomSheet.show(
-                    height: 500.h,
-                    label: getTranslated("rate", context),
-                    list: const SendRateBottomSheet(),
-                    onConfirm: () {
-                      sProvider.formKey.currentState!.validate();
-                      if (Validations.feedBack(
-                              sProvider.feedback.value?.trim()) ==
-                          null) {
-                        sProvider.sendFeedback(
-                          model: provider.model,
-                          onChange: provider.updateModel,
-                        );
-                      }
-                    },
-                    onClose: () => sProvider.clear(),
-                  ),
+                  text: getTranslated(
+                      sProvider.isLogin ? "rate" : "login_before_rate",
+                      context),
+                  onTap: () {
+                    if (sProvider.isLogin) {
+                      CustomBottomSheet.show(
+                        height: 500.h,
+                        label: getTranslated("rate", context),
+                        list: const SendRateBottomSheet(),
+                        onConfirm: () {
+                          sProvider.formKey.currentState!.validate();
+                          if (Validations.feedBack(
+                                  sProvider.feedback.value?.trim()) ==
+                              null) {
+                            sProvider.sendFeedback(
+                              model: provider.model,
+                              onChange: provider.updateModel,
+                            );
+                          }
+                        },
+                        onClose: () => sProvider.clear(),
+                      );
+                    } else {
+                      CustomNavigator.push(Routes.LOGIN, arguments: true);
+                    }
+                  },
                 );
               }),
             ),

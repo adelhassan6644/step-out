@@ -111,10 +111,7 @@ class _NewsState extends State<News> {
                                             padding: EdgeInsets.symmetric(
                                                 vertical:
                                                     context.height * 0.17),
-                                            child: const EmptyState(
-                                              imgHeight: 220,
-                                              imgWidth: 220,
-                                            ),
+                                            child: const EmptyState(),
                                           )
                                         ]),
                                   ),

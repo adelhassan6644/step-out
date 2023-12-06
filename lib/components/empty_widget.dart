@@ -38,18 +38,18 @@ class EmptyState extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if(withImage)
-        !isSvg
-            ? customImageIcon(
-                imageName: img ?? Images.logo,
-                width: imgWidth ?? context.width * 0.5,
-                height: imgHeight ?? context.height * 0.2,
-              ) //width: MediaQueryHelper.width*.8,),
-            : customImageIconSVG(
-                imageName: img ?? SvgImages.appLogo,
-                width: imgWidth ?? 200,
-                height: imgHeight ?? 150,
-                color: Styles.PRIMARY_COLOR),
+        if (withImage)
+          !isSvg
+              ? customImageIcon(
+                  imageName: img ?? Images.logo,
+                  width: imgWidth ?? context.width * 0.45,
+                  height: imgHeight ?? context.height * 0.225,
+                ) //width: MediaQueryHelper.width*.8,),
+              : customImageIconSVG(
+                  imageName: img ?? SvgImages.appLogo,
+                  width: imgWidth ?? context.width * 0.45,
+                  height: imgHeight ?? context.height * 0.225,
+                  color: Styles.PRIMARY_COLOR),
         SizedBox(
           height: spaceBtw ?? 12.h,
         ),

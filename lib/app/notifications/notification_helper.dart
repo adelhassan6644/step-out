@@ -14,6 +14,9 @@ import '../../features/notifications/provider/notifications_provider.dart';
 import '../../main_page/provider/main_page_provider.dart';
 import '../../navigation/custom_navigation.dart';
 import '../../navigation/routes.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+
 part 'firebase_notification_helper.dart';
 part 'notification_operation.dart';
 part 'local_notification.dart';
+part 'share_dynamic_link.dart';

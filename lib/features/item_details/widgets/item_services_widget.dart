@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/styles.dart';
@@ -40,7 +41,8 @@ class ItemServicesWidget extends StatelessWidget {
                   (index) => Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 6.w, vertical: 4.h),
-                    child: InkWell(
+                    child: SizedBox(
+                        child: InkWell(
                       onTap: () {
                         if ((provider.model?.services?[index].subServices
                                     ?.length ??
@@ -56,7 +58,7 @@ class ItemServicesWidget extends StatelessWidget {
                                           ?.length ??
                                       0,
                                   (i) => SizedBox(
-                                        width: 60.w,
+                                        width: 70.w,
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
@@ -90,7 +92,7 @@ class ItemServicesWidget extends StatelessWidget {
                         }
                       },
                       child: SizedBox(
-                        width: 60.w,
+                        width: 70.w,
                         child: InkWell(
                           focusColor: Colors.transparent,
                           hoverColor: Colors.transparent,
@@ -116,7 +118,14 @@ class ItemServicesWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                    ),
+                    )
+                            .animate()
+                            .scale(duration: 500.ms)
+                            .then(delay: 250.ms) // baseline=800ms
+                            .slide()
+                            .scaleXY(duration: 500.ms)
+                            .then(delay: 200.ms)
+                            .shimmer(duration: 500.ms)),
                   ),
                 )
               ],

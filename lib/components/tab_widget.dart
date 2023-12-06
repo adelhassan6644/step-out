@@ -8,7 +8,7 @@ import '../components/custom_images.dart';
 class TabWidget extends StatelessWidget {
   const TabWidget({
     required this.label,
-     this.fontSize=16,
+    this.fontSize = 16,
     this.withUpperBorder = false,
     required this.isSelected,
     required this.onTap,

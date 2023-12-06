@@ -290,40 +290,33 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: Text(
-                            getTranslated("have_acc", context),
-                            textAlign: TextAlign.end,
-                            style: AppTextStyles.medium.copyWith(
-                                color: Styles.TITLE,
-                                fontSize: 16,
-                                overflow: TextOverflow.ellipsis),
-                          ),
+                        Text(
+                          getTranslated("have_acc", context),
+                          textAlign: TextAlign.end,
+                          style: AppTextStyles.medium.copyWith(
+                              color: Styles.TITLE,
+                              fontSize: 16,
+                              overflow: TextOverflow.ellipsis),
                         ),
-                        Expanded(
-                          child: InkWell(
-                            onTap: () {
-                              CustomNavigator.push(Routes.LOGIN, clean: true);
-                              provider.clear();
-                            },
-                            child: Text(
-                              " ${getTranslated("login", context)}",
-                              style: AppTextStyles.medium.copyWith(
-                                color: Styles.HEADER,
-                                overflow: TextOverflow.ellipsis,
-                                fontSize: 16,
-                                decorationColor: Styles.HEADER,
-                              ),
+                        InkWell(
+                          onTap: () {
+                            CustomNavigator.push(Routes.LOGIN, clean: true);
+                            provider.clear();
+                          },
+                          child: Text(
+                            " ${getTranslated("login", context)}",
+                            style: AppTextStyles.medium.copyWith(
+                              color: Styles.HEADER,
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: 16,
+                              decorationColor: Styles.HEADER,
                             ),
                           ),
                         ),
                       ],
                     ),
                     InkWell(
-                      onTap: () {
-                        CustomNavigator.push(Routes.DASHBOARD, clean: true);
-                        provider.clear();
-                      },
+                      onTap: () => provider.logInAsAGuest(),
                       child: Padding(
                         padding: EdgeInsets.only(top: 12.h),
                         child: Text(

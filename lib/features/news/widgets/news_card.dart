@@ -9,6 +9,7 @@ import 'package:stepOut/components/custom_images.dart';
 import 'package:stepOut/components/custom_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:readmore/readmore.dart';
+import '../../../components/image_pop_up_viewer.dart';
 import '../model/news_model.dart';
 
 class NewsCard extends StatelessWidget {
@@ -47,22 +48,23 @@ class NewsCard extends StatelessWidget {
 
                 /// content
                 Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: ReadMoreText(
-                      newsItem?.content ?? "",
-                      style: AppTextStyles.medium
-                          .copyWith(fontSize: 14, color: Styles.DETAILS_COLOR),
-                      trimLines: 3,
-                      colorClickableText: Colors.pink,
-                      trimMode: TrimMode.Line,
-                      trimCollapsedText: getTranslated("show_more", context),
-                      trimExpandedText: getTranslated("show_less", context),
-                      textAlign: TextAlign.start,
-                      moreStyle: AppTextStyles.semiBold
-                          .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
-                      lessStyle: AppTextStyles.semiBold
-                          .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
-                    )),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: ReadMoreText(
+                    newsItem?.content ?? "",
+                    style: AppTextStyles.medium
+                        .copyWith(fontSize: 14, color: Styles.TITLE),
+                    trimLines: 3,
+                    colorClickableText: Colors.pink,
+                    trimMode: TrimMode.Line,
+                    trimCollapsedText: getTranslated("show_more", context),
+                    trimExpandedText: getTranslated("show_less", context),
+                    textAlign: TextAlign.start,
+                    moreStyle: AppTextStyles.semiBold
+                        .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
+                    lessStyle: AppTextStyles.semiBold
+                        .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
+                  ),
+                ),
 
                 /// Location
                 GestureDetector(
@@ -80,7 +82,7 @@ class NewsCard extends StatelessWidget {
                       SizedBox(width: 8.w),
                       Text(
                         newsItem?.address ?? "",
-                        style: AppTextStyles.semiBold.copyWith(
+                        style: AppTextStyles.medium.copyWith(
                             fontSize: 14, color: Styles.DETAILS_COLOR),
                       ),
                     ],
@@ -100,6 +102,7 @@ class NewsCard extends StatelessWidget {
                           fontSize: 14,
                           overflow: TextOverflow.ellipsis,
                           decoration: TextDecoration.underline,
+                          decorationColor: Colors.blueAccent,
                           color: Colors.blueAccent),
                     ),
                   ),
@@ -109,11 +112,27 @@ class NewsCard extends StatelessWidget {
           ),
 
           ///Image
-          CustomNetworkImage.containerNewWorkImage(
-              height: 120,
-              width: context.width,
-              radius: 16,
-              image: newsItem?.image ?? "")
+          InkWell(
+            onTap: () {
+              Future.delayed(
+                  Duration.zero,
+                  () => showDialog(
+                      context: context,
+                      barrierColor: Colors.black.withOpacity(0.75),
+                      builder: (context) {
+                        return ImagePopUpViewer(
+                          image: newsItem?.image ?? "",
+                          isFromInternet: true,
+                          title: "",
+                        );
+                      }));
+            },
+            child: CustomNetworkImage.containerNewWorkImage(
+                height: 120,
+                width: context.width,
+                radius: 16,
+                image: newsItem?.image ?? ""),
+          )
         ],
       ),
     );

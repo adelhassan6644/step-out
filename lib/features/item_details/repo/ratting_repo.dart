@@ -15,6 +15,7 @@ class RattingRepo {
   RattingRepo({required this.dioClient, required this.sharedPreferences});
 
   getUserId() => sharedPreferences.getString(AppStorageKey.userId);
+  isLoggedIn() => sharedPreferences.containsKey(AppStorageKey.isLogin);
 
   Future<Position> getCurrentPosition() async {
     await Geolocator.requestPermission();

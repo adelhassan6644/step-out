@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:readmore/readmore.dart';
 import 'package:stepOut/app/core/utils/extensions.dart';
 import 'package:stepOut/components/custom_images.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../app/core/utils/images.dart';
 import '../../../app/core/utils/styles.dart';
 import '../../../app/core/utils/text_styles.dart';
+import '../../../app/localization/language_constant.dart';
 import '../../../data/config/di.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../../navigation/routes.dart';
@@ -29,8 +31,10 @@ class _NotificationCardState extends State<NotificationCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        CustomNavigator.push(Routes.ITEM_DETAILS,
-            arguments: widget.notification?.notificationBody?.placeId);
+        if (widget.notification?.notificationBody?.placeId != null) {
+          CustomNavigator.push(Routes.ITEM_DETAILS,
+              arguments: widget.notification?.notificationBody?.placeId);
+        }
         if (widget.notification?.isRead != true) {
           sl<NotificationsProvider>()
               .readNotification(widget.notification?.id ?? 0);
@@ -55,6 +59,7 @@ class _NotificationCardState extends State<NotificationCard> {
           ),
         ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             customContainerImage(
               backGroundColor: widget.notification?.isRead != true
@@ -71,22 +76,40 @@ class _NotificationCardState extends State<NotificationCard> {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    widget.notification?.notificationBody?.message ??
+                    widget.notification?.notificationBody?.title ??
                         "jkjfb3vfi3vv3 ",
-                    maxLines: 5,
                     textAlign: TextAlign.start,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.medium
-                        .copyWith(fontSize: 14, color: Styles.TITLE),
+                        .copyWith(fontSize: 14, color: Styles.HEADER),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4.h),
+                    child: ReadMoreText(
+                      widget.notification?.notificationBody?.message ?? " ",
+                      style: AppTextStyles.medium
+                          .copyWith(fontSize: 12, color: Styles.TITLE),
+                      trimLines: 2,
+                      colorClickableText: Colors.pink,
+                      trimMode: TrimMode.Line,
+                      trimCollapsedText: getTranslated("show_more", context),
+                      trimExpandedText: getTranslated("show_less", context),
+                      textAlign: TextAlign.start,
+                      moreStyle: AppTextStyles.semiBold
+                          .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
+                      lessStyle: AppTextStyles.semiBold
+                          .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
+                    ),
                   ),
                   Row(
                     children: [
                       const Expanded(child: SizedBox()),
                       Text(
                           widget.notification?.createdAt
-                                  ?.dateFormat(format: "EEE dd/mm") ??
+                                  ?.dateFormat(format: "EEE dd/mm -hh:mm a") ??
                               "434/ef/f",
                           style: AppTextStyles.regular.copyWith(
                               fontSize: 12, color: Styles.DETAILS_COLOR)),

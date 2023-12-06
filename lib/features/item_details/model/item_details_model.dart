@@ -10,8 +10,8 @@ class ItemDetailsModel {
   String? cover;
   String? logo;
   String? address;
-  dynamic lat;
-  dynamic long;
+  String? lat;
+  String? long;
   String? status;
   String? phone;
   String? facebook;
@@ -20,13 +20,12 @@ class ItemDetailsModel {
   String? twitter;
   String? instagram;
   String? snapchat;
-  String? closingTime;
-  String? openingTime;
   int? categoryId;
   int? subCategoryId;
   double? rating;
   int? totalRating;
   List<String>? images;
+  List<TimeModel>? times;
   List<SubCategoryModel>? tags;
   List<ServiceModel>? services;
   List<OfferItem>? offers;
@@ -49,12 +48,11 @@ class ItemDetailsModel {
     this.twitter,
     this.instagram,
     this.snapchat,
-    this.closingTime,
-    this.openingTime,
     this.rating,
     this.totalRating,
     this.services,
     this.tags,
+    this.times,
     this.images,
     this.offers,
     this.feedbacks,
@@ -68,8 +66,8 @@ class ItemDetailsModel {
         cover: json["cover"],
         logo: json["logo"],
         address: json["address"],
-        lat: json["lat"],
-        long: json["long"],
+        lat: json["lat"] != null ? json["lat"].toString() : null,
+        long: json["long"] != null ? json["long"].toString() : null,
         status: json["status"],
         phone: json["phone"],
         facebook: json["facebook"],
@@ -78,8 +76,6 @@ class ItemDetailsModel {
         twitter: json["twitter"],
         instagram: json["instagram"],
         snapchat: json["snapchat"],
-        closingTime: json["closing_time"],
-        openingTime: json["opening_time"],
         rating: double.parse(
             json["rating"] != null ? json["rating"].toString() : "0"),
         totalRating: json["ratingCount"],
@@ -90,6 +86,10 @@ class ItemDetailsModel {
             ? []
             : List<SubCategoryModel>.from(
                 json["tags"]!.map((x) => SubCategoryModel.fromJson(x))),
+        times: json["times"] == null
+            ? []
+            : List<TimeModel>.from(
+                json["times"]!.map((x) => TimeModel.fromJson(x))),
         services: json["services"] == null
             ? []
             : List<ServiceModel>.from(
@@ -121,8 +121,6 @@ class ItemDetailsModel {
         "twitter": twitter,
         "instagram": instagram,
         "snapchat": snapchat,
-        "closing_time": closingTime,
-        "opening_time": openingTime,
         "category_id": categoryId,
         "sub_category_id": subCategoryId,
         "rating": rating,
@@ -138,6 +136,9 @@ class ItemDetailsModel {
         "services": services == null
             ? []
             : List<dynamic>.from(services!.map((x) => x.toJson())),
+        "times": times == null
+            ? []
+            : List<dynamic>.from(times!.map((x) => x.toJson())),
       };
 }
 
@@ -182,5 +183,29 @@ class FeedbackModel {
         "comment": comment,
         "image": image,
         "name": name,
+      };
+}
+
+class TimeModel {
+  int? id;
+  String? closingTime;
+  String? openingTime;
+
+  TimeModel({
+    this.id,
+    this.closingTime,
+    this.openingTime,
+  });
+
+  factory TimeModel.fromJson(Map<String, dynamic> json) => TimeModel(
+        id: json["id"],
+        closingTime: json["closing_time"],
+        openingTime: json["opening_time"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "closing_time": closingTime,
+        "opening_time": openingTime,
       };
 }

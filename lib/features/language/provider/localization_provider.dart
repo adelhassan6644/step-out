@@ -29,7 +29,7 @@ class LocalizationProvider extends ChangeNotifier {
     }
   }
 
-  Locale _locale = const Locale('ar', 'SA');
+  Locale _locale = const Locale('en', 'US');
   bool _isLtr = false;
   Locale get locale => _locale;
   bool get isLtr => _isLtr;
@@ -49,8 +49,8 @@ class LocalizationProvider extends ChangeNotifier {
 
   _loadCurrentLanguage() async {
     _locale = Locale(
-        sharedPreferences.getString(AppStorageKey.languageCode) ?? 'ar',
-        sharedPreferences.getString(AppStorageKey.countryCode) ?? 'SA');
+        sharedPreferences.getString(AppStorageKey.languageCode) ?? 'en',
+        sharedPreferences.getString(AppStorageKey.countryCode) ?? 'US');
     _isLtr = _locale.languageCode == 'en';
     if (_locale.languageCode == 'en') {
       _selectIndex = 0;

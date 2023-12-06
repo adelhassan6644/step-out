@@ -11,8 +11,7 @@ ThemeData light = ThemeData(
   brightness: Brightness.light,
   // accentColor: Colors.white,
   colorScheme: const ColorScheme.light(
-      primary: Styles.PRIMARY_COLOR,
-      secondary: Styles.PRIMARY_COLOR),
+      primary: Styles.PRIMARY_COLOR, secondary: Styles.PRIMARY_COLOR),
 
   scaffoldBackgroundColor: Styles.BACKGROUND_COLOR,
   focusColor: const Color(0xFFADC4C8),

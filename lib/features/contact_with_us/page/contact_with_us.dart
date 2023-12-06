@@ -76,33 +76,56 @@ class ContactWithUs extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ///E-mail
-                            Text(
-                              getTranslated("mail", context),
-                              style: AppTextStyles.regular.copyWith(
-                                  fontSize: 14, color: Styles.HINT_COLOR),
+                            InkWell(
+                              onTap: () => launchUrl(
+                                  Uri.parse(
+                                      "mailto:${provider.model?.data?.email ?? "StepOut@gmail.com"}"),
+                                  mode: LaunchMode.externalApplication),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    getTranslated("mail", context),
+                                    style: AppTextStyles.regular.copyWith(
+                                        fontSize: 14, color: Styles.HINT_COLOR),
+                                  ),
+                                  Text(
+                                    provider.model?.data?.email ??
+                                        "StepOut@gmail.com",
+                                    style: AppTextStyles.medium.copyWith(
+                                        fontSize: 14, color: Styles.TITLE),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text(
-                              provider.model?.data?.email ??
-                                  "StepOut@gmail.com",
-                              style: AppTextStyles.medium
-                                  .copyWith(fontSize: 14, color: Styles.TITLE),
-                            ),
+
                             Divider(
                               color: Styles.BORDER_COLOR,
                               height: 24.h,
                             ),
 
                             ///Phone
-                            Text(
-                              getTranslated("phone", context),
-                              style: AppTextStyles.regular.copyWith(
-                                  fontSize: 14, color: Styles.HINT_COLOR),
-                            ),
-                            Text(
-                              provider.model?.data?.phone ?? "12345",
-                              style: AppTextStyles.medium
-                                  .copyWith(fontSize: 14, color: Styles.TITLE),
-                            ),
+                            InkWell(
+                              onTap: () => launchUrl(
+                                  Uri.parse(
+                                      "tel://${provider.model?.data?.phone}"),
+                                  mode: LaunchMode.externalApplication),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    getTranslated("phone", context),
+                                    style: AppTextStyles.regular.copyWith(
+                                        fontSize: 14, color: Styles.HINT_COLOR),
+                                  ),
+                                  Text(
+                                    provider.model?.data?.phone ?? "12344565",
+                                    style: AppTextStyles.medium.copyWith(
+                                        fontSize: 14, color: Styles.TITLE),
+                                  ),
+                                ],
+                              ),
+                            )
                           ],
                         ),
                       )
@@ -191,8 +214,11 @@ class ContactWithUs extends StatelessWidget {
                           width: 40,
                           radius: 100,
                           onTap: () async {
-                            await launch(
-                                "whatsapp://send?phone=${provider.model?.data?.whatsApp}");
+                            launchUrl(
+                              Uri.parse(
+                                'whatsapp://send?phone=${provider.model?.data?.whatsApp}',
+                              ),
+                            );
                           }),
 
                     ///SnapChat

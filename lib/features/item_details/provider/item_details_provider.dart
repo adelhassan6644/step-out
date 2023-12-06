@@ -24,52 +24,41 @@ class ItemDetailsProvider extends ChangeNotifier {
   ItemDetailsModel? model;
   bool isLoading = false;
   getDetails(id) async {
-    try {
-      model = null;
-      selectedTab = 0;
-      isLoading = true;
-      notifyListeners();
-      Either<ServerFailure, Response> response = await repo.getDetails(id);
-      response.fold((fail) {
-        isLoading = false;
-        CustomSnackBar.showSnackBar(
-            notification: AppNotification(
-                message: fail.error,
-                isFloating: true,
-                backgroundColor: Styles.IN_ACTIVE,
-                borderColor: Colors.transparent));
-        notifyListeners();
-      }, (success) {
-        if (success.data["data"] != null) {
-          model = ItemDetailsModel.fromJson(success.data["data"]);
-        } else {
-          model = null;
-        }
-        isLoading = false;
-        notifyListeners();
-      });
-    } catch (e) {
+    model = null;
+    selectedTab = 0;
+    isLoading = true;
+    notifyListeners();
+    Either<ServerFailure, Response> response = await repo.getDetails(id);
+    response.fold((fail) {
       isLoading = false;
       CustomSnackBar.showSnackBar(
           notification: AppNotification(
-              message: e.toString(),
+              message: fail.error,
               isFloating: true,
               backgroundColor: Styles.IN_ACTIVE,
               borderColor: Colors.transparent));
       notifyListeners();
-    }
+    }, (success) {
+      if (success.data["data"] != null) {
+        model = ItemDetailsModel.fromJson(success.data["data"]);
+      } else {
+        model = null;
+      }
+      isLoading = false;
+      notifyListeners();
+    });
   }
 
   sharePlace() async {
-    String link = "https://livealhmdanh.page.link/${model?.id}";
+    String link = "https://ebrandstepout.page.link/${model?.id}";
     final dynamicLinkParams = DynamicLinkParameters(
       link: Uri.parse(link),
-      uriPrefix: "https://livealhmdanh.page.link",
+      uriPrefix: "https://ebrandstepout.page.link",
       androidParameters: const AndroidParameters(
-        packageName: "com.softwareCloud.live",
+        packageName: "com.eBrandstepOut.stepOut",
       ),
       iosParameters: const IOSParameters(
-        bundleId: "com.softwareCloud.live",
+        bundleId: "com.eBrandstepOut.stepOut",
         appStoreId: "6451453145",
       ),
     );

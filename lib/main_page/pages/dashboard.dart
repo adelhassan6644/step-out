@@ -21,7 +21,9 @@ class DashBoard extends StatefulWidget {
 class _DashBoardState extends State<DashBoard> {
   @override
   void initState() {
-    initData();
+    if (sl<ProfileProvider>().isLogin) {
+      sl<ProfileProvider>().getProfile();
+    }
     NetworkInfo.checkConnectivity(onVisible: initData);
     super.initState();
   }
@@ -31,7 +33,9 @@ class _DashBoardState extends State<DashBoard> {
       sl<HomeProvider>().getBanners();
       sl<HomeProvider>().getCategories();
       sl<HomeProvider>().getOffers();
-      sl<ProfileProvider>().getProfile();
+      if (sl<ProfileProvider>().isLogin) {
+        sl<ProfileProvider>().getProfile();
+      }
     });
   }
 

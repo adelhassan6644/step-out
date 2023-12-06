@@ -5,10 +5,13 @@ import 'package:stepOut/components/custom_network_image.dart';
 import 'package:provider/provider.dart';
 import 'package:stepOut/features/item_details/repo/item_details_repo.dart';
 import '../../../app/core/utils/dimensions.dart';
+import '../../../app/core/utils/svg_images.dart';
 import '../../../app/localization/language_constant.dart';
 import '../../../components/custom_app_bar.dart';
+import '../../../components/custom_images.dart';
 import '../../../components/custom_loading.dart';
 import '../../../components/empty_widget.dart';
+import '../../../components/image_pop_up_viewer.dart';
 import '../../../data/config/di.dart';
 import '../provider/item_details_provider.dart';
 import '../widgets/item_details_body.dart';
@@ -38,20 +41,43 @@ class ItemDetails extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            CustomNetworkImage.containerNewWorkImage(
-                                image: provider.model?.cover ?? "",
-                                imageWidget: const Column(
-                                  children: [
-                                    CustomAppBar(
-                                      withSafeArea: true,
-                                      backColor: Styles.WHITE_COLOR,
-                                    ),
-                                    Expanded(child: SizedBox())
-                                  ],
-                                ),
-                                height: 240.h,
-                                width: context.width,
-                                radius: 0),
+                            InkWell(
+                              onTap: () {
+                                Future.delayed(
+                                    Duration.zero,
+                                    () => showDialog(
+                                        context: context,
+                                        barrierColor:
+                                            Colors.black.withOpacity(0.75),
+                                        builder: (context) {
+                                          return ImagePopUpViewer(
+                                            image: provider.model?.cover,
+                                            isFromInternet: true,
+                                            title: "",
+                                          );
+                                        }));
+                              },
+                              child: CustomNetworkImage.containerNewWorkImage(
+                                  image: provider.model?.cover ?? "",
+                                  imageWidget: Column(
+                                    children: [
+                                      CustomAppBar(
+                                        withSafeArea: true,
+                                        backColor: Styles.WHITE_COLOR,
+                                        actionWidth: 22,
+                                        actionChild: customImageIconSVG(
+                                          imageName: SvgImages.export,
+                                          color: Styles.WHITE_COLOR,
+                                          onTap: () => provider.sharePlace(),
+                                        ),
+                                      ),
+                                      const Expanded(child: SizedBox())
+                                    ],
+                                  ),
+                                  height: 240.h,
+                                  width: context.width,
+                                  radius: 0),
+                            ),
                             const Expanded(child: SizedBox()),
                           ],
                         ),

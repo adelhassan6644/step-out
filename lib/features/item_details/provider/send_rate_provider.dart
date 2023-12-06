@@ -20,6 +20,8 @@ class RattingProvider extends ChangeNotifier {
     required this.repo,
   });
 
+  bool get isLogin => repo.isLoggedIn();
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final feedback = BehaviorSubject<String?>();

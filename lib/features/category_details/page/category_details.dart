@@ -24,7 +24,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
 
   @override
   void initState() {
-    Future.delayed(Duration.zero, () {
+    Future.delayed(Duration.zero, () async {
       sl<CategoryDetailsProvider>().init(widget.item.id);
       sl<CategoryDetailsProvider>().scroll(controller);
     });
@@ -44,6 +44,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
         actionWidth: 25,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CategoryDetailsHeader(subCategories: widget.item.subCategories ?? []),
           CategoryDetailsBody(controller: controller),

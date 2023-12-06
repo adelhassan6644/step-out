@@ -116,7 +116,7 @@ class _CategoryCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomNetworkImage.containerNewWorkImage(
-                image: item?.image ?? AppStrings.networkImage,
+                image: item?.image ?? "",
                 height: 100,
                 width: context.width),
             SizedBox(

@@ -141,7 +141,6 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                             check: provider.isRememberMe,
                             onChange: (v) => provider.onRememberMe(v),
                           ),
-                          const Expanded(child: SizedBox()),
                           InkWell(
                             onTap: () {
                               provider.clear();
@@ -179,7 +178,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                                     }
                                   }
                                 },
-                                isLoading: provider.isLogin);
+                                isLoading: provider.isLoginLoading);
                           }),
                     ),
                     Row(
@@ -196,7 +195,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                         InkWell(
                           onTap: () {
                             provider.clear();
-                            CustomNavigator.push(Routes.REGISTER, clean: true);
+                            CustomNavigator.push(Routes.REGISTER);
                           },
                           child: Text(
                             " ${getTranslated("signup", context)}",
@@ -211,10 +210,7 @@ class _LoginBodyWidgetState extends State<LoginBodyWidget> {
                       ],
                     ),
                     InkWell(
-                      onTap: () {
-                        provider.clear();
-                        CustomNavigator.push(Routes.DASHBOARD, clean: true);
-                      },
+                      onTap: () => provider.logInAsAGuest(),
                       child: Padding(
                         padding: EdgeInsets.only(top: 12.h),
                         child: Text(

@@ -37,8 +37,7 @@ class ItemDetailsInfo extends StatelessWidget {
             ///Contact Info
             ItemDetailsContactInfo(
               phone: provider.model?.phone,
-              open: provider.model?.openingTime,
-              close: provider.model?.closingTime,
+              times: provider.model?.times,
               tags: provider.model?.tags,
             ),
 
@@ -47,6 +46,7 @@ class ItemDetailsInfo extends StatelessWidget {
               address: provider.model?.address,
               lat: provider.model?.lat,
               long: provider.model?.long,
+              itemName: provider.model?.name,
             ),
 
             ///Divider
@@ -61,9 +61,7 @@ class ItemDetailsInfo extends StatelessWidget {
             ///Item Details Offers
             ItemDetailsOffer(offers: provider.model?.offers),
 
-            SizedBox(
-              height: 24.h,
-            )
+            SizedBox(height: 36.h)
           ],
         );
       }),

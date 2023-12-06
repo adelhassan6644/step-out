@@ -5,6 +5,7 @@ import 'package:stepOut/components/animated_widget.dart';
 import '../../../app/core/utils/dimensions.dart';
 import '../../../components/custom_network_image.dart';
 import '../../../components/grid_list_animator.dart';
+import '../../../components/image_pop_up_viewer.dart';
 import '../provider/item_details_provider.dart';
 
 class ItemDetailsImages extends StatelessWidget {
@@ -29,9 +30,27 @@ class ItemDetailsImages extends StatelessWidget {
                     duration: const Duration(milliseconds: 375),
                     child: ScaleAnimation(
                       child: FadeInAnimation(
-                        child: CustomNetworkImage.containerNewWorkImage(
-                            radius: 20,
-                            image: provider.model?.images?[index] ?? ""),
+                        child: InkWell(
+                          onTap: () async {
+                            Future.delayed(
+                                Duration.zero,
+                                () => showDialog(
+                                    context: context,
+                                    barrierColor:
+                                        Colors.black.withOpacity(0.75),
+                                    builder: (context) {
+                                      return ImagePopUpViewer(
+                                        image: provider.model?.images?[index] ??
+                                            "",
+                                        isFromInternet: true,
+                                        title: "",
+                                      );
+                                    }));
+                          },
+                          child: CustomNetworkImage.containerNewWorkImage(
+                              radius: 20,
+                              image: provider.model?.images?[index] ?? ""),
+                        ),
                       ),
                     ),
                   );

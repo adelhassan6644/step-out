@@ -105,6 +105,7 @@ abstract class CustomBottomSheet {
                         ),
                         Expanded(
                             child: ListAnimator(
+                              controller: ScrollController(),
                           data: [
                             Padding(
                               padding: EdgeInsets.symmetric(
