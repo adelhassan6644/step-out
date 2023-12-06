@@ -23,7 +23,6 @@ class LocationProvider extends ChangeNotifier {
   bool isLoading = false;
   String pickAddress = '';
   LocationModel? addressModel;
-  Position? _myPosition;
   Position position = Position(
       longitude: 0,
       latitude: 0,
@@ -95,23 +94,18 @@ class LocationProvider extends ChangeNotifier {
     Position newLocalData = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
-    _myPosition = newLocalData;
-    if (fromAddress) {
-      position = _myPosition!;
-    } else {
-      pickPosition = _myPosition!;
-    }
-    getNearPlaces(_myPosition!);
+
+    getNearPlaces(newLocalData);
 
     mapController.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
-          target: LatLng(_myPosition!.latitude, _myPosition!.longitude),
+          target: LatLng(newLocalData.latitude, newLocalData.longitude),
           zoom: 18),
     ));
 
     await decodeLatLong(
-      latitude: _myPosition!.latitude,
-      longitude: _myPosition!.longitude,
+      latitude: newLocalData.latitude,
+      longitude: newLocalData.longitude,
     );
 
     isLoading = false;

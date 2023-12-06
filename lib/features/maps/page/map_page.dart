@@ -32,7 +32,6 @@ class _MapPageState extends State<MapPage> {
 
   getInitialPosition() {
     sl<LocationProvider>().getCurrentLocation();
-
     if (widget.baseModel?.object != null) {
       _initialPosition = LatLng(
           double.parse(
