@@ -97,6 +97,22 @@ abstract class Methods {
     }
   }
 
+  static Future<Position> getCurrentPosition() async {
+    await Geolocator.requestPermission();
+    return await Geolocator.getCurrentPosition(
+      forceAndroidLocationManager: true,
+      desiredAccuracy: LocationAccuracy.high,
+    );
+  }
+
+  static Future calcLiveDistance({required lat, required long}) async {
+    final position = await getCurrentPosition();
+    return (Geolocator.distanceBetween(position.latitude, position.longitude,
+                double.parse(lat), double.parse(long)) /
+            1000)
+        .toStringAsFixed(1);
+  }
+
   static calcDistance(
       {required lat1, required long1, required lat2, required long2}) {
     return (Geolocator.distanceBetween(double.parse(lat1), double.parse(long1),

@@ -85,27 +85,30 @@ class ItemDetailsLocation extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-              child: Consumer<LocationProvider>(builder: (_, provider, child) {
-                return Row(
-                  children: [
-                    customImageIconSVG(
-                        imageName: SvgImages.distance,
-                        width: 20,
-                        height: 20,
-                        color: Styles.SUBTITLE),
-                    SizedBox(width: 8.w),
-                    Expanded(
-                      child: Text(
-                        "${getTranslated("away_from_you", context)} ${Methods.calcDistance(lat1: provider.currentLocation?.latitude, long1: provider.currentLocation?.longitude, lat2: lat, long2: long)} ${getTranslated("km", context)}",
-                        style: AppTextStyles.regular.copyWith(
-                            overflow: TextOverflow.ellipsis,
-                            fontSize: 12,
-                            color: Styles.SUBTITLE),
-                      ),
-                    ),
-                  ],
-                );
-              }),
+              child: Row(
+                children: [
+                  customImageIconSVG(
+                      imageName: SvgImages.distance,
+                      width: 20,
+                      height: 20,
+                      color: Styles.SUBTITLE),
+                  SizedBox(width: 8.w),
+                  FutureBuilder(
+                    future: Methods.calcLiveDistance(lat: lat, long: long),
+                    builder: (_, AsyncSnapshot<dynamic> snapshot) {
+                      return Expanded(
+                        child: Text(
+                          "${getTranslated("away_from_you", context)} ${snapshot.data ?? "..."} ${getTranslated("km", context)}",
+                          style: AppTextStyles.regular.copyWith(
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: 12,
+                              color: Styles.SUBTITLE),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ],
         ),
