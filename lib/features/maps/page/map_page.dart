@@ -25,19 +25,15 @@ class _MapPageState extends State<MapPage> {
 
   @override
   void initState() {
-    Future.delayed(
-        const Duration(milliseconds: 100), () => getInitialPosition());
+    Future.delayed(Duration.zero, () => getInitialPosition());
     super.initState();
   }
 
   getInitialPosition() {
     sl<LocationProvider>().getCurrentLocation();
-    if (widget.baseModel?.object != null) {
-      _initialPosition = LatLng(
-          double.parse(
-              widget.baseModel?.object.latitude ?? AppStrings.defaultLat),
-          double.parse(
-              widget.baseModel?.object.longitude ?? AppStrings.defaultLong));
+    if (sl<LocationProvider>().pickPosition != null) {
+      _initialPosition = LatLng(sl<LocationProvider>().pickPosition!.latitude,
+          (sl<LocationProvider>().pickPosition!.longitude));
       _mapController!.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(target: _initialPosition, zoom: 100),
       ));
@@ -69,7 +65,7 @@ class _MapPageState extends State<MapPage> {
                     myLocationButtonEnabled: false,
                     onMapCreated: (GoogleMapController mapController) {
                       _mapController = mapController;
-                      locationController.getLocation(false,
+                      locationController.getLocation(
                           mapController: _mapController!);
                     },
                     scrollGesturesEnabled: true,

@@ -23,28 +23,7 @@ class LocationProvider extends ChangeNotifier {
   bool isLoading = false;
   String pickAddress = '';
   LocationModel? addressModel;
-  Position position = Position(
-      longitude: 0,
-      latitude: 0,
-      timestamp: DateTime.now(),
-      accuracy: 1,
-      altitude: 1,
-      heading: 1,
-      speed: 1,
-      speedAccuracy: 1,
-      altitudeAccuracy: 1,
-      headingAccuracy: 1);
-  Position pickPosition = Position(
-      longitude: 0,
-      latitude: 0,
-      timestamp: DateTime.now(),
-      accuracy: 1,
-      altitude: 1,
-      heading: 1,
-      speed: 1,
-      speedAccuracy: 1,
-      altitudeAccuracy: 1,
-      headingAccuracy: 1);
+  Position? pickPosition;
   Future<List<PredictionModel>> searchLocation(
       BuildContext context, String text) async {
     if (text.isNotEmpty) {
@@ -86,26 +65,25 @@ class LocationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  getLocation(bool fromAddress,
-      {required GoogleMapController mapController}) async {
+  getLocation({required GoogleMapController mapController}) async {
     isLoading = true;
     notifyListeners();
     await Geolocator.requestPermission();
-    Position newLocalData = await Geolocator.getCurrentPosition(
+    pickPosition = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
 
-    getNearPlaces(newLocalData);
+    getNearPlaces(pickPosition);
 
     mapController.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
-          target: LatLng(newLocalData.latitude, newLocalData.longitude),
-          zoom: 18),
+          target: LatLng(pickPosition!.latitude, pickPosition!.longitude),
+          zoom: 14),
     ));
 
     await decodeLatLong(
-      latitude: newLocalData.latitude,
-      longitude: newLocalData.longitude,
+      latitude: pickPosition!.latitude,
+      longitude: pickPosition!.longitude,
     );
 
     isLoading = false;
