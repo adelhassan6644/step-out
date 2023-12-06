@@ -21,5 +21,5 @@ class AppStrings {
   static const String englishCode = 'en';
   static const String arabicCode = 'ar';
   static const String locale = 'locale';
-  static const String generalTopic = 'all';
+  static const String guestTopic = 'guest';
 }

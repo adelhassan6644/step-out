@@ -30,7 +30,6 @@ class FirebaseNotifications {
       badge: true,
       sound: true,
     );
-    _firebaseMessaging?.subscribeToTopic(AppStrings.generalTopic);
     localNotification();
     firebaseCloudMessagingListeners();
     initDynamicLinks();
