@@ -16,6 +16,8 @@ import '../../navigation/custom_navigation.dart';
 import '../../navigation/routes.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 
+import '../core/utils/app_strings.dart';
+
 part 'firebase_notification_helper.dart';
 part 'notification_operation.dart';
 part 'local_notification.dart';

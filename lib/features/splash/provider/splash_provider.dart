@@ -14,9 +14,6 @@ class SplashProvider extends ChangeNotifier {
   startTheApp() {
     Future.delayed(const Duration(milliseconds: 1800), () async {
       sl<SettingProvider>().getSetting();
-      if (!repo.isLogin) {
-        await repo.guestMode();
-      }
 
       ///Ask Notification Permission
       await PermissionHandler.checkNotificationsPermission();

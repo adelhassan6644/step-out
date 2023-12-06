@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stepOut/app/core/utils/app_strings.dart';
 import '../../../app/core/utils/app_storage_keys.dart';
 import '../../../data/api/end_points.dart';
 import '../../../data/dio/dio_client.dart';
@@ -23,7 +22,6 @@ class AuthRepo {
   String? get userId => sharedPreferences.getString(AppStorageKey.userId);
 
   setLoggedIn() {
-    removeGuestMode();
     subscribeToTopic();
     sharedPreferences.setBool(AppStorageKey.isLogin, true);
   }
@@ -242,9 +240,5 @@ class AuthRepo {
       await sharedPreferences.remove(AppStorageKey.isLogin);
       return true;
     }
-  }
-
-  removeGuestMode() async {
-    await FirebaseMessaging.instance.subscribeToTopic(AppStrings.guestTopic);
   }
 }
