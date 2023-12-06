@@ -43,7 +43,7 @@ class NotificationsProvider extends ChangeNotifier {
   NotificationsModel? model;
   bool isLoading = false;
   getNotifications() async {
-    try {
+    // try {
       isLoading = true;
       notifyListeners();
       Either<ServerFailure, Response> response = await repo.getNotifications();
@@ -61,16 +61,16 @@ class NotificationsProvider extends ChangeNotifier {
         isLoading = false;
         notifyListeners();
       });
-    } catch (e) {
-      isLoading = false;
-      CustomSnackBar.showSnackBar(
-          notification: AppNotification(
-              message: e.toString(),
-              isFloating: true,
-              backgroundColor: Styles.IN_ACTIVE,
-              borderColor: Colors.transparent));
-      notifyListeners();
-    }
+    // } catch (e) {
+    //   isLoading = false;
+    //   CustomSnackBar.showSnackBar(
+    //       notification: AppNotification(
+    //           message: e.toString(),
+    //           isFloating: true,
+    //           backgroundColor: Styles.IN_ACTIVE,
+    //           borderColor: Colors.transparent));
+    //   notifyListeners();
+    // }
   }
 
   readNotification(id) async {

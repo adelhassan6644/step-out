@@ -245,6 +245,7 @@ class AuthRepo {
   }
 
   removeGuestMode() async {
-    await FirebaseMessaging.instance.subscribeToTopic(AppStrings.guestTopic);
+    await FirebaseMessaging.instance
+        .unsubscribeFromTopic(AppStrings.guestTopic);
   }
 }
