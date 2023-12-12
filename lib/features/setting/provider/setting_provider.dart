@@ -11,9 +11,7 @@ import '../repo/setting_repo.dart';
 class SettingProvider extends ChangeNotifier {
   final SettingRepo repo;
 
-  SettingProvider({required this.repo}) {
-    getSetting();
-  }
+  SettingProvider({required this.repo});
 
   bool isLoading = false;
   SettingModel? model;
