@@ -15,6 +15,7 @@ import '../../main_page/provider/main_page_provider.dart';
 import '../../navigation/custom_navigation.dart';
 import '../../navigation/routes.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+@pragma('vm:entry-point')
 
 part 'firebase_notification_helper.dart';
 part 'notification_operation.dart';
