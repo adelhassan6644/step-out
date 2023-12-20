@@ -41,7 +41,7 @@ class CustomImageStack extends StatelessWidget {
                         height: 16.h,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                            color: const Color(0xff00000000).withOpacity(0.5),
+                            color: const Color(0xff000000).withOpacity(0.5),
                             borderRadius: BorderRadius.circular(100)),
                         child: Text(
                           "+${images.length - 3}",

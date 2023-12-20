@@ -9,6 +9,7 @@ import 'package:stepOut/features/item_details/provider/item_details_provider.dar
 
 import '../../../app/core/utils/text_styles.dart';
 import '../../../app/localization/language_constant.dart';
+import 'item_sub_services_widget.dart';
 
 class ItemServicesWidget extends StatelessWidget {
   const ItemServicesWidget({super.key});
@@ -30,8 +31,11 @@ class ItemServicesWidget extends StatelessWidget {
                   color: Styles.TITLE),
             ),
           ),
+
+          ///Services
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -42,62 +46,22 @@ class ItemServicesWidget extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(horizontal: 6.w, vertical: 4.h),
                     child: SizedBox(
+                        width: 70,
                         child: InkWell(
-                      onTap: () {
-                        if ((provider.model?.services?[index].subServices
-                                    ?.length ??
-                                0) >
-                            0) {
-                          CustomBottomSheet.show(
-                            label: provider.model?.services?[index].name ?? "",
-                            list: Wrap(
-                              spacing: 16,
-                              runSpacing: 16,
-                              children: List.generate(
-                                  provider.model?.services?[index].subServices
-                                          ?.length ??
-                                      0,
-                                  (i) => SizedBox(
-                                        width: 70.w,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            CustomNetworkImage
-                                                .circleNewWorkImage(
-                                                    radius: 30,
-                                                    image: provider
-                                                            .model
-                                                            ?.services?[index]
-                                                            .subServices?[i]
-                                                            .image ??
-                                                        ""),
-                                            const SizedBox(height: 4),
-                                            Text(
-                                              provider.model?.services?[index]
-                                                      .subServices?[i].name ??
-                                                  "",
-                                              textAlign: TextAlign.center,
-                                              maxLines: 2,
-                                              style: AppTextStyles.medium
-                                                  .copyWith(
-                                                      fontSize: 14,
-                                                      color: Styles.TITLE),
-                                            ),
-                                          ],
-                                        ),
-                                      )),
-                            ),
-                          );
-                        }
-                      },
-                      child: SizedBox(
-                        width: 70.w,
-                        child: InkWell(
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          splashColor: Colors.transparent,
+                          onTap: () {
+                            if ((provider.model?.services?[index].subServices
+                                        ?.length ??
+                                    0) >
+                                0) {
+                              CustomBottomSheet.show(
+                                label:
+                                    provider.model?.services?[index].name ?? "",
+                                list: ItemSubServicesWidget(
+                                  service: provider.model?.services?[index],
+                                ),
+                              );
+                            }
+                          },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -116,9 +80,7 @@ class ItemServicesWidget extends StatelessWidget {
                               ),
                             ],
                           ),
-                        ),
-                      ),
-                    )
+                        )
                             .animate()
                             .scale(duration: 500.ms)
                             .then(delay: 250.ms) // baseline=800ms
@@ -127,7 +89,7 @@ class ItemServicesWidget extends StatelessWidget {
                             .then(delay: 200.ms)
                             .shimmer(duration: 500.ms)),
                   ),
-                )
+                ),
               ],
             ),
           ),
