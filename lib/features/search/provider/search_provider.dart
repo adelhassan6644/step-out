@@ -70,9 +70,7 @@ class SearchProvider extends ChangeNotifier {
       selectedSubCategory = null;
     } else {
       selectedSubCategory = v;
-      if (v != -1) {
-        getServices(v);
-      }
+      getServices(v);
     }
     services?.clear();
     notifyListeners();
