@@ -49,7 +49,7 @@ class CategoryDetailsRepo {
   Future<Either<ServerFailure, Response>> getServices(int? id) async {
     try {
       Response response = await dioClient.get(
-        uri: EndPoints.getServices(id),
+        uri: id != -1 ? EndPoints.getServices(id) : EndPoints.services,
       );
       if (response.statusCode == 200) {
         return Right(response);

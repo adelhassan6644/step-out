@@ -20,6 +20,7 @@ class EndPoints {
   static const String postFavourite = 'favorite';
   static const String banners = 'banner';
   static const String news = 'news';
+  static const String services = 'service';
   static getItemDetails(id) => 'place/$id';
   static getServices(id) => 'subcategory/services/$id';
   static getCategoryDetails(id) => 'category/$id';

@@ -23,6 +23,7 @@ class CategoryDetailsProvider extends ChangeNotifier {
     animatedScrollSubCategories(subCategoriesKeys[0].currentContext!);
     selectedServicesId.clear();
     services?.clear();
+    getServices(selectedSubCategoryId);
     getPlaces();
     notifyListeners();
   }
@@ -56,9 +57,7 @@ class CategoryDetailsProvider extends ChangeNotifier {
       selectedServicesId.clear();
       services?.clear();
       animatedScrollSubCategories(subCategoriesKeys[i].currentContext!);
-      if (i != 0) {
-        getServices(id);
-      }
+      getServices(id);
       getPlaces();
     }
     notifyListeners();
