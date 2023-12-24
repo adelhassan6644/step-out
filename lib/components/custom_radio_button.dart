@@ -39,10 +39,13 @@ class CustomRadioButton extends StatelessWidget {
           children: [
             Visibility(
               visible: icon != null,
-              child: customImageIcon(
-                imageName: icon ?? "",
-                height: 24.h,
-                width: 24.w,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: customImageIcon(
+                  imageName: icon ?? "",
+                  height: 18.h,
+                  width: 24.w,
+                ),
               ),
             ),
             Visibility(visible: icon != null, child: SizedBox(width: 16.w)),
