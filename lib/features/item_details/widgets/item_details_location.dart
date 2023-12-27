@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:map_launcher/map_launcher.dart';
-import 'package:provider/provider.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/localization/language_constant.dart';
 import 'package:stepOut/components/custom_bottom_sheet.dart';
@@ -13,7 +12,6 @@ import '../../../app/core/utils/text_styles.dart';
 import '../../../components/custom_images.dart';
 import '../../../main_widgets/map_widget.dart';
 import '../../../components/open_map_options.dart';
-import '../../maps/provider/location_provider.dart';
 
 class ItemDetailsLocation extends StatelessWidget {
   const ItemDetailsLocation(
@@ -59,7 +57,8 @@ class ItemDetailsLocation extends StatelessWidget {
                       onMapTap: (map) {
                         CustomNavigator.pop();
                         map.showMarker(
-                          coords: Coords(double.parse(lat!), double.parse(long!)),
+                          coords:
+                              Coords(double.parse(lat!), double.parse(long!)),
                           title: itemName ?? "",
                         );
                       },

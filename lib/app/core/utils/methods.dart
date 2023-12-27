@@ -105,10 +105,10 @@ abstract class Methods {
     );
   }
 
-  static Future calcLiveDistance({required lat, required long}) async {
+  static Future calcLiveDistance({lat, long}) async {
     final position = await getCurrentPosition();
     return (Geolocator.distanceBetween(position.latitude, position.longitude,
-                double.parse(lat), double.parse(long)) /
+                double.parse(lat ?? "0"), double.parse(long ?? "0")) /
             1000)
         .toStringAsFixed(1);
   }

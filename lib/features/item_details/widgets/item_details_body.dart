@@ -45,107 +45,112 @@ class ItemDetailsBody extends StatelessWidget {
                       vertical: Dimensions.PADDING_SIZE_SMALL.h),
                   child: Column(
                     children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          if (provider.model?.instagram != null)
-                            customContainerSvgIcon(
-                              radius: 100,
-                              width: 35,
-                              height: 35,
-                              imageName: SvgImages.instagram,
-                              color: Styles.PRIMARY_COLOR,
-                              onTap: () {
-                                launchUrl(
-                                    Uri.parse(provider.model?.instagram ?? ""),
-                                    mode: LaunchMode.externalApplication);
-                              },
-                            ),
-                          if (provider.model?.instagram != null)
-                            const SizedBox(width: 6),
-                          if (provider.model?.facebook != null)
-                            customContainerSvgIcon(
-                              radius: 100,
-                              width: 35,
-                              height: 35,
-                              imageName: SvgImages.faceBook,
-                              color: Styles.PRIMARY_COLOR,
-                              onTap: () {
-                                launchUrl(
-                                    Uri.parse(provider.model?.facebook ?? ""),
-                                    mode: LaunchMode.externalApplication);
-                              },
-                            ),
-                          if (provider.model?.facebook != null)
-                            const SizedBox(width: 6),
-                          if (provider.model?.whatsapp != null)
-                            customContainerSvgIcon(
-                              radius: 100,
-                              width: 35,
-                              height: 35,
-                              imageName: SvgImages.whatsApp,
-                              color: Styles.PRIMARY_COLOR,
-                              onTap: () {
-                                launchUrl(
-                                  Uri.parse(
-                                    'whatsapp://send?phone=${provider.model?.whatsapp}',
-                                  ),
-                                );
-                              },
-                            ),
-                          // customContainerSvgIcon(
-                          //   radius: 100,
-                          //   width: 35,
-                          //   height: 35,
-                          //   imageName: SvgImages.export,
-                          //   color: Styles.PRIMARY_COLOR,
-                          //   onTap: () => provider.sharePlace(),
-                          // ),
-                          const Expanded(child: SizedBox()),
-                          if (provider.model?.twitter != null)
-                            customContainerSvgIcon(
-                              radius: 100,
-                              width: 35,
-                              height: 35,
-                              imageName: SvgImages.twitter,
-                              color: Styles.PRIMARY_COLOR,
-                              onTap: () {
-                                launchUrl(
-                                    Uri.parse(provider.model?.twitter ?? ""),
-                                    mode: LaunchMode.externalApplication);
-                              },
-                            ),
-                          if (provider.model?.tiktok != null)
-                            const SizedBox(width: 6),
-                          if (provider.model?.tiktok != null)
-                            customContainerSvgIcon(
-                              radius: 100,
-                              width: 35,
-                              height: 35,
-                              imageName: SvgImages.tiktok,
-                              color: Styles.PRIMARY_COLOR,
-                              onTap: () {
-                                launchUrl(
-                                    Uri.parse(provider.model?.tiktok ?? ""),
-                                    mode: LaunchMode.externalApplication);
-                              },
-                            ),
-                          if (provider.model?.snapchat != null)
-                            const SizedBox(width: 6),
-                          if (provider.model?.snapchat != null)
-                            customContainerSvgIcon(
-                              radius: 100,
-                              width: 35,
-                              height: 35,
-                              imageName: SvgImages.snapchat,
-                              color: Styles.PRIMARY_COLOR,
-                              onTap: () {
-                                launchUrl(
-                                    Uri.parse(provider.model?.snapchat ?? ""),
-                                    mode: LaunchMode.externalApplication);
-                              },
-                            ),
-                        ],
+                      ///Social Media Accounts
+                      SizedBox(
+                        height: 35,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            if (provider.model?.instagram != null)
+                              customContainerSvgIcon(
+                                radius: 100,
+                                width: 35,
+                                height: 35,
+                                imageName: SvgImages.instagram,
+                                color: Styles.PRIMARY_COLOR,
+                                onTap: () {
+                                  launchUrl(
+                                      Uri.parse(
+                                          provider.model?.instagram ?? ""),
+                                      mode: LaunchMode.externalApplication);
+                                },
+                              ),
+                            if (provider.model?.instagram != null)
+                              const SizedBox(width: 6),
+                            if (provider.model?.facebook != null)
+                              customContainerSvgIcon(
+                                radius: 100,
+                                width: 35,
+                                height: 35,
+                                imageName: SvgImages.faceBook,
+                                color: Styles.PRIMARY_COLOR,
+                                onTap: () {
+                                  launchUrl(
+                                      Uri.parse(provider.model?.facebook ?? ""),
+                                      mode: LaunchMode.externalApplication);
+                                },
+                              ),
+                            if (provider.model?.facebook != null)
+                              const SizedBox(width: 6),
+                            if (provider.model?.whatsapp != null)
+                              customContainerSvgIcon(
+                                radius: 100,
+                                width: 35,
+                                height: 35,
+                                imageName: SvgImages.whatsApp,
+                                color: Styles.PRIMARY_COLOR,
+                                onTap: () {
+                                  launchUrl(
+                                    Uri.parse(
+                                      'whatsapp://send?phone=${provider.model?.whatsapp}',
+                                    ),
+                                  );
+                                },
+                              ),
+                            // customContainerSvgIcon(
+                            //   radius: 100,
+                            //   width: 35,
+                            //   height: 35,
+                            //   imageName: SvgImages.export,
+                            //   color: Styles.PRIMARY_COLOR,
+                            //   onTap: () => provider.sharePlace(),
+                            // ),
+                            const Expanded(child: SizedBox()),
+                            if (provider.model?.twitter != null)
+                              customContainerSvgIcon(
+                                radius: 100,
+                                width: 35,
+                                height: 35,
+                                imageName: SvgImages.twitter,
+                                color: Styles.PRIMARY_COLOR,
+                                onTap: () {
+                                  launchUrl(
+                                      Uri.parse(provider.model?.twitter ?? ""),
+                                      mode: LaunchMode.externalApplication);
+                                },
+                              ),
+                            if (provider.model?.tiktok != null)
+                              const SizedBox(width: 6),
+                            if (provider.model?.tiktok != null)
+                              customContainerSvgIcon(
+                                radius: 100,
+                                width: 35,
+                                height: 35,
+                                imageName: SvgImages.tiktok,
+                                color: Styles.PRIMARY_COLOR,
+                                onTap: () {
+                                  launchUrl(
+                                      Uri.parse(provider.model?.tiktok ?? ""),
+                                      mode: LaunchMode.externalApplication);
+                                },
+                              ),
+                            if (provider.model?.snapchat != null)
+                              const SizedBox(width: 6),
+                            if (provider.model?.snapchat != null)
+                              customContainerSvgIcon(
+                                radius: 100,
+                                width: 35,
+                                height: 35,
+                                imageName: SvgImages.snapchat,
+                                color: Styles.PRIMARY_COLOR,
+                                onTap: () {
+                                  launchUrl(
+                                      Uri.parse(provider.model?.snapchat ?? ""),
+                                      mode: LaunchMode.externalApplication);
+                                },
+                              ),
+                          ],
+                        ),
                       ),
 
                       ///Title
@@ -189,15 +194,13 @@ class ItemDetailsBody extends StatelessWidget {
                         alignment: Alignment.centerRight,
                         child: ReadMoreText(
                           provider.model?.description ?? "",
-                          style:
-                          AppTextStyles.medium.copyWith(fontSize: 14),
+                          style: AppTextStyles.medium.copyWith(fontSize: 14),
                           trimLines: 2,
                           colorClickableText: Colors.pink,
                           trimMode: TrimMode.Line,
                           trimCollapsedText:
-                          getTranslated("show_more", context),
-                          trimExpandedText:
-                          getTranslated("show_less", context),
+                              getTranslated("show_more", context),
+                          trimExpandedText: getTranslated("show_less", context),
                           textAlign: TextAlign.start,
                           moreStyle: AppTextStyles.semiBold.copyWith(
                               fontSize: 14, color: Styles.PRIMARY_COLOR),

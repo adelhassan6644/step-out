@@ -49,32 +49,35 @@ class ItemDetailsContactInfo extends StatelessWidget {
               ),
             ],
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 12.h),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                customImageIconSVG(
-                    imageName: SvgImages.clock, width: 20, height: 20),
-                SizedBox(width: 8.w),
-                Expanded(
-                  child: Wrap(
-                    runSpacing: 4,
-                    spacing: 8,
-                    children: List.generate(
-                        times?.length ?? 0,
-                        (index) => Text(
-                              "(${Methods.convertStringToTime(times?[index].openingTime, withFormat: true)} - ${Methods.convertStringToTime(times?[index].closingTime, withFormat: true)})",
-                              style: AppTextStyles.medium.copyWith(
-                                  fontSize: 14,
-                                  overflow: TextOverflow.ellipsis,
-                                  color: Styles.TITLE),
-                              maxLines: 1,
-                            )),
+          Visibility(
+            visible: (times?.length ?? 0) > 0,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 12.h),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  customImageIconSVG(
+                      imageName: SvgImages.clock, width: 20, height: 20),
+                  SizedBox(width: 8.w),
+                  Expanded(
+                    child: Wrap(
+                      runSpacing: 4,
+                      spacing: 8,
+                      children: List.generate(
+                          times?.length ?? 0,
+                          (index) => Text(
+                                "(${Methods.convertStringToTime(times?[index].openingTime, withFormat: true)} - ${Methods.convertStringToTime(times?[index].closingTime, withFormat: true)})",
+                                style: AppTextStyles.medium.copyWith(
+                                    fontSize: 14,
+                                    overflow: TextOverflow.ellipsis,
+                                    color: Styles.TITLE),
+                                maxLines: 1,
+                              )),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Wrap(
