@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../../data/config/di.dart';
 import '../../../features/language/provider/localization_provider.dart';
 import '../../../navigation/custom_navigation.dart';
 
@@ -39,9 +40,8 @@ extension StringExtension on String {
 
 extension DateExtention on DateTime {
   String dateFormat({required String format, String? lang}) {
-    return DateFormat(
-      format,
-    ).format(this);
+    return DateFormat(format, sl<LocalizationProvider>().locale.languageCode)
+        .format(this);
   }
 
   String arTimeFormat() {

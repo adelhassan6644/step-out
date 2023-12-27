@@ -59,8 +59,8 @@ abstract class Methods {
     if (withFormat) {
       return dateTime
           .dateFormat(format: "mm : hh aa")
-          .replaceAll("AM", "صباحاً")
-          .replaceAll("PM", "مساءً");
+          .replaceAll("ص", "صباحاً")
+          .replaceAll("م", "مساءً");
     } else {
       return dateTime;
     }
