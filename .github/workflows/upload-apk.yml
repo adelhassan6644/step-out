@@ -35,8 +35,12 @@ jobs:
       - name: Upload Artifact to Transfer.sh
         id: upload_artifact
         run: |
-          UPLOAD_URL=$(curl --upload-file build/app/outputs/flutter-apk/app-release.apk https://transfer.sh/app-release.apk --max-time 300 --retry 5)
+          UPLOAD_URL=$(curl --upload-file ${{ github.workspace }}/build/app/outputs/flutter-apk/app-release.apk https://transfer.sh/app-release.apk --max-time 300 --retry 5)
           echo "Artifact uploaded to: $UPLOAD_URL"
+          echo "GITHUB_STATE=upload_url=$UPLOAD_URL" >> $GITHUB_ENV
+#
+#          UPLOAD_URL=$(curl --upload-file build/app/outputs/flutter-apk/app-release.apk https://transfer.sh/app-release.apk --max-time 300 --retry 5)
+#          echo "Artifact uploaded to: $UPLOAD_URL"
       
       - name: Send APK URL via Telegram
         env:
