@@ -25,7 +25,7 @@ jobs:
           flutter clean
           flutter build apk --release
 
-      - name: upload
+      - name: Upload APK Artifact
         id: upload_apk
         uses: actions/upload-artifact@v2
         with:
@@ -38,15 +38,12 @@ jobs:
           UPLOAD_URL=$(curl --upload-file ${{ github.workspace }}/build/app/outputs/flutter-apk/app-release.apk https://transfer.sh/app-release.apk --max-time 300 --retry 5)
           echo "Artifact uploaded to: $UPLOAD_URL"
           echo "GITHUB_STATE=upload_url=$UPLOAD_URL" >> $GITHUB_ENV
-#
-#          UPLOAD_URL=$(curl --upload-file build/app/outputs/flutter-apk/app-release.apk https://transfer.sh/app-release.apk --max-time 300 --retry 5)
-#          echo "Artifact uploaded to: $UPLOAD_URL"
-      
+
       - name: Send APK URL via Telegram
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          
+
         run: |
-          MESSAGE="Here's the Step Out APK : ${{ steps.upload_artifact.outputs.upload_url }}"
+          MESSAGE="Here's the Step Out APK: $UPLOAD_URL"
           curl -s "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" -d "chat_id=$TELEGRAM_CHAT_ID" -d "text=$MESSAGE"
