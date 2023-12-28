@@ -35,7 +35,7 @@ jobs:
       - name: Upload Artifact to Transfer.sh
         id: upload_artifact
         run: |
-          UPLOAD_URL=$(curl --upload-file build/app/outputs/flutter-apk/app-release.apk https://transfer.sh/app-release.apk)
+          UPLOAD_URL=$(curl --upload-file build/app/outputs/flutter-apk/app-release.apk https://transfer.sh/app-release.apk --max-time 300 --retry 5)
           echo "Artifact uploaded to: $UPLOAD_URL"
       
       - name: Send APK URL via Telegram
