@@ -113,7 +113,7 @@ abstract class Methods {
         .toStringAsFixed(1);
   }
 
-  static calcDistance(
+  static calcDistanceBetweenTwoPoints(
       {required lat1, required long1, required lat2, required long2}) {
     return (Geolocator.distanceBetween(double.parse(lat1), double.parse(long1),
                 double.parse(lat2), double.parse(long2)) /

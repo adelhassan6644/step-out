@@ -130,13 +130,29 @@ class ItemCard extends StatelessWidget {
                             color: Styles.SUBTITLE),
                         SizedBox(width: 8.w),
                         Expanded(
-                          child: Text(
-                            "${getTranslated("away_from_you", context)} ${Methods.calcDistance(lat1: provider.currentLocation?.latitude, long1: provider.currentLocation?.longitude, lat2: item?.lat, long2: item?.long)} ${getTranslated("km", context)}",
-                            style: AppTextStyles.regular.copyWith(
-                                overflow: TextOverflow.ellipsis,
-                                fontSize: 12,
-                                color: Styles.SUBTITLE),
+                          child: FutureBuilder(
+                            future: Methods.calcLiveDistance(
+                                lat: item?.lat, long: item?.long),
+                            builder: (_, AsyncSnapshot<dynamic> snapshot) {
+                              return Expanded(
+                                child: Text(
+                                  "${getTranslated("away_from_you", context)} ${snapshot.data ?? "..."} ${getTranslated("km", context)}",
+                                  style: AppTextStyles.regular.copyWith(
+                                      overflow: TextOverflow.ellipsis,
+                                      fontSize: 12,
+                                      color: Styles.SUBTITLE),
+                                ),
+                              );
+                            },
                           ),
+
+                          // Text(
+                          //   "${getTranslated("away_from_you", context)} ${Methods.calcLiveDistance(lat: item?.lat, long: item?.long)} ${getTranslated("km", context)}",
+                          //   style: AppTextStyles.regular.copyWith(
+                          //       overflow: TextOverflow.ellipsis,
+                          //       fontSize: 12,
+                          //       color: Styles.SUBTITLE),
+                          // ),
                         ),
                       ],
                     );
