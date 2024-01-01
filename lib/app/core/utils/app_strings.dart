@@ -2,7 +2,7 @@ import '../../../features/maps/models/location_model.dart';
 
 class AppStrings {
   static const String appName = 'Step Out';
-  static const String googleApiKey = 'AIzaSyBxi2NcKA8JE90J07U9M2D90tHgaSg3Xjg';
+  static const String googleApiKey = 'AIzaSyA2xA7d84QkR0_0OPjdDRLfu--YbjJkSa8';
   static const String defaultAddress = 'البحرين ، المنامة';
   static const String defaultLat = '26.225513';
   static const String defaultLong = '50.589816';

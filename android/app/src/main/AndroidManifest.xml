@@ -99,6 +99,6 @@
             android:value="2" />
 
        <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyDWr3ACfKVkWFBl9pAFhmunLHQtK0UjMVY"/>
+           android:value="AIzaSyA2xA7d84QkR0_0OPjdDRLfu--YbjJkSa8"/>
     </application>
 </manifest>
