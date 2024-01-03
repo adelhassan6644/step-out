@@ -151,6 +151,7 @@
   "login_before_rate": "Login before rate",
   "select_map": "Select Map",
   "notification_deleted_successfully": "Notification Deleted Successfully",
-  "away_from_you": "Away from you "
+  "away_from_you": "Away from you ",
+  "always_opening": "Always opening"
 
 }

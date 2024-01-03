@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stepOut/app/core/utils/dimensions.dart';
 import 'package:stepOut/app/core/utils/svg_images.dart';
+import 'package:stepOut/app/localization/language_constant.dart';
 import 'package:stepOut/components/custom_images.dart';
 import 'package:stepOut/features/home/models/categories_model.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
@@ -66,14 +67,28 @@ class ItemDetailsContactInfo extends StatelessWidget {
                       spacing: 8,
                       children: List.generate(
                           times?.length ?? 0,
-                          (index) => Text(
-                                "(${Methods.convertStringToTime(times?[index].openingTime, withFormat: true)} - ${Methods.convertStringToTime(times?[index].closingTime, withFormat: true)})",
+                          (index)
+                          {
+
+                            if(times?[index].openingTime==times?[index].closingTime) {
+                              return Text(
+                                getTranslated("always_opening", context),
                                 style: AppTextStyles.medium.copyWith(
                                     fontSize: 14,
                                     overflow: TextOverflow.ellipsis,
                                     color: Styles.TITLE),
                                 maxLines: 1,
-                              )),
+                              );
+                            }
+                            return    Text(
+                                  "(${Methods.convertStringToTime(times?[index].openingTime, withFormat: true)} - ${Methods.convertStringToTime(times?[index].closingTime, withFormat: true)})",
+                                  style: AppTextStyles.medium.copyWith(
+                                      fontSize: 14,
+                                      overflow: TextOverflow.ellipsis,
+                                      color: Styles.TITLE),
+                                  maxLines: 1,
+                                );
+                              }),
                     ),
                   ),
                 ],
