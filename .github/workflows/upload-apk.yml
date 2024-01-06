@@ -32,45 +32,17 @@ jobs:
           name: app-release
           path: build/app/outputs/flutter-apk/app-release.apk
 
-#      - name: Upload Artifact to Transfer.sh
-#        id: upload_artifact
-#        run: |
-#          UPLOAD_URL=$(curl --upload-file "${{ github.workspace }}/build/app/outputs/flutter-apk/app-release.apk" https://transfer.sh/app-release.apk )
-#          echo "Artifact uploaded to: $UPLOAD_URL"
-#          echo "GITHUB_STATE=upload_url=$UPLOAD_URL" >> $GITHUB_ENV
-#          echo "::set-env name=UPLOAD_URL::$UPLOAD_URL"
-
-      - name: Upload APK to Transfer.sh
-          run: |
-            # Set the file path
-            APK_FILE="/home/runner/work/step-out/step-out/build/app/outputs/flutter-apk/app-release.apk"
-            
-            # Check if the file exists
-            if [ ! -f "$APK_FILE" ]; then
-              echo "Error: APK file not found at $APK_FILE."
-              exit 1
-            fi
-            
-            # Upload the APK file and capture the URL
-            UPLOAD_URL=$(curl --upload-file "$APK_FILE" -H "Authorization: Bearer ACCESS_TOKEN" https://transfer.sh/app-release.apk)
-            
-            # Check if the upload was successful
-            if [ -z "$UPLOAD_URL" ]; then
-              echo "Error: Failed to upload APK to Transfer.sh."
-              exit 1
-            fi
-            
-            # Print the upload URL
-            echo "Artifact uploaded to: $UPLOAD_URL"
-            
-            # Set environment variables for later use
-            echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
-            echo "::set-env name=UPLOAD_URL::$UPLOAD_URL"
-          env:
-            GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      - name: Upload Artifact to Transfer.sh
+        id: upload_artifact
+        run: |
+          UPLOAD_URL=$(curl --upload-file "${{ secrets.ACCESS_TOKEN }}/build/app/outputs/flutter-apk/app-release.apk" https://transfer.sh/app-release.apk )
+          echo "Artifact uploaded to: $UPLOAD_URL"
+          echo "GITHUB_STATE=upload_url=$UPLOAD_URL" >> $GITHUB_ENV
+          echo "::set-env name=UPLOAD_URL::$UPLOAD_URL"
 
       - name: Send APK URL via Telegram
         env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
