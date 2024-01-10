@@ -6,8 +6,8 @@ abstract class LottieFile {
       {double? height, double? width, BoxFit? fit}) {
     return Lottie.asset(
       "assets/json/$name.json",
-      height: height,
-      width: width,
+      // height: height,
+      // width: width,
       fit: fit,
       errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
     );

@@ -140,7 +140,7 @@ class CustomNetworkImage {
           backgroundColor: Styles.GREY_BORDER,
           child: LottieFile.asset(
             "image_loading",
-            height: radius * 2,
+            // height: radius * 2,
           )),
       imageBuilder: (context, provider) {
         return Container(
