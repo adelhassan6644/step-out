@@ -49,6 +49,7 @@ class ItemDetailsImages extends StatelessWidget {
                           },
                           child: CustomNetworkImage.containerNewWorkImage(
                               radius: 20,
+                              fit: BoxFit.cover,
                               image: provider.model?.images?[index] ?? ""),
                         ),
                       ),

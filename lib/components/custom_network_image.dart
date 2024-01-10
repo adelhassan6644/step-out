@@ -96,7 +96,7 @@ class CustomNetworkImage {
                     topRight: Radius.circular(radius ?? 10),
                     topLeft: Radius.circular(radius ?? 10))
                 : BorderRadius.all(Radius.circular(radius ?? 10.0)),
-            image: DecorationImage(fit: fit ?? BoxFit.cover, image: provider),
+            image: DecorationImage(fit: fit ?? BoxFit.fill, image: provider),
           ),
           child: imageWidget,
         );

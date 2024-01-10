@@ -110,24 +110,23 @@ class _CategoryCard extends StatelessWidget {
       onTap: () {
         CustomNavigator.push(Routes.CATEGORY_DETAILS, arguments: item);
       },
-      child: SizedBox(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CustomNetworkImage.containerNewWorkImage(
-                image: item?.image ?? "",
-                height: 100,
-                width: context.width),
-            SizedBox(
-              height: 8.h,
-            ),
-            Text(
-              item?.name ?? "34jkebg",
-              style: AppTextStyles.medium
-                  .copyWith(fontSize: 14, color: Styles.HEADER),
-            ),
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CustomNetworkImage.containerNewWorkImage(
+              image: item?.image ?? "",
+              height: 105,
+              fit: BoxFit.cover,
+              width: context.width),
+          SizedBox(
+            height: 8.h,
+          ),
+          Text(
+            item?.name ?? "34jkebg",
+            style: AppTextStyles.medium
+                .copyWith(fontSize: 14, color: Styles.HEADER),
+          ),
+        ],
       ),
     );
   }

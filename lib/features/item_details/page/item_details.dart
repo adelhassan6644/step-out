@@ -76,6 +76,7 @@ class ItemDetails extends StatelessWidget {
                                   ),
                                   height: 240.h,
                                   width: context.width,
+
                                   radius: 0),
                             ),
                             const Expanded(child: SizedBox()),

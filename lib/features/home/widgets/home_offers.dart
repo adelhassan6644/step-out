@@ -68,7 +68,7 @@ class HomeOffers extends StatelessWidget {
                                               "",
                                           height: 140.h,
                                           width: context.width * 0.7,
-                                          fit: BoxFit.cover,
+                                          fit: BoxFit.fill,
                                           radius: 20,
                                         ),
                                       ),

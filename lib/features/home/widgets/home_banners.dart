@@ -37,7 +37,7 @@ class HomeBanner extends StatelessWidget {
                           children: [
                             CarouselSlider.builder(
                               options: CarouselOptions(
-                                height: context.height * 0.275,
+                                height: context.height * 0.25,
                                 disableCenter: true,
                                 pageSnapping: true,
                                 autoPlay: true,
@@ -68,10 +68,10 @@ class HomeBanner extends StatelessWidget {
                                     image: provider
                                             .bannerModel?.data?[index].image ??
                                         "",
-                                    height: context.height * 0.275,
+                                    height: context.height * 0.25,
                                     width: context.width,
                                     radius: 20,
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.fill,
                                   ),
                                 );
                               },

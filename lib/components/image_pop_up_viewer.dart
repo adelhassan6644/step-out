@@ -67,7 +67,7 @@ class ImagePopUpViewer extends StatelessWidget {
                         borderRadius: BorderRadius.circular(14),
                         child: CustomNetworkImage.containerNewWorkImage(
                             image: image,
-                            fit: BoxFit.fitWidth,
+                            fit: BoxFit.contain,
                             radius: 14,
                             width: context.width,
                             height: context.width * 1.4),
