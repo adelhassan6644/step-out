@@ -14,9 +14,9 @@ import '../../../app/core/utils/text_styles.dart';
 import '../model/item_details_model.dart';
 
 class ItemDetailsContactInfo extends StatelessWidget {
-  const ItemDetailsContactInfo({super.key, this.phone, this.tags, this.times});
+  const ItemDetailsContactInfo({super.key, this.phone, this.tags, this.times, this.notes});
 
-  final String? phone;
+  final String? phone,notes;
   final List<SubCategoryModel>? tags;
   final List<TimeModel>? times;
 
@@ -114,7 +114,28 @@ class ItemDetailsContactInfo extends StatelessWidget {
                             color: Styles.PRIMARY_COLOR),
                       ),
                     )),
-          )
+          ),
+          if(notes!=null)
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              customImageIconSVG(
+                  imageName: SvgImages.notes,
+                  color: Styles.PRIMARY_COLOR,
+                  width: 20, height: 20),
+              SizedBox(width: 8.w),
+              Expanded(
+                child: Text(
+                  notes ?? "",
+                  style: AppTextStyles.medium.copyWith(
+                      fontSize: 14,
+                      overflow: TextOverflow.ellipsis,
+                      color: Styles.TITLE),
+                  maxLines: 1,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

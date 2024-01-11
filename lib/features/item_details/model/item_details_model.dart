@@ -20,6 +20,7 @@ class ItemDetailsModel {
   String? twitter;
   String? instagram;
   String? webSite;
+  String? notes;
   String? snapchat;
   int? categoryId;
   int? subCategoryId;
@@ -46,6 +47,7 @@ class ItemDetailsModel {
     this.facebook,
     this.whatsapp,
     this.webSite,
+    this.notes,
     this.tiktok,
     this.twitter,
     this.instagram,
@@ -74,7 +76,8 @@ class ItemDetailsModel {
         phone: json["phone"],
         facebook: json["facebook"],
         whatsapp: json["whatsapp"],
-        webSite: json["webSite"],
+        webSite: json["website"],
+        notes: json["notes"],
         tiktok: json["tiktok"],
         twitter: json["twitter"],
         instagram: json["instagram"],

@@ -134,14 +134,12 @@ class ItemCard extends StatelessWidget {
                             future: Methods.calcLiveDistance(
                                 lat: item?.lat, long: item?.long),
                             builder: (_, AsyncSnapshot<dynamic> snapshot) {
-                              return Expanded(
-                                child: Text(
-                                  "${getTranslated("away_from_you", context)} ${snapshot.data ?? "..."} ${getTranslated("km", context)}",
-                                  style: AppTextStyles.regular.copyWith(
-                                      overflow: TextOverflow.ellipsis,
-                                      fontSize: 12,
-                                      color: Styles.SUBTITLE),
-                                ),
+                              return Text(
+                                "${getTranslated("away_from_you", context)} ${snapshot.data ?? "..."} ${getTranslated("km", context)}",
+                                style: AppTextStyles.regular.copyWith(
+                                    overflow: TextOverflow.ellipsis,
+                                    fontSize: 12,
+                                    color: Styles.SUBTITLE),
                               );
                             },
                           ),

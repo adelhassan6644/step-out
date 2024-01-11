@@ -149,6 +149,21 @@ class ItemDetailsBody extends StatelessWidget {
                                       mode: LaunchMode.externalApplication);
                                 },
                               ),
+                            if (provider.model?.webSite != null)
+                              const SizedBox(width: 6),
+                            if (provider.model?.webSite != null)
+                              customContainerSvgIcon(
+                                radius: 100,
+                                width: 35,
+                                height: 35,
+                                imageName: SvgImages.website,
+                                color: Styles.PRIMARY_COLOR,
+                                onTap: () {
+                                  launchUrl(
+                                      Uri.parse(provider.model?.webSite ?? ""),
+                                      mode: LaunchMode.externalApplication);
+                                },
+                              ),
                           ],
                         ),
                       ),

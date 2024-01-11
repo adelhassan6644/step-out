@@ -39,6 +39,7 @@ class ItemDetailsInfo extends StatelessWidget {
               phone: provider.model?.phone,
               times: provider.model?.times,
               tags: provider.model?.tags,
+              notes: provider.model?.notes,
             ),
 
             ///Item Details Location

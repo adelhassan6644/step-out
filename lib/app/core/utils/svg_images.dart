@@ -29,6 +29,7 @@ class SvgImages {
   static const String pic = 'assets/svgs/pic.svg';
   static const String seen = 'assets/svgs/seen.svg';
   static const String notSeen = 'assets/svgs/not_seen.svg';
+  static const String notes = 'assets/svgs/notes.svg';
   static const String global = 'assets/svgs/global.svg';
   static const String favourite = 'assets/svgs/fav.svg';
   static const String disFavourite = 'assets/svgs/dis_fav.svg';
@@ -38,6 +39,7 @@ class SvgImages {
   static const String twitter = 'assets/svgs/twitter.svg';
   static const String instagram = 'assets/svgs/instagram.svg';
   static const String snapchat = 'assets/svgs/snapchat.svg';
+  static const String website = 'assets/svgs/website.svg';
   static const String export = 'assets/svgs/export.svg';
   static const String tiktok = 'assets/svgs/tiktok.svg';
   static const String mailIcon = 'assets/svgs/mail.svg';
