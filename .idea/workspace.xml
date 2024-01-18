@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6626a0fc-6ed8-40b3-91bb-fe1e68f7c3b0" name="Changes" comment="update notification module">
-      <change afterPath="$PROJECT_DIR$/assets/svgs/notes.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/svgs/website.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/core/utils/svg_images.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/core/utils/svg_images.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/model/item_details_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/model/item_details_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_body.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_contact_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_contact_info.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/item_details/widgets/item_details_info.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_widgets/item_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_widgets/item_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +96,7 @@
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
+    "flutter.view.tool.window.visible": "true",
     "git-widget-placeholder": "staging",
     "io.flutter.reload.alreadyRun": "true",
     "last_opened_file_path": "/Users/mhamedelbaz/personal/Step out/assets/svgs",
@@ -496,7 +491,7 @@
       <option name="project" value="LOCAL" />
       <updated>1702498297156</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <option name="localTasksCounter" value="147" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
