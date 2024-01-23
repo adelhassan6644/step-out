@@ -84,10 +84,11 @@ class ItemCard extends StatelessWidget {
                   ),
 
                   /// Description
+                  if(item?.description!=null)
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 6.0),
                     child: Text(
-                      item?.description ?? "description",
+                      item?.description ?? "",
                       maxLines: 1,
                       style: AppTextStyles.medium.copyWith(
                           fontSize: 14,
@@ -130,19 +131,13 @@ class ItemCard extends StatelessWidget {
                             color: Styles.SUBTITLE),
                         SizedBox(width: 8.w),
                         Expanded(
-                          child: FutureBuilder(
-                            future: Methods.calcLiveDistance(
-                                lat: item?.lat, long: item?.long),
-                            builder: (_, AsyncSnapshot<dynamic> snapshot) {
-                              return Text(
-                                "${getTranslated("away_from_you", context)} ${snapshot.data ?? "..."} ${getTranslated("km", context)}",
-                                style: AppTextStyles.regular.copyWith(
-                                    overflow: TextOverflow.ellipsis,
-                                    fontSize: 12,
-                                    color: Styles.SUBTITLE),
-                              );
-                            },
-                          ),
+                            child: Text(
+                              "${getTranslated("away_from_you", context)} ${item?.distance ?? "..."} ${getTranslated("km", context)}",
+                              style: AppTextStyles.regular.copyWith(
+                                  overflow: TextOverflow.ellipsis,
+                                  fontSize: 12,
+                                  color: Styles.SUBTITLE),
+                            )
 
                           // Text(
                           //   "${getTranslated("away_from_you", context)} ${Methods.calcLiveDistance(lat: item?.lat, long: item?.long)} ${getTranslated("km", context)}",

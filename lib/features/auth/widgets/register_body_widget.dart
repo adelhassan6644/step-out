@@ -135,12 +135,12 @@ class _RegisterBodyWidgetState extends State<RegisterBodyWidget> {
                             inputType: TextInputType.phone,
                             customError: snapshot.hasError,
                             errorText: snapshot.error,
-                            validate: (v) {
-                              if (Validations.phone(v) != null) {
-                                provider.phone.addError(Validations.phone(v)!);
-                              }
-                              return null;
-                            },
+                            // validate: (v) {
+                            //   if (Validations.phone(v) != null) {
+                            //     provider.phone.addError(Validations.phone(v)!);
+                            //   }
+                            //   return null;
+                            // },
                           );
                         }),
 

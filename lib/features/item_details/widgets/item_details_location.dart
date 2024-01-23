@@ -15,9 +15,9 @@ import '../../../components/open_map_options.dart';
 
 class ItemDetailsLocation extends StatelessWidget {
   const ItemDetailsLocation(
-      {super.key, this.lat, this.long, this.address, this.itemName});
+      {super.key, this.lat, this.long, this.address, this.itemName, this.distance});
   final dynamic lat, long;
-  final String? address, itemName;
+  final String? address, itemName,distance;
 
   @override
   Widget build(BuildContext context) {

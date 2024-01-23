@@ -107,6 +107,7 @@ abstract class Methods {
 
   static Future calcLiveDistance({lat, long}) async {
     final position = await getCurrentPosition();
+
     return (Geolocator.distanceBetween(position.latitude, position.longitude,
                 double.parse(lat ?? "0"), double.parse(long ?? "0")) /
             1000)

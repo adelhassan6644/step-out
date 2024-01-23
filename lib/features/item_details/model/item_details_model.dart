@@ -12,6 +12,7 @@ class ItemDetailsModel {
   String? address;
   String? lat;
   String? long;
+  String? distance;
   String? status;
   String? phone;
   String? facebook;
@@ -42,6 +43,7 @@ class ItemDetailsModel {
     this.address,
     this.lat,
     this.long,
+    this.distance,
     this.status,
     this.phone,
     this.facebook,
@@ -72,6 +74,7 @@ class ItemDetailsModel {
         address: json["address"],
         lat: json["lat"] != null ? json["lat"].toString() : null,
         long: json["long"] != null ? json["long"].toString() : null,
+        distance: json["distance"] != null ? (double.parse(json["distance"].toString())/1000).toStringAsFixed(2) : null,
         status: json["status"],
         phone: json["phone"],
         facebook: json["facebook"],
