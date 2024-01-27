@@ -88,7 +88,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data
-                    android:host="ebrandstepout.page.link"
+                    android:host="stepoutnet.com"
                     android:scheme="https"/>
             </intent-filter>
         </activity>
