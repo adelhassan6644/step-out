@@ -82,7 +82,8 @@ class ItemDetailsContactInfo extends StatelessWidget {
                             }
                             return    Text(
                                   "(${Methods.convertStringToTime(times?[index].openingTime, withFormat: true)} - ${Methods.convertStringToTime(times?[index].closingTime, withFormat: true)})",
-                                  style: AppTextStyles.medium.copyWith(
+                              textDirection: TextDirection.ltr,
+                              style: AppTextStyles.medium.copyWith(
                                       fontSize: 14,
                                       overflow: TextOverflow.ellipsis,
                                       color: Styles.TITLE),

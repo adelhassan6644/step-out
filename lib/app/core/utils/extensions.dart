@@ -40,7 +40,7 @@ extension StringExtension on String {
 
 extension DateExtention on DateTime {
   String dateFormat({required String format, String? lang}) {
-    return DateFormat(format, sl<LocalizationProvider>().locale.languageCode)
+    return DateFormat(format,)
         .format(this);
   }
 
