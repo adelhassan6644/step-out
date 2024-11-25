@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_controller.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class HomeProvider extends ChangeNotifier {
 
   bool get isLogin => homeRepo.isLoggedIn();
 
-  CarouselController bannerController = CarouselController();
+  CarouselSliderController bannerController = CarouselSliderController();
   int bannerIndex = 0;
   void setBannerIndex(int index) {
     bannerIndex = index;

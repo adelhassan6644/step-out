@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyC0Ezlo46daF-_W8mmjBwvJ5JLPN55zNIU',
-    appId: '1:153000353051:android:94e21c89b83453212f07be',
+    appId: '1:153000353051:android:fe64cb1f3778ffee2f07be',
     messagingSenderId: '153000353051',
     projectId: 'step-out-d6bb5',
     storageBucket: 'step-out-d6bb5.appspot.com',
@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'step-out-d6bb5.appspot.com',
     iosBundleId: 'com.ebstepout.stepout',
   );
+
 }

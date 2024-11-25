@@ -3,14 +3,13 @@ import 'package:stepOut/app/core/utils/text_styles.dart';
 import 'package:stepOut/app/localization/language_constant.dart';
 import 'package:stepOut/navigation/custom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../app/core/utils/styles.dart';
 import '../../app/core/utils/dimensions.dart';
 import '../../app/core/utils/images.dart';
 
 loadingDialog() {
-  return showAnimatedDialog(
+  return showDialog(
     context: CustomNavigator.navigatorState.currentContext!,
     barrierDismissible: false,
     builder: (BuildContext context) {
@@ -45,9 +44,7 @@ loadingDialog() {
         ]),
       );
     },
-    animationType: DialogTransitionType.fadeScale,
-    curve: Curves.easeInOutBack,
-    duration: const Duration(milliseconds: 700),
+
   );
 }
 

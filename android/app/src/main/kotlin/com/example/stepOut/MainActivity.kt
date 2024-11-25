@@ -1,4 +1,4 @@
-package com.eBrandstepOut.stepOut
+package com.estepOut.stepOut
 
 import io.flutter.embedding.android.FlutterActivity
 import android.os.Bundle

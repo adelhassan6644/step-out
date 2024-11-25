@@ -72,7 +72,7 @@ class ProfileCard extends StatelessWidget {
                     : Text(
                         provider.isLogin
                             ? provider.profileModel?.email ?? ""
-                            : "guest@stepOut.com",
+                            : "guest@stepout.com",
                         style: AppTextStyles.regular.copyWith(
                             color: Styles.SPLASH_BACKGROUND_COLOR,
                             fontSize: 12),

@@ -118,7 +118,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.eBrandstepOut.stepOut"
+        applicationId "com.estepOut.stepOut"
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
