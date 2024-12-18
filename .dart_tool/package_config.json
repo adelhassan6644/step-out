@@ -608,6 +608,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "galleryimage",
+      "rootUri": "file:///Users/mhamedelbaz/.pub-cache/hosted/pub.dev/galleryimage-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "geolocator",
       "rootUri": "file:///Users/mhamedelbaz/.pub-cache/hosted/pub.dev/geolocator-13.0.2",
       "packageUri": "lib/",
@@ -1460,7 +1466,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2024-11-25T18:58:14.335828Z",
+  "generated": "2024-12-18T16:45:35.450815Z",
   "generator": "pub",
   "generatorVersion": "3.5.4",
   "flutterRoot": "file:///Users/mhamedelbaz/Developer/flutter",

@@ -6,7 +6,9 @@ import '../../../app/core/utils/dimensions.dart';
 import '../../../components/custom_network_image.dart';
 import '../../../components/grid_list_animator.dart';
 import '../../../components/image_pop_up_viewer.dart';
+import '../../../data/api/end_points.dart';
 import '../provider/item_details_provider.dart';
+import 'package:galleryimage/galleryimage.dart';
 
 class ItemDetailsImages extends StatelessWidget {
   const ItemDetailsImages({super.key});
@@ -19,7 +21,16 @@ class ItemDetailsImages extends StatelessWidget {
             EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
         data: [
           Consumer<ItemDetailsProvider>(builder: (context, provider, child) {
-            return GridListAnimatorWidget(
+            List<String> listimeges=[];
+            provider.model!.images?.forEach((e)=>
+                listimeges.add(EndPoints.imageUrl+e));
+            return GalleryImage(
+              titleGallery: "",
+                numOfShowImages:listimeges.length??0,
+                imageUrls: listimeges??[]
+            );
+
+             /* GridListAnimatorWidget(
               aspectRatio: 1.6,
               items: List.generate(
                 provider.model?.images?.length ?? 0,
@@ -30,8 +41,15 @@ class ItemDetailsImages extends StatelessWidget {
                     duration: const Duration(milliseconds: 375),
                     child: ScaleAnimation(
                       child: FadeInAnimation(
-                        child: InkWell(
+                        child:
+
+
+                        InkWell(
                           onTap: () async {
+                            List<String> listimeges=[];
+                            provider.model!.images?.forEach((e)=>
+                            listimeges.add(EndPoints.imageUrl+e)
+                            );
                             Future.delayed(
                                 Duration.zero,
                                 () => showDialog(
@@ -39,7 +57,13 @@ class ItemDetailsImages extends StatelessWidget {
                                     barrierColor:
                                         Colors.black.withOpacity(0.75),
                                     builder: (context) {
-                                      return ImagePopUpViewer(
+                                      return GalleryImage(
+                                        numOfShowImages:listimeges.length??0,
+                                        imageUrls: listimeges??[]
+                                      );
+
+
+                                      ImagePopUpViewer(
                                         image: provider.model?.images?[index] ??
                                             "",
                                         isFromInternet: true,
@@ -57,7 +81,7 @@ class ItemDetailsImages extends StatelessWidget {
                   );
                 },
               ),
-            );
+            );*/
           }),
           SizedBox(
             height: 24.h,

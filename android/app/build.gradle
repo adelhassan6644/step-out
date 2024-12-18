@@ -101,7 +101,7 @@ android {
         }
     }
 
-    compileSdkVersion 33
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -119,7 +119,7 @@ android {
 
     defaultConfig {
         applicationId "com.estepOut.stepOut"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
