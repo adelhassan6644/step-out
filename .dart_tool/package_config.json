@@ -1466,10 +1466,10 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2024-12-18T16:45:35.450815Z",
+  "generated": "2025-01-12T20:34:16.469740Z",
   "generator": "pub",
   "generatorVersion": "3.5.4",
   "flutterRoot": "file:///Users/mhamedelbaz/Developer/flutter",
-  "flutterVersion": "3.24.4",
+  "flutterVersion": "3.24.5",
   "pubCache": "file:///Users/mhamedelbaz/.pub-cache"
 }

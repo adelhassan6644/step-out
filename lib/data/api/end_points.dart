@@ -28,6 +28,8 @@ class EndPoints {
   static const String searchPlaces = 'place/search';
   static getTagPlaces(id) => 'tag/places/$id';
 
+  static getTagNEwPlaces() => 'places-featured';
+
   static const String offers = 'offer';
   static const String aboutUs = 'about_us';
   static const String setting = 'setting';

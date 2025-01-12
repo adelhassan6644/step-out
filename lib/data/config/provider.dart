@@ -12,6 +12,7 @@ import '../../features/home/provider/home_provider.dart';
 import '../../features/item_details/provider/item_details_provider.dart';
 import '../../features/item_details/provider/send_rate_provider.dart';
 import '../../features/language/provider/localization_provider.dart';
+import '../../features/new_places/provider/new_places_provider.dart';
 import '../../features/news/provider/news_provider.dart';
 import '../../features/notifications/provider/notifications_provider.dart';
 import '../../features/profile/provider/profile_provider.dart';
@@ -43,5 +44,6 @@ abstract class ProviderList {
     ChangeNotifierProvider(create: (_) => di.sl<SearchProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<HashtagPlacesProvider>()),
     ChangeNotifierProvider(create: (_) => di.sl<SettingProvider>()),
+    ChangeNotifierProvider(create: (_) => di.sl<NewPlacesProvider>()),
   ];
 }

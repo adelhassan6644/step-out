@@ -40,7 +40,7 @@ class ItemCard extends StatelessWidget {
               edges: true,
               radius: 20,
               width: context.width,
-              height: 100.h,
+              height: 110.h,
               image: item?.cover ?? "",
             ),
             Padding(

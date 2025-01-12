@@ -20,6 +20,8 @@ import '../../features/item_details/repo/ratting_repo.dart';
 import '../../features/language/provider/localization_provider.dart';
 import '../../features/language/repo/localization_repo.dart';
 import '../../features/maps/repo/maps_repo.dart';
+import '../../features/new_places/provider/new_places_provider.dart';
+import '../../features/new_places/repo/new_places_repo.dart';
 import '../../features/news/provider/news_provider.dart';
 import '../../features/news/repo/news_repo.dart';
 import '../../features/notifications/provider/notifications_provider.dart';
@@ -82,6 +84,10 @@ Future<void> init() async {
   sl.registerLazySingleton(
       () => HashtagPlacesRepo(sharedPreferences: sl(), dioClient: sl()));
 
+  sl.registerLazySingleton(
+      () => NewPlacesRepo(sharedPreferences: sl(), dioClient: sl()));
+
+
   //provider
   sl.registerLazySingleton(
       () => LocalizationProvider(sharedPreferences: sl(), repo: sl()));
@@ -102,6 +108,8 @@ Future<void> init() async {
   sl.registerLazySingleton(() => ContactProvider(contactRepo: sl()));
   sl.registerLazySingleton(() => SearchProvider(repo: sl()));
   sl.registerLazySingleton(() => HashtagPlacesProvider(repo: sl()));
+  sl.registerLazySingleton(
+          () => NewPlacesProvider(repo: sl(), ));
 
   // External
   final sharedPreferences = await SharedPreferences.getInstance();
